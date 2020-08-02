@@ -5,6 +5,6 @@ tags: $:/tags/SideBar
 title: $:/plugins/can/omni/dragtags
 type: text/vnd.tiddlywiki
 
-<$list filter="[all[tags]!is[system]sort[]]">
+<$list filter="[tags[]!is[system]sort[]]">
 <$macrocall $name="tag-pill-body" tag=<<currentTiddler>> icon={{!!icon}} colour={{!!color}} palette={{$:/palette}} element-tag="""$button""" element-attributes=""" dragFilter='[all[current]]' tag='span'"""/>
 </$list>
