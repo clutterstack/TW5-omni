@@ -1,0 +1,29 @@
+created: 20200719165842595
+modified: 20200719184718620
+tags: can $:/tags/Macro
+title: Folding macro
+type: text/vnd.tiddlywiki
+
+\whitespace trim
+
+\define can-unfolder(tiddler)
+<h2> <$button class="tc-btn-invisible can-small-text-button" popupTitle=<<qualify "$:/state/$tiddler$">> >
+<$reveal type="match" tag="div" state=<<qualify "$:/state/$tiddler$">> text="" >{{$:/core/images/right-arrow}}</$reveal>
+<$reveal type="nomatch" state=<<qualify "$:/state/$tiddler$">> text="" >{{$:/core/images/down-arrow}}</$reveal>
+</$button>{{$tiddler$!!title}} </h2>
+<$reveal type="nomatch" state=<<qualify "$:/state/$tiddler$">> text="" >
+<br>
+{{$tiddler$!!text}}
+</$reveal>
+\end
+
+\define can-omni-unfolder(tiddler)
+<$button class="tc-btn-invisible can-small-text-button" popupTitle=<<qualify "$:/state/$tiddler$">> >
+<$reveal type="match" tag="div" state=<<qualify "$:/state/$tiddler$">> text="" >{{$:/core/images/right-arrow}}</$reveal>
+<$reveal type="nomatch" state=<<qualify "$:/state/$tiddler$">> text="" >{{$:/core/images/down-arrow}}</$reveal>
+</$button><$tiddler tiddler=$tiddler$><<currentTiddler>></$tiddler>
+<$reveal type="nomatch" state=<<qualify "$:/state/$tiddler$">> text="" >
+<br>
+{{$tiddler$!!text}}
+</$reveal>
+\end

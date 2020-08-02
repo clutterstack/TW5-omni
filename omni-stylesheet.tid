@@ -1,0 +1,299 @@
+created: 20200507184921957
+creator: chris
+tags: $:/tags/Stylesheet
+title: $:/plugins/can/omni/stylesheet
+
+.can-omni-toptools {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
+.can-omni-stream { 
+display: grid; 
+grid-template-columns: 1em auto 7fr auto auto; 
+grid-template-rows: auto; 
+}
+
+.can-omni-stream pre {
+    max-width: calc({{$:/themes/tiddlywiki/vanilla/metrics/storywidth}} - 25%);
+  overflow: auto;
+}
+
+.can-omni-stream ul {
+    margin: 0;
+    padding-left: 1em;
+}
+
+/* Style the quickadd for in an omnibus */
+
+.can-quickadd.sub {
+    margin-top: 0;
+}
+
+.can-omni-quickadd { grid-column: 2/6; }
+
+.can-omni-foldbutton {grid-column: 1/2; align-self: start; height: 1.5em; z-index: 9999; display: flex; flex-direction: column; justify-content: flex-start;}
+
+.can-omni-foldbutton:hover svg {fill: #666666;}
+
+.can-omni-itemhandle {width: 1.6em; grid-column: 2/3; 
+    grid-row: span 2; margin-left: -0.8em;}
+
+.can-omni-itemhandle .tc-draggable { height: 100%;}
+
+.can-omni-itemhandle-inner { 
+    box-sizing: content-box; 
+    border-radius: 2px;
+    height: 100%; 
+    width: 2px;
+    background-color: #cccccc;
+    margin-left: 0.8em;
+    }
+
+.can-omni-itemhandle:hover .can-omni-itemhandle-inner { 
+    background-color: #999999;
+    }
+
+.can-omni-stream > div.tc-draggable { cursor: pointer; }
+
+.can-omni-text::not[hidden] { grid-column: 3/4; display: flex; flex-direction: row;}
+
+.can-omni-text .tc-reveal {width: 100%; }
+
+.can-omni-text p { margin: 0.5em 0; }
+p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
+.can-omni-text p:nth-child(1) { margin-top: 0; }
+.can-omni-text p:last-child { margin-bottom: 0; }
+
+.can-quickadd-textarea {
+/* Because tag-drop area overlaps when no tags on tiddlers in omni */
+    position: relative;
+    z-index: 99999;
+}
+
+.can-omni-editctl {
+    grid-column: 3/5; 
+    display: flex; 
+    flex-direction:row; 
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    align-content: flex-end; 
+    padding-top: 0.4em; 
+    margin-right: 2em;}
+
+.can-omni-ctl,  { grid-column: 4/5; display: flex; flex-direction: row; justify-content: flex-end; align-content: flex-start; padding-top: 0; padding-left: 0.4em;}
+
+
+.can-omni-subctl {display: flex; flex-direction: row; flex-wrap: wrap;}
+.can-omni-title { font-size: 0.8em;}
+span.can-omni-title {vertical-align: bottom;}
+div.can-omni-title {margin-left: 0.4em; align-self: flex-end;}
+a:hover.can-omni-title { color: inherit; text-decoration: none; }
+
+a.can-omni-title { color: #cccccc; align-self: flex-end;}
+
+.can-omni-meta { display: flex; flex-direction: row; }
+
+.can-omni-levelctl { display: flex; flex-direction: row; flex: 0 0 auto; }
+
+/* Buttons */
+
+.can-omni-button svg, .can-omni-foldbutton svg {flex: 0 0 auto; fill: #cccccc;}
+
+.can-omni-button-selected {color: #aac;}
+
+.can-omni-button-selected svg {fill: #66c;}
+
+.can-omni-button:hover svg {fill: #999999;}
+
+.can-omni-button {color: #cccccc;}
+
+div.can-omni-button {display: flex; flex-direction: row;}
+
+.can-omni-button:hover {color: #999999;}
+
+/* .can-omni-quickappend .can-omni-button svg {width: 16pt; height: 16pt;} */
+
+.can-omni-ctl .tc-draggable, .can-omni-editctl .tc-draggable {display: flex; flex-direction:row; align-content: flex-end;}
+
+.can-omni-ctl .tc-draggable button, .can-omni-editctl .tc-draggable button {display: flex; flex-direction:row;}
+
+.can-omni-ctl .tc-draggable svg, .can-omni-editctl .tc-draggable svg {align-self: flex-end;}
+
+.can-omni-foldall {}
+
+.can-omni-viewswitcher {}
+
+.can-omni-viewswitcher .can-omni-button svg {
+    width: 20pt;
+    height: 20pt;
+}
+
+.can-omni-foldall .can-omni-button svg {
+    width: 14pt;
+    height: 14pt;
+}
+
+
+
+/* Shrink the control icons in sub-omnis */
+
+.can-omni-text .can-omni-viewswitcher .can-omni-button svg { 
+    width: 16pt;
+    height: 16pt;
+    }
+.can-omni-text .can-omni-foldall .can-omni-button svg { 
+    width: 10pt;
+    height: 10pt;
+    }
+
+/* don't show the top toolbar in a sub-omni */
+
+.can-omni-text .can-omni-toptools {
+ /*   display: none; */
+}
+
+/* Tagging */
+
+.can-omni-tag-area {grid-column: 5/6; min-height: 1em; display: flex; flex-direction: row; justify-content: flex-end; padding-left: 0.4em;}
+
+.can-omni-tags {height: 100%; max-width: 10em; display: flex; flex-direction: column; flex-wrap: wrap; justify-content: flex-start; align-content: flex-start;}
+
+.can-omni-tag-area .tc-droppable {height: 100%; margin-left: -4em; width: 4em; display: flex; flex-direction: column; justify-content: flex-end; align-content: flex-end;}
+
+.can-omni-tag-area .tc-dragover {
+background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(204,0,255,0.5) 100%);
+border-radius: 4px;
+}
+
+.can-omni-tag-area .tc-droppable:hover {
+background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 30%, rgba(0,0,0,0.2) 100%);
+border-radius: 4px;
+}
+
+.can-omni-tag-area .ghost-tag {
+display: none;
+}
+.can-omni-tag-area:hover .ghost-tag, .can-omni-tag-area .tc-dragover .ghost-tag {
+   display: flex;
+flex-direction: row;
+justify-content: flex-end;
+fill: #ffffff;
+padding: 5px; 
+}
+
+.can-omni-tag-area .ghost-tag svg {
+    width: 12pt;
+    height: 12pt;
+}
+
+.can-tags-sml.tc-edit-tags { border: none; padding: 0; 
+ -webkit-box-shadow: none; -moz-box-shadow: none; box-shadow: none; }
+
+.can-tags-sml { font-size: 0.7em; }
+
+.can-omni-tagadd { display: flex; flex-direction: row; }
+
+.can-omni-tagadd .tc-add-tag-button button { display: none; }
+
+/* Above and below item droppable zones */
+
+.can-omni-peripheral, .can-omni-topadd { grid-column: 1/6; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background: #ffffff;}
+
+.can-omni-peripheral .tc-droppable, .can-omni-topadd .tc-droppable { width: 100%; display: flex; flex-direction: row; justify-content: flex-end; }
+
+.can-omni-peripheral .tc-dragover, .can-omni-topadd .tc-dragover, .tc-dragover .can-omnibus-droppable { border-radius: 5px;background: #0ff; }
+
+.can-omni-toggleadd .can-omni-button {justify-content: flex-end;}
+
+.can-omni-toggleadd .can-omni-button svg {height: 10pt; width: 10pt;}
+
+.can-omni-toggleadd, .can-omni-toggleadd .can-omni-button {padding: 1px; border-radius: 4px; width: 100%;}
+
+.can-omni-toggleadd:hover {background: #efefef;}
+
+.can-omni-bottom { grid-column: 2/6; margin-bottom: 0.8em; }
+
+/* Depending on view mode */
+
+.view > .can-omni-foldbutton, .zone .can-omni-foldbutton {margin:0;}
+
+.edit .can-omni-textctl {grid-column: 3/4; display: flex; flex-direction: column;}
+
+.view > .can-omni-text {margin-left: 0.4em; margin-bottom: 0.8em;}
+
+.zone .can-omni-itemhandle, .zone .can-omni-text {margin-bottom: 0.8em;}
+
+
+/* Tweaks for sub-omnis when the handle is visible */
+
+.edit .can-omni-text .edit.can-omni-stream, .simple .can-omni-text .edit.can-omni-stream, .edit .can-omni-text .simple.can-omni-stream, .simple .can-omni-text .simple.can-omni-stream{
+    margin-left: -0.6em;
+}
+
+/* Styling according to level in data tiddler (could do by layout mode too) */
+
+.can-outline-item-0.can-omni-text { }
+.can-outline-item-1.can-omni-text { padding-left: 2em; } 
+.can-outline-item-2.can-omni-text { padding-left: 4em; } 
+.can-outline-item-3.can-omni-text { padding-left: 6em; } 
+.can-outline-item-4.can-omni-text { padding-left: 8em; } 
+.can-outline-item-5.can-omni-text { padding-left: 10em;} 
+.can-outline-item-6.can-omni-text { background: #9fd; } 
+.can-outline-item-7.can-omni-text {} 
+.can-outline-item-8.can-omni-text {}
+
+
+/* Misc */
+.can-small-text-button {font-size: 0.8rem;}
+.can-info-container {
+    border: 1px solid #aaaaaa;
+    background: #eeeeee;
+}
+.can-small-text-button .tc-menubar-dropdown-arrow {padding-left: 0.4em;}
+
+/* ----------------------------------------- */
+/* omni-bullet (not used as of July 28 2020) */
+/* ----------------------------------------- */
+
+.can-omni-bullet { box-sizing: content-box; border-radius: 50%; width: 6px; height: 6px; background-color: #333333; align-self: center;margin-right: 0.5em;}
+
+/* --------------- */
+/* media-dependent */
+/* --------------- */
+
+
+@media (max-width: 620px) {
+
+.can-omni-stream { 
+grid-template-columns: auto auto 5fr auto; 
+}
+
+.can-omni-stream .can-omni-text {
+    grid-column: 3/4;
+}
+
+.can-omni-stream .can-omni-ctl {  
+    grid-column: 3/4;
+    margin: 0.4em 1em 0 0;
+    }
+
+.can-omni-stream .can-omni-tag-area {
+    grid-column: 4/5; }
+
+ }
+
+
+/* more */
+ .omni-bundle {
+     display: flex;
+     flex-direction: row;
+ }
+
+ /* headings */
+
+ .can-omni-stream h1, .can-omni-stream h2,  .can-omni-stream h3 {
+     margin-top: 0;
+     margin-bottom: 0.5em;
+ }

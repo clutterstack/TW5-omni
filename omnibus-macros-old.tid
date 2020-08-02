@@ -1,0 +1,142 @@
+created: 20200618174950677
+creator: chris
+modified: 20200703040124502
+modifier: chris
+quickadd-addtoggle: open
+title: $:/plugins/can/omni/omnibus-macros-old
+type: text/vnd.tiddlywiki
+
+\whitespace trim
+
+\define can-omni-listfield()
+List: <$list filter="[list[]join[, ]]">{{!!title}}</$list><br>
+\end
+
+\define classfilt() can-outline-item[{$(datatiddler)$##$(currentTiddler)$}] +[join[-]] can-omni-text
+
+\define level() [{$(datatiddler)$##$(currentTiddler)$}]
+
+\define can-omni-itemhandle()
+<$draggable tiddler=<<currentTiddler>> class="can-omni-itemhandle">
+<$button tag="div" class="can-omni-itemhandle-inner tc-btn-invisible" tooltip="Click to toggle text edit. Drag to move list entry." aria-label="Click to toggle text edit. Drag to move list entry.">
+<$reveal type="nomatch" state="!!omni-edittoggle" text="edit">
+	<$action-setfield omni-edittoggle='edit'/><$action-setfield temptext={{!!text}}/>
+</$reveal>
+<$reveal type="match" state="!!omni-edittoggle" text="edit">
+	<$action-setfield omni-edittoggle='view'/><$action-setfield temptext=""/>
+</$reveal>
+</$button>
+</$draggable>
+\end
+
+\define can-omni-levelctl() 
+<div class="can-omni-levelctl">
+	<$button class="can-omni-button tc-btn-invisible" aria-label="Unindent" tooltip="Unindent" actions="<$action-listops $tiddler=<<datatiddler>> $index=<<currentTiddler>> $filter='=$(level)$ +[subtract[1]] +[max[0]]'/><$action-sendmessage $message='tm-auto-save-wiki'/>">{{$:/plugins/can/omni/unindent.svg}}</$button>
+	<$button class="can-omni-button tc-btn-invisible" aria-label="Indent" tooltip="Indent" actions="<$action-listops $tiddler=<<datatiddler>> $index=<<currentTiddler>> $filter='=$(level)$  +[add[1]] +[min[5]]'/><$action-sendmessage $message='tm-auto-save-wiki'/>">{{$:/plugins/can/omni/indent.svg}}</$button>
+</div>
+\end
+
+\define can-omni-title()
+ <div class="can-omni-title">
+	<$reveal type="nomatch" state="!!quicksub-edittoggle" text="edit" tag=div>
+	<$button class="tc-btn-invisible" aria-label="Edit tiddler title" tooltip="Edit tiddler title" actions="<$action-setfield quicksub-edittoggle='edit'/>">{{$:/core/images/edit-button}}</$button>
+    </$reveal>
+	<$reveal type="match" state="!!quicksub-edittoggle" text="edit" tag=div>
+	<$button class="tc-btn-invisible" aria-label="Cancel title edit" tooltip="Cancel title edit" actions="<$action-setfield quicksub-edittoggle='view'/>">{{$:/core/images/preview-open}}</$button>
+	I'm not ready for editing yet...
+	</$reveal>
+	<$link to={{!!title}}/><br>
+</div>
+\end
+
+\define can-omni-text()
+		<$reveal type="nomatch" state="!!omni-edittoggle" text="edit" tag=div>
+		<$transclude $tiddler="<<currentTiddler>>" mode="block"/>
+		</$reveal>
+		<$reveal type="match" state="!!omni-edittoggle" text="edit" tag=div>
+		<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<$action-setfield omni-edittoggle='view'/>" >
+		<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<$action-setfield text={{!!temptext}}/><$action-setfield omni-edittoggle='view'/>">
+		<$edit-text class="can-quickadd-textarea" field='text' placeholder='Another One Bites the Dust' rows="1" minHeight="0" focus=true/>
+		</$keyboard></$keyboard>
+		</$reveal>
+\end
+
+\define can-omni-delete()
+
+<$button class="can-omni-button tc-btn-invisible" aria-label="Delete tiddler" tooltip="Delete tiddler">
+<$action-sendmessage $message="tm-delete-tiddler"/>
+<$action-listops $tiddler=<<parentval>> $filter='[list<parentval>is[tiddler]]'/>
+<$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> />
+{{$:/core/images/delete-button}}
+</$button>
+\end
+
+
+\define can-omni-toggleedit()
+<$reveal type="nomatch" state="!!omni-edittoggle" text="edit" tag="div">
+	<$button class="can-omni-button tc-btn-invisible" tooltip="Edit text" aria-label="Edit text" actions="<$action-setfield omni-edittoggle='edit'/><$action-setfield temptext={{!!text}}/>">{{$:/core/images/edit-button}}</$button>
+</$reveal>
+\end
+
+\define can-omni-link()
+<$button class="can-omni-button tc-btn-invisible" to={{!!title}} tooltip="Open tiddler in story" aria-label="Open tiddler in story">{{$:/plugins/can/omni/fish-water.svg}}</$button>
+\end
+
+\define can-omni-delist()
+<$button class="can-omni-button tc-btn-invisible" aria-label="Remove from list" tooltip="Remove from list" actions="<$action-listops $tiddler=<<parentval>> $subfilter='-[<currentTiddler>]'/><$action-listops $field='omniparent' $subfilter='-[<parentval>]' /><$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> />">{{$:/plugins/can/omni/delist.svg}}</$button>
+\end
+
+\define can-omni-tagadd() <$transclude tiddler="$:/plugins/can/omni/ui/omni-tagaddtemplate"/>
+
+\define can-omni-toggleadd()
+	<$reveal type=nomatch state="!!quickadd-addtoggle" text="open" tag=div class="can-omni-toggleadd"> 
+	<$button class="can-omni-button can-rightedge tc-btn-invisible" tooltip="Add tiddler here" aria-label="Add tiddler here" actions="<$action-setfield quickadd-addtoggle='open'/>" >{{$:/core/images/new-button}}</$button>
+	</$reveal>
+	<$reveal type=match state="!!quickadd-addtoggle" text="open" tag=div >
+	<$button class="can-omni-button can-rightedge tc-btn-invisible" actions="<$action-setfield quickadd-addtoggle='close'/>">{{$:/core/images/close-button}}</$button>
+	</$reveal>
+\end
+
+\define everything()
+
+<$set name=datatiddler value=<<qualify "$:/state/can/omni/$(currentTiddler)$">>>
+datatiddler: <$list filter="[<datatiddler>]"/><br>
+<$set name=parentval value=<<currentTiddler>> >
+<div class="can-omni-stream">
+	<$list filter="[all[current]list[]is[tiddler]]">
+	<$set name=levelcls filter=<<classfilt>> >
+	<div class=<<levelcls>> >
+		<<can-omni-text>>
+	</div>
+	<div class="can-omni-editbutton">
+		<$reveal type="nomatch" state="!!omni-edittoggle" text="edit" tag="div">
+		<<can-omni-toggleedit>>
+		</$reveal>
+	</div>
+	<div class="can-ui-omni-tag">
+		<$transclude tiddler="$:/plugins/can/ui/omni-taglisttemplate"/>
+	</div>
+	<div class="can-omni-peripheral">
+		<$droppable actions="<$action-listops $tiddler=<<parentval>> $subfilter='+[insertbefore:currentTiddler<actionTiddler>] +[move<actionTiddler>]'/>" tag="div">
+		<<can-omni-delist>>
+		<<can-omni-title>>
+		<div class="can-omni-meta">
+			<<can-omni-levelctl>>
+			<<can-omni-tagadd>>
+		</div>		
+		<<can-omni-toggleadd>>
+		</$droppable>
+	</div>
+	<div class="can-omni-bottom">
+		<$reveal type="match" state="!!quickadd-addtoggle" text="open" tag="div">
+			<$macrocall $name="quickadd" layout="slimui" tags="" omniparent=<<parentval>> endstate="open" />
+		</$reveal>
+	</div>
+	</$set>
+	</$list>
+	<$reveal type="match" state="!!list" text="" default="" tag="div" class="can-omni-quickadd">
+			<$macrocall $name="quickadd" tags="" omniparent=<<parentval>> endstate="open" />
+	</$reveal>
+</div>
+</$set></$set>
+\end

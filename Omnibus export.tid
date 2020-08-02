@@ -1,0 +1,13 @@
+caption: Export
+tags: utilities $:/tags/SideBar
+title: Omnibus export
+type: text/vnd.tiddlywiki
+
+<$list filter="[tag[omnibus]!tag[template]]"  >
+<div class="omni-bundle">
+<$draggable filter="[<currentTiddler>] [list[]]">
+<$view field="title"/>
+</$draggable>
+<$macrocall $name="exportButton" exportFilter="[<currentTiddler>] [list[]]" lingoBase="$:/language/Buttons/ExportTiddlers/"/>
+</div>
+</$list>

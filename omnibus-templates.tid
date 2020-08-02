@@ -1,0 +1,84 @@
+tags: $:/tags/Macro
+title: $:/plugins/can/omni/omnibus-templates
+
+\whitespace trim
+
+\define everything(defaultmode:"edit")
+<$set name=datatiddler value=<<qualify "$:/state/can/omni/$(currentTiddler)$">>><$set name=parentval value=<<currentTiddler>> >
+<<can-omni-toptools>>
+<$reveal type=match state="!!omnibus-mode" text="view" default=$defaultmode$ tag=div><<everyreader>></$reveal>
+<$reveal type=match state="!!omnibus-mode" text="edit" default=$defaultmode$ tag=div><<everyedit>></$reveal>
+<$reveal type=match state="!!omnibus-mode" text="simple" default=$defaultmode$ tag=div><<everysimple>></$reveal>
+</$set></$set>
+\end
+
+\define everyedit()
+<div class="can-omni-stream edit">
+    <<can-omni-topadd>>
+	<$list filter="[all[current]list[]is[tiddler]]">
+	<<can-omni-folder>>
+	<<can-omni-itemhandle>>
+	<div class="can-omni-textctl">
+		<<can-omni-text-region>>
+		<div class="can-omni-editctl">			
+			<div>
+				<<can-omni-title-link>>
+			</div>
+			<div class="can-omni-subctl">
+				<<can-omni-levelctl>>
+				<<can-omni-delist>>
+				<<can-omni-delete>>
+				<<can-omni-mark-done>>
+			</div>
+		</div>
+	</div>
+	<<can-omni-taglist>>
+	<<can-omni-peripheral>>
+	</$list>
+	<div class="can-omni-bottom">
+    <<can-omni-quickappend>>
+    </div>
+</div>
+\end
+
+
+\define everysimple()
+<div class="can-omni-stream simple">
+	<<can-omni-topadd>>
+	<$list filter="[all[current]list[]is[tiddler]]">
+    <<can-omni-folder>>
+	<<can-omni-itemhandle>>
+	<<can-omni-text-region>>
+	<div class="can-omni-ctl">
+		<<can-omni-title>>
+	</div>
+	<<can-omni-peripheral>>
+	</$list>
+	<div class="can-omni-bottom">
+    <<can-omni-quickappend>>
+    </div>
+</div>
+\end
+
+\define everyzone()
+<div class="can-omni-stream zone">
+	<$list filter="[all[current]list[]is[tiddler]]">
+		<<can-omni-folder>>
+		<<can-omni-text-region>>
+	</$list>
+    <div class="can-omni-bottom">
+    <<<$macrocall $name="quickadd" layout="subui" omniparent=<<parentval>> endstate="open" />
+    >></div>
+</div>
+\end
+
+
+
+\define everyreader()
+<div class="can-omni-stream view">
+	<$list filter="[all[current]list[]is[tiddler]]">
+		<<can-omni-folder>>
+		<<can-omni-text-region>>
+	</$list>
+</div>
+\end
