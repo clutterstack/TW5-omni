@@ -4,7 +4,7 @@
     "author": "Chris Nicoll",
     "version": "0.0.4",
     "core-version": ">=5.1.22",
-    "source": "https://github.com/clutterstack/quick",
+    "source": "https://github.com/clutterstack/TW5-omni",
     "list": "readme documentation license",
     "plugin-type": "plugin",
     "dependents": "[[$:/plugins/can/quick]]"
