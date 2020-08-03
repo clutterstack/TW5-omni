@@ -118,9 +118,7 @@ div.can-omni-button, .todo button.can-omni-button {color: #cccccc; display: flex
 
 .can-omni-ctl .tc-draggable svg, .can-omni-editctl .tc-draggable svg {align-self: flex-end;}
 
-.can-omni-foldall {}
-
-.can-omni-viewswitcher {display: flex; flex-direction: row; justify-content: flex-end;}
+.can-omni-foldall, .can-omni-viewswitcher {display: flex; flex-direction: row; justify-content: flex-end;}
 
 .can-omni-viewswitcher .can-omni-button svg {
     width: 20pt;
