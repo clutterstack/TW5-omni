@@ -13,7 +13,7 @@ type: text/vnd.tiddlywiki
 	<<can-omni-foldall>>
 	<div class="can-omni-viewswitcher">
 		<$button set="!!omnibus-mode" setTo="edit" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Deluxe editing" aria-label="Deluxe editing">{{$:/plugins/can/omni/omnimode-edit.svg}}</$button>
-		<$button set="!!omnibus-mode" setTo="simple" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Simple editing" aria-label="Simple editing">{{$:/plugins/can/omni/omnimode-simple.svg}}</$button>
+		<$button set="!!omnibus-mode" setTo="todo" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Todo list" aria-label="Todo list">{{$:/plugins/can/omni/omnimode-simple.svg}}</$button>
 		<$button set="!!omnibus-mode" setTo="view" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Reading mode" aria-label="Reading mode">{{$:/plugins/can/omni/omnimode-view.svg}}</$button>
 	</div>
 </div>
@@ -109,6 +109,17 @@ List: <$list filter="[list[]join[, ]]">{{!!title}}</$list><br>
 	</$set>
 \end
 
+\define can-omni-todo-region() 
+	<$set name=levelcls filter=<<classfilt>>>
+	<div class=<<levelcls>>>
+		<<can-omni-bullet>>
+		<div>
+		<<can-omni-text>>
+		</div>
+	</div>
+	</$set>
+\end
+
 \define readlevel() [{$(datatiddler)$##$(currentTiddler)$}]
 \define can-omni-levelctl() 
 <div class="can-omni-levelctl">
@@ -147,7 +158,7 @@ List: <$list filter="[list[]join[, ]]">{{!!title}}</$list><br>
 <$set name=finalraw filter=<<filterforempty>> >
 <$wikify name=wikiteaser text=<<finalraw>> output=html>
 <<wikiteaser>>
-</$wikify></$set> </$wikify>
+</$wikify></$set></$wikify>
 </$set></$set></$set></$set></$set>
 \end
 

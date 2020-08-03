@@ -9,6 +9,7 @@ title: $:/plugins/can/omni/omnibus-templates
 <$reveal type=match state="!!omnibus-mode" text="view" default=$defaultmode$ tag=div><<everyreader>></$reveal>
 <$reveal type=match state="!!omnibus-mode" text="edit" default=$defaultmode$ tag=div><<everyedit>></$reveal>
 <$reveal type=match state="!!omnibus-mode" text="simple" default=$defaultmode$ tag=div><<everysimple>></$reveal>
+<$reveal type=match state="!!omnibus-mode" text="todo" default=$defaultmode$ tag=div><<everytodo>></$reveal>
 </$set></$set>
 \end
 
@@ -59,6 +60,28 @@ title: $:/plugins/can/omni/omnibus-templates
     </div>
 </div>
 \end
+
+\define everytodo()
+<div class="can-omni-stream todo">
+	<<can-omni-topadd>>
+	<$list filter="[all[current]list[]is[tiddler]]">
+    <<can-omni-folder>>
+	<<can-omni-itemhandle>>
+	<<can-omni-todo-region>>
+	<div class="can-omni-ctl">
+		<<can-omni-link>>
+		<<can-omni-delete>>
+		<<can-omni-mark-done>>
+	</div>
+	<<can-omni-peripheral>>
+	</$list>
+	<div class="can-omni-bottom">
+    <<can-omni-quickappend>>
+    </div>
+</div>
+\end
+
+
 
 \define everyzone()
 <div class="can-omni-stream zone">
