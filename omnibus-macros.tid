@@ -113,7 +113,7 @@ List: <$list filter="[list[]join[, ]]">{{!!title}}</$list><br>
 	<$set name=levelcls filter=<<classfilt>>>
 	<div class=<<levelcls>>>
 		<<can-omni-bullet>>
-		<div>
+		<div class="can-omni-todo-text">
 		<<can-omni-text>>
 		</div>
 	</div>

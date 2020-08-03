@@ -61,7 +61,7 @@ grid-template-rows: auto;
 
 .can-omni-text::not[hidden] { grid-column: 3/4; display: flex; flex-direction: row;}
 
-.can-omni-text .tc-reveal {width: 100%; }
+.can-omni-text .tc-reveal, .can-omni-todo-text {width: 100%; }
 
 .can-omni-text p { margin: 0.5em 0; }
 p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
@@ -108,7 +108,9 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .can-omni-button:hover svg {fill: #999999;}
 
-div.can-omni-button, .todo button.can-omni-button {color: #cccccc; display: flex; flex-direction: row; align-self: flex-start;}
+.can-omni-button {color: #cccccc;}
+
+div.can-omni-button, .todo button.can-omni-button {display: flex; flex-direction: row; align-self: flex-start;}
 
 .can-omni-button:hover {color: #999999;}
 
@@ -213,7 +215,7 @@ padding: 5px;
 /* Depending on view mode */
 
 .view > .can-omni-foldbutton, .zone .can-omni-foldbutton {margin:0;}
-
+.todo > .can-omni-foldbutton {display: none;}
 .edit .can-omni-textctl {grid-column: 3/4; display: flex; flex-direction: column;}
 
 .view > .can-omni-text {margin-left: 0.4em; margin-bottom: 0.8em;}
@@ -223,9 +225,13 @@ padding: 5px;
 
 /* Tweaks for sub-omnis when the handle is visible */
 
-.edit .can-omni-text .edit.can-omni-stream, .simple .can-omni-text .edit.can-omni-stream, .edit .can-omni-text .simple.can-omni-stream, .simple .can-omni-text .simple.can-omni-stream{
+/*.edit .can-omni-text .edit.can-omni-stream, .simple .can-omni-text .edit.can-omni-stream, .edit .can-omni-text .simple.can-omni-stream, .simple .can-omni-text .simple.can-omni-stream{
     margin-left: -0.6em;
-}
+}*/
+
+.can-omni-stream {margin-left: -0.6em;}
+.can-omni-stream.todo {
+grid-template-columns: auto auto 7fr auto auto; } 
 
 /* Styling according to level in data tiddler (could do by layout mode too) */
 
