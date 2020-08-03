@@ -5,7 +5,7 @@
     "version": "0.0.4",
     "core-version": ">=5.1.22",
     "source": "https://github.com/clutterstack/TW5-omni",
-    "list": "readme documentation license",
+    "list": "readme license",
     "plugin-type": "plugin",
     "dependents": "[[$:/plugins/can/quick]]"
 }
