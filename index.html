@@ -336,6 +336,10 @@ Error message and password prompt
 
 <li>Done button</li>
 
+<li>Drag tags tab</li>
+
+<li>Export tab</li>
+
 <li>fleet</li>
 
 <li>GettingStarted</li>
@@ -363,6 +367,8 @@ Error message and password prompt
 <li>Omni to note</li>
 
 <li>omnibus</li>
+
+<li>Omnibuses tab</li>
 
 <li>Quickadd button</li>
 
@@ -10203,7 +10209,7 @@ exports.saveTiddlerToFileSync = function(tiddler,fileInfo) {
 <div title="$:/isEncrypted">
 <pre>no</pre>
 </div>
-<div author="Chris Nicoll" core-version="&gt;=5.1.22" dependents="[[$:/plugins/can/quick]]" description="Create and collect tiddlers" list="readme documentation license" plugin-type="plugin" source="https://github.com/clutterstack/TW5-omni" title="$:/plugins/can/omni" type="application/json" version="0.0.4">
+<div author="Chris Nicoll" core-version="&gt;=5.1.22" dependents="[[$:/plugins/can/quick]]" description="Create and collect tiddlers" list="readme license" plugin-type="plugin" source="https://github.com/clutterstack/TW5-omni" title="$:/plugins/can/omni" type="application/json" version="0.0.4">
 <pre>{
     &quot;tiddlers&quot;: {
         &quot;/Users/chris/Downloads/SynologyDrive/Tiddly/omnidemo_node/plugins/omni/.gitignore&quot;: {
@@ -11730,8 +11736,8 @@ Another way to look at an omnibus is as something kind of like a tiddler with a 
 <div created="20200722142224378" modified="20200801132049504" omni-edittoggle="view" omniparent="[[Omni to note]]" tags="" temptext="There can only be one `&lt;&lt;everything&gt;&gt;` macro at the root of a single tiddler. Makes sense, but there you are." title="20200722142224378" type="text/vnd.tiddlywiki">
 <pre>* There can only be one `&lt;&lt;everything&gt;&gt;` macro at the root of a single tiddler. Makes sense, but there you are.</pre>
 </div>
-<div created="20200722230247019" dragstarttiddler="Omnibus Plugin" modified="20200801211756753" omni-edittoggle="view" omniparent="Introduction [[Omnibus Plugin]] [[Omni plugin dependencies]]" peri-quicktoggle="closed" tags="" temptext="the Relink plugin is not necessary but is pretty handy for any ~TiddlyWiki and can be configured to watch the `omniparent` field. However, that specific field is redundant for the moment and may be removed from the plugin." title="20200722230247019" type="text/vnd.tiddlywiki">
-<pre>the Relink plugin is not necessary but is pretty handy for any ~TiddlyWiki and can be configured to watch the `omniparent` field. However, that specific field is redundant for the moment and may be removed from the plugin. //Then again,// if I move the omnibus list to a custom field, it may be handy again. //But// there may be ways to build in tracking of references and renamed tiddlers (but I haven't yet).</pre>
+<div created="20200722230247019" dragstarttiddler="Omnibus Plugin" modified="20200803010057499" omni-edittoggle="view" omniparent="Introduction [[Omnibus Plugin]] [[Omni plugin dependencies]]" peri-quicktoggle="closed" tags="" temptext="Cameron Fischer's Relink plugin(https://github.com/flibbles/tw5-relink) is not strictly necessary but is pretty handy for any ~TiddlyWiki and can be configured to watch the `omniparent` field generated my ''Omni''. However, that specific field is redundant for the moment and may be removed from the plugin. //Then again,// if I move the omnibus list to a custom field, it may be handy again. //But// there may be ways to build in tracking of references and renamed tiddlers (but I haven't yet)." title="20200722230247019" type="text/vnd.tiddlywiki">
+<pre>Cameron Fischer's Relink plugin (https://github.com/flibbles/tw5-relink) is not strictly necessary but is pretty handy for any ~TiddlyWiki and can be configured to watch the `omniparent` field generated my ''Omni''. However, that specific field is redundant for the moment and may be removed from the plugin. //Then again,// if I move the omnibus list to a custom field, it may be handy again. //But// there may be ways to build in tracking of references and renamed tiddlers (but I haven't yet).</pre>
 </div>
 <div created="20200722231634957" modified="20200728151641758" omni-edittoggle="view" omniparent="[[Omni improvements]]" peri-quicktoggle="closed" tags="" title="20200722231634957" type="text/vnd.tiddlywiki">
 <pre>Should close quickadd when switching to read mode.</pre>
@@ -11823,8 +11829,8 @@ Cases:
 <div created="20200730120446040" modified="20200731034731011" omni-edittoggle="view" omniparent="[[Omni to fix]]" peri-quicktoggle="closed" tags="" temptext=" Folding of a subomnibus with no other text is messed up big-time. Check teaser macro" title="20200730120446040" type="text/vnd.tiddlywiki">
 <pre> Folding of a subomnibus with no other text is messed up big-time. Check teaser macro, and/or overhaul how omnis fold (TOCs?)</pre>
 </div>
-<div created="20200730203532030" modified="20200801211756790" omniparent="[[Omni plugin dependencies]]" tags="" title="20200730203532030" type="text/vnd.tiddlywiki">
-<pre>The Omnibus plugin requires the Quick plugin for entering new tiddlers.</pre>
+<div created="20200730203532030" modified="20200803005932939" omni-edittoggle="view" omniparent="[[Omni plugin dependencies]]" tags="" temptext="The Omnibus plugin requires the Quick plugin for entering new tiddlers." title="20200730203532030" type="text/vnd.tiddlywiki">
+<pre>The Omnibus plugin requires the related ''Quick'' plugin (https://github.com/clutterstack/TW5-quick) for entering new tiddlers.</pre>
 </div>
 <div created="20200730205216017" modified="20200730205216297" omniparent="[[Omni possible features]]" tags="" title="20200730205216017" type="text/vnd.tiddlywiki">
 <pre>Drag tiddler onto (non-edit) text display to make an omnibus if necessary and add the tiddler to it?</pre>
@@ -11865,7 +11871,7 @@ At the top of an omnibus tiddler is a toolbar with buttons to fold and unfold al
 
 At the top of an omnibus tiddler is a toolbar with buttons to fold and unfold all tiddlers (on the left), and buttons to select the template for displaying transcluded tiddlers. The preset modes are (at the time of writing) &quot;deluxe&quot; editing, &quot;simple&quot; editing, and &quot;reading&quot;. </pre>
 </div>
-<div created="20200801014107067" dragstarttiddler="20200726174012363" modified="20200802031228013" omni-edittoggle="view" omniparent="[[Omni interface]]" peri-quicktoggle="closed" tags="" temptext="!!!Omnibus &quot;items&quot;
+<div created="20200801014107067" dragstarttiddler="20200726174012363" modified="20200803004754419" omni-edittoggle="view" omniparent="[[Omni interface]]" peri-quicktoggle="closed" tags="" temptext="!!!Omnibus &quot;items&quot;
 
 Depending on the template, each tiddler in the omnibus list is displayed along with some tools to manipulate the tiddler and the omnibus list." title="20200801014107067" type="text/vnd.tiddlywiki">
 <pre>!!Omnibus &quot;items&quot;
@@ -11942,21 +11948,25 @@ See [[Tiddler dropzones]], [[Title link]], [[Tiddler handle]]
 
 </pre>
 </div>
-<div created="20200801133806534" modified="20200802030205031" omni-edittoggle="view" omniparent="[[Using Omnibuses]]" tags="" temptext="" title="20200801133806534" type="text/vnd.tiddlywiki">
+<div created="20200801133806534" modified="20200803005730796" omni-edittoggle="view" omniparent="[[Using Omnibuses]]" tags="" temptext="!! Moving tiddlers within an omnibus
+
+See [[Tiddler dropzones]]; also [[Title link]], [[Tiddler handle]]" title="20200801133806534" type="text/vnd.tiddlywiki">
 <pre>!! Moving tiddlers within an omnibus
 
 See [[Tiddler dropzones]]; also [[Title link]], [[Tiddler handle]]</pre>
 </div>
-<div created="20200801133816001" modified="20200802030205239" omni-edittoggle="view" omniparent="[[Using Omnibuses]]" tags="" temptext="!! Moving tiddlers between omnibuses
+<div created="20200801133816001" modified="20200803005743851" omni-edittoggle="view" omniparent="[[Using Omnibuses]]" tags="" temptext="!! Moving tiddlers between omnibuses
 
-See [[Tiddler dropzones]], [[Title link]], [[Tiddler &quot;handle&quot;]]" title="20200801133816001" type="text/vnd.tiddlywiki">
+See [[Tiddler dropzones]]; also [[Title link]], [[Tiddler handle]]" title="20200801133816001" type="text/vnd.tiddlywiki">
 <pre>!! Moving tiddlers between omnibuses
 
-See [[Tiddler dropzones]]; also [[Title link]], [[Tiddler handle]]</pre>
+See [[Tiddler dropzones]] and [[Omnibuses tab]]; also [[Title link]], [[Tiddler handle]]</pre>
 </div>
-<div created="20200801133840582" modified="20200801214414274" omni-edittoggle="view" omniparent="[[Using Omnibuses]]" tags="" temptext="!! Adding and removing tags
+<div created="20200801133840582" modified="20200803005756351" omni-edittoggle="view" omniparent="[[Using Omnibuses]]" tags="" temptext="!! Adding and removing tags
 
 In &quot;Deluxe&quot; edit mode, existing tags can be dragged from the ''Drag tags'' sidebar tab and dropped onto the tag area, and tags can be removed by clicking the &quot;x&quot; on the displayed tag pill.
+
+At present, new tags have to be added to the tiddler using the normal draft mode interface.
 
 See also: [[Omni item tag zones]]" title="20200801133840582" type="text/vnd.tiddlywiki">
 <pre>!! Adding and removing tags
@@ -11965,7 +11975,7 @@ In &quot;Deluxe&quot; edit mode, existing tags can be dragged from the ''Drag ta
 
 At present, new tags have to be added to the tiddler using the normal draft mode interface.
 
-See also: [[Omni item tag zones]]</pre>
+See also: [[Omni item tag zones]], [[Drag tags tab]]</pre>
 </div>
 <div created="20200801133908338" modified="20200801214852909" omni-edittoggle="view" omniparent="[[Using Omnibuses]]" tags="" temptext="!! Opening a tiddler in the story river
 
@@ -12099,6 +12109,18 @@ sup {top: -0.25em;}</pre>
 
 * This button ({{$:/plugins/can/omni/checkmark.svg}}) adds the tag &quot;done&quot; to the tiddler and delists it from the omnibus.</pre>
 </div>
+<div created="20200803004754402" modified="20200803005048791" omniparent="[[Omni interface]]" peri-quicktoggle="closed" tags="" title="Drag tags tab" type="text/vnd.tiddlywiki">
+<pre>!! &quot;Drag tags&quot; tab
+
+The ''Omni'' plugin provides a tiddler ($:/plugins/can/omni/dragtags) which has a tab in the sidebar captioned ''Drag tags''. These are draggable tag pills whose payload is the tag (in contrast to ~TiddlyWiki's tag list where pills carry the tiddlers tagged //with// the tag as a drag-and-drop payload). These can be dropped in [[Omni item tag zones]] to add existing tags to tiddlers.</pre>
+</div>
+<div created="20200803005536409" modified="20200803005617751" omni-edittoggle="view" omniparent="[[Omni interface]]" tags="" temptext="!! Export tab
+
+The ''Omni'' plugin provides a tiddler ([[Omnibus export]]) which has a tab in the sidebar captioned ''Export''. This is an @@color:red;//untested//@@ feature @@color:red;//intended//@@ to allow " title="Export tab" type="text/vnd.tiddlywiki">
+<pre>!! Export tab
+
+The ''Omni'' plugin provides a tiddler ([[Omnibus export]]) which has a tab in the sidebar captioned ''Export''. This is an @@color:red;//untested//@@ feature @@color:red;//intended//@@ to allow an omnibus and all its listed tiddlers to be dragged to another ~TiddlyWiki, or to be downloaded together using ~TiddlyWiki's export mechanism.</pre>
+</div>
 <div color="#a20042" created="20200729211740741" modified="20200729211801469" title="fleet" type="text/vnd.tiddlywiki">
 <pre></pre>
 </div>
@@ -12128,7 +12150,7 @@ Before you can start storing important information in ~TiddlyWiki it is importan
 * Data for these levels are kept in a data tiddler associated with the omnibus tiddler, so tiddlers can have different levels or styles in different omnibuses.
 </pre>
 </div>
-<div created="20200726115607519" dragstarttiddler="Omnibus Plugin" list="20200802031616452 20200726120049933 20200801212414427 20200720191007505 20200801020539203 20200723000024377 20200723000329940 20200730212648286" modified="20200802225946712" omni-edittoggle="view" omnibus-mode="edit" omniparent="[[Omnibus Plugin]]" quickadd-addtoggle="closed" quickappend-toggle="close" tags="docs omnibus" temptext="!!Introduction
+<div created="20200726115607519" dragstarttiddler="Omnibus Plugin" list="20200802031616452 20200726120049933 [[Omni plugin dependencies]] 20200801212414427 20200720191007505 20200801020539203 20200723000024377 20200723000329940 20200730212648286" modified="20200803005831160" omni-edittoggle="view" omnibus-mode="edit" omniparent="[[Omnibus Plugin]]" quickadd-addtoggle="closed" quickappend-toggle="close" tags="docs omnibus" temptext="!!Introduction
 
 &lt;&lt;everything&gt;&gt;" title="Introduction" type="text/vnd.tiddlywiki">
 <pre>&lt;&lt;everything&gt;&gt;</pre>
@@ -12145,7 +12167,7 @@ Before you can start storing important information in ~TiddlyWiki it is importan
 
 &lt;&lt;everything&gt;&gt;</pre>
 </div>
-<div created="20200726174012363" dragstarttiddler="Omnibus Plugin" list="20200801013248675 20200801014107067 [[Omni template components]] 20200726132220759" modified="20200802225841094" omni-edittoggle="view" omnibus-mode="view" omniparent="[[Omnibus Plugin]]" quickadd-addtoggle="closed" tags="docs omnibus" temptext="" title="Omni interface" type="text/vnd.tiddlywiki">
+<div created="20200726174012363" dragstarttiddler="Omnibus Plugin" list="20200801013248675 20200801014107067 [[Drag tags tab]] [[Omnibuses tab]] [[Export tab]] [[Omni template components]] 20200726132220759" modified="20200803005638149" omni-edittoggle="view" omnibus-mode="simple" omniparent="[[Omnibus Plugin]]" quickadd-addtoggle="closed" tags="docs omnibus" temptext="" title="Omni interface" type="text/vnd.tiddlywiki">
 <pre>!!Interface
 
 &lt;&lt;everything&gt;&gt;</pre>
@@ -12165,7 +12187,7 @@ Before you can start storing important information in ~TiddlyWiki it is importan
 * Draggable tag links are in the $:/plugins/can/omni/dragtags tiddler (which has a tab in the sidebar called ''Drag tags'').
 * //New// tags cannot currently be added from within the omnibus.</pre>
 </div>
-<div created="20200726115941982" list="20200730203532030 20200722230247019" modified="20200802030947562" omni-edittoggle="view" omnibus-mode="view" omniparent="[[Omnibus Plugin]]" peri-quicktoggle="closed" quickadd-addtoggle="closed" tags="docs omnibus" temptext="!!Dependencies
+<div created="20200726115941982" list="20200730203532030 20200722230247019" modified="20200803005900429" omni-edittoggle="view" omnibus-mode="simple" omniparent="[[Omnibus Plugin]] Introduction" peri-quicktoggle="closed" quickadd-addtoggle="closed" tags="docs omnibus" temptext="!!Dependencies
 
 The Omnibus plugin requires the Quick plugin for entering new tiddlers." title="Omni plugin dependencies" type="text/vnd.tiddlywiki">
 <pre>!!Dependencies
@@ -12177,7 +12199,7 @@ The Omnibus plugin requires the Quick plugin for entering new tiddlers." title="
 
 &lt;&lt;everything&gt;&gt;</pre>
 </div>
-<div created="20200801164623122" list="[[Title link]] [[Tiddler dropzones]] [[Omni item tag zones]] [[Indent and unindent buttons]] [[Tiddler handle]] [[Text display/edit region]] [[Delist button]] [[Delete button]] [[Done button]] [[Quickadd button]] 20200801221136026" modified="20200802225740487" omni-edittoggle="view" omnibus-mode="view" omniparent="[[Omni interface]]" quickadd-addtoggle="closed" quickappend-toggle="close" tags="omnibus" temptext="!! Omnibus item template components
+<div created="20200801164623122" list="[[Title link]] [[Tiddler dropzones]] [[Omni item tag zones]] [[Indent and unindent buttons]] [[Tiddler handle]] [[Text display/edit region]] [[Delist button]] [[Delete button]] [[Done button]] [[Quickadd button]] 20200801221136026" modified="20200803004651276" omni-edittoggle="view" omnibus-mode="simple" omniparent="[[Omni interface]]" quickadd-addtoggle="closed" quickappend-toggle="close" tags="omnibus" temptext="!! Omnibus item template components
 
 &lt;&lt;everything&gt;&gt;" title="Omni template components" type="text/vnd.tiddlywiki">
 <pre>!! Omnibus item template components
@@ -12200,6 +12222,11 @@ Different omnibus &quot;modes&quot; display different combinations of these comp
 </div>
 <div color="#6a27ad" created="20200729211237751" modified="20200729211246356" title="omnibus" type="text/vnd.tiddlywiki">
 <pre></pre>
+</div>
+<div created="20200803005048488" modified="20200803005638222" omni-edittoggle="view" omniparent="[[Omni interface]]" peri-quicktoggle="closed" tags="" temptext="" title="Omnibuses tab" type="text/vnd.tiddlywiki">
+<pre>!! Omnibuses tab
+
+The ''Omni'' plugin provides a tiddler ([[Omnibuses]]) which has a tab in the sidebar captioned ''Omnibuses''. All tiddlers tagged &lt;&lt;tag-pill omnibus&gt;&gt;are listed here and tiddler [[Title link]]s can be dropped onto them to add tiddlers to the omnibus. These omnibus tiddler links are themselves draggable.</pre>
 </div>
 <div created="20200801201355719" modified="20200801221136304" omni-edittoggle="view" omniparent="[[Omni template components]]" peri-quicktoggle="closed" tags="[[omni components]]" title="Quickadd button" type="text/vnd.tiddlywiki">
 <pre>''Quickadd button''
@@ -12278,7 +12305,7 @@ Different omnibus &quot;modes&quot; display different combinations of these comp
 <div color="#ffa000" created="20200729211303878" modified="20200729211327966" title="todo" type="text/vnd.tiddlywiki">
 <pre></pre>
 </div>
-<div created="20200801132952657" list="20200801133106963 20200801133733179 20200801133740144 20200801213528365 20200801163120355 20200801133705396 20200801133806534 20200801133816001 20200801133840582 20200801133908338" modified="20200802230326015" omni-edittoggle="view" omnibus-mode="view" quickadd-addtoggle="closed" quickappend-toggle="close" tags="docs omnibus" temptext="&lt;&lt;everything&gt;&gt;" title="Using Omnibuses" type="text/vnd.tiddlywiki">
+<div created="20200801132952657" list="20200801133106963 20200801133733179 20200801133740144 20200801213528365 20200801163120355 20200801133705396 20200801133806534 20200801133816001 20200801133840582 20200801133908338" modified="20200803005712199" omni-edittoggle="view" omnibus-mode="edit" quickadd-addtoggle="closed" quickappend-toggle="close" tags="docs omnibus" temptext="&lt;&lt;everything&gt;&gt;" title="Using Omnibuses" type="text/vnd.tiddlywiki">
 <pre>!!Using Omnibuses
 
 &lt;&lt;everything&gt;&gt;</pre>
