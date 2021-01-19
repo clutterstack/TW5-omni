@@ -1,7 +1,12 @@
 title: $:/plugins/can/omni/readme
 caption: readme
 
-@@background: #ffdd66;font-weight:bold;This is a plugin I wrote for myself, and it has not been extensively tested. It may also change. Back up your data, and use at your own risk!@@
+<div style="background-color: #ffee88; ">
+<p>
+''Warning:''This plugin does all sorts of things, including altering and deleting tiddlers. It may do something unexpected to your tiddlers! Use at your own risk, with your data backed up.
+</p><p>
+Not only that, but I may introduce breaking changes.</p>
+</div>
 
 The Omni (short for omnibus) plugin is meant to make it easier to collect and organise related bits of information or writing. Demo: https://clutterstack.github.io/TW5-omni/
 

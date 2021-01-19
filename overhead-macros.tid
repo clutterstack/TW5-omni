@@ -1,0 +1,107 @@
+tags: $:/tags/Macro
+title: $:/plugins/can/omni/overhead-macros
+type: text/vnd.tiddlywiki
+
+\whitespace trim
+
+\define can-omni-toptools()
+    <div class="can-omni-toptools">
+        <$list filter="[<mode>match[todo]then[]] [<mode>match[list]then[]]" emptyMessage=<<can-omni-foldall>> variable="null"/>
+        <$list filter="[{!!showModeState}match[hide]then[]]" emptyMessage=<<omni-viewswitcher>> variable="null"/>
+    </div>
+\end
+
+\define omni-viewswitcher()
+    <div class="can-omni-viewswitcher">
+		<$button set="!!omnibus-mode" setTo="edit" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Deluxe editing" aria-label="Deluxe editing">{{$:/plugins/can/omni/omnimode-edit.svg}}</$button>
+		<$button set="!!omnibus-mode" setTo="todo" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Todo list" aria-label="Todo list"><<unfoldallactions>>{{$:/plugins/can/omni/omnimode-simple.svg}}</$button>
+		<!--<$button set="!!omnibus-mode" setTo="list" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="List with tags" aria-label="List with tags"><<unfoldallactions>>{{$:/plugins/can/omni/omnimode-listwithtags.svg}}</$button>-->
+		<$button set="!!omnibus-mode" setTo="read" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Reading mode" aria-label="Reading mode">{{$:/plugins/can/omni/omnimode-view.svg}}</$button>
+        <$button set="!!omnibus-mode" setTo="named" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Edit mode with title" aria-label="Edit mode with title">named</$button>
+        <$button set="!!omnibus-mode" setTo="namedro" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Read-only mode with title" aria-label="Read-only mode with title">namedro</$button>
+		<$button set="!!omnibus-mode" setTo="toc" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="TOC mode" aria-label="TOC mode">toc</$button>
+		<$button set="!!omnibus-mode" setTo="notes" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="notes mode" aria-label="notes mode">notes</$button>
+	</div>
+\end
+
+\define unfoldallactions() 
+    <$list filter='[all[current]list[]is[tiddler]]'>
+        <$qualify name=createdid title={{!!created}} >
+        <$action-setfield $tiddler=<<foldstatetiddler>> $value='show'/>
+        </$qualify>
+    </$list>
+\end
+
+\define foldallactions() 
+    <$list filter='[all[current]list[]is[tiddler]]'>
+        <$qualify name=createdid title={{!!created}} >
+        <$action-setfield $tiddler=<<foldstatetiddler>> $value='hide'/>
+        </$qualify>
+    </$list>
+\end
+
+\define can-omni-foldall()
+<div class="can-omni-foldall">
+    <$button class="tc-btn-invisible can-omni-button" tooltip="Unfold all items" aria-label="Unfold all items">
+        {{$:/core/images/unfold-all-button}}
+        <$list filter='[all[current]list[]is[tiddler]]'>
+            <$qualify name=createdid title={{!!created}} >
+            <$action-setfield $tiddler=<<foldstatetiddler>> $value='show'/>
+            </$qualify>
+        </$list>
+    </$button>
+    <$button class="tc-btn-invisible can-omni-button" tooltip="Fold all items" aria-label="Fold all items">
+        {{$:/core/images/fold-all-button}}
+        <$list filter='[all[current]list[]is[tiddler]]'>
+            <$qualify name=createdid title={{!!created}} >
+            <$action-setfield $tiddler=<<foldstatetiddler>> $value='hide'/>
+            </$qualify>
+        </$list>
+    </$button>
+</div>
+\end
+
+\define classfilt() can-outline-item [[$(datatiddler)$]has:index[$(currentTiddler)$]then{$(datatiddler)$##$(currentTiddler)$}else[0]] +[join[-]] can-omni-text
+
+
+\define can-omni-topadd()
+<$vars openstatetid=<<top-quick-openstatetid>> quickstatetid=<<top-quickstatetid>>>
+<div class="can-omni-topadd">
+	<$droppable tag="div" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>] +[putfirst[]]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+		<<can-omni-toggleadd>>
+	</$droppable>
+</div>
+<$reveal type=match state=<<openstatetid>> text="open" tag=div class="can-omni-bottom">
+	<$macrocall $name="quickadd" layout="subui" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listtop" openstatetid=<<openstatetid>> endstate="closed" />
+</$reveal>
+</$vars>
+\end
+
+\define can-omni-peripheral()
+<$vars openstatetid=<<peri-quick-openstatetid>> quickstatetid=<<peri-quickstatetid>>>
+<div class="can-omni-peripheral">
+	<$droppable tag="div" actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<parentval>> $subfilter='+[insertbefore:currentTiddler<actionTiddler>] +[move<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+		<$macrocall $name="can-omni-toggleadd"/>
+	</$droppable>
+</div>
+<$reveal type=match state=<<openstatetid>> text="open" tag=div class="can-omni-bottom">
+	<$macrocall $name="quickadd" layout="subui" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> openstatetid=<<openstatetid>> endstate="closed" />
+</$reveal>
+</$vars>
+\end
+
+\define can-omni-quickappend()
+<$vars openstatetid=<<append-quick-openstatetid>>  quickstatetid=<<append-quickstatetid>>>
+<div class="can-omni-bottom">
+	<$reveal type=nomatch state=<<openstatetid>> text="open" tag=div class="can-omni-quickappend"> 
+		<$button tag="div" class="can-omni-button big tc-btn-invisible" tooltip="Open quickadd interface" aria-label="Open quickadd interface" actions="<$action-setfield $tiddler=<<openstatetid>> text='open'/>" >{{$:/plugins/can/quick/quickadd-toolbar-btn-dark.svg}}</$button>
+	</$reveal>
+	<$reveal type=match state=<<openstatetid>> text="open" tag=div class="can-omni-quickappend" >
+		<$button tag="div" class="can-omni-button tiny tc-btn-invisible" actions="<$action-setfield $tiddler=<<openstatetid>> text='closed'/>">{{$:/core/images/close-button}}</$button>
+	</$reveal>
+	<$reveal type=match state=<<openstatetid>> text="open" tag=div class="can-omni-bottom">
+		<$macrocall $name="quickadd" layout="subui" omniparent=<<parentval>> quickstatetid=<<quickstatetid>> openstatetid=<<openstatetid>> endstate="open" />
+	</$reveal>	
+</div>
+</$vars>
+\end

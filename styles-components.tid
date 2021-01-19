@@ -1,0 +1,257 @@
+created: 20200507184921957
+creator: chris
+tags: $:/tags/Stylesheet
+title: $:/plugins/can/omni/styles-components
+
+
+.can-omni-toptools {
+margin: 0 0 0.4em 0;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+}
+
+.omni-stream-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.can-omni-stream { 
+display: grid; 
+grid-template-columns: auto auto 7fr max-content; /* 1em auto 7fr auto;  */
+grid-template-rows: auto; 
+margin-left: -0.6em;
+width: 100%;
+}
+
+.can-omni-stream pre {
+    /* max-width: calc({{$:/themes/tiddlywiki/vanilla/metrics/storywidth}} - 25%); */
+  /*overflow: auto;*/
+}
+
+.can-omni-stream ul {
+    margin: 0;
+    padding-left: 1em;
+}
+/* Style the quickadd for in an omnibus */
+
+.can-quickadd.sub {margin-top: 0;}
+
+.can-omni-itemhandle {width: 1.6em; grid-column: 2/3; 
+    grid-row: span 2; margin-left: -0.8em;}
+
+.can-omni-itemhandle .tc-draggable { height: 100%;}
+
+.can-omni-itemhandle-inner { 
+    box-sizing: content-box; 
+    border-radius: 2px;
+    height: 100%; 
+    width: 2px;
+    background-color: #cccccc;
+    margin-left: 0.8em;
+    }
+
+.can-omni-itemhandle:hover .can-omni-itemhandle-inner { 
+    background-color: #999999;
+    }
+
+.can-omni-stream > div.tc-draggable { cursor: pointer; }
+
+.can-omni-stream .omni-title-heading {
+    grid-column:3/5;
+    flex: 1;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin-right: 0.4em;
+}
+
+.can-omni-stream .omni-title-heading.view {
+    margin: 0.2em 0.4em 0.4em 0;
+}
+
+.can-omni-stream .omni-title-heading .can-quickadd-textarea { 
+    margin: 0 0.4em 0 0; 
+    border: 1px solid #ccc; 
+    }
+
+.omni-text-as-button {height: 100%;}
+
+.omni-teaser {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.omni-teaser-body {
+    position: relative;
+    height: 2em;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.omni-teaser-body::after {
+    background-image: linear-gradient( top, 
+            rgba( 255, 255, 255, 0 ) 0%,
+            rgba( 255, 255, 255, 0 ) 40%,
+            rgba( 255, 255, 255, 1 ) 60%,
+            rgba( 255, 255, 255, 1 ) 100% );
+        background-image: -moz-linear-gradient( top, 
+            rgba( 255, 255, 255, 0 ) 0%,
+            rgba( 255, 255, 255, 0 ) 40%, 
+            rgba( 255, 255, 255, 1 ) 60%,
+            rgba( 255, 255, 255, 1 ) 100% );
+        background-image: -ms-linear-gradient( top, 
+            rgba( 255, 255, 255, 0 ) 0%, 
+            rgba( 255, 255, 255, 0 ) 40%,
+            rgba( 255, 255, 255, 1 ) 60%,
+            rgba( 255, 255, 255, 1 ) 100% );
+        background-image: -o-linear-gradient( top, 
+            rgba( 255, 255, 255, 0 ) 0%, 
+            rgba( 255, 255, 255, 0 ) 40%,
+            rgba( 255, 255, 255, 1 ) 60%,
+            rgba( 255, 255, 255, 1 ) 100% );
+        background-image: -webkit-linear-gradient( top, 
+            rgba( 255, 255, 255, 0 ) 0%,
+            rgba( 255, 255, 255, 0 ) 40%, 
+            rgba( 255, 255, 255, 1 ) 100% );
+    content: " ";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.can-omni-text .omni-teaser-indicator {
+margin-top: -1rem;
+}
+
+.can-omni-text .omni-teaser-indicator p {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.todo > .can-omni-text {display: flex; flex-direction: row;}
+
+.can-omni-text { grid-column: 3/4; display: flex; flex-direction: row; z-index: 10;}
+
+.can-omni-text[hidden] {display: none;}
+
+.can-omni-text .tc-reveal, .can-omni-todo-text {width: 100%; }
+
+.can-omni-text p, .can-omni-text li, .can-omni-text pre { 
+    margin-top: 0;  
+    margin-bottom: 0.5em; 
+    max-width: 40em;
+}
+
+p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
+.can-omni-text p:nth-child(1) { margin-top: 0; }
+/* .can-omni-text p:last-child { margin-bottom: 0.6em; }*/
+
+
+
+.can-omni-meta { display: flex; flex-direction: row; }
+
+
+.omni-showomni {grid-column:3/5; }
+
+/* Space to the left of subomnis */
+
+.can-omni-stream .can-omni-stream.todo, .can-omni-stream .can-omni-stream.read,  .can-omni-stream .can-omni-stream.namedro {
+    margin-left: 1em;
+}
+
+
+/* Above and below item droppable zones */
+
+.can-omni-peripheral, .can-omni-topadd { grid-column: 1/5; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background-color: #ffffff;}
+
+.can-omni-peripheral .tc-droppable, .can-omni-topadd .tc-droppable { width: 100%; display: flex; flex-direction: row; justify-content: flex-end; }
+
+.can-omni-peripheral .tc-dragover, .can-omni-topadd .tc-dragover, .tc-dragover .can-omnibus-droppable { border-radius: 5px;background-color: #0ff; }
+
+.can-omni-toggleadd .can-omni-button {justify-content: flex-end;}
+
+.can-omni-toggleadd .can-omni-button svg {height: 10pt; width: 10pt;}
+
+.can-omni-toggleadd, .can-omni-toggleadd .can-omni-button {padding: 1px; border-radius: 4px; width: 100%;}
+
+.can-omni-toggleadd:hover {background-color: #efefef;}
+
+.can-omni-bottom { grid-column: 2/5; margin-bottom: 0.8em; }
+
+/* Depending on view mode */
+
+.todo > .can-omni-foldbutton {display: none;}
+
+/*.read > .can-omni-text {margin-left: 0.3em; margin-bottom: 0.5em;}*/
+
+.zone .can-omni-itemhandle, .zone .can-omni-text {margin-bottom: 0.8em;}
+
+.can-omni-stream.todo {grid-template-columns: auto auto 7fr auto; } 
+
+
+/* Styling according to level in data tiddler (could do by layout mode too) */
+
+/* .can-outline-item-0.can-omni-text { } */
+.can-outline-item-1.can-omni-text { padding-left: 2em; } 
+.can-outline-item-2.can-omni-text { padding-left: 4em; } 
+.can-outline-item-3.can-omni-text { padding-left: 6em; } 
+.can-outline-item-4.can-omni-text { padding-left: 8em; } 
+.can-outline-item-5.can-omni-text { padding-left: 10em;} 
+.can-outline-item-6.can-omni-text { background-color: #9fd; } 
+.can-outline-item-7.can-omni-text {} 
+.can-outline-item-8.can-omni-text {}
+
+
+/* ----------------------------------------- */
+/* omni-bullet  */
+/* ----------------------------------------- */
+
+.can-omni-bullet { flex: 0 0 auto; box-sizing: content-box; border-radius: 50%; width: 6px; height: 6px; background-color: #333333; align-self: flex-start; margin-top: 0.5em;margin-right: 0.5em;}
+
+/* --------------- */
+/* media-dependent */
+/* --------------- */
+
+
+@media (max-width: 620px) {
+
+.can-omni-stream { 
+grid-template-columns: auto auto 5fr auto; 
+}
+
+.can-omni-stream .can-omni-text {
+    grid-column: 3/4;
+}
+
+.can-omni-stream .can-omni-ctl {  
+    grid-column: 3/4;
+    margin: 0.4em 1em 0 0;
+    }
+
+.can-omni-stream .can-omni-tag-area {
+    grid-column: 4/5; }
+ }
+
+.can-omni-stream .can-omni-tags.tc-edit-tags {
+    margin-bottom: -12pt;
+}
+
+/* more */
+ .omni-bundle {
+     display: flex;
+     flex-direction: row;
+ }
+
+ /* headings */
+
+ .can-omni-stream h1, .can-omni-stream h2,  .can-omni-stream h3 {
+     margin-top: 0;
+ }

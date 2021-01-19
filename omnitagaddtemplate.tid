@@ -7,13 +7,15 @@ tags:
 title: $:/plugins/can/omni/ui/tagaddtemplate
 type: text/vnd.tiddlywiki
 
+THis tiddler isn't used yet. It's for adding tags through the TW widget, but that's too ugly still.
+
 \define can-omni-tagaddbutton() 
 <$set name="newTagNameTiddler" value=<<qualify "$:/temp/NewTagName">>>
 <$set name="tag" value={{{ [<newTagNameTiddler>get[text]] }}}>
 <$button set="$:/temp/NewTagName" setTo="" class="can-omnibus-meta-controls tc-btn-invisible">
 <$macrocall $name="add-tag-actions" actions=<<__actions__>>/>
 <$action-deletetiddler $tiddler=<<newTagNameTiddler>>/>
-{{new-tag.svg}}
+{{$:/plugins/can/omni/new-tag.svg}}
 </$button>
 </$set></$set>
 \end
@@ -30,7 +32,7 @@ type: text/vnd.tiddlywiki
   <$macrocall $name="tag-picker"/>
   </$reveal>
   <$reveal type="nomatch" state="!!omni-tagaddtoggle" text="show" tag=div class="can-omni-button-container">
-  <$button class="can-omnibus-meta-controls tc-btn-invisible" actions="<$action-setfield omni-tagaddtoggle='show'/>">{{new-tag.svg}}</$button>
+  <$button class="can-omnibus-meta-controls tc-btn-invisible" actions="<$action-setfield omni-tagaddtoggle='show'/>">{{$:/plugins/can/omni/new-tag.svg}}</$button>
   </$reveal>
   <$reveal type="match" state="!!omni-tagaddtoggle" text="show" tag=div class="can-omni-button-container">
 	<<can-omni-tagaddbutton>>

@@ -1,0 +1,137 @@
+title: $:/can/macros/omnifleettoc
+tags: $:/tags/Macro
+
+\whitespace trim
+
+\define omnitoclabel(chars:100)
+<$wikify name="can-long-label" text={{{ [{!!title}!match{!!created}] ~[<currentTiddler>get[text]!is[blank]] ~[<currentTiddler>get[title]]}}}>
+		<$text text={{{ [<can-long-label>split[]first[$chars$]join[]] }}}/>
+</$wikify>
+\end
+
+\define omni-link-caption(class)
+<$draggable tag="span" tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >
+    <$button class="can-omni-dragdrop tc-btn-invisible $class$" to={{!!title}} tooltip="Tiddler link" aria-label="Tiddler link"><<omnitoclabel chars:35>>
+    </$button>
+</$draggable>
+\end
+
+\define omni-dragdrop-caption(class) 
+<$droppable actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]'/><$action-listops $subfilter='[<actionTiddler>]'/><$action-sendmessage $message='tm-auto-save-wiki'/>" >
+  <<omni-link-caption class:$class$ >>
+</$droppable>
+\end
+
+\define fleettoc-level-component()
+<$list filter="[all[current]tag[fleet]]" emptyMessage="<<check-if-omni-for-caption>>" ><<omni-dragdrop-caption class:'fleet-label'>></$list>
+\end
+
+\define check-if-omni-for-caption()
+<$list filter="[all[current]tag[omnibus]]" emptyMessage="<<omni-link-caption>>" >
+<<omni-dragdrop-caption class:'omnibus-label'>>
+</$list>
+\end
+
+\define fleettoc-linked-body(root,sort:"",itemClassFilter,exclude,path)
+<$qualify name="toc-state" title={{{ [[$:/state/toc]addsuffix<__path__>addsuffix[-]addsuffix<currentTiddler>] }}}>
+  <$vars parentval=<<__root__>> >
+  <$set name="toc-item-class" filter=<<__itemClassFilter__>> emptyValue="toc-item-selected" value="toc-item" >
+    <li class=<<toc-item-class>>>
+          <$list filter="[all[current]list[]$sort$limit[1]]" variable="ignore" emptyMessage="<$button class='tc-btn-invisible'>{{$:/core/images/blank}}</$button>">
+          <$reveal type="nomatch" stateTitle=<<toc-state>> text="open">
+            <$button setTitle=<<toc-state>> setTo="open" class="tc-btn-invisible tc-popup-keep">
+              {{$:/core/images/right-arrow}}
+            </$button>
+          </$reveal>
+          <$reveal type="match" stateTitle=<<toc-state>> text="open">
+            <$button setTitle=<<toc-state>> setTo="close" class="tc-btn-invisible tc-popup-keep">
+              {{$:/core/images/down-arrow}}
+            </$button>
+          </$reveal>
+        </$list>
+        <<fleettoc-level-component>>
+      <$reveal type="match" stateTitle=<<toc-state>> text="open">
+        <$macrocall $name="fleettoc-list" root=<<currentTiddler>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> exclude=<<__exclude__>> path=<<__path__>>/>
+      </$reveal>
+    </li>
+  </$set>
+  </$vars>
+</$qualify>
+\end
+
+\define fleettoc-unlinked-body(root,sort:"",itemClassFilter,exclude,path)
+<$qualify name="toc-state" title={{{ [[$:/state/toc]addsuffix<__path__>addsuffix[-]addsuffix<currentTiddler>] }}}>
+  <$vars parentval=<<__root__>> >
+    <$set name="toc-item-class" filter=<<__itemClassFilter__>> emptyValue="toc-item-selected" value="toc-item">
+      <li class=<<toc-item-class>>>
+        <$list filter="[all[current]list[]$sort$limit[1]]" variable="ignore" emptyMessage="<$button class='tc-btn-invisible'>{{$:/core/images/blank}}</$button> <$view field='caption'><$view field='title'/></$view>">
+          <$reveal type="nomatch" stateTitle=<<toc-state>> text="open">
+            <$button setTitle=<<toc-state>> setTo="open" class="tc-btn-invisible tc-popup-keep">
+              {{$:/core/images/right-arrow}}
+              <<omnilabel chars:35>>
+            </$button>
+          </$reveal>
+          <$reveal type="match" stateTitle=<<toc-state>> text="open">
+            <$button setTitle=<<toc-state>> setTo="close" class="tc-btn-invisible tc-popup-keep">
+              {{$:/core/images/down-arrow}}
+              <<omnilabel chars:35>>
+            </$button>
+          </$reveal>
+        </$list>
+        <$reveal type="match" stateTitle=<<toc-state>> text="open">
+          <$macrocall $name="fleettoc-list" root=<<currentTiddler>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> exclude=<<__exclude__>> path=<<__path__>>/>
+        </$reveal>
+      </li>
+    </$set>
+  </$vars>
+</$qualify>
+\end
+
+\define fleettoc-empty-message()
+<$macrocall $name="fleettoc-linked-body" root=<<root>> sort=<<sort>> itemClassFilter=<<itemClassFilter>> exclude=<<excluded>> path=<<path>>/>
+\end
+
+\define fleettoc-list(root,sort:"",itemClassFilter,exclude,path)
+<$vars root=<<__root__>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> path={{{ [<__path__>addsuffix[/]addsuffix<__root__>] }}}>
+  <$set name="excluded" filter="""[enlist<__exclude__>] [<__root__>]""">
+    <ol class="tc-toc omni-toc">
+      <$list filter="""[all[shadows+tiddlers]list<__root__>!has[draft.of]$sort$] -[<__root__>] -[enlist<__exclude__>]""">
+        <$list filter="[all[current]toc-link[no]]" variable="ignore" emptyMessage=<<fleettoc-empty-message>> >
+          <$macrocall $name="fleettoc-unlinked-body" root=<<__root__>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> exclude=<<excluded>> path=<<path>>/>
+        </$list>
+      </$list>
+    </ol>
+  </$set>
+</$vars>
+\end
+
+\define fleettoc()
+<div class="omni-sidebar-toc">
+<span class="fleet-label">Omnibus Fleets</span>
+<ol class="tc-toc omni-toc fleet-list">
+<$list filter="[all[shadows+tiddlers]tag[fleet]!has[draft.of]sort[]]">
+<$macrocall $name="fleettoc-linked-body" root=<<currentTiddler>> />
+</$list>
+</ol>
+<<fleetless-omnis>>
+</div>
+\end
+
+\define omnis-filter() [all[shadows+tiddlers]tag[omnibus]!tag[fleet]!has[draft.of]sort[]]
+
+\define fleetless-omnis()
+<hr>
+<<delist-from-omni class:"fleet-label" caption:"Solo omnibuses">>
+<ol class="tc-toc omni-toc">
+<$list filter=<<omnis-filter>>>
+  <$list filter="[all[current]listed[]tag[fleet]]" variable="ignore" emptyMessage="<$macrocall $name='fleettoc-linked-body' root=<<currentTiddler>> />">
+  </$list>
+</$list>
+</ol>
+\end
+
+\define delist-from-omni(class caption)
+<$droppable actions="<<can-omni-shift-drop>><$action-sendmessage $message='tm-auto-save-wiki'/>" >
+<span class="can-omnibus-droppable $class$">$caption$ :</span>
+</$droppable><br>
+\end

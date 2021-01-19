@@ -1,0 +1,170 @@
+created: 20200618174950677
+creator: chris
+tags: $:/tags/Macro
+title: $:/plugins/can/omni/component-macros
+type: text/vnd.tiddlywiki
+
+\whitespace trim
+
+\define can-omni-folder()
+<$button class="can-omni-foldbutton tc-btn-invisible can-small-text-button">
+<$reveal type="match" tag="div" state=<<foldstatetiddler>> text="hide" >
+	<$action-setfield $tiddler=<<foldstatetiddler>> $value="show"/>
+	{{$:/core/images/right-arrow}}
+</$reveal>
+<$reveal type="nomatch" state=<<foldstatetiddler>> text="hide" >
+	<<omni-toggle-view>><$action-setfield $tiddler=<<foldstatetiddler>> $value="hide"/>
+	{{$:/core/images/down-arrow}}
+</$reveal>
+</$button>
+\end
+
+\define can-omni-itemhandle()
+<$button tag="div" class="can-omni-itemhandle tc-btn-invisible" tooltip="Click to toggle text edit. Drag to move list entry." aria-label="Click to toggle text edit. Drag to move list entry.">
+<$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >
+<div class="can-omni-itemhandle-inner"></div>
+<$reveal type="nomatch" stateTitle=<<editstatetid>> stateField=editstate text="edit">
+	<<omni-startedit-actions>>
+</$reveal>
+<$reveal type="match" stateTitle=<<editstatetid>> stateField=editstate text="edit">
+	<<omni-submitedit-actions>>
+</$reveal>
+</$draggable>
+</$button>
+\end
+
+\define can-omni-text()
+<$reveal type="nomatch" stateTitle=<<editstatetid>> stateField=editstate text="edit" tag=div>
+    <div class="omni-text-as-button tc-tiddler-body" title="Double-click to edit text." aria-label="Double-click to edit text.">
+    <$omnidblclick actions="<<omni-startedit-actions>>"/>
+	<$transclude $tiddler="<<currentTiddler>>" mode="block"/>
+	</div>
+</$reveal>
+<$reveal type="match" stateTitle=<<editstatetid>> stateField=editstate text="edit" tag=div>
+	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submitedit-actions>>" >
+	<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submitedit-actions>>" >
+	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-canceledit-actions>>">
+		<$edit-text class="can-quickadd-textarea tc-tiddler-body" field='text' placeholder='New tiddler text' rows="1" minHeight="0" focus=true/>
+	</$keyboard></$keyboard></$keyboard>
+</$reveal>
+\end
+
+\define can-omni-teaser() 
+<$set name=levelcls filter=<<classfilt>>>
+    <div class="tc-tiddler-body omni-teaser">
+        <$omnidblclick actions="<<omni-startedit-actions>>"/>
+	     <div class="omni-teaser-body">
+            <$transclude $tiddler="<<currentTiddler>>" mode="block"/>
+         </div>
+         <div class="omni-teaser-indicator can-omni-button">
+            <p>...</p>
+        </div>
+	</div>
+</$set>
+\end
+
+
+\define can-omni-titleheading()
+<$reveal type="nomatch" stateTitle=<<edittitlestatetid>> stateField=editstate text="edit" tag="div" class="omni-title-heading view" title="Double-click to edit title." aria-label="Double-click to edit title.">
+        <$omnidblclick actions="<<omni-starttitleedit-actions>>"/>
+	{{!!title}}
+</$reveal>
+<$reveal type="match" stateTitle=<<edittitlestatetid>> stateField=editstate text="edit" tag=div class="omni-title-heading">
+	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submittitleedit-actions>>" >
+	<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submittitleedit-actions>>" >
+	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-canceltitleedit-actions>>">
+		<$edit-text class="can-quickadd-textarea" field='newtitle' rows="1" minHeight="0" focus=true/>
+	</$keyboard></$keyboard></$keyboard>
+</$reveal>
+\end
+
+\define classfilt() can-outline-item [[$(datatiddler)$]has:index[$(currentTiddler)$]then{$(datatiddler)$##$(currentTiddler)$}else[0]] +[join[-]] can-omni-text
+
+\define can-omni-text-region()
+	<$set name=levelcls filter=<<classfilt>>>
+        <$reveal tag="div" class=<<levelcls>> type="match" state=<<foldstatetiddler>> text="hide" >
+            <<can-omni-teaser>>
+        </$reveal>
+        <$reveal tag="div" class=<<levelcls>> type="nomatch" state=<<foldstatetiddler>> text="hide" >
+            <<can-omni-text>>
+        </$reveal>
+	</$set>
+\end
+
+\define can-omni-text-ro()
+<$set name=levelcls filter=<<classfilt>>>
+    <$reveal tag="div" class=<<levelcls>> type="nomatch" state=<<foldstatetiddler>> text="hide" >
+        <div class="tc-tiddler-body">
+	        <$transclude $tiddler="<<currentTiddler>>" mode="block"/>
+	    </div>
+    </$reveal>
+</$set>
+\end
+
+\define set-toc-view-tiddler() <$action-setfield $tiddler=<<parentval>> toc-view-tiddler=<<currentTiddler>> />
+
+\define omni-toc-heading-class-filter() omni-toc-heading [<parentval>get[toc-view-tiddler]match<currentTiddler>then[selected]]
+
+\define can-omni-toc-item()
+	<$set name=levelcls filter=<<classfilt>>><$set name=omni-toc-heading-class filter=<<omni-toc-heading-class-filter>> >
+    <$button tag="div" class=<<omni-toc-heading-class>> actions=<<set-toc-view-tiddler>>>{{!!title}}</$button>
+	<$reveal tag="div" class="can-omni-toc-sub can-omni-text" type="nomatch" state=<<foldstatetiddler>> text="hide" >
+	    <<omni-showomni-subtoc>>
+	</$reveal>
+	</$set></$set>
+\end
+
+\define can-omni-singleview()
+    <div class="omni-toc-view tc-tiddler-body">
+        <$tiddler tiddler={{!!toc-view-tiddler}} >
+        <<can-omni-title-link>>
+        <$transclude mode=block/>
+        </$tiddler>
+    </div>
+\end
+
+\define can-omni-todo-region() 
+	<$set name=levelcls filter=<<classfilt>>>
+	<div class=<<levelcls>>>
+		<div class="can-omni-todo-text">
+		<<can-omni-text>>
+		</div>
+	</div>
+	</$set>
+\end
+
+\define can-omni-bullet()
+<div class="can-omni-bullet"></div>
+\end
+
+\define can-omni-outline-region() 
+	<$set name=levelcls filter=<<classfilt>>>
+	<div class=<<levelcls>>><<can-omni-teaser>></div> 
+	</$set>
+\end
+
+\define can-reset-omni-depth()
+  <$action-setfield tempdepth=0 $timestamp="no" />
+\end
+
+\define can-recursionblock()
+<div class="can-omni-text">(Max omni depth reached.)</div>
+\end
+
+\define omni-showomni(depth) 
+<$reveal tag="div" class="omni-showomni" type="nomatch" state=<<foldstatetiddler>> text="hide" >
+<$list filter="[<currentTiddler>tag[omnibus]]">
+<$vars newdepth={{{[<__depth__>add[1]]}}}>
+<!--omni-showomni: newdepth: <<newdepth>> <br> -->
+<$list filter="[<newdepth>compare:integer:lt[10]]" variable=null emptyMessage=<<can-recursionblock>> >
+<$macrocall $name="compose-omni" mode=<<mode>> depth=<<newdepth>> /></$list>
+</$vars>
+</$list>
+</$reveal>
+\end
+
+\define omni-showomni-subtoc() 
+<$reveal tag="div" class="omni-showomni-subtoc" type="nomatch" state=<<foldstatetiddler>> text="hide" >
+<$list filter="[<currentTiddler>tag[omnibus]]"><<compose-omni-subtoc>></$list>
+</$reveal>
+\end

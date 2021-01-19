@@ -1,0 +1,122 @@
+tags: $:/tags/Macro
+title: $:/plugins/can/omni/template-macros
+
+\whitespace trim
+
+\define everyedit(depth)
+	<<can-omni-folder>>
+	<<can-omni-itemhandle>>
+	<div class="can-omni-ctlrow">			
+		<div>
+			<<can-omni-title-link>>
+		</div>
+		<div class="can-omni-subctl">
+			<<can-omni-levelctl>>
+			<<can-omni-delist>>
+			<<can-omni-delete>>
+			<<can-omni-make-omnibus>>
+		</div>
+	</div>
+    <<can-omni-text-region>>
+	<<can-omni-taglist>>
+	<$macrocall $name=omni-showomni depth=<<__depth__>> />
+	<<can-omni-peripheral>>
+\end
+
+\define everynamed()
+	<<can-omni-folder>>
+	<<can-omni-itemhandle>>
+	<div class="can-omni-ctlrow">		
+            <<can-omni-titleheading>>
+		<div class="can-omni-subctl">
+            <<can-omni-link>>
+			<<can-omni-levelctl>>
+			<<can-omni-delist>>
+			<<can-omni-delete>>
+			<<can-omni-make-omnibus>>
+		</div>
+	</div>
+    <<can-omni-text-region>>
+	<<can-omni-taglist>>
+	<$macrocall $name=omni-showomni depth=<<__depth__>> />
+	<<can-omni-peripheral>>
+\end
+
+
+\define everynamedro()
+	<<can-omni-folder>>
+	<div class="can-omni-ctlrow">		
+        <div class="omni-title-heading">{{!!title}}</div>
+	</div>
+    <<can-omni-text-ro>>
+	<$macrocall $name=omni-showomni depth=<<__depth__>> />
+\end
+
+\define everysimple()
+	<<can-omni-itemhandle>>
+	<div class="can-omni-text">
+	<<can-omni-text>>
+	</div>
+\end
+
+\define everytodo()
+	<<can-omni-itemhandle>>
+	<<can-omni-todo-region>>
+	<div class="can-omni-ctl">
+		<<can-omni-make-omnibus>>
+		<<can-omni-link>>
+		<<can-omni-delete>>
+		<<can-omni-mark-done>>
+	</div>
+	<$macrocall $name=omni-showomni depth=<<__depth__>> />
+	<<can-omni-peripheral>>
+\end
+
+\define everylist()
+    <div class="can-omni-text"><<omnilabel>> </div>
+    <<can-omni-taglist>>
+	<$macrocall $name=omni-showomni depth=<<__depth__>> />
+\end
+
+\define everyread()
+    <<can-omni-folder>>
+    <<can-omni-text-region>>
+	<$macrocall $name=omni-showomni depth=<<__depth__>> />
+\end
+
+\define everyoutline()
+		<<can-omni-outline-region>>
+\end
+
+\define everytoc()
+    <$list filter="[<currentTiddler>tag[omnibus]]"><<can-omni-folder>></$list>
+    <<can-omni-toc-item>>
+\end
+
+\define everynotes()
+    <<can-omni-folder>>
+	<<can-omni-itemhandle>>
+	<div class="can-omni-ctlrow">			
+		<div>
+			<<can-omni-title-link>>
+		</div>
+		<div class="can-omni-subctl">
+			<<can-omni-levelctl>>
+			<<can-omni-delist>>
+			<<can-omni-delete>>
+			<<can-omni-make-omnibus>>
+		</div>
+	</div>
+    <<can-omni-text-region>>
+	<<can-omni-taglist>>
+	<$macrocall $name=omni-showomni depth=<<__depth__>> />
+	<<can-note-peripheral>>
+\end
+
+\define everylist2(looks bad while teaser always displays ellipses)
+    <div class="can-omni-text">
+		<$link><$macrocall $name=teaser title=<<currentTiddler>> chars=100 maxelements=1 /></$link>
+    </div>    
+    <<can-omni-taglist>>
+	<$macrocall $name=omni-showomni depth=<<__depth__>> />
+\end

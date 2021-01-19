@@ -1,0 +1,36 @@
+tags: $:/tags/Macro
+title: $:/plugins/can/omni/action-macros
+type: text/vnd.tiddlywiki
+
+\define omni-toggle-edit() <$action-setfield $tiddler=<<editstatetid>> editstate="edit"/>
+\define omni-toggle-view() <$action-setfield $tiddler=<<editstatetid>> editstate="view"/>
+
+\define omni-startedit-actions() <$action-setfield $tiddler=<<foldstatetiddler>> $value="show"/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> text={{!!text}}/>
+\define omni-submitedit-actions() <$action-deletetiddler $tiddler=<<editstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/>
+\define omni-canceledit-actions() <$action-setfield text={{$(editstatetid)$}} $timestamp='no'/><<omni-toggle-view>>
+
+
+\define omni-toggle-title-edit() <$action-setfield $tiddler=<<edittitlestatetid>> editstate="edit"/>
+\define omni-toggle-title-view() <$action-setfield $tiddler=<<edittitlestatetid>> editstate="view"/>
+
+
+\define omni-starttitleedit-actions() <<omni-toggle-title-edit>><$action-setfield newtitle={{!!title}} $timestamp='no'/><$action-setfield $tiddler=<<edittitlestatetid>> oldtitle={{!!title}}/>
+\define omni-submittitleedit-actions() <$action-sendmessage $message="tm-rename-tiddler" from=<<currentTiddler>> to={{!!newtitle}} /><$action-deletetiddler $tiddler=<<edittitlestatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/>
+\define omni-canceltitleedit-actions() <$action-setfield newtitle={{$(edittitlestatetid)$!!oldtitle}} $timestamp='no'/><<omni-toggle-title-view>>
+
+
+\define omni-start-tiddler-drag() "<$action-listops $field=dragstarttiddler $filter=<<parentval>> />"
+
+\define can-omni-shift-drop() 
+<$list filter="[<modifier>match[shift]]" variable="null">
+	<$set name=dragstarttitle filter="[<actionTiddler>get[dragstarttiddler]]" select="0">
+	<$action-listops $tiddler=<<dragstarttitle>> $subfilter='-[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='-[<parentval>]'/>
+	</$set>
+</$list>
+\end
+
+\define readlevel() [{$(datatiddler)$##$(currentTiddler)$}]
+
+\define omni-leveldn-actions() "<$action-listops $tiddler=<<datatiddler>> $index=<<currentTiddler>> $filter='=$(readlevel)$ +[subtract[1]] +[max[0]]'/><$action-sendmessage $message='tm-auto-save-wiki'/>"
+
+\define omni-levelup-actions() "<$action-listops $tiddler=<<datatiddler>> $index=<<currentTiddler>> $filter='=$(readlevel)$  +[add[1]] +[min[6]]'/><$action-sendmessage $message='tm-auto-save-wiki'/>"

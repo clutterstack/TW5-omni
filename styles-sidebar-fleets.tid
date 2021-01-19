@@ -1,0 +1,26 @@
+title: $:/plugins/can/omni/styles-sidebar-fleets.tid
+tags: $:/tags/Stylesheet
+
+/* Fleet outliner styles */
+
+ol.omni-toc {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.omni-sidebar-toc h1 {
+    margin: 0.4em 0 0 0;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+.omni-toc > li.toc-item li.toc-item {padding-left: 0.2em;}
+
+.fleet-label, .omnibus-label, .tc-sidebar-lists button {color: #999999; fill: #999999;}
+
+
+.omni-toc .tc-sidebar-lists button {color: #ff9999; fill: #ff9999;}
+
+.fleet-label {font-size: 1.2em; font-weight: 500;}
+.omnibus-label {font-weight: 500;}
+.tc-dragover .fleet-label, .tc-dragover .omnibus-label { border-radius: 5px;background-color: #0ff; }
+.can-omni-dragdrop {display: inline;}

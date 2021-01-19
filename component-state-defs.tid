@@ -1,0 +1,20 @@
+tags: $:/tags/Macro
+title: $:/plugins/can/omni/component-state-defs
+type: text/vnd.tiddlywiki
+
+\define editstatetid() $:/keepstate/can/omni/editstate/$(createdid)$
+
+\define edittitlestatetid() $:/keepstate/can/omni/edittitlestate/$(createdid)$
+
+
+\define foldstatetiddler() $:/keepstate/can/omni/fold/$(createdid)$
+
+\define top-quick-openstatetid() $:/keepstate/can/omni/top-openstate/$(omniqual)$
+\define top-quickstatetid() $:/keepstate/can/omni/top-quickstate/$(omniqual)$
+
+\define peri-quick-openstatetid() $:/keepstate/can/omni/peri-openstate/$(createdid)$
+\define peri-quickstatetid() $:/keepstate/can/omni/peri-quickstate/$(createdid)$
+
+\define append-quick-openstatetid() $:/keepstate/can/omni/append-openstate/$(omniqual)$
+\define append-quickstatetid() $:/keepstate/can/omni/append-quickstate/$(omniqual)$
+

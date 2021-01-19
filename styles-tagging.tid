@@ -1,0 +1,48 @@
+title: $:/plugins/can/omni/styles-tagging.tid
+tags: $:/tags/Stylesheet
+
+/* Tagging */
+
+.can-omni-stream > .can-omni-tag-area {grid-column: 4/5; min-width: 2em; min-height: 1em; display: flex; flex-direction: row; justify-content: flex-end; padding-left: 0.4em;}
+
+.can-omni-stream .can-omni-tags {height: 100%; max-width: 10em; padding: 0.2em 0.4em 0.2em 2em; display: flex; flex-direction: row; flex-wrap: wrap; justify-content: flex-end; align-content: flex-start; min-width: 5em;}
+
+.can-omni-stream .can-omni-tag-area .tc-droppable {height: 100%; margin-left: -2em; display: flex; flex-direction: column; justify-content: flex-end; align-content: flex-end;}
+
+.can-omni-stream .can-omni-tag-area .tc-dragover {
+    background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(204,0,255,0.5) 100%);
+    border-radius: 4px;
+}
+
+.can-omni-stream .can-omni-tag-area .tc-droppable:hover {
+    background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 100%);
+    border-radius: 4px;
+}
+
+.can-omni-stream .tc-tag-label {
+ margin: 0.1em;
+}
+
+.can-omni-stream .can-omni-tag-area .ghost-tag {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 2px; 
+    fill: <<colour tiddler-background>>;
+}
+
+.can-omni-stream .can-omni-tag-area:hover .ghost-tag, .can-omni-stream .can-omni-tag-area .tc-dragover .ghost-tag {
+    fill: #ffffff;
+}
+
+.can-omni-stream .can-omni-tag-area .ghost-tag svg {
+    width: 12pt;
+    height: 12pt;
+}
+
+.can-omni-stream .can-omni-tags { font-size: 0.7em; }
+
+.can-omni-tagadd { display: flex; flex-direction: row; }
+
+.can-omni-tagadd .tc-add-tag-button button { display: none; }
+

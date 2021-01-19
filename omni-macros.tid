@@ -1,0 +1,54 @@
+tags: $:/tags/Macro
+title: $:/plugins/can/omni/omnibus-macros
+
+\whitespace trim
+
+\define omni-datastate() <<qualify '$:/state/can/omni/$(currentTiddler)$-data'>>
+
+\define omni-mode-from-parent-or-self() {{$(parentval)$!!omnibus-mode}}
+
+\define omni-mode-from-self() {{!!omnibus-mode}}
+
+\define omni-mode-call-macro(depth) 
+<$macrocall $name=every$(mode)$ depth=<<__depth__>> />
+\end
+
+\define omni-stream-class() can-omni-stream $(mode)$
+
+\define compose-omni-toplevel() <$macrocall $name=compose-omni depth=0 />
+
+\define compose-omni(mode:{{!!omnibus-mode}} depth)
+<$vars datatiddler=$(omni-datastate)$ parentval=<<currentTiddler>> >
+<$set name=mode value=$mode$ emptyValue=read >
+<$qualify name=omniqual title={{!!created}}>
+<<can-omni-toptools>>
+<div class="omni-stream-container">
+    <div class=<<omni-stream-class>> >
+        <$list filter="[<mode>match[read]then[]] [<mode>match[toc]then[]] [<mode>match[namedro]then[]] [<mode>match[list]then[]]" variable="null" emptyMessage=<<can-omni-topadd>>/>
+        <$list filter="[all[current]list[]is[tiddler]]">
+            <$qualify name=createdid title={{!!created}} >
+                <$macrocall $name=omni-mode-call-macro depth=<<__depth__>> />
+            </$qualify>
+        </$list>
+    </div>
+    <$list filter="[<mode>!match[toc]then[]]" variable="null" emptyMessage=<<can-omni-singleview>>/>   
+</div>
+</$qualify>
+</$set>
+</$vars>
+
+\end
+
+\define compose-omni-subtoc()
+<$vars datatiddler=$(omni-datastate)$>
+<$qualify name=omniqual title={{!!created}}>
+<div class="can-omni-stream subtoc" >
+	<$list filter="[all[current]list[]is[tiddler]]">
+        <$qualify name=createdid title={{!!created}} >
+            <<everytoc>>
+        </$qualify>
+	</$list>
+</div>
+</$qualify>
+</$vars>
+\end

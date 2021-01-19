@@ -1,0 +1,16 @@
+tags: $:/tags/Macro
+title: $:/plugins/can/omni/fleet-macros
+
+\whitespace trim
+
+\define fleet()
+<$set name=parentval value=<<currentTiddler>> >
+<div class="can-fleet-stream">
+	<$list filter="[all[current]list[]is[tiddler]]">
+		<<check-if-omni-for-caption>><br>
+        <<fleet>><br>
+	</$list>
+</div>
+
+</$set>
+\end
