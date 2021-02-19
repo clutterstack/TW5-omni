@@ -13,10 +13,21 @@ type: text/vnd.tiddlywiki
 \define omni-toggle-title-edit() <$action-setfield $tiddler=<<edittitlestatetid>> editstate="edit"/>
 \define omni-toggle-title-view() <$action-setfield $tiddler=<<edittitlestatetid>> editstate="view"/>
 
-
 \define omni-starttitleedit-actions() <<omni-toggle-title-edit>><$action-setfield newtitle={{!!title}} $timestamp='no'/><$action-setfield $tiddler=<<edittitlestatetid>> oldtitle={{!!title}}/>
 \define omni-submittitleedit-actions() <$action-sendmessage $message="tm-rename-tiddler" from=<<currentTiddler>> to={{!!newtitle}} /><$action-deletetiddler $tiddler=<<edittitlestatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/>
 \define omni-canceltitleedit-actions() <$action-setfield newtitle={{$(edittitlestatetid)$!!oldtitle}} $timestamp='no'/><<omni-toggle-title-view>>
+
+
+\define omni-toggle-field-edit() <$action-setfield $tiddler=<<editfieldstatetid>> editstate="edit"/>
+\define omni-toggle-field-view() <$action-setfield $tiddler=<<editfieldstatetid>> editstate="view"/>
+
+\define omni-startfieldedit-actions() <<omni-toggle-field-edit>><$action-setfield newfieldvalue="""$(caption-or-title)$""" $timestamp='no'/>
+
+\define omni-submitfieldedit-actions() <$action-setfield $(editFieldName)$={{!!newfieldvalue}} /><$action-setfield $field=newfieldvalue /><$action-deletetiddler $tiddler=<<editfieldstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/>
+
+\define omni-cancelfieldedit-actions() <<omni-toggle-field-view>>
+
+
 
 
 \define omni-start-tiddler-drag() "<$action-listops $field=dragstarttiddler $filter=<<parentval>> />"

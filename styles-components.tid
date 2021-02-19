@@ -20,7 +20,7 @@ justify-content: space-between;
 
 .can-omni-stream { 
 display: grid; 
-grid-template-columns: auto auto 7fr max-content; /* 1em auto 7fr auto;  */
+grid-template-columns: max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
 grid-template-rows: auto; 
 margin-left: -0.6em;
 width: 100%;
@@ -149,6 +149,11 @@ margin-top: -1rem;
     margin-bottom: 0.5em; 
     max-width: 40em;
 }
+
+ .can-omni-text td {
+     width: 100%;
+     max-width: 30em;
+ }
 
 p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
 .can-omni-text p:nth-child(1) { margin-top: 0; }

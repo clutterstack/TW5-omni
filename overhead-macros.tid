@@ -18,9 +18,12 @@ type: text/vnd.tiddlywiki
 		<!--<$button set="!!omnibus-mode" setTo="list" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="List with tags" aria-label="List with tags"><<unfoldallactions>>{{$:/plugins/can/omni/omnimode-listwithtags.svg}}</$button>-->
 		<$button set="!!omnibus-mode" setTo="read" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Reading mode" aria-label="Reading mode">{{$:/plugins/can/omni/omnimode-view.svg}}</$button>
         <$button set="!!omnibus-mode" setTo="named" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Edit mode with title" aria-label="Edit mode with title">named</$button>
-        <$button set="!!omnibus-mode" setTo="namedro" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Read-only mode with title" aria-label="Read-only mode with title">namedro</$button>
+       <!-- <$button set="!!omnibus-mode" setTo="namedro" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Read-only mode with title" aria-label="Read-only mode with title">namedro</$button> -->
 		<$button set="!!omnibus-mode" setTo="toc" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="TOC mode" aria-label="TOC mode">toc</$button>
 		<$button set="!!omnibus-mode" setTo="notes" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="notes mode" aria-label="notes mode">notes</$button>
+		<$button set="!!omnibus-mode" setTo="post" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="post mode" aria-label="post mode">post</$button>
+
+		<$button set="!!omnibus-mode" setTo="postro" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="ro post mode" aria-label="ro post mode">ro post</$button>
 	</div>
 \end
 
