@@ -36,10 +36,13 @@ type: text/vnd.tiddlywiki
 
 \define can-omni-text()
 <$reveal type="nomatch" stateTitle=<<editstatetid>> stateField=editstate text="edit" tag=div>
+    <$importvariables filter="[[$(parentval)$]] [list[$(parentval)$]]">
+
     <div class="omni-text-as-button tc-tiddler-body" title="Double-click to edit text." aria-label="Double-click to edit text.">
     <$omnidblclick actions="<<omni-startedit-actions>>"/>
 	<$transclude $tiddler="<<currentTiddler>>" mode="block"/>
 	</div>
+    </$importvariables>
 </$reveal>
 <$reveal type="match" stateTitle=<<editstatetid>> stateField=editstate text="edit" tag=div>
 	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submitedit-actions>>" >

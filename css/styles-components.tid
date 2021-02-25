@@ -3,6 +3,18 @@ creator: chris
 tags: $:/tags/Stylesheet
 title: $:/plugins/can/omni/styles-components
 
+/* -------------------------- */
+/* Omnibus export sidebar tab */
+/* -------------------------- */
+
+ .omni-bundle {
+     display: flex;
+     flex-direction: row;
+ }
+
+/* --------------------------------- */
+/* General in-tiddler omnibus styles */
+/* --------------------------------- */
 
 .can-omni-toptools {
 margin: 0 0 0.4em 0;
@@ -22,47 +34,41 @@ justify-content: space-between;
 display: grid; 
 grid-template-columns: max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
 grid-template-rows: auto; 
-margin-left: -0.6em;
 width: 100%;
 }
 
-.can-omni-stream pre {
-    /* max-width: calc({{$:/themes/tiddlywiki/vanilla/metrics/storywidth}} - 25%); */
-  /*overflow: auto;*/
-}
-
-.can-omni-stream ul {
-    margin: 0;
-    padding-left: 1em;
-}
-/* Style the quickadd for in an omnibus */
-
-.can-quickadd.sub {margin-top: 0;}
-
-.can-omni-itemhandle {width: 1.6em; grid-column: 2/3; 
-    grid-row: span 2; margin-left: -0.8em;}
-
-.can-omni-itemhandle .tc-draggable { height: 100%;}
-
-.can-omni-itemhandle-inner { 
-    box-sizing: content-box; 
-    border-radius: 2px;
-    height: 100%; 
-    width: 2px;
-    background-color: #cccccc;
-    margin-left: 0.8em;
-    }
-
-.can-omni-itemhandle:hover .can-omni-itemhandle-inner { 
-    background-color: #999999;
-    }
-
 .can-omni-stream > div.tc-draggable { cursor: pointer; }
 
+.omni-text-as-button {height: 100%;}
+
+
+/* ------------------ */
+/* headings           */
+/* ------------------ */
+
+
+.can-omni-stream h1 {font-size: 1.5rem;}
+
+ .can-omni-stream h2 {
+     font-size: 1.3rem;
+     margin-bottom: 1em;
+     margin-top:1em;
+ }
+ 
+ .can-omni-stream h3 {
+     font-size: 1.2rem;
+     margin-bottom: 1em;
+     margin-top:1em;
+ }
+
+.can-omni-stream h4 {font-size: 1.1rem; font-weight:500;}
+.can-omni-stream h5 {font-size: 1.0rem; font-weight:500;}
+.can-omni-stream h6 {font-size: 1.0rem;}
+
 .can-omni-stream .omni-title-heading {
-    grid-column:3/5;
+    grid-column: 3/5;
     flex: 1;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 400;
     margin-right: 0.4em;
 }
@@ -76,7 +82,55 @@ width: 100%;
     border: 1px solid #ccc; 
     }
 
-.omni-text-as-button {height: 100%;}
+/* ----------------------------------------- */
+/* code                                      */
+/* ----------------------------------------- */
+
+.can-omni-stream pre {
+    /* max-width: calc({{$:/themes/tiddlywiki/vanilla/metrics/storywidth}} - 25%); */
+    /*overflow: auto;*/
+}
+
+/* ----------------------------------------- */
+/* lists                                     */
+/* ----------------------------------------- */
+
+.can-omni-stream ul {
+    margin: 0;
+    padding-left: 2em;
+}
+
+/* ---------------------------------------*/
+/* Style the quickadd for in an omnibus   */
+/* ---------------------------------------*/
+
+.can-quickadd.sub {margin-top: 0;}
+
+/* ---------------------------------------*/
+/* Vertical item handle                   */
+/* ---------------------------------------*/
+
+.can-omni-itemhandle {width: 1.6em; grid-column: 2/3; 
+    grid-row: span 2;}
+
+.can-omni-itemhandle .tc-draggable { height: 100%;}
+
+.can-omni-itemhandle-inner { 
+    box-sizing: content-box; 
+    border-radius: 2px;
+    height: 100%; 
+    width: 1px;
+    background-color: #cccccc;
+    margin-left: 0.4em;
+    }
+
+.can-omni-itemhandle:hover .can-omni-itemhandle-inner { 
+    background-color: #999999;
+    }
+
+/* ---------------------------------------*/
+/* Teaser                                 */
+/* ---------------------------------------*/
 
 .omni-teaser {
     width: 100%;
@@ -136,7 +190,6 @@ margin-top: -1rem;
     margin-right: auto;
 }
 
-.todo > .can-omni-text {display: flex; flex-direction: row;}
 
 .can-omni-text { grid-column: 3/4; display: flex; flex-direction: row; z-index: 10;}
 
@@ -145,24 +198,19 @@ margin-top: -1rem;
 .can-omni-text .tc-reveal, .can-omni-todo-text {width: 100%; }
 
 .can-omni-text p, .can-omni-text li, .can-omni-text pre { 
-    margin-top: 0;  
-    margin-bottom: 0.5em; 
-    max-width: 40em;
+  /* margin-top: 0;  
+    margin-bottom: 0.8em; */
+    max-width: 46em;
 }
 
- .can-omni-text td {
-     width: 100%;
+.can-omni-text td {
+     /*width: 100%;*/
      max-width: 30em;
- }
+}
 
 p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
 .can-omni-text p:nth-child(1) { margin-top: 0; }
 /* .can-omni-text p:last-child { margin-bottom: 0.6em; }*/
-
-
-
-.can-omni-meta { display: flex; flex-direction: row; }
-
 
 .omni-showomni {grid-column:3/5; }
 
@@ -171,9 +219,13 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
 .can-omni-stream .can-omni-stream.todo, .can-omni-stream .can-omni-stream.read,  .can-omni-stream .can-omni-stream.namedro {
     margin-left: 1em;
 }
+.can-omni-stream.edit, .can-omni-stream.post, .can-omni-stream.named {
+    margin-left: -1.6em;
+}
 
-
+/* ----------------------------------------- */
 /* Above and below item droppable zones */
+/* ----------------------------------------- */
 
 .can-omni-peripheral, .can-omni-topadd { grid-column: 1/5; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background-color: #ffffff;}
 
@@ -191,7 +243,11 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
 
 .can-omni-bottom { grid-column: 2/5; margin-bottom: 0.8em; }
 
+/* ----------------------------------------- */
 /* Depending on view mode */
+/* ----------------------------------------- */
+
+.todo > .can-omni-text {display: flex; flex-direction: row;}
 
 .todo > .can-omni-foldbutton {display: none;}
 
@@ -201,8 +257,9 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
 
 .can-omni-stream.todo {grid-template-columns: auto auto 7fr auto; } 
 
-
+/* ------------------------------------------------------------------------ */
 /* Styling according to level in data tiddler (could do by layout mode too) */
+/* ------------------------------------------------------------------------ */
 
 /* .can-outline-item-0.can-omni-text { } */
 .can-outline-item-1.can-omni-text { padding-left: 2em; } 
@@ -242,21 +299,26 @@ grid-template-columns: auto auto 5fr auto;
     }
 
 .can-omni-stream .can-omni-tag-area {
-    grid-column: 4/5; }
+    grid-column: 4/5;
  }
 
 .can-omni-stream .can-omni-tags.tc-edit-tags {
     margin-bottom: -12pt;
 }
 
-/* more */
- .omni-bundle {
-     display: flex;
-     flex-direction: row;
- }
-
- /* headings */
+ /* headings for narrow display */
 
  .can-omni-stream h1, .can-omni-stream h2,  .can-omni-stream h3 {
      margin-top: 0;
  }
+ .can-omni-stream h2 {
+     font-size: 1.4rem;
+ }
+ .can-omni-stream h3 {
+     font-size: 1.2rem;
+ }
+ .can-omni-stream h4 {
+     font-size: 1.1rem;
+ }
+
+}
