@@ -24,12 +24,13 @@ title: $:/plugins/can/omni/omnibus-macros
 <<can-omni-toptools>>
 <div class="omni-stream-container">
     <div class=<<omni-stream-class>> >
-        <$list filter="[<mode>match[read]then[]] [<mode>match[toc]then[]] [<mode>match[namedro]then[]] [<mode>match[list]then[]]" variable="null" emptyMessage=<<can-omni-topadd>>/>
+        <!--<$list filter="[<mode>match[read]then[]] [<mode>match[toc]then[]] [<mode>match[namedro]then[]] [<mode>match[list]then[]]" variable="null" emptyMessage=<<can-omni-topadd>>/>-->
         <$list filter="[all[current]list[]is[tiddler]]">
             <$qualify name=createdid title={{!!created}} >
                 <$macrocall $name=omni-mode-call-macro depth=<<__depth__>> />
             </$qualify>
         </$list>
+        <$list filter="[<mode>match[read]then[]] [<mode>match[toc]then[]] [<mode>match[namedro]then[]] [<mode>match[list]then[]]" variable="null" emptyMessage=<<can-omni-bottomadd>>/>
     </div>
     <$list filter="[<mode>!match[toc]then[]]" variable="null" emptyMessage=<<can-omni-singleview>>/>   
 </div>

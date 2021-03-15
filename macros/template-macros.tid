@@ -4,6 +4,7 @@ title: $:/plugins/can/omni/template-macros
 \whitespace trim
 
 \define everyedit(depth)
+	<<can-omni-peripheral>>
 	<<can-omni-folder>>
 	<<can-omni-itemhandle>>
 	<div class="can-omni-ctlrow">			
@@ -20,7 +21,7 @@ title: $:/plugins/can/omni/template-macros
     <<can-omni-text-region>>
 	<<can-omni-taglist>>
 	<$macrocall $name=omni-showomni depth=<<__depth__>> />
-	<<can-omni-peripheral>>
+
 \end
 
 

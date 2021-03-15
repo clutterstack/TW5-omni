@@ -23,6 +23,7 @@ type: text/vnd.tiddlywiki
 
 \define omni-startfieldedit-actions() <<omni-toggle-field-edit>><$action-setfield newfieldvalue="""$(caption-or-title)$""" $timestamp='no'/>
 
+
 \define omni-submitfieldedit-actions() <$action-setfield $(editFieldName)$={{!!newfieldvalue}} /><$action-setfield $field=newfieldvalue /><$action-deletetiddler $tiddler=<<editfieldstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/>
 
 \define omni-cancelfieldedit-actions() <<omni-toggle-field-view>>

@@ -210,7 +210,7 @@ margin-top: -1rem;
 
 p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
 .can-omni-text p:nth-child(1) { margin-top: 0; }
-/* .can-omni-text p:last-child { margin-bottom: 0.6em; }*/
+.can-omni-text p:last-child { margin-bottom: 0.6em; }
 
 .omni-showomni {grid-column:3/5; }
 
@@ -227,11 +227,11 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
 /* Above and below item droppable zones */
 /* ----------------------------------------- */
 
-.can-omni-peripheral, .can-omni-topadd { grid-column: 1/5; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background-color: #ffffff;}
+.can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { grid-column: 1/5; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background-color: #ffffff;}
 
-.can-omni-peripheral .tc-droppable, .can-omni-topadd .tc-droppable { width: 100%; display: flex; flex-direction: row; justify-content: flex-end; }
+.can-omni-peripheral .tc-droppable, .can-omni-topadd .tc-droppable, .can-omni-bottomadd .tc-droppable { width: 100%; display: flex; flex-direction: row; justify-content: flex-end; }
 
-.can-omni-peripheral .tc-dragover, .can-omni-topadd .tc-dragover, .tc-dragover .can-omnibus-droppable { border-radius: 5px;background-color: #0ff; }
+.can-omni-peripheral .tc-dragover, .can-omni-topadd .tc-dragover, .can-omni-bottomadd .tc-dragover, .tc-dragover .can-omnibus-droppable { border-radius: 5px;background-color: #0ff; }
 
 .can-omni-toggleadd .can-omni-button {justify-content: flex-end;}
 
@@ -241,7 +241,7 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
 
 .can-omni-toggleadd:hover {background-color: #efefef;}
 
-.can-omni-bottom { grid-column: 2/5; margin-bottom: 0.8em; }
+.can-omni-bottom, .can-omni-top { grid-column: 2/5; margin-bottom: 0.8em; }
 
 /* ----------------------------------------- */
 /* Depending on view mode */

@@ -14,6 +14,9 @@ type: text/vnd.tiddlywiki
 \define top-quick-openstatetid() $:/keepstate/can/omni/top-openstate/$(omniqual)$
 \define top-quickstatetid() $:/keepstate/can/omni/top-quickstate/$(omniqual)$
 
+\define bottom-quick-openstatetid() $:/keepstate/can/omni/bottom-openstate/$(omniqual)$
+\define bottom-quickstatetid() $:/keepstate/can/omni/bottom-quickstate/$(omniqual)$
+
 \define peri-quick-openstatetid() $:/keepstate/can/omni/peri-openstate/$(createdid)$
 \define peri-quickstatetid() $:/keepstate/can/omni/peri-quickstate/$(createdid)$
 
