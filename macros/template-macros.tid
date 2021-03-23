@@ -3,6 +3,17 @@ title: $:/plugins/can/omni/template-macros
 
 \whitespace trim
 
+
+\define everyslim(depth)
+	<<can-omni-peripheral-slim>>
+    <<can-omni-folder>>
+	<<can-omni-itemhandle>>
+    <<can-omni-text-region>>
+	<<can-omni-taglist>>
+	<$macrocall $name=omni-showomni depth=<<__depth__>> />
+\end
+
+
 \define everyedit(depth)
 	<<can-omni-peripheral>>
 	<<can-omni-folder>>

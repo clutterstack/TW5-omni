@@ -227,14 +227,30 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
 /* Above and below item droppable zones */
 /* ----------------------------------------- */
 
-.can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { grid-column: 1/5; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background-color: #ffffff;}
+.can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { grid-column: 1/5;}
+
+.can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { border-radius: 4px; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background-color: #ffffff;}
 
 .can-omni-peripheral .tc-droppable, .can-omni-topadd .tc-droppable, .can-omni-bottomadd .tc-droppable { width: 100%; display: flex; flex-direction: row; justify-content: flex-end; }
 
-.can-omni-peripheral .tc-dragover, .can-omni-topadd .tc-dragover, .can-omni-bottomadd .tc-dragover, .tc-dragover .can-omnibus-droppable { border-radius: 5px;background-color: #0ff; }
+
+
+.can-omni-peripheral-slim {grid-column: 2/5; width: 100%; display: flex; flex-direction: row; justify-content: flex-end; }
+
+.can-omni-peripheral-slim .can-omni-toggleadd {flex-shrink:1;}
+
+.can-omni-peripheral-slim:hover {background-color: #efefef;}
+.can-omni-peripheral-slim .can-omni-toggleadd {flex-grow: 1;}
+.can-omni-peripheral-slim .can-omni-button {border-radius: 1px;}
+
+.can-omni-peripheral-slim .can-omni-button svg {height: 10pt; width: 10pt;}
+
+
+.can-omni-peripheral .tc-dragover, .can-omni-peripheral-slim.tc-dragover, .can-omni-topadd .tc-dragover, .can-omni-bottomadd .tc-dragover, .tc-dragover .can-omnibus-droppable { border-radius: 5px;background-color: #0ff; }
+
+.can-omni-peripheral .can-omni-button {border-radius: 4px; width: 100%;}
 
 .can-omni-toggleadd .can-omni-button {justify-content: flex-end;}
-
 .can-omni-toggleadd .can-omni-button svg {height: 10pt; width: 10pt;}
 
 .can-omni-toggleadd, .can-omni-toggleadd .can-omni-button {padding: 1px; border-radius: 4px; width: 100%;}

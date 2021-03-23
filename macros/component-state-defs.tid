@@ -3,23 +3,23 @@ tags: $:/tags/Macro
 title: $:/plugins/can/omni/component-state-defs
 type: text/vnd.tiddlywiki
 
-\define editstatetid() $:/keepstate/can/omni/editstate/$(createdid)$
+\define editstatetid() $:/state/can/omni/editstate/$(createdid)$
 
-\define edittitlestatetid() $:/keepstate/can/omni/edittitlestate/$(createdid)$
+\define edittitlestatetid() $:/state/can/omni/edittitlestate/$(createdid)$
 
-\define editfieldstatetid() $:/keepstate/can/omni/edit-$(editFieldName)$/$(createdid)$
+\define editfieldstatetid() $:/state/can/omni/edit-$(editFieldName)$/$(createdid)$
 
-\define foldstatetiddler() $:/keepstate/can/omni/fold/$(createdid)$
+\define foldstatetiddler() $:/state/can/omni/fold/$(createdid)$
 
-\define top-quick-openstatetid() $:/keepstate/can/omni/top-openstate/$(omniqual)$
-\define top-quickstatetid() $:/keepstate/can/omni/top-quickstate/$(omniqual)$
+\define top-quick-openstatetid() $:/state/can/omni/top-openstate/$(omniqual)$
+\define top-quickstatetid() $:/state/can/omni/top-quickstate/$(omniqual)$
 
-\define bottom-quick-openstatetid() $:/keepstate/can/omni/bottom-openstate/$(omniqual)$
-\define bottom-quickstatetid() $:/keepstate/can/omni/bottom-quickstate/$(omniqual)$
+\define bottom-quick-openstatetid() $:/state/can/omni/bottom-openstate/$(omniqual)$
+\define bottom-quickstatetid() $:/state/can/omni/bottom-quickstate/$(omniqual)$
 
-\define peri-quick-openstatetid() $:/keepstate/can/omni/peri-openstate/$(createdid)$
-\define peri-quickstatetid() $:/keepstate/can/omni/peri-quickstate/$(createdid)$
+\define peri-quick-openstatetid() $:/state/can/omni/peri-openstate/$(createdid)$
+\define peri-quickstatetid() $:/state/can/omni/peri-quickstate/$(createdid)$
 
-\define append-quick-openstatetid() $:/keepstate/can/omni/append-openstate/$(omniqual)$
-\define append-quickstatetid() $:/keepstate/can/omni/append-quickstate/$(omniqual)$
+\define append-quick-openstatetid() $:/state/can/omni/append-openstate/$(omniqual)$
+\define append-quickstatetid() $:/state/can/omni/append-quickstate/$(omniqual)$
 

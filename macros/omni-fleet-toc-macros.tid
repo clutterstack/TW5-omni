@@ -3,7 +3,7 @@ tags: $:/tags/Macro
 
 \whitespace trim
 
-\define omnitoclabel(chars:100)
+\define omnitoclabel(chars:40)
 <$wikify name="can-long-label" text={{{ [{!!title}!match{!!created}] ~[<currentTiddler>get[text]!is[blank]] ~[<currentTiddler>get[title]]}}}>
 		<$text text={{{ [<can-long-label>split[]first[$chars$]join[]] }}}/>
 </$wikify>
