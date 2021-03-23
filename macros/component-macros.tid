@@ -66,8 +66,10 @@ type: text/vnd.tiddlywiki
 	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-canceledit-actions>>">
 	<$keyboard tag="div" class="tc-can-keyboard" key="tab" actions="<<omni-tab-actions>>">
 	<$keyboard tag="div" class="tc-can-keyboard" key="shift-tab" actions="<<omni-shift-tab-actions>>">
+	<$keyboard tag="div" class="tc-can-keyboard" key="alt-up" actions="<<omni-move-earlier-actions>>">
+	<$keyboard tag="div" class="tc-can-keyboard" key="alt-down" actions="<<omni-move-later-actions>>">
 		<$edit-text class="can-quickadd-textarea tc-tiddler-body" field='text' placeholder='New tiddler text' rows="1" minHeight="0" focus=true/>
-	</$keyboard></$keyboard></$keyboard></$keyboard></$keyboard>
+	</$keyboard></$keyboard></$keyboard></$keyboard></$keyboard></$keyboard></$keyboard>
 </$reveal>
 \end
 

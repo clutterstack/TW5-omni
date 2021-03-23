@@ -19,6 +19,15 @@ type: text/vnd.tiddlywiki
 ></$vars>
 \end
 
+
+\define omni-move-later-actions()
+<$action-listops $tiddler=<<parentval>> $field="list" $subfilter="+[move[$(currentTiddler)$]]"/>
+\end
+
+\define omni-move-earlier-actions()
+<$action-listops $tiddler=<<parentval>> $field="list" $subfilter="+[move:-1[$(currentTiddler)$]]"/>
+\end
+
 \define omni-samplemodal() <$vars nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}}><$action-sendmessage $message="tm-modal" $param="SampleModal" param1=<<nexttid>> /></$vars>
 
 
