@@ -18,7 +18,7 @@ title: $:/plugins/can/omni/omnibus-macros
 \define compose-omni-toplevel() <$macrocall $name=compose-omni depth=0 />
 
 \define compose-omni(mode:{{!!omnibus-mode}} depth)
-<$vars datatiddler=$(omni-datastate)$ parentval=<<currentTiddler>> >
+<$vars datatiddler=$(omni-datastate)$ grandparentval=<<parentval>> parentval=<<currentTiddler>> >
 <$set name=mode value=$mode$ emptyValue=read >
 <$qualify name=omniqual title={{!!created}}>
 <<can-omni-toptools>>

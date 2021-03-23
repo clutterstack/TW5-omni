@@ -10,6 +10,18 @@ type: text/vnd.tiddlywiki
 \define omni-canceledit-actions() <$action-setfield text={{$(editstatetid)$}} $timestamp='no'/><<omni-toggle-view>>
 
 
+\define omni-tab-actions() 
+<$vars prevtid={{{[[$(parentval)$]get[list]enlist-input[]before[$(currentTiddler)$]]}}}><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<prevtid>> /><$action-listops $tiddler=<<prevtid>> $field="list" $subfilter="[[$(currentTiddler)$]]" /><$action-listops $tiddler=<<prevtid>> $field="tags" $subfilter="omnibus"/><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/></$vars>
+\end
+
+\define omni-shift-tab-actions() 
+<$vars nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}}><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<grandparentval>> /><$action-listops $tiddler=<<grandparentval>> $field="list" $subfilter="+[insertbefore:nexttid[$(currentTiddler)$]]" /><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/>
+></$vars>
+\end
+
+\define omni-samplemodal() <$vars nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}}><$action-sendmessage $message="tm-modal" $param="SampleModal" param1=<<nexttid>> /></$vars>
+
+
 \define omni-toggle-title-edit() <$action-setfield $tiddler=<<edittitlestatetid>> editstate="edit" $timestamp='no'/>
 \define omni-toggle-title-view() <$action-setfield $tiddler=<<edittitlestatetid>> editstate="view" $timestamp='no'/>
 
@@ -22,7 +34,6 @@ type: text/vnd.tiddlywiki
 \define omni-toggle-field-view() <$action-setfield $tiddler=<<editfieldstatetid>> editstate="view"  $timestamp='no'/>
 
 \define omni-startfieldedit-actions() <<omni-toggle-field-edit>><$action-setfield newfieldvalue="""$(caption-or-title)$""" $timestamp='no'/>
-
 
 \define omni-submitfieldedit-actions() <$action-setfield $(editFieldName)$={{!!newfieldvalue}}  $timestamp='no'/><$action-setfield $field=newfieldvalue /><$action-deletetiddler $tiddler=<<editfieldstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/>
 
