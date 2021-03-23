@@ -37,6 +37,7 @@ title: $:/plugins/can/omni/template-macros
 
 
 \define everypost(depth)
+	<<can-omni-peripheral>>
 	<<can-omni-folder>>
 	<<can-omni-itemhandle>>
 	<div class="can-omni-ctlrow">			
@@ -52,7 +53,6 @@ title: $:/plugins/can/omni/template-macros
 	</div>
     <<can-omni-nb-region>>
 	<$macrocall $name=omni-showomni depth=<<__depth__>> />
-	<<can-omni-peripheral>>
 \end
 
 \define everypostro(depth)
@@ -67,6 +67,7 @@ title: $:/plugins/can/omni/template-macros
 \end
 
 \define everynamed()
+	<<can-omni-peripheral>>
 	<<can-omni-folder>>
 	<<can-omni-itemhandle>>
 	<div class="can-omni-ctlrow">		
@@ -82,7 +83,6 @@ title: $:/plugins/can/omni/template-macros
     <<can-omni-text-region>>
 	<<can-omni-taglist>>
 	<$macrocall $name=omni-showomni depth=<<__depth__>> />
-	<<can-omni-peripheral>>
 \end
 
 
@@ -103,6 +103,7 @@ title: $:/plugins/can/omni/template-macros
 \end
 
 \define everytodo()
+	<<can-omni-peripheral>>
 	<<can-omni-itemhandle>>
 	<<can-omni-todo-region>>
 	<div class="can-omni-ctl">
@@ -112,7 +113,6 @@ title: $:/plugins/can/omni/template-macros
 		<<can-omni-mark-done>>
 	</div>
 	<$macrocall $name=omni-showomni depth=<<__depth__>> />
-	<<can-omni-peripheral>>
 \end
 
 \define everylist()
