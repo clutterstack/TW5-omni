@@ -17,12 +17,11 @@ type: text/vnd.tiddlywiki
 \define omni-deomnify() <$action-listops $tiddler=<<prevtid>> $field="tags" $subfilter="-omnibus"/>
 
 \define omni-shift-tab-actions() 
-<$vars startparent={{{[<parentval>]}}} startgrand={{{[<grandparentval>]}}} nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}}><$list filter="[<startgrand>get[title]]" variable=ignore ><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<grandparentval>> /><$action-listops $tiddler=<<grandparentval>> $field="list" $subfilter="+[insertbefore:nexttid[$(currentTiddler)$]]" /><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/>
-><$list filter="[<startparent>get[list]]" emptyMessage="""<$action-listops $tiddler=<<startparent>> $field="tags" $subfilter="-omnibus"/>""" variable=ignore ></$list></$list></$vars>
+<$set name=startparent filter="[<parentval>]"><$vars startgrand={{{[<grandparentval>]}}} nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}} parentlist={{{[<parentval>get[list]] -[<currentTiddler>]}}}><$list filter="[<startgrand>get[title]]" variable=ignore ><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<grandparentval>> /><$action-listops $tiddler=<<grandparentval>> $field="list" $subfilter="+[insertbefore:nexttid[$(currentTiddler)$]]" /><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/><$list filter="[<parentval>get[list]] -[[$(currentTiddler)$]]" emptyMessage="""<$action-listops $tiddler=<<parentval>> $field="tags" $subfilter="-omnibus"/>""" variable=ignore ></$list></$list></$vars>
 \end
 
 
-\define omni-samplemodal() <$vars nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}}><$action-sendmessage $message="tm-modal" $param="SampleModal" param1=<<parentval>> /></$vars>
+\define omni-samplemodal() <$vars nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}} parentlist={{{[<parentval>get[list]] -[<currentTiddler>]}}}><$action-sendmessage $message="tm-modal" $param="SampleModal" param1=<<parentlist>> /></$vars>
 
 
 \define omni-move-later-actions()
