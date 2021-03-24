@@ -6,7 +6,6 @@ type: text/vnd.tiddlywiki
 
 \whitespace trim
 
-
 \define can-omni-peripheral-slim()
 <$vars openstatetid=<<peri-quick-openstatetid>> quickstatetid=<<peri-quickstatetid>>>
 <$droppable class="can-omni-peripheral-slim" tag="div" actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<parentval>> $subfilter='+[insertbefore:currentTiddler<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
@@ -35,7 +34,6 @@ type: text/vnd.tiddlywiki
 </$button>
 \end
 
-
 \define can-omni-itemhandle()
 <$button tag="div" class="can-omni-itemhandle tc-btn-invisible" tooltip="Click to toggle text edit. Drag to move list entry." aria-label="Click to toggle text edit. Drag to move list entry.">
 <$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >
@@ -53,11 +51,10 @@ type: text/vnd.tiddlywiki
 \define can-omni-text()
 <$reveal type="nomatch" stateTitle=<<editstatetid>> stateField=editstate text="edit" tag=div>
     <$importvariables filter="[[$(parentval)$]] [list[$(parentval)$]]">
-
-    <div class="omni-text-as-button tc-tiddler-body" title="Double-click to edit text." aria-label="Double-click to edit text.">
+    <$droppable class="omni-text-as-button tc-tiddler-body" tag="div" actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<currentTiddler>> $subfilter='+[<actionTiddler>]'/><$action-listops $tiddler=<<currentTiddler>> $field='tags' $subfilter='+omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
     <$omnidblclick actions="<<omni-startedit-actions>>"/>
 	<$transclude $tiddler="<<currentTiddler>>" mode="block"/>
-	</div>
+	</$droppable>
     </$importvariables>
 </$reveal>
 <$reveal type="match" stateTitle=<<editstatetid>> stateField=editstate text="edit" tag=div>

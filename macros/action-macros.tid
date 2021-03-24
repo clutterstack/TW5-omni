@@ -14,8 +14,6 @@ type: text/vnd.tiddlywiki
 <$vars prevtid={{{[[$(parentval)$]get[list]enlist-input[]before[$(currentTiddler)$]]}}}><$list filter="[<prevtid>get[title]]" variable=ignore><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<prevtid>> /><$action-listops $tiddler=<<prevtid>> $field="list" $subfilter="[[$(currentTiddler)$]]" /><$action-listops $tiddler=<<prevtid>> $field="tags" $subfilter="omnibus"/><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/></$list></$vars>
 \end
 
-\define omni-deomnify() <$action-listops $tiddler=<<prevtid>> $field="tags" $subfilter="-omnibus"/>
-
 \define omni-shift-tab-actions() 
 <$set name=startparent filter="[<parentval>]"><$vars startgrand={{{[<grandparentval>]}}} nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}} parentlist={{{[<parentval>get[list]] -[<currentTiddler>]}}}><$list filter="[<startgrand>get[title]]" variable=ignore ><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<grandparentval>> /><$action-listops $tiddler=<<grandparentval>> $field="list" $subfilter="+[insertbefore:nexttid[$(currentTiddler)$]]" /><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/><$list filter="[<parentval>get[list]] -[[$(currentTiddler)$]]" emptyMessage="""<$action-listops $tiddler=<<parentval>> $field="tags" $subfilter="-omnibus"/>""" variable=ignore ></$list></$list></$vars>
 \end
@@ -57,7 +55,7 @@ type: text/vnd.tiddlywiki
 \define can-omni-shift-drop() 
 <$list filter="[<modifier>match[shift]]" variable="null">
 	<$set name=dragstarttitle filter="[<actionTiddler>get[dragstarttiddler]]" select="0">
-	<$action-listops $tiddler=<<dragstarttitle>> $subfilter='-[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='-[<parentval>]'/>
+	<$action-listops $tiddler=<<dragstarttitle>> $subfilter='-[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='-[<parentval>]'/><$list filter="[<dragstarttitle>get[list]] -[<actionTiddler>]" emptyMessage="""<$action-listops $tiddler=<<dragstarttitle>> $field="tags" $subfilter="-omnibus"/>""" variable=ignore ></$list>
 	</$set>
 </$list>
 \end
