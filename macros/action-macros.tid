@@ -11,14 +11,14 @@ type: text/vnd.tiddlywiki
 
 
 \define omni-tab-actions() 
-<$vars prevtid={{{[[$(parentval)$]get[list]enlist-input[]before[$(currentTiddler)$]]}}}><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<prevtid>> /><$action-listops $tiddler=<<prevtid>> $field="list" $subfilter="[[$(currentTiddler)$]]" /><$action-listops $tiddler=<<prevtid>> $field="tags" $subfilter="omnibus"/><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/></$vars>
+<$vars prevtid={{{[[$(parentval)$]get[list]enlist-input[]before[$(currentTiddler)$]]}}}><$list filter="[<prevtid>get[title]]" variable=ignore><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<prevtid>> /><$action-listops $tiddler=<<prevtid>> $field="list" $subfilter="[[$(currentTiddler)$]]" /><$action-listops $tiddler=<<prevtid>> $field="tags" $subfilter="omnibus"/><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/></$list></$vars>
 \end
 
 \define omni-deomnify() <$action-listops $tiddler=<<prevtid>> $field="tags" $subfilter="-omnibus"/>
 
 \define omni-shift-tab-actions() 
-<$vars startparent={{{[<parentval>]}}} nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}}><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<grandparentval>> /><$action-listops $tiddler=<<grandparentval>> $field="list" $subfilter="+[insertbefore:nexttid[$(currentTiddler)$]]" /><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/>
-><$list filter="[<prevtid>get[list]]" emptyMessage="""<$action-listops $tiddler=<<startparent>> $field="tags" $subfilter="-omnibus"/>""" variable=ignore ></$list></$vars>
+<$vars startparent={{{[<parentval>]}}} startgrand={{{[<grandparentval>]}}} nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}}><$list filter="[<startgrand>get[title]]" variable=ignore ><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<grandparentval>> /><$action-listops $tiddler=<<grandparentval>> $field="list" $subfilter="+[insertbefore:nexttid[$(currentTiddler)$]]" /><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/>
+><$list filter="[<startparent>get[list]]" emptyMessage="""<$action-listops $tiddler=<<startparent>> $field="tags" $subfilter="-omnibus"/>""" variable=ignore ></$list></$list></$vars>
 \end
 
 
