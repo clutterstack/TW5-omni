@@ -14,10 +14,15 @@ type: text/vnd.tiddlywiki
 <$vars prevtid={{{[[$(parentval)$]get[list]enlist-input[]before[$(currentTiddler)$]]}}}><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<prevtid>> /><$action-listops $tiddler=<<prevtid>> $field="list" $subfilter="[[$(currentTiddler)$]]" /><$action-listops $tiddler=<<prevtid>> $field="tags" $subfilter="omnibus"/><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/></$vars>
 \end
 
+\define omni-deomnify() <$action-listops $tiddler=<<prevtid>> $field="tags" $subfilter="-omnibus"/>
+
 \define omni-shift-tab-actions() 
-<$vars nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}}><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<grandparentval>> /><$action-listops $tiddler=<<grandparentval>> $field="list" $subfilter="+[insertbefore:nexttid[$(currentTiddler)$]]" /><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/>
-></$vars>
+<$vars startparent={{{[<parentval>]}}} nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}}><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<grandparentval>> /><$action-listops $tiddler=<<grandparentval>> $field="list" $subfilter="+[insertbefore:nexttid[$(currentTiddler)$]]" /><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/>
+><$list filter="[<prevtid>get[list]]" emptyMessage="""<$action-listops $tiddler=<<startparent>> $field="tags" $subfilter="-omnibus"/>""" variable=ignore ></$list></$vars>
 \end
+
+
+\define omni-samplemodal() <$vars nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}}><$action-sendmessage $message="tm-modal" $param="SampleModal" param1=<<parentval>> /></$vars>
 
 
 \define omni-move-later-actions()
@@ -27,9 +32,6 @@ type: text/vnd.tiddlywiki
 \define omni-move-earlier-actions()
 <$action-listops $tiddler=<<parentval>> $field="list" $subfilter="+[move:-1[$(currentTiddler)$]]"/>
 \end
-
-\define omni-samplemodal() <$vars nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}}><$action-sendmessage $message="tm-modal" $param="SampleModal" param1=<<nexttid>> /></$vars>
-
 
 \define omni-toggle-title-edit() <$action-setfield $tiddler=<<edittitlestatetid>> editstate="edit" $timestamp='no'/>
 \define omni-toggle-title-view() <$action-setfield $tiddler=<<edittitlestatetid>> editstate="view" $timestamp='no'/>
