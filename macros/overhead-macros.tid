@@ -75,9 +75,9 @@ type: text/vnd.tiddlywiki
 		<<can-omni-toggleadd>>
 	</$droppable>
 </div>
-<$reveal type=match state=<<openstatetid>> text="open" tag=div class="can-omni-top">
+<$list filter="[<openstatetid>get[text]match[open]]">
 	<$macrocall $name="quickadd" layout="subui" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listtop" openstatetid=<<openstatetid>> endstate="closed" />
-</$reveal>
+</$list>
 </$vars>
 \end
 
@@ -88,22 +88,22 @@ type: text/vnd.tiddlywiki
 		<<can-omni-toggleadd>>
 	</$droppable>
 </div>
-<$reveal type=match state=<<openstatetid>> text="open" tag=div class="can-omni-bottom">
+<$list filter="[<openstatetid>get[text]match[open]]">
 	<$macrocall $name="quickadd" layout="subui" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listbottom" openstatetid=<<openstatetid>> endstate="closed" />
-</$reveal>
+</$list>
 </$vars>
 \end
 
-\define can-omni-peripheral()
+\define can-omni-peripheral-old()
 <$vars openstatetid=<<peri-quick-openstatetid>> quickstatetid=<<peri-quickstatetid>>>
 <div class="can-omni-peripheral">
 	<$droppable tag="div" actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<parentval>> $subfilter='+[insertbefore:currentTiddler<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
 		<$macrocall $name="can-omni-toggleadd"/>
 	</$droppable>
 </div>
-<$reveal type=match state=<<openstatetid>> text="open" tag=div class="can-omni-bottom">
-	<$macrocall $name="quickadd" position="omni-inlist" layout="subui" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> openstatetid=<<openstatetid>> endstate="closed" />
-</$reveal>
+<$list filter="[<openstatetid>get[text]match[open]]">
+<$macrocall $name="quickadd" position="omni-inlist" layout="subui" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> openstatetid=<<openstatetid>> endstate="closed" />
+</$list>
 </$vars>
 \end
 

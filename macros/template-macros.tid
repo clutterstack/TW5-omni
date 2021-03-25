@@ -5,11 +5,16 @@ title: $:/plugins/can/omni/template-macros
 
 
 \define everyslim(depth)
-	<<can-omni-peripheral-slim>>
-    <<can-omni-folder>>
+	<<can-omni-peripheral>>
 	<<can-omni-itemhandle>>
+    <<can-omni-folder>>
     <<can-omni-text-region>>
-	<<can-omni-taglist>>
+    <div class="can-omni-subctl">
+        <<can-omni-link>>
+        <<can-omni-delist>>
+        <<can-omni-delete>>
+        <<can-omni-make-omnibus>>
+    </div>
 	<$macrocall $name=omni-showomni depth=<<__depth__>> />
 \end
 

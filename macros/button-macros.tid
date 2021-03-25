@@ -23,20 +23,19 @@ tags: $:/tags/Macro
 \end
 
 \define can-omni-toggleadd()
-	<$reveal type=nomatch state=<<openstatetid>> text="open" tag=div class="can-omni-toggleadd"> 
-	<$button tag="div" class="can-omni-button can-rightedge tc-btn-invisible" tooltip="Add tiddler here" aria-label="Add tiddler here" actions="<$action-setfield $tiddler=<<openstatetid>> text='open'/>" >{{$:/core/images/new-button}}</$button>
-	</$reveal>
-	<$reveal type=match state=<<openstatetid>> text="open" tag=div class="can-omni-toggleadd" >
-	<$button tag="div" class="can-omni-button can-rightedge tc-btn-invisible" actions="<$action-setfield $tiddler=<<openstatetid>> text='closed'/>">{{$:/core/images/close-button}}</$button>
-	</$reveal>
+<$list filter="[<openstatetid>get[text]match[open]]" 
+    emptyMessage="""<$button class="can-omni-button tc-btn-invisible can-omni-toggleadd" tooltip="Add tiddler here" aria-label="Add tiddler here" actions="<$action-setfield $tiddler=<<openstatetid>> text='open'/>" >{{$:/core/images/new-button}}</$button>""" 
+    variable="ignore">
+        <$button class="can-omni-button tc-btn-invisible can-omni-toggleadd" actions="<$action-setfield $tiddler=<<openstatetid>> text='closed'/>">{{$:/core/images/close-button}}</$button>
+</$list>
 \end
 
 \define can-omni-toggleadd-slim()
 	<$reveal type=nomatch state=<<openstatetid>> text="open" tag=div> 
-	<$button tag="div" class="can-omni-button tc-btn-invisible" tooltip="Add tiddler here" aria-label="Add tiddler here" actions="<$action-setfield $tiddler=<<openstatetid>> text='open'/>" >{{$:/core/images/new-button}}</$button>
+	<$button class="can-omni-button tc-btn-invisible" tooltip="Add tiddler here" aria-label="Add tiddler here" actions="<$action-setfield $tiddler=<<openstatetid>> text='open'/>" >{{$:/core/images/new-button}}</$button>
 	</$reveal>
 	<$reveal type=match state=<<openstatetid>> text="open" tag=div>
-	<$button tag="div" class="can-omni-button tc-btn-invisible" actions="<$action-setfield $tiddler=<<openstatetid>> text='closed'/>">{{$:/core/images/close-button}}</$button>
+	<$button class="can-omni-button tc-btn-invisible" actions="<$action-setfield $tiddler=<<openstatetid>> text='closed'/>">{{$:/core/images/close-button}}</$button>
 	</$reveal>
 \end
 
@@ -55,7 +54,7 @@ tags: $:/tags/Macro
 
 \define can-omni-title-link()
 <$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >
-<$button tag="div" class="can-omni-button tc-btn-invisible" to={{!!title}} tooltip="Tiddler link" aria-label="Tiddler link">
+<$button class="can-omni-button tc-btn-invisible" to={{!!title}} tooltip="Tiddler link" aria-label="Tiddler link">
 <div>{{$:/plugins/can/omni/fish-water.svg}}</div><div class="can-omni-title"><$text text=<<currentTiddler>>/></div>
 </$button></$draggable>
 \end

@@ -19,11 +19,11 @@ title: $:/plugins/can/omni/omnibus-macros
 
 \define compose-omni(mode:{{!!omnibus-mode}} depth)
 <$vars datatiddler=$(omni-datastate)$ grandparentval=<<parentval>> parentval=<<currentTiddler>> >
-<$set name=mode value=$mode$ emptyValue=read >
+<$set name="mode" value=$mode$ emptyValue="edit" >
 <$qualify name=omniqual title={{!!created}}>
-<<can-omni-toptools>>
 <div class="omni-stream-container">
     <div class=<<omni-stream-class>> >
+    <<can-omni-toptools>>
         <!--<$list filter="[<mode>match[read]then[]] [<mode>match[toc]then[]] [<mode>match[namedro]then[]] [<mode>match[list]then[]]" variable="null" emptyMessage=<<can-omni-topadd>>/>-->
         <$list filter="[all[current]list[]is[tiddler]]">
             <$qualify name=createdid title={{!!created}} >
