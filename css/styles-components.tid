@@ -490,6 +490,10 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
     line-height: 16pt; 
     background-color: #ffffff;}
 
+.tree .can-omni-bottomadd {
+    margin-left: 2em;
+}
+
 .can-omni-peripheral .tc-droppable, .can-omni-topadd .tc-droppable, .can-omni-bottomadd .tc-droppable { width: 100%; display: flex; flex-direction: row;}
 
 button.can-omni-toggleadd {
