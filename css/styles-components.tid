@@ -74,6 +74,10 @@ grid-template-rows: auto;
     box-sizing: content-box;
 }
 
+.tree .omni-item-container.toplevel {
+    border: none;
+}
+
 .tree .omni-item-container:last-of-type {
     border-left: 1px solid rgba(0,0,0,0);
 }

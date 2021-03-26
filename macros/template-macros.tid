@@ -5,7 +5,8 @@ title: $:/plugins/can/omni/template-macros
 
 \define everytree(depth)
     <!-- <div class="omni-branch">-->
-        <div class="omni-item-container" >
+    <$set name=testclass filter="[[omni-item-container]] [[$depth$]match[0]then[toplevel]]" >
+        <div class=<<testclass>> >
         <!--<div class="omni-branch-edge"></div>-->
         <$list filter="[[$depth$]!match[0]]">
         <div class="omni-branch-line"></div>
@@ -21,11 +22,11 @@ title: $:/plugins/can/omni/template-macros
             <<can-omni-make-omnibus>>
         </div>
        <!-- </div> -->
-    <!-- </div> -->
     <$list filter="[<currentTiddler>tag[omnibus]] +[all[current]list[]limit[1]]" variable="ignore">
     <<can-omni-folder>>
     </$list>
     <$list filter="[{$(foldstatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>
+    </div>
 \end
 
 \define everyslim(depth)
