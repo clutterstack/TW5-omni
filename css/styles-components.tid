@@ -103,10 +103,11 @@ grid-template-rows: auto;
 }
 
 .tree .can-omni-text {
-    border-radius: 5px;
+    border-radius: 0 5px 5px 0;
     background-color: <<colour page-background>>;
-    grid-column: 3/5;
+    grid-column: 4/5;
     padding: 0.2em;
+    border: none;
 }
 
 .tree .omni-showomni.tc-reveal {
@@ -193,6 +194,18 @@ grid-template-rows: auto;
     grid-row: span 4;}
 
 .can-omni-itemhandle .tc-draggable { height: 100%;}
+
+
+.tree .can-omni-itemhandle {width: 1em; height: 100%; grid-column: 3/4; grid-row: span 1;}
+
+.tree .can-omni-itemhandle-inner {
+    border-radius: 5px 0 0 5px; 
+    box-sizing: border-box;
+    height: 100%; 
+    width: 100%;
+    background-color: <<colour page-background>>;
+    margin:0;
+    }
 
 .can-omni-itemhandle-inner { 
     box-sizing: content-box; 
@@ -339,7 +352,7 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
     background: #000000;
 }
 
-.slim .can-omni-subctl {
+.slim .can-omni-subctl, .tree .can-omni-subctl {
     grid-column: 5/6;
     padding-left: 0.1em;
 }
