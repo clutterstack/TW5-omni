@@ -34,7 +34,7 @@ grid-column: 1/5;
 display: grid; 
 grid-template-columns: max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
 grid-template-rows: auto; 
-border: 1px solid cyan;
+/*border: 1px solid cyan;*/
 /* width: 100%; */
 }
 
@@ -44,15 +44,69 @@ border: 1px solid cyan;
     padding-left: 0.6em;
 }
 
+
 .can-omni-stream > div.tc-draggable { cursor: pointer; }
+
+.can-omni-stream.tree {
+    margin-left: 1em;
+    grid-template-columns: max-content max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
+    
+}
+
+.tree .omni-branch {
+    grid-column: 1/6;
+    grid-row: span 2;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-radius: 0 0 0 1px;
+    margin-left: 0em;
+    display: grid;
+    grid-template-columns: max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
+    grid-template-rows: auto;
+}
+
+.tree .omni-item-container {
+    grid-column: 1/6;
+    display: grid;
+    grid-template-columns: max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
+    grid-template-rows: auto;
+    border-left: 1px solid;
+    box-sizing: content-box;
+}
+
+.tree .omni-item-container:last-of-type {
+    border-left: 1px solid rgba(0,0,0,0);
+}
+
+.tree .omni-branch-edge {
+    grid-column: 1/2;
+    grid-row: span 2;
+    width: 0
+    box-sizing: border-box;
+    min-height: 1em;
+    margin-bottom: -1em;
+}
+.tree .omni-branch-line {
+    grid-column:2/3;
+    grid-row: span 1;
+    width:1em;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-radius: 0 0 0 10px;
+    box-sizing: border-box;
+    margin-bottom: -1em;
+    margin-left: -1px;
+}
 
 .tree .can-omni-text {
     border-radius: 5px;
     background-color: <<colour page-background>>;
-    margin: 1em 1em 1em 0;
     grid-column: 3/5;
+    padding: 0.2em;
 }
 
+.tree .omni-showomni.tc-reveal {
+}
 .omni-text-as-button {height: 100%;}
 
 .omni-text-as-button > :nth-child(1) {
@@ -287,17 +341,8 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
 }
 
 
-.tree .omni-branch {
-    grid-column: 2/3;
-    grid-row: span 2;
-    border-left: 1px solid;
-    border-bottom: 1px solid;
-    border-radius: 0 0 0 10px;
-}
-
-
 .can-omni-foldbutton {
-    grid-column: 2/3; 
+    grid-column: 3/4; 
     align-self: start; 
     height: 1.5em; 
     z-index: 9999; 
@@ -306,6 +351,10 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
     justify-content: flex-start;
     margin-top: 0.4em;
     }
+
+.tree .can-omni-foldbutton {
+    grid-column: 3/4;
+}
 
 .can-omni-stream.bar .can-omni-foldbutton {
     margin-left: -0.4em;
@@ -428,7 +477,14 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { grid-column: 2/6; border-radius: 4px; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background-color: #ffffff;}
 
-.tree .can-omni-peripheral, .tree .can-omni-topadd, .tree .can-omni-bottomadd { grid-column: 4/6; border-radius: 4px; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background-color: #ffffff;}
+.tree .can-omni-peripheral, .tree .can-omni-topadd, .tree .can-omni-bottomadd { 
+    grid-column: 3/6; 
+    border-radius: 4px; 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    line-height: 16pt; 
+    background-color: #ffffff;}
 
 .can-omni-peripheral .tc-droppable, .can-omni-topadd .tc-droppable, .can-omni-bottomadd .tc-droppable { width: 100%; display: flex; flex-direction: row;}
 
