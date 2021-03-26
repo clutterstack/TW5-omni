@@ -3,11 +3,27 @@ title: $:/plugins/can/omni/template-macros
 
 \whitespace trim
 
+\define everytree(depth)
+<div class="omni-branch">
+    <<can-omni-folder>>
+	<<can-omni-peripheral>>
+    <<can-omni-text-region>>
+    <div class="can-omni-subctl">
+        <<can-omni-link>>
+        <<can-omni-delist>>
+        <<can-omni-delete>>
+        <<can-omni-make-omnibus>>
+    </div>
+	<$macrocall $name=omni-showomni depth=<<__depth__>> />
+
+    </div>
+\end
+
 
 \define everyslim(depth)
 	<<can-omni-peripheral>>
-	<<can-omni-itemhandle>>
     <<can-omni-folder>>
+	<<can-omni-itemhandle>>
     <<can-omni-text-region>>
     <div class="can-omni-subctl">
         <<can-omni-link>>
@@ -17,7 +33,6 @@ title: $:/plugins/can/omni/template-macros
     </div>
 	<$macrocall $name=omni-showomni depth=<<__depth__>> />
 \end
-
 
 \define everyedit(depth)
 	<<can-omni-peripheral>>
@@ -34,6 +49,26 @@ title: $:/plugins/can/omni/template-macros
 			<<can-omni-make-omnibus>>
 		</div>
 	</div>
+    <<can-omni-text-region>>
+	<<can-omni-taglist>>
+	<$macrocall $name=omni-showomni depth=<<__depth__>> />
+
+\end
+
+\define everybar(depth)
+	<<can-omni-peripheral>>
+	<<can-omni-folder>>
+    <$draggable class="can-omni-ctlrow" tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >			
+		<div>
+			<<can-omni-title-link>>
+		</div>
+		<div class="can-omni-subctl">
+			<<can-omni-levelctl>>
+			<<can-omni-delist>>
+			<<can-omni-delete>>
+			<<can-omni-make-omnibus>>
+		</div>
+	</$draggable>
     <<can-omni-text-region>>
 	<<can-omni-taglist>>
 	<$macrocall $name=omni-showomni depth=<<__depth__>> />

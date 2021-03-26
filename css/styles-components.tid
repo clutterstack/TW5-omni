@@ -34,10 +34,24 @@ grid-column: 1/5;
 display: grid; 
 grid-template-columns: max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
 grid-template-rows: auto; 
+border: 1px solid cyan;
 /* width: 100%; */
 }
 
+.can-omni-stream.bar {
+    border-left: 1px solid <<colour muted-foreground>>;
+    margin-left: -0.4em;
+    padding-left: 0.6em;
+}
+
 .can-omni-stream > div.tc-draggable { cursor: pointer; }
+
+.tree .can-omni-text {
+    border-radius: 5px;
+    background-color: <<colour page-background>>;
+    margin: 1em 1em 1em 0;
+    grid-column: 3/5;
+}
 
 .omni-text-as-button {height: 100%;}
 
@@ -117,8 +131,8 @@ grid-template-rows: auto;
 /* Vertical item handle                   */
 /* ---------------------------------------*/
 
-.can-omni-itemhandle {width: 1.6em; height: 100%; grid-column: 2/3; 
-    grid-row: span 3;}
+.can-omni-itemhandle {width: 1.6em; height: 100%; grid-column: 3/4; 
+    grid-row: span 4;}
 
 .can-omni-itemhandle .tc-draggable { height: 100%;}
 
@@ -263,13 +277,27 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
     align-content: flex-start;
     }
 
+.tc-draggable.can-omni-ctlrow:hover svg {
+    background: #000000;
+}
+
 .slim .can-omni-subctl {
     grid-column: 5/6;
     padding-left: 0.1em;
 }
 
+
+.tree .omni-branch {
+    grid-column: 2/3;
+    grid-row: span 2;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    border-radius: 0 0 0 10px;
+}
+
+
 .can-omni-foldbutton {
-    grid-column: 3/4; 
+    grid-column: 2/3; 
     align-self: start; 
     height: 1.5em; 
     z-index: 9999; 
@@ -277,10 +305,12 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
     flex-direction: column; 
     justify-content: flex-start;
     margin-top: 0.4em;
-    margin-right: 0.2em;
-    margin-left: -1.2em;
     }
 
+.can-omni-stream.bar .can-omni-foldbutton {
+    margin-left: -0.4em;
+    margin-right: 0.4em;
+}
 .can-omni-foldbutton:hover svg {fill: #666666;}
 
 /* .slim .can-omni-bottomadd {
@@ -397,6 +427,8 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 /* ----------------------------------------- */
 
 .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { grid-column: 2/6; border-radius: 4px; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background-color: #ffffff;}
+
+.tree .can-omni-peripheral, .tree .can-omni-topadd, .tree .can-omni-bottomadd { grid-column: 4/6; border-radius: 4px; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background-color: #ffffff;}
 
 .can-omni-peripheral .tc-droppable, .can-omni-topadd .tc-droppable, .can-omni-bottomadd .tc-droppable { width: 100%; display: flex; flex-direction: row;}
 
