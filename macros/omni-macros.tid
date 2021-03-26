@@ -21,9 +21,9 @@ title: $:/plugins/can/omni/omnibus-macros
 <$vars datatiddler=$(omni-datastate)$ grandparentval=<<parentval>> parentval=<<currentTiddler>> >
 <$set name="mode" value=$mode$ emptyValue="edit" >
 <$qualify name=omniqual title={{!!created}}>
-<div class="omni-stream-container">
+<!-- <div class="omni-stream-container"> -->
     <div class=<<omni-stream-class>> >
-    <<can-omni-toptools>>
+    <$list filter="[<__depth__>compare:number:ne[0]then[]]" emptyMessage=<<can-omni-toptools>> variable="ignore"/>
         <!--<$list filter="[<mode>match[read]then[]] [<mode>match[toc]then[]] [<mode>match[namedro]then[]] [<mode>match[list]then[]]" variable="null" emptyMessage=<<can-omni-topadd>>/>-->
         <$list filter="[all[current]list[]is[tiddler]]">
             <$qualify name=createdid title={{!!created}} >
@@ -33,7 +33,7 @@ title: $:/plugins/can/omni/omnibus-macros
         <$list filter="[<mode>match[read]then[]] [<mode>match[toc]then[]] [<mode>match[namedro]then[]] [<mode>match[list]then[]]" variable="null" emptyMessage=<<can-omni-bottomadd>>/>
     </div>
     <$list filter="[<mode>!match[toc]then[]]" variable="null" emptyMessage=<<can-omni-singleview>>/>   
-</div>
+<!-- </div> -->
 </$qualify>
 </$set>
 </$vars>

@@ -32,18 +32,12 @@ type: text/vnd.tiddlywiki
 </$vars>
 \end
 
-
-
 \define can-omni-folder()
 <$button class="can-omni-foldbutton tc-btn-invisible can-small-text-button">
-<$reveal type="match" tag="div" state=<<foldstatetiddler>> text="hide" >
+<$list filter="[{$(foldstatetiddler)$}match[hide]]" emptyMessage=	"""<<omni-toggle-view>><$action-setfield $tiddler=<<foldstatetiddler>> $value="hide"/>{{$:/core/images/down-arrow}}""" variable="ignore">
 	<$action-setfield $tiddler=<<foldstatetiddler>> $value="show"/>
 	{{$:/core/images/right-arrow}}
-</$reveal>
-<$reveal type="nomatch" state=<<foldstatetiddler>> text="hide" >
-	<<omni-toggle-view>><$action-setfield $tiddler=<<foldstatetiddler>> $value="hide"/>
-	{{$:/core/images/down-arrow}}
-</$reveal>
+</$list>
 </$button>
 \end
 

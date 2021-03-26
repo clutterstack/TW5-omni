@@ -28,14 +28,13 @@ grid-column: 1/5;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 0.5rem;
 }
 
 .can-omni-stream { 
 display: grid; 
 grid-template-columns: max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
 grid-template-rows: auto; 
-width: 100%;
+/* width: 100%; */
 }
 
 .can-omni-stream > div.tc-draggable { cursor: pointer; }
@@ -119,7 +118,7 @@ width: 100%;
 /* ---------------------------------------*/
 
 .can-omni-itemhandle {width: 1.6em; height: 100%; grid-column: 2/3; 
-    grid-row: span 2;}
+    grid-row: span 3;}
 
 .can-omni-itemhandle .tc-draggable { height: 100%;}
 
@@ -225,12 +224,14 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
 
 /* Space to the left of subomnis */
 
-.can-omni-stream .can-omni-stream.todo, .can-omni-stream .can-omni-stream.read,  .can-omni-stream .can-omni-stream.namedro {
+.can-omni-stream.slim, .can-omni-stream.edit, .can-omni-stream.post, .can-omni-stream.named {
+    margin-left: -1.2em;
+}
+
+.can-omni-stream .can-omni-stream.edit, .can-omni-stream .can-omni-stream.slim, .can-omni-stream .can-omni-stream.todo, .can-omni-stream .can-omni-stream.read,  .can-omni-stream .can-omni-stream.namedro {
     margin-left: 1em;
 }
-.can-omni-stream.edit, .can-omni-stream.post, .can-omni-stream.named {
-    margin-left: -1.6em;
-}
+
 
 /* =======================*/
 /* Buttons, control rows  */
@@ -264,6 +265,7 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
 
 .slim .can-omni-subctl {
     grid-column: 5/6;
+    padding-left: 0.1em;
 }
 
 .can-omni-foldbutton {
@@ -281,7 +283,10 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
 
 .can-omni-foldbutton:hover svg {fill: #666666;}
 
-.can-omni-slim-edge {grid-column: 3/4; display:flex; flex-direction: column;}
+/* .slim .can-omni-bottomadd {
+    grid-column: 1/2;
+    margin-top: -0.4em;
+} */
 
 .namedro .can-omni-ctlrow {
     font-size: 1.4em;
@@ -335,9 +340,9 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .can-omni-foldall, .can-omni-viewswitcher {display: flex; flex-direction: row; justify-content: flex-end;}
 
-.can-omni-stream .can-omni-stream .can-omni-foldall {flex-direction: column; justify-content: flex-start;}
+.can-omni-stream .can-omni-stream .can-omni-foldall {margin-top: 0.4em; flex-direction: column; justify-content: flex-start;}
 
-.can-omni-stream .can-omni-stream .can-omni-foldall .can-omni-button {margin-bottom: 0.2em;}
+.can-omni-stream .can-omni-stream .can-omni-foldall .can-omni-button {margin-right: 0; margin-bottom: 0.2em;}
 
 .can-omni-viewswitcher .can-omni-button svg {
     width: 20pt;
@@ -348,17 +353,26 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
     height: 14pt;
 }
 
-/* Shrink the control icons in sub-omnis */
-
-.can-omni-stream .can-omni-stream .can-omni-button svg, .can-omni-stream .can-omni-stream .can-omni-foldall .can-omni-button svg { 
+.can-omni-stream.slim .can-omni-button svg {
     width: 10pt;
     height: 10pt;
-    }
+}
 
-.can-omni-stream .can-omni-stream .can-omni-button.big svg { 
+.can-omni-stream.slim .can-omni-button.can-omni-toggleadd svg {
+    width: 8pt;
+    height: 8pt;
+}
+/* Shrink the control icons in sub-omnis */
+
+/*.can-omni-stream .can-omni-stream .can-omni-button svg, .can-omni-stream .can-omni-stream .can-omni-foldall .can-omni-button svg { 
+    width: 10pt;
+    height: 10pt;
+    }*/
+
+/*.can-omni-stream .can-omni-stream .can-omni-button.big svg { 
     width: 14pt;
     height: 14pt;
-    }
+    }*/
 
 
 /* don't show the view switcher in a sub-omni */
@@ -369,7 +383,6 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .can-omni-stream .can-omni-stream .can-omni-toptools {
     grid-column: 1/2;
-     grid-row: span 2;
 }
 
 /*.can-omni-stream .can-omni-toptools {
@@ -383,37 +396,24 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 /* Above and below item droppable zones */
 /* ----------------------------------------- */
 
-.can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { grid-column: 1/6;}
+.can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { grid-column: 2/6; border-radius: 4px; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background-color: #ffffff;}
 
+.can-omni-peripheral .tc-droppable, .can-omni-topadd .tc-droppable, .can-omni-bottomadd .tc-droppable { width: 100%; display: flex; flex-direction: row;}
 
-.can-omni-stream .can-omni-stream .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { grid-column: 2/6;}
-
-.can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { border-radius: 4px; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background-color: #ffffff;}
-
-.can-omni-peripheral .tc-droppable, .can-omni-topadd .tc-droppable, .can-omni-bottomadd .tc-droppable { width: 100%; display: flex; flex-direction: row; justify-content: flex-end; }
-
-
-
-.can-omni-peripheral-slim {grid-column: 1/6; grid-row: span 1; width: 100%; display: flex; flex-direction: row; justify-content: flex-end; border-radius: 4px;  line-height: 16pt;}
-
-.can-omni-stream .can-omni-stream .can-omni-peripheral-slim {grid-column: 2/6;}
-
-.can-omni-peripheral-slim .can-omni-toggleadd {flex-shrink:1;flex-grow: 1;}
-
-.can-omni-peripheral-slim:hover {background-color: #efefef;}
-
-.can-omni-peripheral-slim .can-omni-button svg {height: 10pt; width: 10pt;}
-
-
-.can-omni-peripheral.tc-dragover, .can-omni-peripheral-slim.tc-dragover, .can-omni-topadd.tc-dragover, .can-omni-bottomadd.tc-dragover, .tc-dragover .can-omnibus-droppable { border-radius: 5px;background-color: #0ff; }
-
-.can-omni-peripheral .can-omni-button {border-radius: 4px; width: 100%;}
-
-.can-omni-toggleadd.can-omni-button {display: flex; flex-direction: row; justify-content: flex-end;}
-
-.can-omni-toggleadd {width: 100%;}
+button.can-omni-toggleadd {
+    width: 100%;
+    display: flex; 
+    flex-direction: row;
+    justify-content: flex-start; 
+    padding-left: 0.4em;
+    margin: 2px 0;
+}
 
 .can-omni-toggleadd:hover {background-color: #efefef;}
+
+.can-omni-peripheral.tc-dragover, .can-omni-topadd.tc-dragover, .can-omni-bottomadd.tc-dragover, .tc-dragover .can-omnibus-droppable { border-radius: 5px;background-color: #0ff; }
+
+.can-omni-peripheral .can-omni-button {border-radius: 4px; width: 100%;}
 
 .can-quickadd.sub, .can-omni-top { grid-column: 2/6; margin-bottom: 0.8em; }
 
