@@ -2,7 +2,11 @@ tags: $:/tags/Macro
 title: $:/plugins/can/omni/action-macros
 type: text/vnd.tiddlywiki
 
+\define omni-navigate-action() <$action-navigate $to=<<dom-data-currenttid>>/>
 
+\define omni-delist-action() <$action-listops $tiddler=<<dom-data-parentval>> $subfilter='-[<dom-data-currenttid>]'/><$action-listops $tiddler=<<dom-data-currenttid>> $field='omniparent' $subfilter='-[<dom-data-parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>
+
+\define omni-delete-action() <$action-sendmessage $message="tm-delete-tiddler" $param=<<dom-data-currenttid>> /><$action-listops $tiddler=<<dom-data-parentval>> $filter='[list<dom-data-parentval>is[tiddler]]'/>
 
 \define omni-toggleadd-action() <$action-listops $tiddler=<<dom-data-statetid>> $field="viewadd" $subfilter="+[toggle[open],[closed]]"/>
 
@@ -50,9 +54,6 @@ type: text/vnd.tiddlywiki
 \define omni-submitfieldedit-actions() <$action-setfield $(editFieldName)$={{!!newfieldvalue}}  $timestamp='no'/><$action-setfield $field=newfieldvalue /><$action-deletetiddler $tiddler=<<editfieldstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/>
 
 \define omni-cancelfieldedit-actions() <<omni-toggle-field-view>>
-
-
-
 
 \define omni-start-tiddler-drag() "<$action-listops $field=dragstarttiddler $filter=<<parentval>> />"
 
