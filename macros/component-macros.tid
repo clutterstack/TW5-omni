@@ -11,22 +11,7 @@ type: text/vnd.tiddlywiki
 <$droppable class="can-omni-peripheral" tag="div" actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<parentval>> $subfilter='+[insertbefore:currentTiddler<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
     <<can-omni-toggleadd>>
 </$droppable>
-<$list filter="[<openstatetid>get[text]match[open]]" variable="ignore">
-	<$macrocall $name="quickadd" position="omni-inlist" layout="subui" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> openstatetid=<<openstatetid>> endstate="closed" />
-</$list>
-</$vars>
-\end
-
-\define can-omni-peripheral-slim()
-<$vars openstatetid=<<peri-quick-openstatetid>> quickstatetid=<<peri-quickstatetid>>>
-<$droppable class="can-omni-peripheral-slim" tag="div" actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<parentval>> $subfilter='+[insertbefore:currentTiddler<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
-    <<can-omni-toggleadd>>
-    <<can-omni-link>>
-    <<can-omni-delist>>
-    <<can-omni-delete>>
-    <<can-omni-make-omnibus>>
-</$droppable>
-<$list filter="[<openstatetid>get[text]match[open]]" variable="ignore">
+<$list filter="[<openstatetid>get[viewadd]match[open]]" variable="ignore">
 	<$macrocall $name="quickadd" position="omni-inlist" layout="subui" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> openstatetid=<<openstatetid>> endstate="closed" />
 </$list>
 </$vars>
@@ -57,12 +42,14 @@ type: text/vnd.tiddlywiki
 
 \define can-omni-text()
 <$reveal type="nomatch" stateTitle=<<editstatetid>> stateField=editstate text="edit" tag=div>
-    <$importvariables filter="[[$(parentval)$]] [list[$(parentval)$]]">
-    <$droppable class="omni-text-as-button tc-tiddler-body" tag="div" actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<currentTiddler>> $subfilter='+[<actionTiddler>]'/><$action-listops $tiddler=<<currentTiddler>> $field='tags' $subfilter='+omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+    <!-- <$importvariables filter="[[$(parentval)$]] [list[$(parentval)$]]"> -->
+    <$droppable class="omni-text-as-button tc-tiddler-body" tag="div" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
     <$omnidblclick actions="<<omni-startedit-actions>>"/>
 	<$transclude $tiddler="<<currentTiddler>>" mode="block"/>
 	</$droppable>
-    </$importvariables>
+
+
+    <!--</$importvariables>-->
 </$reveal>
 <$reveal type="match" stateTitle=<<editstatetid>> stateField=editstate text="edit" tag=div>
 	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submitedit-actions>>" >

@@ -2,6 +2,10 @@ tags: $:/tags/Macro
 title: $:/plugins/can/omni/action-macros
 type: text/vnd.tiddlywiki
 
+
+
+\define omni-toggleadd-action() <$action-listops $tiddler=<<dom-data-statetid>> $field="viewadd" $subfilter="+[toggle[open],[closed]]"/>
+
 \define omni-toggle-edit() <$action-setfield $tiddler=<<editstatetid>> editstate="edit" $timestamp='no'/>
 \define omni-toggle-view() <$action-setfield $tiddler=<<editstatetid>> editstate="view"$timestamp='no'/>
 
