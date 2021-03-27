@@ -412,9 +412,9 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 .can-omni-button.can-omni-button-selected svg { fill: #66c; }
 
 .can-omni-button:hover, .can-omni-button:hover svg {fill: #999999;}
-.can-omni-button {color: #cccccc;}
 
-.can-omni-button, .todo button.can-omni-button {
+.can-omni-button {
+    color: <<colour tiddler-controls-foreground>>;
     display: flex; 
     flex-direction: row; 
     align-self: flex-start;
@@ -507,7 +507,7 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
     margin-left: 2em;
 }
 
-.can-omni-peripheral .tc-droppable, .can-omni-topadd .tc-droppable, .can-omni-bottomadd .tc-droppable { width: 100%; display: flex; flex-direction: row;}
+.can-omni-peripheral.tc-droppable, .can-omni-topadd.tc-droppable, .can-omni-bottomadd.tc-droppable { width: 100%; display: flex; flex-direction: row;}
 
 button.can-omni-toggleadd {
     width: 100%;
@@ -522,7 +522,7 @@ button.can-omni-toggleadd {
 
 .can-omni-peripheral.tc-dragover, .can-omni-topadd.tc-dragover, .can-omni-bottomadd.tc-dragover, .tc-dragover .can-omnibus-droppable { border-radius: 5px;background-color: #0ff; }
 
-.can-omni-peripheral .can-omni-button {border-radius: 4px; width: 100%;}
+.can-omni-peripheral .can-omni-button, .can-omni-bottomadd .can-omni-button {border-radius: 4px; width: 100%;}
 
 .can-quickadd.sub, .can-omni-top { grid-column: 2/6; margin-bottom: 0.8em; }
 

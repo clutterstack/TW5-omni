@@ -69,14 +69,11 @@ type: text/vnd.tiddlywiki
 
 \define classfilt() can-outline-item [[$(datatiddler)$]has:index[$(currentTiddler)$]then{$(datatiddler)$##$(currentTiddler)$}else[0]] +[join[-]] can-omni-text
 
-
 \define can-omni-topadd()
 <$vars openstatetid=<<top-quick-openstatetid>> quickstatetid=<<top-quickstatetid>>>
-<div class="can-omni-topadd">
-	<$droppable tag="div" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>] +[putfirst[]]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+	<$droppable tag="div" class="can-omni-topadd" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>] +[putfirst[]]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
 		<<can-omni-toggleadd>>
 	</$droppable>
-</div>
 <$list filter="[<openstatetid>get[viewadd]match[open]]">
 	<$macrocall $name="quickadd" layout="subui" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listtop" openstatetid=<<openstatetid>> endstate="closed" />
 </$list>
@@ -85,11 +82,9 @@ type: text/vnd.tiddlywiki
 
 \define can-omni-bottomadd()
 <$vars openstatetid=<<bottom-quick-openstatetid>> quickstatetid=<<bottom-quickstatetid>>>
-<div class="can-omni-bottomadd">
-	<$droppable tag="div" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+	<$droppable tag="div" class="can-omni-bottomadd" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
 		<<can-omni-toggleadd>>
 	</$droppable>
-</div>
 <$list filter="[<openstatetid>get[viewadd]match[open]]">
 	<$macrocall $name="quickadd" layout="subui" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listbottom" openstatetid=<<openstatetid>> endstate="closed" />
 </$list>
