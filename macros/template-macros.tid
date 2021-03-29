@@ -12,15 +12,13 @@ title: $:/plugins/can/omni/template-macros
         <div class="omni-branch-line"></div>
         </$list>
         <<can-omni-peripheral>>
-        <<can-omni-itemhandle>>
+        <<can-omni-tree-itemhandle>>
         <div class="can-omni-text" >
             <<can-omni-text>>
         </div>
         <div class="can-omni-subctl">
-            <<can-omni-link>>
             <<can-omni-delist>>
             <<can-omni-delete>>
-            <<can-omni-make-omnibus>>
         </div>
        <!-- </div> -->
     <$list filter="[<currentTiddler>tag[omnibus]] +[all[current]list[]limit[1]]" variable="ignore">

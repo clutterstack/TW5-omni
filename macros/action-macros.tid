@@ -13,7 +13,12 @@ type: text/vnd.tiddlywiki
 \define omni-toggle-edit() <$action-setfield $tiddler=<<editstatetid>> editstate="edit" $timestamp='no'/>
 \define omni-toggle-view() <$action-setfield $tiddler=<<editstatetid>> editstate="view"$timestamp='no'/>
 
-\define omni-startedit-actions() <$action-setfield $tiddler=<<foldstatetiddler>> $value="show" $timestamp='no'/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/>
+\define omni-startedit-actions() <$vars createdid=<<dom-data-createdid>>><$tiddler tiddler=<<dom-data-currenttid>> ><$action-setfield $tiddler=<<foldstatetiddler>> $value="show" $timestamp='no'/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/></$tiddler></$vars>
+
+
+\define omni-startedit-actions-old() <$action-setfield $tiddler=<<foldstatetiddler>> $value="show" $timestamp='no'/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/>
+
+
 \define omni-submitedit-actions() <$action-deletetiddler $tiddler=<<editstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/>
 \define omni-canceledit-actions() <$action-setfield text={{$(editstatetid)$}} $timestamp='no'/><<omni-toggle-view>>
 

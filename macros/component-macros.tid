@@ -40,18 +40,22 @@ type: text/vnd.tiddlywiki
 </$button>
 \end
 
+
+\define can-omni-tree-itemhandle()
+<$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> class="can-omni-itemhandle">
+<div class="tc-btn-invisible can-omni-link" data-currenttid=<<currentTiddler>> role="button" title="Click to open tiddler in story. Drag to move list entry." aria-label="Click to open tiddler in story. Drag to move list entry.">{{$:/plugins/can/omni/fish-water.svg}}</div>
+</$draggable>
+\end
+
+
 \define can-omni-text()
-<$reveal type="nomatch" stateTitle=<<editstatetid>> stateField=editstate text="edit" tag=div>
-    <!-- <$importvariables filter="[[$(parentval)$]] [list[$(parentval)$]]"> -->
-    <$droppable class="omni-text-as-button tc-tiddler-body" tag="div" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
-    <$omnidblclick actions="<<omni-startedit-actions>>"/>
+<$list filter="[{$(editstatetid)$!!editstate}!match[edit]]" variable="ignore">
+<div class="omni-text-dblclick" data-createdid=<<createdid>> data-currenttid=<<currentTiddler>>>
+    <$droppable class="omni-text-display tc-tiddler-body" tag="div" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
 	<$transclude $tiddler="<<currentTiddler>>" mode="block"/>
 	</$droppable>
-
-
-    <!--</$importvariables>-->
-</$reveal>
-<$reveal type="match" stateTitle=<<editstatetid>> stateField=editstate text="edit" tag=div>
+</div></$list>
+<$list filter="[{$(editstatetid)$!!editstate}match[edit]]" variable="ignore">
 	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submitedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submitedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-canceledit-actions>>">
@@ -61,7 +65,7 @@ type: text/vnd.tiddlywiki
 	<$keyboard tag="div" class="tc-can-keyboard" key="alt-down" actions="<<omni-move-later-actions>>">
 		<$edit-text class="can-quickadd-textarea tc-tiddler-body" field='text' placeholder='New tiddler text' rows="1" minHeight="0" focus=true/>
 	</$keyboard></$keyboard></$keyboard></$keyboard></$keyboard></$keyboard></$keyboard>
-</$reveal>
+</$list>
 \end
 
 \define can-omni-text-with-siblings() 
