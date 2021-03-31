@@ -42,9 +42,11 @@ type: text/vnd.tiddlywiki
 
 
 \define can-omni-tree-itemhandle()
-<$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> class="can-omni-itemhandle">
+<div class="can-omni-itemhandle">
 <div class="tc-btn-invisible can-omni-link" data-currenttid=<<currentTiddler>> role="button" title="Click to open tiddler in story. Drag to move list entry." aria-label="Click to open tiddler in story. Drag to move list entry.">{{$:/plugins/can/omni/fish-water.svg}}</div>
+<$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> class="can-omni-edithandle">
 </$draggable>
+</div>
 \end
 
 
@@ -162,10 +164,28 @@ testvar? <<testvar>> <br>
 \end
 
 
+\define can-omni-text-with-siblings() 
+
+List works... -- <$list filter="[[$(parentval)$]] [list[$(parentval)$]] [[Testvars]]"/>
+
+<$importvariables filter="[[$(parentval)$]] [list[$(parentval)$]] [[Testvars]]">
+
+subtid: <<subtid>> <br>
+parentval: <<parentval>> <br>
+
+testvar? <<testvar>> <br>
+{{$(subtid)$}}
+
+</$importvariables>
+\end
+
+
 \define can-omni-nb-region()
 	<$set name=levelcls filter=<<classfilt>>>
         <$reveal tag="div" class=<<levelcls>> type="nomatch" state=<<foldstatetiddler>> text="hide" >
+        <$importvariables filter="[[$(parentval)$]]"> 
             <<can-omni-text>>
+            </$importvariables>
         </$reveal>
 	</$set>
 \end

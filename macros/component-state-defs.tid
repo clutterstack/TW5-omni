@@ -9,7 +9,7 @@ type: text/vnd.tiddlywiki
 
 \define editfieldstatetid() $:/state/can/omni/edit-$(editFieldName)$/$(createdid)$
 
-\define foldstatetiddler() $:/state/can/omni/fold/$(createdid)$
+\define foldstatetiddler() $:/keepstate/can/omni/fold/$(createdid)$
 
 \define top-quick-openstatetid() $:/state/can/omni/top-openstate/$(omniqual)$
 \define top-quickstatetid() $:/state/can/omni/top-quickstate/$(omniqual)$

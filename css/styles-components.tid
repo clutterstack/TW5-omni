@@ -114,6 +114,7 @@ grid-template-rows: auto;
 }
 
 div.omni-text-dblclick {width:100%;}
+
 .omni-text-display {height: 100%;}
 
 .omni-text-display > :nth-child(1) {
@@ -201,12 +202,29 @@ div.omni-text-dblclick {width:100%;}
 .can-omni-itemhandle .tc-draggable { height: 100%;}
 
 
-.tree .can-omni-itemhandle {border-radius: 5px 0 0 5px; width: 1em; height: 100%; grid-column: 3/4; grid-row: span 1;background-color: <<colour page-background>>;
-    margin:0; padding:2px;}
+.tree .can-omni-itemhandle {
+    border-radius: 5px 0 0 5px; 
+    width: 1em; 
+    height: 100%; 
+    grid-column: 3/4; 
+    grid-row: span 1;
+    background-color: <<colour page-background>>;
+    margin:0; 
+    padding:2px;
+    display: flex;
+    flex-direction: column;
+    }
+
+.tree .can-omni-edithandle {
+    height:100%;
+    width:100%;
+}
 
 .tree .can-omni-itemhandle:hover {
     background-color: <<colour muted-foreground>>;
 }
+
+.tree .can-omni-itemhandle .can-omni-link {height: 1em;}
 
 .tree .can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
 .tree .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
