@@ -1,0 +1,19 @@
+title: $:/plugins/can/omnibus/utilities/omniexport
+tags: $:/tags/Macro
+
+\define recurser(depth:1 maxdepth:50)
+<$list filter="[<__depth__>compare:integer:lteq<__maxdepth__>]" variable=null emptyMessage='"Max depth reached ($maxdepth$)"' >
+    <$vars newdepth={{{[<__depth__>add[1]]}}}>
+    <$list filter="[is[current]list[]]">"<<currentTiddler>>" <$macrocall $name=recurser depth=<<newdepth>> maxdepth=<<__maxdepth__>>/>
+	</$list>
+	</$vars>
+</$list>
+\end
+
+\define omniexport(tiddler maxdepth:20)
+<$tiddler tiddler=<<__tiddler__>>>
+<$wikify name=wicked text='"<<currentTiddler>>" <<recurser 1 $maxdepth$>>' >
+<$macrocall $name="exportButton" exportFilter=<<wicked>> lingoBase="$:/language/Buttons/ExportTiddlers/"/>
+</$wikify>
+</$tiddler>
+\end

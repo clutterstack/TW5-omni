@@ -1,0 +1,12 @@
+title: $:/plugins/can/omnibus/utilities/omnidelete
+tags: $:/tags/Macro
+
+\define recurser() <$list filter="[is[current]list[]]">"<<currentTiddler>>" <<recurser>></$list>
+
+
+\define omnidelete()
+<$wikify name=wicked text='"<<currentTiddler>>" <<recurser>>' >
+<$button actions="""<$action-confirm $message="Are you sure you want to delete this omnibus and ALL tiddlers contained within it AND their descendants? This cannot be undone.">
+<$action-deletetiddler $filter=<<wicked>> /></$action-confirm>""">Delete omni and its tree</$button>
+</$wikify>
+\end

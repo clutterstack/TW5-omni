@@ -3,19 +3,11 @@ tags: $:/tags/MoreSideBar
 title: $:/plugins/can/omni/utilities/export
 type: text/vnd.tiddlywiki
 
-\define recurser()
-<$list filter="[is[current]list[]]">
-"<<currentTiddler>>" <<recurser>>
-</$list>
-\end
-
 <$list filter="[tag[omnibus]!tag[template]]"  >
 <div class="omni-bundle">
-<$wikify name=wicked text='"<<currentTiddler>>" <<recurser>>' >
-<$draggable filter=<<wicked>>>
+<$draggable filter="[<currentTiddler>] [list[]]">
 <$view field="title"/>
 </$draggable>&nbsp;
-</$wikify>
-<$macrocall $name="exportButton" exportFilter=<<wicked>> lingoBase="$:/language/Buttons/ExportTiddlers/"/>
+<$macrocall $name="exportButton" exportFilter="[<currentTiddler>] [list[]]" lingoBase="$:/language/Buttons/ExportTiddlers/"/>
 </div>
 </$list>
