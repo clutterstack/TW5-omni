@@ -19,7 +19,7 @@ type: text/vnd.tiddlywiki
 
 \define can-omni-folder()
 <$button class="can-omni-foldbutton tc-btn-invisible can-small-text-button">
-<$list filter="[{$(foldstatetiddler)$}match[hide]]" emptyMessage=	"""<<omni-toggle-view>><$action-setfield $tiddler=<<foldstatetiddler>> $value="hide"/>{{$:/core/images/down-arrow}}""" variable="ignore">
+<$list filter="[{$(foldstatetiddler)$}match[hide]]" emptyMessage="""<<omni-toggle-view>><$action-setfield $tiddler=<<foldstatetiddler>> $value="hide"/>{{$:/core/images/down-arrow}}""" variable="ignore">
 	<$action-setfield $tiddler=<<foldstatetiddler>> $value="show"/>
 	{{$:/core/images/right-arrow}}
 </$list>
@@ -65,7 +65,7 @@ type: text/vnd.tiddlywiki
 	<$keyboard tag="div" class="tc-can-keyboard" key="shift-tab" actions="<<omni-shift-tab-actions>>">
 	<$keyboard tag="div" class="tc-can-keyboard" key="alt-up" actions="<<omni-move-earlier-actions>>">
 	<$keyboard tag="div" class="tc-can-keyboard" key="alt-down" actions="<<omni-move-later-actions>>">
-		<$edit-text class="can-quickadd-textarea tc-tiddler-body" field='text' placeholder='New tiddler text' rows="1" minHeight="0" focus=true/>
+		<$edit-text tiddler=<<editstatetid>> class="can-quickadd-textarea tc-tiddler-body" field='text' placeholder='New tiddler text' rows="1" minHeight="0" focus=true/>
 	</$keyboard></$keyboard></$keyboard></$keyboard></$keyboard></$keyboard></$keyboard>
 </$list>
 \end
