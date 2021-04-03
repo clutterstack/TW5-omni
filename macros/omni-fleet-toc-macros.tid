@@ -3,15 +3,9 @@ tags: $:/tags/Macro
 
 \whitespace trim
 
-\define omnitoclabel(chars:40)
-<$wikify name="can-long-label" text={{{ [{!!title}!match{!!created}] ~[<currentTiddler>get[text]!is[blank]] ~[<currentTiddler>get[title]]}}}>
-		<$text text={{{ [<can-long-label>split[]first[$chars$]join[]] }}}/>
-</$wikify>
-\end
-
 \define omni-link-caption(class)
 <$draggable tag="span" tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >
-    <$button class="can-omni-dragdrop tc-btn-invisible $class$" to={{!!title}} tooltip="Tiddler link" aria-label="Tiddler link"><<omnitoclabel chars:35>>
+    <$button class="can-omni-dragdrop tc-btn-invisible $class$" to={{!!title}} tooltip="Tiddler link" aria-label="Tiddler link"><<omnilabel chars:35>>
     </$button>
 </$draggable>
 \end

@@ -1,7 +1,0 @@
-title: $:/plugins/can/omni/omnitab
-tags: $:/tags/SideBar
-caption: Omni
-list-after: $:/core/ui/SideBar/Open
-
-<<new-omnibus-button>>
-<<fleettoc>>
