@@ -67,8 +67,6 @@ type: text/vnd.tiddlywiki
 </div>
 \end
 
-\define classfilt() can-outline-item [[$(datatiddler)$]has:index[$(currentTiddler)$]then{$(datatiddler)$##$(currentTiddler)$}else[0]] +[join[-]] can-omni-text
-
 \define can-omni-topadd()
 <$vars openstatetid=<<top-quick-openstatetid>> quickstatetid=<<top-quickstatetid>>>
 	<$droppable tag="div" class="can-omni-topadd" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>] +[putfirst[]]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
