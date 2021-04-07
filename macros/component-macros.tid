@@ -134,7 +134,7 @@ testvar? <<testvar>> <br>
 <$vars editFieldName="caption">
 <$set name=caption-or-title filter="[<currentTiddler>get[caption]]" emptyValue={{!!title}} select="0">
 <$reveal type="nomatch" stateTitle=<<editfieldstatetid>> stateField=editstate text="edit" tag="div" class="omni-title-heading view" title="Double-click to edit caption." aria-label="Double-click to edit caption.">
-    <$omnidblclick actions="<<omni-startfieldedit-actions>>"/>
+    <$omnidblclick actions="""<<wahoo>><<omni-startfieldedit-actions>>"""/>
 	<<caption-or-title>>
 </$reveal>
 <$reveal type="match" stateTitle=<<editfieldstatetid>> stateField=editstate text="edit" tag=div class="omni-title-heading">

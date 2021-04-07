@@ -3,17 +3,9 @@ title: $:/plugins/can/omni/omnibus-macros
 
 \whitespace trim
 
-\define omni-datastate() <<qualify '$:/state/can/omni/$(currentTiddler)$-data'>>
-
-\define omni-mode-from-parent-or-self() {{$(parentval)$!!omnibus-mode}}
-
-\define omni-mode-from-self() {{!!omnibus-mode}}
-
 \define omni-mode-call-macro(depth) 
 <$macrocall $name=every$(mode)$ depth=<<__depth__>> />
 \end
-
-\define omni-stream-class() can-omni-stream $(mode)$
 
 \define compose-omni-toplevel() 
 <$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-startedit-actions>> tag="div">
@@ -26,8 +18,8 @@ title: $:/plugins/can/omni/omnibus-macros
 \end
 
 \define compose-omni(mode:{{!!omnibus-mode}} depth)
-<$vars datatiddler=$(omni-datastate)$ grandparentval=<<parentval>> parentval=<<currentTiddler>> >
-<$set name="mode" value=$mode$ emptyValue="edit" >
+<$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> >
+<$set name="mode" filter=$mode$ emptyValue="edit" ><$set name="omni-stream-class" filter="can-omni-stream [<mode>]">
 <$qualify name=omniqual title={{!!created}}>
 <!-- <div class="omni-stream-container"> --><!-- I think this was for TOC view-->
     <div class=<<omni-stream-class>> >
@@ -46,7 +38,7 @@ title: $:/plugins/can/omni/omnibus-macros
     <$list filter="[<mode>!match[toc]then[]]" variable="null" emptyMessage=<<can-omni-singleview>>/>   
 <!-- </div> -->
 </$qualify>
-</$set>
+</$set></$set>
 </$vars>
 
 \end
@@ -64,3 +56,7 @@ title: $:/plugins/can/omni/omnibus-macros
 </$qualify>
 </$vars>
 \end
+
+<!--
+\define omni-stream-class() can-omni-stream $(mode)$
+-->

@@ -14,11 +14,12 @@ type: text/vnd.tiddlywiki
 \define omni-viewswitcher()
     <div class="can-omni-viewswitcher">
 		<$button set="!!omnibus-mode" setTo="edit" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Deluxe editing" aria-label="Deluxe editing">{{$:/plugins/can/omni/omnimode-edit.svg}}</$button>
+        <$button set="!!omnibus-mode" setTo="exp" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Tree with captions" aria-label="Tree with captions">exp</$button>
 		<$button set="!!omnibus-mode" setTo="tree" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Bubble tree" aria-label="Bubble tree">tree</$button>
 		<$button set="!!omnibus-mode" setTo="slim" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="slim mode" aria-label="slim mode">slim</$button>
 		<$button set="!!omnibus-mode" setTo="bar" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="bar mode" aria-label="omnibus bar mode">bar</$button>
 		<!--<$button set="!!omnibus-mode" setTo="todo" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Todo list" aria-label="Todo list"><<unfoldallactions>>{{$:/plugins/can/omni/omnimode-simple.svg}}</$button>-->
-		<!--<$button set="!!omnibus-mode" setTo="list" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="List with tags" aria-label="List with tags"><<unfoldallactions>>{{$:/plugins/can/omni/omnimode-listwithtags.svg}}</$button>-->
+		<$button set="!!omnibus-mode" setTo="list" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="List mode" aria-label="List mode"><<unfoldallactions>>{{$:/plugins/can/omni/omnimode-listwithtags.svg}}</$button>
 		<$button set="!!omnibus-mode" setTo="read" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Reading mode" aria-label="Reading mode">{{$:/plugins/can/omni/omnimode-view.svg}}</$button>
         <$button set="!!omnibus-mode" setTo="named" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Edit mode with title" aria-label="Edit mode with title">named</$button>
        <!-- <$button set="!!omnibus-mode" setTo="namedro" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Read-only mode with title" aria-label="Read-only mode with title">namedro</$button> -->
@@ -84,7 +85,7 @@ type: text/vnd.tiddlywiki
 		<<can-omni-toggleadd>>
 	</$droppable>
 <$list filter="[<openstatetid>get[viewadd]match[open]]">
-	<$macrocall $name="quickadd" layout="subui" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listbottom" openstatetid=<<openstatetid>> endstate="closed" />
+	<$macrocall $name="quickadd" layout="subui" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listbottom" openstatetid=<<openstatetid>> endstate="open" />
 </$list>
 </$vars>
 \end
