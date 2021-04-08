@@ -1,8 +1,9 @@
 created: 20200507184921957
 creator: chris
-tags: $:/tags/Stylesheet
+tags: nothing
 title: $:/plugins/can/omni/styles-components
 
+/* Cna I do anything */
 /* -------------------------- */
 /* Omnibus export sidebar tab */
 /* -------------------------- */
@@ -47,13 +48,13 @@ grid-template-rows: auto;
 
 .can-omni-stream > div.tc-draggable { cursor: pointer; }
 
-.can-omni-stream.tree {
+.can-omni-stream.tree,.can-omni-stream.exp {
     margin-left: 1em;
     grid-template-columns: max-content max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
     
 }
 
-.tree .omni-branch {
+.tree .omni-branch, .exp .omni-branch {
     grid-column: 1/6;
     grid-row: span 2;
     border-left: 1px solid;
@@ -65,7 +66,7 @@ grid-template-rows: auto;
     grid-template-rows: auto;
 }
 
-.tree .omni-item-container {
+.tree .omni-item-container, .exp .omni-item-container {
     grid-column: 1/6;
     display: grid;
     grid-template-columns: max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
@@ -74,15 +75,15 @@ grid-template-rows: auto;
     box-sizing: content-box;
 }
 
-.tree .omni-item-container.toplevel {
+.tree .omni-item-container.toplevel,.exp .omni-item-container.toplevel {
     border: none;
 }
 
-.tree .omni-item-container:last-of-type {
+.tree .omni-item-container:last-of-type, .exp .omni-item-container:last-of-type {
     border-left: 1px solid rgba(0,0,0,0);
 }
 
-.tree .omni-branch-edge {
+.tree .omni-branch-edge, .exp .omni-branch-edge {
     grid-column: 1/2;
     grid-row: span 2;
     width: 0
@@ -90,7 +91,7 @@ grid-template-rows: auto;
     min-height: 1em;
     margin-bottom: -1em;
 }
-.tree .omni-branch-line {
+.tree .omni-branch-line, .exp .omni-branch-line {
     grid-column:2/3;
     grid-row: span 1;
     width:1em;
@@ -102,7 +103,7 @@ grid-template-rows: auto;
     margin-left: -1px;
 }
 
-.tree .can-omni-text {
+.tree .can-omni-text, .exp .can-omni-text {
     border-radius: 0 5px 5px 0;
     background-color: <<colour page-background>>;
     grid-column: 4/5;
@@ -202,7 +203,7 @@ div.omni-text-dblclick {width:100%;}
 .can-omni-itemhandle .tc-draggable { height: 100%;}
 
 
-.tree .can-omni-itemhandle {
+.tree .can-omni-itemhandle, .exp .can-omni-itemhandle {
     border-radius: 5px 0 0 5px; 
     width: 1em; 
     height: 100%; 
@@ -215,21 +216,21 @@ div.omni-text-dblclick {width:100%;}
     flex-direction: column;
     }
 
-.tree .can-omni-edithandle {
+.tree .can-omni-edithandle, .exp .can-omni-edithandle {
     height:100%;
     width:100%;
 }
 
-.tree .can-omni-itemhandle:hover {
+.tree .can-omni-itemhandle:hover, .exp .can-omni-itemhandle:hover {
     background-color: <<colour muted-foreground>>;
 }
 
-.tree .can-omni-itemhandle .can-omni-link {height: 1em;}
+.tree .can-omni-itemhandle .can-omni-link, .exp .can-omni-itemhandle .can-omni-link {height: 1em;}
 
-.tree .can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
-.tree .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
+.tree .can-omni-itemhandle .can-omni-link svg, .exp .can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
+.tree .can-omni-itemhandle .can-omni-link:hover svg, .exp .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
 
-.tree .can-omni-itemhandle-inner {
+.tree .can-omni-itemhandle-inner, .exp .can-omni-itemhandle-inner {
     border-radius: 5px 0 0 5px; 
     box-sizing: border-box;
     height: 100%; 
@@ -383,7 +384,7 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
     background: #000000;
 }
 
-.slim .can-omni-subctl, .tree .can-omni-subctl {
+.slim .can-omni-subctl, .tree .can-omni-subctl, .exp .can-omni-subctl {
     grid-column: 5/6;
     padding-left: 0.2em;
 }
@@ -400,7 +401,7 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
     margin-top: 0.4em;
     }
 
-.tree .can-omni-foldbutton {
+.tree .can-omni-foldbutton, .exp .can-omni-foldbutton {
     grid-column: 3/4;
 }
 
@@ -480,7 +481,7 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
     height: 14pt;
 }
 
-.can-omni-stream.slim .can-omni-button svg, .can-omni-stream.tree .can-omni-button svg {
+.can-omni-stream.slim .can-omni-button svg, .can-omni-stream.tree .can-omni-button svg, .can-omni-stream.exp .can-omni-button svg {
     width: 10pt;
     height: 10pt;
 }
@@ -525,7 +526,7 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { grid-column: 2/6; border-radius: 4px; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background-color: #ffffff;}
 
-.tree .can-omni-peripheral, .tree .can-omni-topadd, .tree .can-omni-bottomadd { 
+.tree .can-omni-peripheral, .exp .can-omni-peripheral, .tree .can-omni-topadd, .exp .can-omni-bottomadd.exp .can-omni-topadd, .exp .can-omni-bottomadd { 
     grid-column: 3/6; 
     border-radius: 4px; 
     display: flex; 
@@ -534,7 +535,7 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
     line-height: 16pt; 
     background-color: #ffffff;}
 
-.tree .can-omni-bottomadd {
+.tree .can-omni-bottomadd, .exp .can-omni-bottomadd {
     margin-left: 2em;
 }
 

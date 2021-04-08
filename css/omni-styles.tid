@@ -1,0 +1,11 @@
+title: $:/plugins/omni/stylesheet
+tags: $:/tags/Stylesheet
+
+\define stylesheettitle() $:/plugins/can/omni/styles-$(mode)$
+
+<$transclude tiddler="$:/plugins/can/omni/styles-common" mode="block"/>
+<$list filter="[list[$:/StoryList]has[omnibus-mode]]">
+<$vars mode={{!!omnibus-mode}}>
+<$transclude tiddler=<<stylesheettitle>> mode="block"/>
+</$vars>
+</$list>

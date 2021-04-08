@@ -23,7 +23,7 @@ title: $:/plugins/can/omni/omnibus-macros
 <$qualify name=omniqual title={{!!created}}>
 <!-- <div class="omni-stream-container"> --><!-- I think this was for TOC view-->
     <div class=<<omni-stream-class>> >
-    <$list filter="[<__depth__>compare:number:ne[0]then[]]" emptyMessage=<<can-omni-toptools>> variable="ignore"/>
+    <$list filter="[<__depth__>!match[0]then[]]" emptyMessage=<<can-omni-toptools>> variable="ignore"/>
         <!--<$list filter="[<mode>match[read]then[]] [<mode>match[toc]then[]] [<mode>match[namedro]then[]] [<mode>match[list]then[]]" variable="null" emptyMessage=<<can-omni-topadd>>/>-->
         <$list filter="[all[current]list[]is[tiddler]]">
             <$qualify name=createdid title={{!!created}} >

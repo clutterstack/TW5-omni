@@ -1,0 +1,324 @@
+created: 20200507184921957
+creator: chris
+tags: 
+title: $:/plugins/can/omni/styles-common
+
+/* -------------------------- */
+/* Omnibus export sidebar tab */
+/* -------------------------- */
+
+ .omni-bundle {
+     display: flex;
+     flex-direction: row;
+ }
+
+/* --------------------------------- */
+/* General in-tiddler omnibus styles */
+/* --------------------------------- */
+
+.can-omni-toptools {
+margin: 0 0 0.4em 0;
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+grid-column: 1/6;
+}
+
+.omni-stream-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.can-omni-stream { 
+display: grid; 
+grid-template-columns: max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
+grid-template-rows: auto; 
+/*border: 1px solid cyan;*/
+/* width: 100%; */
+}
+
+.can-omni-stream > div.tc-draggable { cursor: pointer; }
+
+div.omni-text-dblclick {width:100%;}
+
+.omni-text-display {height: 100%;}
+
+.omni-text-display > :nth-child(1) {
+    margin-top: 0;
+}
+.omni-text-display > :last-child {
+    margin-bottom: 0;
+}
+
+.tc-can-keyboard {
+    width: 100%;
+}
+
+/* ------------------ */
+/* headings           */
+/* ------------------ */
+
+
+.can-omni-stream h1 {font-size: 1.5rem;}
+
+ .can-omni-stream h2 {
+     font-size: 1.3rem;
+     margin-bottom: 1em;
+     margin-top:1em;
+ }
+ 
+ .can-omni-stream h3 {
+     font-size: 1.2rem;
+     margin-bottom: 1em;
+     margin-top:1em;
+ }
+
+.can-omni-stream h4 {font-size: 1.1rem; font-weight:500;}
+.can-omni-stream h5 {font-size: 1.0rem; font-weight:500;}
+.can-omni-stream h6 {font-size: 1.0rem;}
+
+.can-omni-stream .omni-title-heading {
+    grid-column: 3/5;
+    flex: 1;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-right: 0.4em;
+}
+
+.can-omni-stream .omni-title-heading .can-quickadd-textarea { 
+    margin: 0 0.4em 0 0; 
+    border: 1px solid #ccc; 
+    }
+
+/* ----------------------------------------- */
+/* code                                      */
+/* ----------------------------------------- */
+
+.can-omni-stream pre {
+    /* max-width: calc({{$:/themes/tiddlywiki/vanilla/metrics/storywidth}} - 25%); */
+    /*overflow: auto;*/
+}
+
+/* ----------------------------------------- */
+/* lists                                     */
+/* ----------------------------------------- */
+
+.can-omni-stream ul {
+    margin: 0;
+    padding-left: 2em;
+}
+
+/* ---------------------------------------*/
+/* Style the quickadd for in an omnibus   */
+/* ---------------------------------------*/
+
+.can-quickadd.sub {margin-top: 0;}
+
+
+.can-omni-itemhandle:hover .can-omni-itemhandle-inner { 
+    background-color: #999999;
+    }
+
+.can-omni-text { grid-column: 4/5; display: flex; flex-direction: row; z-index: 10;}
+
+.can-omni-text[hidden] {display: none;}
+
+.can-omni-text .tc-reveal {width: 100%; }
+
+.can-omni-text p, .can-omni-text li, .can-omni-text pre { 
+  /* margin-top: 0;  
+    margin-bottom: 0.8em; */
+    max-width: 46em;
+}
+
+.can-omni-text td {
+     /*width: 100%;*/
+     max-width: 30em;
+}
+
+p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
+
+/* .can-omni-text p:nth-child(1) { margin-top: 0; } */
+/* .can-omni-text p:last-child { margin-bottom: 0.6em; } */
+
+.omni-showomni {grid-column:4/6; }
+
+/* =======================*/
+/* Buttons, control rows  */
+/* =======================*/
+
+.can-omni-ctlrow {
+    grid-column: 4/6; 
+    display: flex; 
+    flex-direction:row; 
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    padding-top: 0.1em; 
+    margin-right: 2em;}
+
+.can-omni-ctl  { 
+    grid-column: 5/6; 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: flex-end; 
+    align-content: flex-start; 
+    padding-top: 0.4em; 
+    padding-left: 0.4em;
+    }
+
+.can-omni-subctl {
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    align-content: flex-start;
+    }
+
+.tc-draggable.can-omni-ctlrow:hover svg {
+    background: #000000;
+}
+
+
+.can-omni-foldbutton {
+    grid-column: 3/4; 
+    align-self: start; 
+    height: 1.5em; 
+    z-index: 9999; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start;
+    margin-top: 0.4em;
+    }
+
+.can-omni-foldbutton:hover svg {fill: #666666;}
+
+.can-omni-title { font-size: 0.8em;}
+span.can-omni-title {vertical-align: bottom;}
+div.can-omni-title {margin-left: 0.4em; align-self: flex-end;}
+a:hover.can-omni-title { color: inherit; text-decoration: none; }
+
+a.can-omni-title { color: #cccccc; align-self: flex-end;}
+
+.can-small-text-button {font-size: 0.8rem;}
+
+.can-small-text-button .tc-menubar-dropdown-arrow {padding-left: 0.4em;}
+
+.can-omni-button svg, .can-omni-foldbutton svg {flex: 0 0 auto; fill: #cccccc;}
+
+.can-omni-button.can-omni-button-selected {color: #66c;} 
+.can-omni-button.can-omni-button-selected svg { fill: #66c; }
+
+.can-omni-button:hover, .can-omni-button:hover svg {fill: #999999;}
+
+.can-omni-button {
+    color: <<colour tiddler-controls-foreground>>;
+    display: flex; 
+    flex-direction: row; 
+    align-self: flex-start;
+}
+
+.can-omni-ctlrow .tc-draggable {
+    display: flex; 
+    flex-direction:row;
+}
+
+.can-omni-foldall, .can-omni-viewswitcher {display: flex; flex-direction: row; justify-content: flex-end;}
+
+.can-omni-stream .can-omni-stream .can-omni-foldall {margin-top: 0.4em; flex-direction: column; justify-content: flex-start;}
+
+.can-omni-stream .can-omni-stream .can-omni-foldall .can-omni-button {margin-right: 0; margin-bottom: 0.2em;}
+
+.can-omni-viewswitcher .can-omni-button svg {
+    width: 20pt;
+    height: 20pt;
+}
+.can-omni-foldall .can-omni-button svg {
+    width: 14pt;
+    height: 14pt;
+}
+
+/* don't show the view switcher in a sub-omni */
+
+.can-omni-stream .can-omni-stream .can-omni-toptools .can-omni-viewswitcher {
+    display: none; 
+}
+
+.can-omni-stream .can-omni-stream .can-omni-toptools {
+    grid-column: 1/2;
+}
+
+
+/* ----------------------------------------- */
+/* Above and below item droppable zones */
+/* ----------------------------------------- */
+
+.can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { grid-column: 2/6; border-radius: 4px; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background-color: #ffffff;}
+
+.can-omni-peripheral.tc-droppable, .can-omni-topadd.tc-droppable, .can-omni-bottomadd.tc-droppable { width: 100%; display: flex; flex-direction: row;}
+
+.can-omni-button.can-omni-toggleadd {
+    width: 100%;
+    display: flex; 
+    flex-direction: row;
+    justify-content: flex-start; 
+    padding-left: 0.4em;
+    margin: 2px 0;
+}
+
+.can-omni-toggleadd:hover {background-color: #efefef;}
+
+.can-omni-peripheral.tc-dragover, .can-omni-topadd.tc-dragover, .can-omni-bottomadd.tc-dragover, .tc-dragover .can-omnibus-droppable { border-radius: 5px;background-color: #0ff; }
+
+.can-omni-peripheral .can-omni-button, .can-omni-bottomadd .can-omni-button {border-radius: 4px; width: 100%;}
+
+.can-quickadd.sub, .can-omni-top { grid-column: 2/6; margin-bottom: 0.8em; }
+
+/* ----------------------------------------- */
+/* omni-bullet  */
+/* ----------------------------------------- */
+
+.can-omni-bullet { flex: 0 0 auto; box-sizing: content-box; border-radius: 50%; width: 6px; height: 6px; background-color: #333333; align-self: flex-start; margin-top: 0.5em;margin-right: 0.5em;}
+
+/* --------------- */
+/* media-dependent */
+/* --------------- */
+
+@media (max-width: 620px) {
+
+.can-omni-stream { 
+grid-template-columns: auto auto auto 5fr auto; 
+}
+
+.can-omni-stream .can-omni-text {
+    grid-column: 4/5;
+}
+
+.can-omni-stream .can-omni-ctl {  
+    grid-column: 4/5;
+    margin: 0.4em 1em 0 0;
+    }
+
+.can-omni-stream .can-omni-tag-area {
+    grid-column: 5/6;
+ }
+
+.can-omni-stream .can-omni-tags.tc-edit-tags {
+    margin-bottom: -12pt;
+}
+
+ /* headings for narrow display */
+
+ .can-omni-stream h1, .can-omni-stream h2,  .can-omni-stream h3 {
+     margin-top: 0;
+ }
+ .can-omni-stream h2 {
+     font-size: 1.4rem;
+ }
+ .can-omni-stream h3 {
+     font-size: 1.2rem;
+ }
+ .can-omni-stream h4 {
+     font-size: 1.1rem;
+ }
+
+}
