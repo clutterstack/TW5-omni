@@ -1,0 +1,163 @@
+created: 20200507184921957
+creator: chris
+tags: nothing
+title: $:/plugins/can/omni/styles-edit
+
+/*==== Styles for edit mode ====*/
+
+
+.can-omni-stream { 
+display: grid; 
+grid-template-columns: max-content max-content auto 7fr max-content;
+grid-template-rows: auto; 
+/*border: 1px solid cyan;*/
+/* width: 100%; */
+}
+
+.can-omni-text {
+    grid-column: 4/5;
+    padding: 0.2em;
+    border: none;
+}
+
+/* ---------------------------------------*/
+/* Vertical item handle                   */
+/* ---------------------------------------*/
+
+.can-omni-itemhandle {
+    border-radius: 5px 0 0 5px; 
+    width: 1em; 
+    height: 100%; 
+    grid-column: 2/3; 
+    grid-row: span 2;
+    background-color: <<colour page-background>>;
+    margin:0; 
+    padding:2px;
+    display: flex;
+    flex-direction: column;
+    }
+
+.can-omni-edithandle {
+    height:100%;
+    width:100%;
+}
+
+.can-omni-itemhandle:hover {
+    background-color: <<colour muted-foreground>>;
+}
+
+.can-omni-itemhandle .can-omni-link {height: 1em;}
+
+.can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
+.can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
+
+.can-omni-itemhandle-inner {
+    border-radius: 5px 0 0 5px; 
+    box-sizing: border-box;
+    height: 100%; 
+    width: 100%;
+    background-color: <<colour page-background>>;
+    margin:0;
+    }
+
+.can-omni-itemhandle-inner { 
+    box-sizing: content-box; 
+    border-radius: 2px;
+    height: 100%; 
+    width: 1px;
+    background-color: #cccccc;
+    margin-left: 0.4em;
+    }
+
+
+.can-omni-subctl {
+    grid-column: 5/6;
+    padding-left: 0.2em;
+}
+
+
+.can-omni-foldbutton {
+    grid-column: 3/4; 
+    align-self: start; 
+    height: 1.5em; 
+    z-index: 9999; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start;
+    margin-top: 0.4em;
+    }
+
+
+
+.can-omni-ctlrow {
+    grid-column: 4/6; 
+    display: flex; 
+    flex-direction:row; 
+    flex-wrap: wrap; 
+    justify-content: space-between;
+    padding-top: 0.1em; 
+    margin-right: 2em;}
+
+.can-omni-ctl  { 
+    grid-column: 5/6; 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: flex-end; 
+    align-content: flex-start; 
+    padding-top: 0.4em; 
+    padding-left: 0.4em;
+    }
+
+.can-omni-subctl {
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    align-content: flex-start;
+    }
+
+
+.can-omni-foldbutton {
+    grid-column: 3/4; 
+    align-self: start; 
+    height: 1.5em; 
+    z-index: 9999; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start;
+    margin-top: 0.4em;
+    }
+
+.can-omni-omnibutton {
+    grid-column: 3/4; 
+    align-self: start; 
+    height: 1.5em; 
+    z-index: 9999; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start;
+    margin-top: 0.4em;
+    }
+
+
+
+.can-omni-stream .can-omni-button svg {
+    width: 10pt;
+    height: 10pt;
+}
+
+/* ----------------------------------------- */
+/* Above and below item droppable zones */
+/* ----------------------------------------- */
+
+.can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
+    grid-column: 3/6; 
+    border-radius: 4px; 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    line-height: 16pt; 
+    background-color: #ffffff;}
+
+.can-omni-bottomadd {
+    margin-left: 2em;
+}

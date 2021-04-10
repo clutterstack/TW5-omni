@@ -3,41 +3,6 @@ creator: chris
 tags:
 title: $:/plugins/can/omni/styles-exp
 
-/* -------------------------- */
-/* Omnibus export sidebar tab */
-/* -------------------------- */
-
- .omni-bundle {
-     display: flex;
-     flex-direction: row;
- }
-
-/* --------------------------------- */
-/* General in-tiddler omnibus styles */
-/* --------------------------------- */
-
-.can-omni-toptools {
-margin: 0 0 0.4em 0;
-display: flex;
-flex-direction: row;
-justify-content: space-between;
-grid-column: 1/6;
-}
-
-.omni-stream-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.can-omni-stream { 
-display: grid; 
-grid-template-columns: max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
-grid-template-rows: auto; 
-/*border: 1px solid cyan;*/
-/* width: 100%; */
-}
-
 
 .can-omni-stream.tree,.can-omni-stream.exp {
     margin-left: 1em;
@@ -94,13 +59,29 @@ grid-template-rows: auto;
     margin-left: -1px;
 }
 
-.tree .can-omni-text, .exp .can-omni-text {
+.exp .can-omni-text {
     border-radius: 0 5px 5px 0;
     background-color: <<colour page-background>>;
     grid-column: 4/5;
     padding: 0.2em;
     border: none;
 }
+
+
+.omni-title-heading.view {display: flex; flex-direction: row;}
+
+.omni-title-heading button {margin-left: 1em;}
+
+.exp .omni-title-heading {
+    background-color: <<colour page-background>>;
+    grid-column: 4/5;
+    padding: 0.2em;
+    border: none;
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-right: 0.4em;
+}
+
 
 .tree .omni-showomni.tc-reveal {
 }
@@ -135,10 +116,10 @@ grid-template-rows: auto;
 
 .tree .can-omni-itemhandle .can-omni-link, .exp .can-omni-itemhandle .can-omni-link {height: 1em;}
 
-.tree .can-omni-itemhandle .can-omni-link svg, .exp .can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
-.tree .can-omni-itemhandle .can-omni-link:hover svg, .exp .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
+.exp .can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
+.exp .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
 
-.tree .can-omni-itemhandle-inner, .exp .can-omni-itemhandle-inner {
+.exp .can-omni-itemhandle-inner {
     border-radius: 5px 0 0 5px; 
     box-sizing: border-box;
     height: 100%; 
@@ -147,29 +128,18 @@ grid-template-rows: auto;
     margin:0;
     }
 
-
-.can-omni-stream.slim, .can-omni-stream.edit, .can-omni-stream.post, .can-omni-stream.named {
-    margin-left: -1.2em;
-}
-
-.can-omni-stream .can-omni-stream.edit, .can-omni-stream .can-omni-stream.slim, .can-omni-stream .can-omni-stream.todo, .can-omni-stream .can-omni-stream.read,  .can-omni-stream .can-omni-stream.namedro {
-    margin-left: 1em;
-}
-
-
-.slim .can-omni-subctl, .tree .can-omni-subctl, .exp .can-omni-subctl {
+.exp .can-omni-subctl {
     grid-column: 5/6;
     padding-left: 0.2em;
 }
 
 
-
-.tree .can-omni-foldbutton, .exp .can-omni-foldbutton {
+.exp .can-omni-foldbutton {
     grid-column: 3/4;
 }
 
 
-.can-omni-stream.slim .can-omni-button svg, .can-omni-stream.tree .can-omni-button svg, .can-omni-stream.exp .can-omni-button svg {
+.can-omni-stream.exp .can-omni-button svg {
     width: 10pt;
     height: 10pt;
 }
@@ -178,7 +148,7 @@ grid-template-rows: auto;
 /* Above and below item droppable zones */
 /* ----------------------------------------- */
 
-.tree .can-omni-peripheral, .exp .can-omni-peripheral, .tree .can-omni-topadd, .exp .can-omni-bottomadd.exp .can-omni-topadd, .exp .can-omni-bottomadd { 
+.exp .can-omni-peripheral, .exp .can-omni-topadd, .exp .can-omni-bottomadd { 
     grid-column: 3/6; 
     border-radius: 4px; 
     display: flex; 
@@ -187,6 +157,7 @@ grid-template-rows: auto;
     line-height: 16pt; 
     background-color: #ffffff;}
 
-.tree .can-omni-bottomadd, .exp .can-omni-bottomadd {
+.exp .can-omni-bottomadd {
     margin-left: 2em;
 }
+

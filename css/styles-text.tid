@@ -1,0 +1,85 @@
+created: 20200507184921957
+creator: chris
+tags: 
+title: $:/plugins/can/omni/styles-text
+
+
+.can-omni-text p, .can-omni-text li, .can-omni-text pre { 
+  /* margin-top: 0;  
+    margin-bottom: 0.8em; */
+    max-width: 46em;
+}
+
+.can-omni-text td {
+     /*width: 100%;*/
+     max-width: 30em;
+}
+
+p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
+
+
+/* ----------------------------------------- */
+/* code                                      */
+/* ----------------------------------------- */
+
+.can-omni-stream pre {
+    /* max-width: calc({{$:/themes/tiddlywiki/vanilla/metrics/storywidth}} - 25%); */
+    /*overflow: auto;*/
+}
+
+/* ----------------------------------------- */
+/* lists                                     */
+/* ----------------------------------------- */
+
+.can-omni-stream ul {
+    margin: 0;
+    padding-left: 2em;
+}
+
+
+/* ------------------ */
+/* headings           */
+/* ------------------ */
+
+.can-omni-stream h1 {font-size: 1.5rem;}
+
+ .can-omni-stream h2 {
+     font-size: 1.3rem;
+     margin-bottom: 1em;
+     margin-top:1em;
+ }
+ 
+ .can-omni-stream h3 {
+     font-size: 1.2rem;
+     margin-bottom: 1em;
+     margin-top:1em;
+ }
+
+.can-omni-stream h4 {font-size: 1.1rem; font-weight:500;}
+.can-omni-stream h5 {font-size: 1.0rem; font-weight:500;}
+.can-omni-stream h6 {font-size: 1.0rem;}
+
+
+
+/* --------------- */
+/* media-dependent */
+/* --------------- */
+
+@media (max-width: 620px) {
+
+ /* headings for narrow display */
+
+ .can-omni-stream h1, .can-omni-stream h2,  .can-omni-stream h3 {
+     margin-top: 0;
+ }
+ .can-omni-stream h2 {
+     font-size: 1.4rem;
+ }
+ .can-omni-stream h3 {
+     font-size: 1.2rem;
+ }
+ .can-omni-stream h4 {
+     font-size: 1.1rem;
+ }
+
+}

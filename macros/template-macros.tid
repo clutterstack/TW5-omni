@@ -3,7 +3,6 @@ title: $:/plugins/can/omni/template-macros
 
 \whitespace trim
 
-
 \define everyslim(depth)
 	<<can-omni-peripheral>>
     <<can-omni-folder>>
@@ -16,26 +15,6 @@ title: $:/plugins/can/omni/template-macros
         <<can-omni-make-omnibus>>
     </div>
 	<$macrocall $name=omni-showomni depth=<<__depth__>> />
-\end
-
-\define everyedit(depth)
-	<<can-omni-peripheral>>
-	<<can-omni-itemhandle>>
-	<<can-omni-folder>>
-	<div class="can-omni-ctlrow">			
-		<div>
-			<<can-omni-title-link>>
-		</div>
-		<div class="can-omni-subctl">
-			<<can-omni-delist>>
-			<<can-omni-delete>>
-			<<can-omni-make-omnibus>>
-		</div>
-	</div>
-    <<can-omni-text-region>>
-	<<can-omni-taglist>>
-	<$macrocall $name=omni-showomni depth=<<__depth__>> />
-
 \end
 
 \define everybar(depth)
@@ -201,6 +180,7 @@ title: $:/plugins/can/omni/template-macros
 \end
 
 
+<!-- Nothing after here -->
 <!--
 \define everytree(depth)
     <$set name=testclass filter="[[omni-item-container]] [[$depth$]match[0]then[toplevel]]" >
@@ -222,5 +202,4 @@ title: $:/plugins/can/omni/template-macros
     </$list>
     <$list filter="[{$(foldstatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>
     </div>
-\end
--->
+\end-->

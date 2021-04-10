@@ -55,59 +55,12 @@ div.omni-text-dblclick {width:100%;}
     width: 100%;
 }
 
-/* ------------------ */
-/* headings           */
-/* ------------------ */
 
-
-.can-omni-stream h1 {font-size: 1.5rem;}
-
- .can-omni-stream h2 {
-     font-size: 1.3rem;
-     margin-bottom: 1em;
-     margin-top:1em;
- }
- 
- .can-omni-stream h3 {
-     font-size: 1.2rem;
-     margin-bottom: 1em;
-     margin-top:1em;
- }
-
-.can-omni-stream h4 {font-size: 1.1rem; font-weight:500;}
-.can-omni-stream h5 {font-size: 1.0rem; font-weight:500;}
-.can-omni-stream h6 {font-size: 1.0rem;}
-
-.can-omni-stream .omni-title-heading {
-    grid-column: 3/5;
-    flex: 1;
-    font-size: 1.4rem;
-    font-weight: 400;
-    margin-right: 0.4em;
-}
 
 .can-omni-stream .omni-title-heading .can-quickadd-textarea { 
     margin: 0 0.4em 0 0; 
     border: 1px solid #ccc; 
     }
-
-/* ----------------------------------------- */
-/* code                                      */
-/* ----------------------------------------- */
-
-.can-omni-stream pre {
-    /* max-width: calc({{$:/themes/tiddlywiki/vanilla/metrics/storywidth}} - 25%); */
-    /*overflow: auto;*/
-}
-
-/* ----------------------------------------- */
-/* lists                                     */
-/* ----------------------------------------- */
-
-.can-omni-stream ul {
-    margin: 0;
-    padding-left: 2em;
-}
 
 /* ---------------------------------------*/
 /* Style the quickadd for in an omnibus   */
@@ -120,27 +73,11 @@ div.omni-text-dblclick {width:100%;}
     background-color: #999999;
     }
 
-.can-omni-text { grid-column: 4/5; display: flex; flex-direction: row; z-index: 10;}
+.can-omni-text {z-index: 10;}
 
 .can-omni-text[hidden] {display: none;}
 
 .can-omni-text .tc-reveal {width: 100%; }
-
-.can-omni-text p, .can-omni-text li, .can-omni-text pre { 
-  /* margin-top: 0;  
-    margin-bottom: 0.8em; */
-    max-width: 46em;
-}
-
-.can-omni-text td {
-     /*width: 100%;*/
-     max-width: 30em;
-}
-
-p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
-
-/* .can-omni-text p:nth-child(1) { margin-top: 0; } */
-/* .can-omni-text p:last-child { margin-bottom: 0.6em; } */
 
 .omni-showomni {grid-column:4/6; }
 

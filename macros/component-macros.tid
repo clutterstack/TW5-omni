@@ -26,6 +26,15 @@ type: text/vnd.tiddlywiki
 </$button>
 \end
 
+\define can-omni-omni-show()
+<$button class="can-omni-foldbutton tc-btn-invisible can-small-text-button">
+<$list filter="[<omnistatetiddler>get[text]match[hide]]" emptyMessage="""<$action-setfield $tiddler=<<omnistatetiddler>> $value="hide"/>{{$:/core/images/fold-button}}""" variable="ignore">
+	<$action-setfield $tiddler=<<omnistatetiddler>> $value="show"/>
+	{{$:/core/images/unfold-button}}
+</$list>
+</$button>
+\end
+
 \define can-omni-itemhandle()
 <$button tag="div" class="can-omni-itemhandle tc-btn-invisible" tooltip="Click to toggle text edit. Drag to move list entry." aria-label="Click to toggle text edit. Drag to move list entry.">
 <$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >
@@ -135,7 +144,7 @@ testvar? <<testvar>> <br>
 <$set name=caption-or-title filter="[<currentTiddler>get[caption]]" emptyValue={{!!title}} select="0">
 <$reveal type="nomatch" stateTitle=<<editfieldstatetid>> stateField=editstate text="edit" tag="div" class="omni-title-heading view" title="Double-click to edit caption." aria-label="Double-click to edit caption.">
     <$omnidblclick actions="""<<wahoo>><<omni-startfieldedit-actions>>"""/>
-	<<caption-or-title>>
+	<<caption-or-title>><<can-omni-folder>>
 </$reveal>
 <$reveal type="match" stateTitle=<<editfieldstatetid>> stateField=editstate text="edit" tag=div class="omni-title-heading">
 	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submitfieldedit-actions>>" >
@@ -240,7 +249,7 @@ testvar? <<testvar>> <br>
 
 \define omni-showomni(depth) 
 <$list filter="[<currentTiddler>tag[omnibus]] +[all[current]list[]limit[1]]" variable="ignore">
-<$reveal tag="div" class="omni-showomni" type="nomatch" state=<<foldstatetiddler>> text="hide" >
+<$reveal tag="div" class="omni-showomni" type="nomatch" state=<<omnistatetiddler>> text="hide" >
 <$list filter="[<currentTiddler>tag[omnibus]]">
     <$vars newdepth={{{[<__depth__>add[1]]}}}>
         <!--omni-showomni: newdepth: <<newdepth>> <br> -->

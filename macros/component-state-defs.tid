@@ -11,6 +11,8 @@ type: text/vnd.tiddlywiki
 
 \define foldstatetiddler() $:/keepstate/can/omni/fold/$(createdid)$
 
+\define omnistatetiddler() $:/keepstate/can/omni/omni/$(createdid)$
+
 \define top-quick-openstatetid() $:/state/can/omni/top-openstate/$(omniqual)$
 \define top-quickstatetid() $:/state/can/omni/top-quickstate/$(omniqual)$
 

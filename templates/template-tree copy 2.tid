@@ -1,24 +1,21 @@
-title: $:/plugins/can/omni/omnitab
+title: $:/plugins/can/omni/template-tree
 tags: $:/tags/Macro
 
-\define everyexp(depth)
-    <!-- <div class="omni-branch">-->
-    <$set name=containerclass filter="[[omni-item-container]] [[$depth$]match[0]then[toplevel]]" >
-        <div class=<<containerclass>> > <!--if the filter didn't have a parameter in it, could do the filtering right here-->
-        <!--<div class="omni-branch-edge"></div>-->
+\define everytree(depth)
+    <$set name=testclass filter="[[omni-item-container]] [[$depth$]match[0]then[toplevel]]" >
+        <div class=<<testclass>> >
         <$list filter="[[$depth$]!match[0]]">
         <div class="omni-branch-line"></div>
         </$list>
         <<can-omni-peripheral>>
         <<can-omni-tree-itemhandle>>
         <div class="can-omni-text" >
-        <<can-omni-text>>
+            <<can-omni-text>>
         </div>
         <div class="can-omni-subctl">
             <<can-omni-delist>>
             <<can-omni-delete>>
         </div>
-       <!-- </div> -->
     <$list filter="[<currentTiddler>tag[omnibus]] +[all[current]list[]limit[1]]" variable="ignore">
     <<can-omni-folder>>
     </$list>
