@@ -27,10 +27,10 @@ type: text/vnd.tiddlywiki
 \end
 
 \define can-omni-omni-show()
-<$button class="can-omni-foldbutton tc-btn-invisible can-small-text-button">
-<$list filter="[<omnistatetiddler>get[text]match[hide]]" emptyMessage="""<$action-setfield $tiddler=<<omnistatetiddler>> $value="hide"/>{{$:/core/images/fold-button}}""" variable="ignore">
+<$button class="can-omni-collapsebutton tc-btn-invisible" title="Show/hide omnibus tiddlers">
+<$list filter="[<omnistatetiddler>get[text]match[hide]]" emptyMessage="""<$action-setfield $tiddler=<<omnistatetiddler>> $value="hide"/>{{$:/plugins/can/omni/hide-omni.svg}}""" variable="ignore">
 	<$action-setfield $tiddler=<<omnistatetiddler>> $value="show"/>
-	{{$:/core/images/unfold-button}}
+	{{$:/plugins/can/omni/make-omni.svg}}
 </$list>
 </$button>
 \end
@@ -62,10 +62,8 @@ type: text/vnd.tiddlywiki
 \define can-omni-text()
 <$list filter="[<editstatetid>get[editstate]match[edit]]" variable="ignore" 
 emptyMessage=
-"""<div class="omni-text-dblclick" data-createdid=<<createdid>> data-currenttid=<<currentTiddler>>>
-    <$droppable class="omni-text-display tc-tiddler-body" tag="div" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+"""<div class="omni-text-dblclick tc-tiddler-body" data-createdid=<<createdid>> data-currenttid=<<currentTiddler>>>
 	<$transclude $tiddler="<<currentTiddler>>" mode="block"/>
-	</$droppable>
 </div>""">
 	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submitedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submitedit-actions>>" >
@@ -134,7 +132,7 @@ testvar? <<testvar>> <br>
 	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submittitleedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submittitleedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-canceltitleedit-actions>>">
-		<$edit-text class="can-quickadd-textarea" field='newtitle' rows="1" minHeight="0" focus=true/>
+		<$edit-text class="can-quickadd-textarea" field='newtitle' tag=textarea rows="1" minHeight="0" focus=true/>
 	</$keyboard></$keyboard></$keyboard>
 </$reveal>
 \end

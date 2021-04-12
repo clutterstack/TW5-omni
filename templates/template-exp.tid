@@ -9,10 +9,10 @@ tags: $:/tags/Macro
         </$list>
         <<can-omni-peripheral>>
         <<can-omni-tree-itemhandle>>
-        <div class="can-omni-text" >
+        <$droppable class="omni-text-display" tag="div" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>" >
         <<can-omni-captionheading>>
-        <$list filter="[{$(foldstatetiddler)$}match[hide]then[]]" emptyMessage="""<<can-omni-text>>""" variable="ignore"/>
-        </div>
+        <$list filter="[{$(foldstatetiddler)$}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore"/>
+        </$droppable>
         <div class="can-omni-subctl">
             <<can-omni-delist>>
             <<can-omni-delete>>

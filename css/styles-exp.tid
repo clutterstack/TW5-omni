@@ -60,25 +60,25 @@ title: $:/plugins/can/omni/styles-exp
 }
 
 .exp .can-omni-text {
-    border-radius: 0 5px 5px 0;
-    background-color: <<colour page-background>>;
-    grid-column: 4/5;
     padding: 0.2em;
-    border: none;
 }
 
+ .exp .omni-text-display {
+    grid-column: 4/5;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    background-color: <<colour page-background>>;
+ }  
 
 .omni-title-heading.view {display: flex; flex-direction: row;}
 
 .omni-title-heading button {margin-left: 1em;}
 
 .exp .omni-title-heading {
-    background-color: <<colour page-background>>;
-    grid-column: 4/5;
-    padding: 0.2em;
+    padding: 0.2em 0.2em 0 0.2em;
+    margin-bottom: 0.2em;
     border: none;
-    font-size: 1.4rem;
-    font-weight: 400;
+    font-size: 1.2rem;
     margin-right: 0.4em;
 }
 

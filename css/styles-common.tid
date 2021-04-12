@@ -70,10 +70,12 @@ div.omni-text-dblclick {width:100%;}
 
 
 .can-omni-itemhandle:hover .can-omni-itemhandle-inner { 
-    background-color: #999999;
+    background-color: <<colour tab-background>>;
     }
 
 .can-omni-text {z-index: 10;}
+
+.omni-text-dblclick {min-height: 0.2em;}
 
 .can-omni-text[hidden] {display: none;}
 
@@ -112,7 +114,7 @@ div.omni-text-dblclick {width:100%;}
     }
 
 .tc-draggable.can-omni-ctlrow:hover svg {
-    background: #000000;
+    background: <<colour tiddler-controls-foreground>>;
 }
 
 
@@ -127,7 +129,20 @@ div.omni-text-dblclick {width:100%;}
     margin-top: 0.4em;
     }
 
-.can-omni-foldbutton:hover svg {fill: #666666;}
+.can-omni-collapsebutton {
+    grid-column: 3/4; 
+    align-self: start; 
+    height: 1.1em;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start;
+    margin-top: 0.2em;
+    margin-left: 0.1em;
+    }
+
+.can-omni-collapsebutton svg {fill: <<colour tab-background>>; width: 10pt; height: 10pt;}
+
+.can-omni-foldbutton:hover svg, .can-omni-collapsebutton:hover svg {fill: <<colour tiddler-controls-foreground>>;}
 
 .can-omni-title { font-size: 0.8em;}
 span.can-omni-title {vertical-align: bottom;}
@@ -140,15 +155,15 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .can-small-text-button .tc-menubar-dropdown-arrow {padding-left: 0.4em;}
 
-.can-omni-button svg, .can-omni-foldbutton svg {flex: 0 0 auto; fill: #cccccc;}
+.can-omni-button svg, .can-omni-foldbutton svg {flex: 0 0 auto; fill:<<colour tab-background>>;}
 
 .can-omni-button.can-omni-button-selected {color: #66c;} 
 .can-omni-button.can-omni-button-selected svg { fill: #66c; }
 
-.can-omni-button:hover, .can-omni-button:hover svg {fill: #999999;}
+.can-omni-button:hover, .can-omni-button:hover svg {fill: <<colour tiddler-controls-foreground>>;}
 
 .can-omni-button {
-    color: <<colour tiddler-controls-foreground>>;
+    color: <<colour tab-background>>;
     display: flex; 
     flex-direction: row; 
     align-self: flex-start;

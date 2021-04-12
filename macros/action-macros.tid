@@ -3,7 +3,6 @@ title: $:/plugins/can/omni/action-macros
 type: text/vnd.tiddlywiki
 
 
-
 \define omni-navigate-action() <$action-navigate $to=<<dom-data-currenttid>>/>
 
 \define omni-delist-action() <$action-listops $tiddler=<<dom-data-parentval>> $subfilter='-[<dom-data-currenttid>]'/><$action-listops $tiddler=<<dom-data-currenttid>> $field='omniparent' $subfilter='-[<dom-data-parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>
@@ -14,7 +13,6 @@ type: text/vnd.tiddlywiki
 
 \define omni-toggle-edit() <$action-setfield $tiddler=<<editstatetid>> editstate="edit" $timestamp='no'/>
 \define omni-toggle-view() <$action-setfield $tiddler=<<editstatetid>> editstate="view"$timestamp='no'/>
-
 
 \define omni-startedit-actions() <$vars createdid=<<dom-data-createdid>>><$tiddler tiddler=<<dom-data-currenttid>> ><$action-setfield $tiddler=<<foldstatetiddler>> $value="show" $timestamp='no'/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/><$action-setfield $tiddler=<<editstatetid>> throttle.refresh=yes/></$tiddler></$vars>
 
@@ -36,13 +34,7 @@ type: text/vnd.tiddlywiki
 <$set name=startparent filter="[<parentval>]"><$vars startgrand={{{[<grandparentval>]}}} nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}} parentlist={{{[<parentval>get[list]] -[<currentTiddler>]}}}><$list filter="[<startgrand>get[title]]" variable=ignore ><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<grandparentval>> /><$action-listops $tiddler=<<grandparentval>> $field="list" $subfilter="+[insertbefore:nexttid[$(currentTiddler)$]]" /><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/><$list filter="[<parentval>get[list]] -[[$(currentTiddler)$]]" emptyMessage="""<$action-listops $tiddler=<<parentval>> $field="tags" $subfilter="-omnibus"/>""" variable=ignore ></$list></$list></$vars>
 \end
 
-
-
-
 \define omni-samplemodal() <$vars nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}} parentlist={{{[<parentval>get[list]] -[<currentTiddler>]}}}><$action-sendmessage $message="tm-modal" $param="SampleModal" param1=<<parentlist>> /></$vars>
-
-
-
 
 \define omni-move-later-actions()
 <$action-listops $tiddler=<<parentval>> $field="list" $subfilter="+[move[$(currentTiddler)$]]"/>

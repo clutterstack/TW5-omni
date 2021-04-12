@@ -1,4 +1,4 @@
-title: $:/plugins/can/omnibus/utilities/omniexport
+title: $:/plugins/can/omni/utilities/omniexport
 tags: $:/tags/Macro
 
 \define recurser(depth:1 maxdepth:50)
