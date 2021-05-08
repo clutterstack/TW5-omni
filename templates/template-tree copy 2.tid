@@ -1,4 +1,4 @@
-title: $:/plugins/can/omni/template-tree
+title: $:/plugins/can/omni/template-tree-copy
 tags: $:/tags/Macro
 
 \define everytree(depth)

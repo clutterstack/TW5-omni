@@ -6,9 +6,9 @@ type: text/vnd.tiddlywiki
 
 \define can-omni-toptools()
     <div class="can-omni-toptools">
-        <$list filter="[<mode>match[todo]then[]] [<mode>match[list]then[]]" emptyMessage=<<can-omni-foldall>> variable="null"/>
+        <$list filter="[<mode>!match[tree]!match[todo]!match[list]]" variable="null"><<can-omni-foldall>></$list>
         <<can-omni-exploder>>
-        <$list filter="[{!!showModeState}match[hide]then[]]" emptyMessage=<<omni-viewswitcher>> variable="null"/>
+        <$list filter="[{!!showmodestate}!match[hide]]" variable="ignore"><<omni-viewswitcher>></$list>
     </div>
 \end
 
