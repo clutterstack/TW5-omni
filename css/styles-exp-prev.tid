@@ -4,13 +4,13 @@ tags:
 title: $:/plugins/can/omni/styles-exp
 
 
-.can-omni-stream {
+.can-omni-stream.tree,.can-omni-stream.exp {
     margin-left: 1em;
     grid-template-columns: max-content max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
     
 }
 
-.omni-branch {
+.tree .omni-branch, .exp .omni-branch {
     grid-column: 1/6;
     grid-row: span 2;
     border-left: 1px solid;
@@ -22,7 +22,7 @@ title: $:/plugins/can/omni/styles-exp
     grid-template-rows: auto;
 }
 
-.omni-item-container {
+.tree .omni-item-container, .exp .omni-item-container {
     grid-column: 1/6;
     display: grid;
     grid-template-columns: max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
@@ -31,15 +31,15 @@ title: $:/plugins/can/omni/styles-exp
     box-sizing: content-box;
 }
 
-.omni-item-container.toplevel {
+.tree .omni-item-container.toplevel,.exp .omni-item-container.toplevel {
     border: none;
 }
 
-.omni-item-container:last-of-type {
+.tree .omni-item-container:last-of-type, .exp .omni-item-container:last-of-type {
     border-left: 1px solid rgba(0,0,0,0);
 }
 
-.omni-branch-edge {
+.tree .omni-branch-edge, .exp .omni-branch-edge {
     grid-column: 1/2;
     grid-row: span 2;
     width: 0
@@ -47,7 +47,7 @@ title: $:/plugins/can/omni/styles-exp
     min-height: 1em;
     margin-bottom: -1em;
 }
-.omni-branch-line {
+.tree .omni-branch-line, .exp .omni-branch-line {
     grid-column:2/3;
     grid-row: span 1;
     width:1em;
@@ -59,13 +59,12 @@ title: $:/plugins/can/omni/styles-exp
     margin-left: -1px;
 }
 
-.can-omni-text {
+.exp .can-omni-text {
     padding: 0.2em;
 }
 
-.omni-text-display {
+ .exp .omni-text-display {
     grid-column: 4/5;
-    padding-right: 1em;
     border-radius: 0 5px 5px 0;
     border: none;
     background-color: <<colour page-background>>;
@@ -75,7 +74,7 @@ title: $:/plugins/can/omni/styles-exp
 
 .omni-title-heading button {margin-left: 1em;}
 
-.omni-title-heading {
+.exp .omni-title-heading {
     padding: 0.2em 0.2em 0 0.2em;
     margin-bottom: 0.2em;
     border: none;
@@ -84,11 +83,16 @@ title: $:/plugins/can/omni/styles-exp
 }
 
 
+.tree .omni-showomni.tc-reveal {
+}
+
+
 /* ---------------------------------------*/
 /* Vertical item handle                   */
 /* ---------------------------------------*/
 
-.can-omni-itemhandle {
+
+.tree .can-omni-itemhandle, .exp .can-omni-itemhandle {
     border-radius: 5px 0 0 5px; 
     width: 1em; 
     height: 100%; 
@@ -101,21 +105,21 @@ title: $:/plugins/can/omni/styles-exp
     flex-direction: column;
     }
 
-can-omni-edithandle {
+.tree .can-omni-edithandle, .exp .can-omni-edithandle {
     height:100%;
     width:100%;
 }
 
-.tc-btn-invisible..can-omni-itemhandle:hover {
+.tree .can-omni-itemhandle:hover, .exp .can-omni-itemhandle:hover {
     background-color: <<colour muted-foreground>>;
 }
 
-.can-omni-itemhandle .can-omni-link {height: 1em;}
+.tree .can-omni-itemhandle .can-omni-link, .exp .can-omni-itemhandle .can-omni-link {height: 1em;}
 
-.can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
-.can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
+.exp .can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
+.exp .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
 
-.can-omni-itemhandle-inner {
+.exp .can-omni-itemhandle-inner {
     border-radius: 5px 0 0 5px; 
     box-sizing: border-box;
     height: 100%; 
@@ -124,20 +128,18 @@ can-omni-edithandle {
     margin:0;
     }
 
-.can-omni-subctl {
+.exp .can-omni-subctl {
     grid-column: 5/6;
     padding-left: 0.2em;
 }
 
-.can-omni-foldbutton {
+
+.exp .can-omni-foldbutton {
     grid-column: 3/4;
 }
 
-.can-omni-peripheral.inert {
-    height: 10pt;
-}
 
-.can-omni-stream .can-omni-button svg {
+.can-omni-stream.exp .can-omni-button svg {
     width: 10pt;
     height: 10pt;
 }
@@ -146,7 +148,7 @@ can-omni-edithandle {
 /* Above and below item droppable zones */
 /* ----------------------------------------- */
 
-.can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
+.exp .can-omni-peripheral, .exp .can-omni-topadd, .exp .can-omni-bottomadd { 
     grid-column: 3/6; 
     border-radius: 4px; 
     display: flex; 
@@ -155,7 +157,7 @@ can-omni-edithandle {
     line-height: 16pt; 
     background-color: #ffffff;}
 
-.can-omni-bottomadd {
+.exp .can-omni-bottomadd {
     margin-left: 2em;
 }
 

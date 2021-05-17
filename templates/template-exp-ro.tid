@@ -1,0 +1,22 @@
+title: $:/plugins/can/omni/template-expro
+tags: $:/tags/Macro
+
+\define everyexpro(depth)
+<$set name=testclass filter="[[omni-item-container]] [[$depth$]match[0]then[toplevel]]" >
+    <div class=<<testclass>> >
+        <$list filter="[[$depth$]!match[0]]">
+            <div class="omni-branch-line"></div>
+        </$list>
+        <<can-omni-peripheral-inert>>
+        <<can-omni-tree-itemhandle-filler>>
+        <div class="omni-text-display">
+        <<can-omni-captionheading-ro>>
+        <$list filter="[{$(foldstatetiddler)$}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore"/>
+        </div>
+        <$list filter="[<currentTiddler>tag[omnibus]] +[all[current]list[]limit[1]]" variable="ignore">
+            <<can-omni-omni-show>>
+        </$list>
+        <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>
+    </div>
+</$set>
+\end

@@ -20,45 +20,15 @@ grid-template-rows: auto;
     border: none;
 }
 
+
 /* ---------------------------------------*/
 /* Vertical item handle                   */
 /* ---------------------------------------*/
 
-.can-omni-itemhandle {
-    border-radius: 5px 0 0 5px; 
-    width: 1em; 
-    height: 100%; 
-    grid-column: 2/3; 
-    grid-row: span 2;
-    background-color: <<colour page-background>>;
-    margin:0; 
-    padding:2px;
-    display: flex;
-    flex-direction: column;
-    }
+.can-omni-itemhandle {width: 1.6em; height: 100%; grid-column: 3/4; 
+    grid-row: span 4;}
 
-.can-omni-edithandle {
-    height:100%;
-    width:100%;
-}
-
-.can-omni-itemhandle:hover {
-    background-color: <<colour muted-foreground>>;
-}
-
-.can-omni-itemhandle .can-omni-link {height: 1em;}
-
-.can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
-.can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
-
-.can-omni-itemhandle-inner {
-    border-radius: 5px 0 0 5px; 
-    box-sizing: border-box;
-    height: 100%; 
-    width: 100%;
-    background-color: <<colour page-background>>;
-    margin:0;
-    }
+.can-omni-itemhandle .tc-draggable { height: 100%;}
 
 .can-omni-itemhandle-inner { 
     box-sizing: content-box; 
@@ -68,6 +38,12 @@ grid-template-rows: auto;
     background-color: #cccccc;
     margin-left: 0.4em;
     }
+
+.can-omni-itemhandle:hover .can-omni-itemhandle-inner { 
+    background-color: #999999;
+    }
+
+.can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
 
 
 .can-omni-subctl {

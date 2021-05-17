@@ -32,9 +32,9 @@ title: $:/plugins/can/omni/omnibus-macros
                 </$importvariables>
             </$qualify>
         </$list>
-        <$list filter="[<mode>match[read]then[]] [<mode>match[tree]then[]] [<mode>match[exp]then[]] [<mode>match[toc]then[]] [<mode>match[namedro]then[]] [<mode>match[list]then[]]" variable="null" emptyMessage=<<can-omni-bottomadd>>/>
+        <$list filter="[<mode>match[read]then[]] [<mode>match[tree]then[]] [<mode>match[exp]then[]] [<mode>match[expro]then[]] [<mode>match[toc]then[]] [<mode>match[namedro]then[]] [<mode>match[list]then[]]" variable="null" emptyMessage=<<can-omni-bottomadd>>/>
     </div>
-    <$list filter="[<mode>!match[tree]!match[exp]then[]]" variable="null" emptyMessage=<<can-omni-bottomadd>>/>
+    <$list filter="[<mode>!match[tree]!match[exp]then[]] [<mode>!match[tree]!match[expro]then[]]" variable="null" emptyMessage=<<can-omni-bottomadd>>/>
     <$list filter="[<mode>!match[toc]then[]]" variable="null" emptyMessage=<<can-omni-singleview>>/>   
 <!-- </div> -->
 </$qualify>

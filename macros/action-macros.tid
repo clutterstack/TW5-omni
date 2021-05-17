@@ -24,6 +24,9 @@ type: text/vnd.tiddlywiki
 
 \define omni-canceledit-actions() <$action-deletetiddler $tiddler=<<editstatetid>>/><<omni-toggle-view>>
 
+\define omni-handle-toggle-actions()
+<$list filter="[<editstatetid>get[editstate]match[edit]]" variable="ignore" emptyMessage= <<omni-startedit-actions>>><<omni-submitedit-actions>></$list>
+\end
 
 \define omni-tab-actions() 
 <$vars prevtid={{{[[$(parentval)$]get[list]enlist-input[]before[$(currentTiddler)$]]}}}><$list filter="[<prevtid>get[title]]" variable=ignore><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<prevtid>> /><$action-listops $tiddler=<<prevtid>> $field="list" $subfilter="[[$(currentTiddler)$]]" /><$action-listops $tiddler=<<prevtid>> $field="tags" $subfilter="omnibus"/><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/></$list></$vars>
@@ -31,7 +34,7 @@ type: text/vnd.tiddlywiki
 
 
 \define omni-shift-tab-actions() 
-<$set name=startparent filter="[<parentval>]"><$vars startgrand={{{[<grandparentval>]}}} nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}} parentlist={{{[<parentval>get[list]] -[<currentTiddler>]}}}><$list filter="[<startgrand>get[title]]" variable=ignore ><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<grandparentval>> /><$action-listops $tiddler=<<grandparentval>> $field="list" $subfilter="+[insertbefore:nexttid[$(currentTiddler)$]]" /><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/><$list filter="[<parentval>get[list]] -[[$(currentTiddler)$]]" emptyMessage="""<$action-listops $tiddler=<<parentval>> $field="tags" $subfilter="-omnibus"/>""" variable=ignore ></$list></$list></$vars>
+<$set name=startparent filter="[<parentval>]"><$vars startgrand={{{[<grandparentval>]}}} nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}} parentlist={{{[<parentval>get[list]] -[<currentTiddler>]}}}><$list filter="[<startgrand>get[title]]" variable=ignore ><$action-setfield $tiddler=$(currentTiddler)$ omniparent=$(grandparentval)$ /><$action-listops $tiddler=<<grandparentval>> $field="list" $subfilter="+[insertbefore:nexttid[$(currentTiddler)$]]" /><$action-listops $tiddler=<<parentval>> $field="list" $subfilter="-[[$(currentTiddler)$]]"/><$list filter="[<parentval>get[list]] -[[$(currentTiddler)$]]" emptyMessage="""<$action-listops $tiddler=<<parentval>> $field="tags" $subfilter="-omnibus"/>""" variable=ignore ></$list></$list></$vars>
 \end
 
 \define omni-samplemodal() <$vars nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}} parentlist={{{[<parentval>get[list]] -[<currentTiddler>]}}}><$action-sendmessage $message="tm-modal" $param="SampleModal" param1=<<parentlist>> /></$vars>

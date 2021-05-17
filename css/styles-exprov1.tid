@@ -1,7 +1,7 @@
 created: 20200507184921957
 creator: chris
 tags:
-title: $:/plugins/can/omni/styles-exp
+title: $:/plugins/can/omni/styles-exprov1
 
 
 .can-omni-stream {
@@ -35,7 +35,7 @@ title: $:/plugins/can/omni/styles-exp
     border: none;
 }
 
-.omni-item-container:last-of-type {
+ .expro .omni-item-container:last-of-type {
     border-left: 1px solid rgba(0,0,0,0);
 }
 
@@ -63,9 +63,8 @@ title: $:/plugins/can/omni/styles-exp
     padding: 0.2em;
 }
 
-.omni-text-display {
+ .omni-text-display {
     grid-column: 4/5;
-    padding-right: 1em;
     border-radius: 0 5px 5px 0;
     border: none;
     background-color: <<colour page-background>>;
@@ -84,9 +83,14 @@ title: $:/plugins/can/omni/styles-exp
 }
 
 
+.omni-showomni.tc-reveal {
+}
+
+
 /* ---------------------------------------*/
 /* Vertical item handle                   */
 /* ---------------------------------------*/
+
 
 .can-omni-itemhandle {
     border-radius: 5px 0 0 5px; 
@@ -101,12 +105,12 @@ title: $:/plugins/can/omni/styles-exp
     flex-direction: column;
     }
 
-can-omni-edithandle {
+.can-omni-edithandle {
     height:100%;
     width:100%;
 }
 
-.tc-btn-invisible..can-omni-itemhandle:hover {
+.can-omni-itemhandle:hover {
     background-color: <<colour muted-foreground>>;
 }
 
@@ -129,13 +133,11 @@ can-omni-edithandle {
     padding-left: 0.2em;
 }
 
+
 .can-omni-foldbutton {
     grid-column: 3/4;
 }
 
-.can-omni-peripheral.inert {
-    height: 10pt;
-}
 
 .can-omni-stream .can-omni-button svg {
     width: 10pt;

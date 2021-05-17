@@ -95,12 +95,6 @@ title: $:/plugins/can/omni/template-macros
 	<$macrocall $name=omni-showomni depth=<<__depth__>> />
 \end
 
-\define everysimple()
-	<<can-omni-itemhandle>>
-	<div class="can-omni-text">
-	<<can-omni-text>>
-	</div>
-\end
 
 \define everytodo()
 	<<can-omni-peripheral>>

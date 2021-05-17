@@ -17,6 +17,10 @@ type: text/vnd.tiddlywiki
 </$vars>
 \end
 
+\define can-omni-peripheral-inert()
+<div class="can-omni-peripheral inert"></div>
+\end
+
 \define can-omni-folder()
 <$button class="can-omni-foldbutton tc-btn-invisible can-small-text-button">
 <$list filter="[<foldstatetiddler>get[text]match[hide]]" emptyMessage="""<<omni-toggle-view>><$action-setfield $tiddler=<<foldstatetiddler>> $value="hide"/>{{$:/core/images/down-arrow}}""" variable="ignore">
@@ -49,12 +53,14 @@ type: text/vnd.tiddlywiki
 </$button>
 \end
 
-
 \define can-omni-tree-itemhandle()
+<$button tag="div" class="can-omni-itemhandle tc-btn-invisible" actions=<<omni-handle-toggle-actions>> tooltip="Click to toggle text edit. Drag to move list entry." aria-label="Click to toggle text edit. Drag to move list entry.">
+    <$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> class="can-omni-itemhandle-inner"></$draggable>
+</$button>
+\end
+
+\define can-omni-tree-itemhandle-filler()
 <div class="can-omni-itemhandle">
-<div class="tc-btn-invisible can-omni-link" data-currenttid=<<currentTiddler>> role="button" title="Click to open tiddler in story. Drag to move list entry." aria-label="Click to open tiddler in story. Drag to move list entry.">{{$:/plugins/can/omni/fish-water.svg}}</div>
-<$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> class="can-omni-edithandle">
-</$draggable>
 </div>
 \end
 
@@ -153,6 +159,14 @@ testvar? <<testvar>> <br>
 </$reveal>
 </$set>
 </$vars>
+\end
+
+\define can-omni-captionheading-ro()
+<$set name=caption-or-title filter="[<currentTiddler>get[caption]]" emptyValue={{!!title}} select="0">
+<div class="omni-title-heading view hey">
+	<<caption-or-title>><<can-omni-folder>>
+</div>
+</$set>
 \end
 
 \define can-omni-text-region()	

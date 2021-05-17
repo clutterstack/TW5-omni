@@ -2,6 +2,6 @@
 !.gitignore
 !README.md
 
-# Ignore all files named .DS_Store or ending with .log
+# Ignore all files named .DS_Store or ending with .code-workspace
 *.DS_Store
 *.code-workspace
