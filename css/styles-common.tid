@@ -104,28 +104,12 @@ div.omni-text-dblclick {width:100%;}
     padding-left: 0.4em;
     }
 
-.can-omni-subctl {
-    display: flex; 
-    flex-direction: row; 
-    flex-wrap: wrap; 
-    align-content: flex-start;
-    }
-
 .tc-draggable.can-omni-ctlrow:hover svg {
     background: <<colour tiddler-controls-foreground>>;
 }
 
 
-.can-omni-foldbutton {
-    grid-column: 3/4; 
-    align-self: start; 
-    height: 1.5em; 
-    z-index: 9999; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: flex-start;
-    margin-top: 0.4em;
-    }
+
 
 .can-omni-collapsebutton {
     grid-column: 3/4; 
@@ -138,7 +122,7 @@ div.omni-text-dblclick {width:100%;}
     margin-left: 0.1em;
     }
 
-.can-omni-collapsebutton svg {fill: <<colour tab-background>>; width: 10pt; height: 10pt;}
+.can-omni-collapsebutton svg {fill: <<colour tab-background>>; width: 1em; height: 1em;}
 
 .can-omni-foldbutton:hover svg, .can-omni-collapsebutton:hover svg {fill: <<colour tiddler-controls-foreground>>;}
 
@@ -162,7 +146,7 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .can-small-text-button .tc-menubar-dropdown-arrow {padding-left: 0.4em;}
 
-.can-omni-button svg, .can-omni-foldbutton svg {flex: 0 0 auto; fill:<<colour tab-background>>;}
+.can-omni-button svg, .can-omni-foldbutton svg {width: 1.5em; height: 1.5em; flex: 0 0 auto; fill:<<colour tab-background>>;}
 
 .can-omni-button.can-omni-button-selected {color: #66c;} 
 .can-omni-button.can-omni-button-selected svg { fill: #66c; }

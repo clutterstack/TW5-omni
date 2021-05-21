@@ -11,7 +11,7 @@ tags: $:/tags/Macro
         <<can-omni-tree-itemhandle-filler>>
         <div class="omni-text-display">
         <<can-omni-captionheading-ro>>
-        <$list filter="[{$(foldstatetiddler)$}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore"/>
+        <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore"/>
         </div>
         <$list filter="[<currentTiddler>tag[omnibus]] +[all[current]list[]limit[1]]" variable="ignore">
             <<can-omni-omni-show>>

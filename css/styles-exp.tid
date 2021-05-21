@@ -5,9 +5,7 @@ title: $:/plugins/can/omni/styles-exp
 
 
 .can-omni-stream {
-    margin-left: 1em;
-    grid-template-columns: max-content max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
-    
+    grid-template-columns: max-content max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */  
 }
 
 .omni-branch {
@@ -71,7 +69,12 @@ title: $:/plugins/can/omni/styles-exp
     background-color: <<colour page-background>>;
  }  
 
-.omni-title-heading.view {display: flex; flex-direction: row;}
+.omni-title-heading.view {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: -0.4em;
+    }
 
 .omni-title-heading button {margin-left: 1em;}
 
@@ -80,7 +83,6 @@ title: $:/plugins/can/omni/styles-exp
     margin-bottom: 0.2em;
     border: none;
     font-size: 1.2rem;
-    margin-right: 0.4em;
 }
 
 
@@ -90,13 +92,12 @@ title: $:/plugins/can/omni/styles-exp
 
 .can-omni-itemhandle {
     border-radius: 5px 0 0 5px; 
-    width: 1em; 
+    width: 1.2em; 
     height: 100%; 
     grid-column: 3/4; 
     grid-row: span 1;
     background-color: <<colour page-background>>;
-    margin:0; 
-    padding:2px;
+    margin:0;
     display: flex;
     flex-direction: column;
     }
@@ -125,12 +126,16 @@ can-omni-edithandle {
     }
 
 .can-omni-subctl {
-    grid-column: 5/6;
-    padding-left: 0.2em;
+    display:flex;
+    flex-direction: row;
 }
 
 .can-omni-foldbutton {
-    grid-column: 3/4;
+    margin: 0.2em 0 0 0.4em; 
+    height: 1.5em; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start;
 }
 
 .can-omni-peripheral.inert {

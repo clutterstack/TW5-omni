@@ -13,10 +13,6 @@ tags: $:/tags/Macro
         <<can-omni-captionheading>>
         <$list filter="[{$(foldstatetiddler)$}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore"/>
         </$droppable>
-        <div class="can-omni-subctl">
-            <<can-omni-delist>>
-            <<can-omni-delete>>
-        </div>
         <$list filter="[<currentTiddler>tag[omnibus]] +[all[current]list[]limit[1]]" variable="ignore">
             <<can-omni-omni-show>>
         </$list>

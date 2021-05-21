@@ -14,8 +14,13 @@ title: $:/plugins/can/omni/styles-bar
     padding-left: 0.6em;
 }
 
-
 .can-omni-stream.bar .can-omni-foldbutton {
     margin-left: -0.4em;
     margin-right: 0.4em;
 }
+.can-omni-subctl {
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: wrap; 
+    align-content: flex-start;
+    }

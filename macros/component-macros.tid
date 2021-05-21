@@ -22,9 +22,18 @@ type: text/vnd.tiddlywiki
 \end
 
 \define can-omni-folder()
+<div class="can-omni-foldbutton tc-btn-invisible can-small-text-button " data-statetid=<<foldstatetiddler>>>
+<$list filter="[<foldstatetiddler>get[foldstate]match[hide]]" emptyMessage="""<<omni-toggle-view>><$action-setfield $tiddler=<<foldstatetiddler>> foldstate="hide"/>{{$:/core/images/down-arrow}}""" variable="ignore">
+	<$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show"/>
+	{{$:/core/images/right-arrow}}
+</$list>
+</div>
+\end
+
+\define can-omni-folder-old()
 <$button class="can-omni-foldbutton tc-btn-invisible can-small-text-button">
-<$list filter="[<foldstatetiddler>get[text]match[hide]]" emptyMessage="""<<omni-toggle-view>><$action-setfield $tiddler=<<foldstatetiddler>> $value="hide"/>{{$:/core/images/down-arrow}}""" variable="ignore">
-	<$action-setfield $tiddler=<<foldstatetiddler>> $value="show"/>
+<$list filter="[<foldstatetiddler>get[text]match[hide]]" emptyMessage="""<<omni-toggle-view>><$action-setfield $tiddler=<<foldstatetiddler>> foldstate="hide"/>{{$:/core/images/down-arrow}}""" variable="ignore">
+	<$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show"/>
 	{{$:/core/images/right-arrow}}
 </$list>
 </$button>
@@ -60,8 +69,7 @@ type: text/vnd.tiddlywiki
 \end
 
 \define can-omni-tree-itemhandle-filler()
-<div class="can-omni-itemhandle">
-</div>
+<div class="can-omni-itemhandle"></div>
 \end
 
 
@@ -146,69 +154,54 @@ testvar? <<testvar>> <br>
 \define can-omni-captionheading()
 <$vars editFieldName="caption">
 <$set name=caption-or-title filter="[<currentTiddler>get[caption]]" emptyValue={{!!title}} select="0">
-<$reveal type="nomatch" stateTitle=<<editfieldstatetid>> stateField=editstate text="edit" tag="div" class="omni-title-heading view" title="Double-click to edit caption." aria-label="Double-click to edit caption.">
-    <$omnidblclick actions="""<<wahoo>><<omni-startfieldedit-actions>>"""/>
-	<<caption-or-title>><<can-omni-folder>>
-</$reveal>
-<$reveal type="match" stateTitle=<<editfieldstatetid>> stateField=editstate text="edit" tag=div class="omni-title-heading">
+<$list filter="[<editfieldstatetid>get[editstate]match[edit]]" variable="ignore" emptyMessage= """<div class="omni-title-heading view" title="Double-click to edit caption." aria-label="Double-click to edit caption."><$omnidblclick actions=<<omni-startfieldedit-actions>> /><div class="can-omni-subctl"><<caption-or-title>><<can-omni-folder>></div><div class="can-omni-subctl">
+            <<can-omni-link>>
+            <<can-omni-delist>>
+            <<can-omni-delete>>
+        </div></div>""">
+<div class="omni-title-heading">
 	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submitfieldedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submitfieldedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-cancelfieldedit-actions>>">
         <$edit-text class="can-quickadd-textarea" field="newfieldvalue" rows="1" minHeight="0" focus=true/>
 	</$keyboard></$keyboard></$keyboard>
-</$reveal>
+</div>
+</$list>
 </$set>
 </$vars>
 \end
 
 \define can-omni-captionheading-ro()
 <$set name=caption-or-title filter="[<currentTiddler>get[caption]]" emptyValue={{!!title}} select="0">
-<div class="omni-title-heading view hey">
+<div class="omni-title-heading view">
 	<<caption-or-title>><<can-omni-folder>>
 </div>
 </$set>
 \end
 
 \define can-omni-text-region()	
-        <$reveal tag="div" class="can-omni-text" type="match" state=<<foldstatetiddler>> text="hide" >
+        <$reveal tag="div" class="can-omni-text" type="match" stateTitle=<<foldstatetiddler>> stateField="foldstate" text="hide" >
             <<can-omni-teaser>>
         </$reveal>
-        <$reveal tag="div" class="can-omni-text" type="nomatch" state=<<foldstatetiddler>> text="hide" >
+        <$reveal tag="div" class="can-omni-text" type="nomatch" stateTitle=<<foldstatetiddler>> stateField="foldstate" text="hide" >
             <<can-omni-text>>
-        </$reveal>
-\end
-
-\define can-omni-text-with-siblings() 
-
-List works... -- <$list filter="[[$(parentval)$]] [list[$(parentval)$]] [[Testvars]]"/>
-
-<$importvariables filter="[[$(parentval)$]] [list[$(parentval)$]] [[Testvars]]">
-
-subtid: <<subtid>> <br>
-parentval: <<parentval>> <br>
-
-testvar? <<testvar>> <br>
-{{$(subtid)$}}
-
-</$importvariables>
-\end
-
-
-\define can-omni-nb-region()	
-        <$reveal tag="div" class="can-omni-text" type="nomatch" state=<<foldstatetiddler>> text="hide" >
-        <$importvariables filter="[[$(parentval)$]]"> 
-            <<can-omni-text>>
-            </$importvariables>
         </$reveal>
 \end
 
 \define can-omni-text-ro()
-
-    <$reveal tag="div" class="can-omni-text" type="nomatch" state=<<foldstatetiddler>> text="hide" >
+    <$reveal tag="div" class="can-omni-text" type="nomatch" stateTitle=<<foldstatetiddler>> stateField="foldstate" text="hide" >
         <div class="tc-tiddler-body">
 	        <$transclude $tiddler="<<currentTiddler>>" mode="block"/>
 	    </div>
     </$reveal>
+\end
+
+\define can-omni-nb-region()	
+        <$reveal tag="div" class="can-omni-text" type="nomatch" stateTitle=<<foldstatetiddler>> stateField="foldstate" text="hide" >
+        <$importvariables filter="[[$(parentval)$]]"> 
+            <<can-omni-text>>
+            </$importvariables>
+        </$reveal>
 \end
 
 \define set-toc-view-tiddler() <$action-setfield $tiddler=<<parentval>> toc-view-tiddler=<<currentTiddler>> />
@@ -218,7 +211,7 @@ testvar? <<testvar>> <br>
 \define can-omni-toc-item()
 	<$set name=omni-toc-heading-class filter=<<omni-toc-heading-class-filter>> >
     <$button tag="div" class=<<omni-toc-heading-class>> actions=<<set-toc-view-tiddler>>>{{!!title}}</$button>
-	<$reveal tag="div" class="can-omni-toc-sub can-omni-text" type="nomatch" state=<<foldstatetiddler>> text="hide" >
+	<$reveal tag="div" class="can-omni-toc-sub can-omni-text" type="nomatch" stateTitle=<<foldstatetiddler>> stateField="foldstate" text="hide" >
 	    <<omni-showomni-subtoc>>
 	</$reveal>
 	</$set>
@@ -274,7 +267,22 @@ testvar? <<testvar>> <br>
 \end
 
 \define omni-showomni-subtoc() 
-<$reveal tag="div" class="omni-showomni-subtoc" type="nomatch" state=<<foldstatetiddler>> text="hide" >
+<$reveal tag="div" class="omni-showomni-subtoc" type="nomatch" stateTitle=<<foldstatetiddler>> stateField="foldstate" text="hide" >
 <$list filter="[<currentTiddler>tag[omnibus]]"><<compose-omni-subtoc>></$list>
 </$reveal>
+\end
+
+\define can-omni-text-with-siblings() 
+
+List works... -- <$list filter="[[$(parentval)$]] [list[$(parentval)$]] [[Testvars]]"/>
+
+<$importvariables filter="[[$(parentval)$]] [list[$(parentval)$]] [[Testvars]]">
+
+subtid: <<subtid>> <br>
+parentval: <<parentval>> <br>
+
+testvar? <<testvar>> <br>
+{{$(subtid)$}}
+
+</$importvariables>
 \end

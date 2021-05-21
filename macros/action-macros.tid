@@ -11,13 +11,15 @@ type: text/vnd.tiddlywiki
 
 \define omni-toggleadd-action() <$action-listops $tiddler=<<dom-data-statetid>> $field="viewadd" $subfilter="+[toggle[open],[closed]]"/>
 
+\define omni-toggle-foldstate() <$action-listops $tiddler=<<dom-data-statetid>> $field="foldstate" $subfilter="+[toggle[hide],[show]]"/><$action-listops $tiddler=<<dom-data-statetid>> $field="icon" $subfilter="+[toggle[{{$:/core/images/down-arrow}}],[{{$:/core/images/right-arrow}}]]"/>
+
 \define omni-toggle-edit() <$action-setfield $tiddler=<<editstatetid>> editstate="edit" $timestamp='no'/>
 \define omni-toggle-view() <$action-setfield $tiddler=<<editstatetid>> editstate="view"$timestamp='no'/>
 
-\define omni-startedit-actions() <$vars createdid=<<dom-data-createdid>>><$tiddler tiddler=<<dom-data-currenttid>> ><$action-setfield $tiddler=<<foldstatetiddler>> $value="show" $timestamp='no'/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/><$action-setfield $tiddler=<<editstatetid>> throttle.refresh=yes/></$tiddler></$vars>
+\define omni-startedit-actions() <$vars createdid=<<dom-data-createdid>>><$tiddler tiddler=<<dom-data-currenttid>> ><$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show" $timestamp='no'/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/><$action-setfield $tiddler=<<editstatetid>> throttle.refresh=yes/></$tiddler></$vars>
 
 
-\define omni-startedit-actions-old() <$action-setfield $tiddler=<<foldstatetiddler>> $value="show" $timestamp='no'/><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/><<omni-toggle-edit>>
+\define omni-startedit-actions-old() <$action-setfield $tiddler=<<foldstatetiddler>> $field="foldstate" $value="show" $timestamp='no'/><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/><<omni-toggle-edit>>
 
 
 \define omni-submitedit-actions() <$action-setfield text={{$(editstatetid)$}}/><$action-deletetiddler $tiddler=<<editstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/>
