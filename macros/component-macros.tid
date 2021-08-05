@@ -6,13 +6,21 @@ type: text/vnd.tiddlywiki
 
 \whitespace trim
 
+\define gridrowspan-ctl()
+<$button class="tc-btn-invisible can-omni-button" actions="""<$action-listops $field="cheatsheet-rowspan" $subfilter='+[add[1]] ~[[2]]'/>""">{{$:/plugins/can/omni/rows-plus.svg}}</$button><$button class="tc-btn-invisible can-omni-button" actions="""<$action-listops $field="cheatsheet-rowspan" $subfilter='+[subtract[1]max[1]] ~[[1]]'/>""">{{$:/plugins/can/omni/rows-minus.svg}}</$button>
+\end
+
+\define gridcolspan-ctl()
+<$button class="tc-btn-invisible can-omni-button"  actions="""<$action-listops $field="cheatsheet-colspan" $subfilter='+[add[1]] ~[[2]]'/>""">{{$:/plugins/can/omni/cols-plus.svg}}</$button><$button class="tc-btn-invisible can-omni-button"  actions="""<$action-listops $field="cheatsheet-colspan" $subfilter='+[subtract[1]max[1]] ~[[1]]'/>""">{{$:/plugins/can/omni/cols-minus.svg}}</$button>
+\end
+
 \define can-omni-peripheral()
 <$vars openstatetid=<<peri-quick-openstatetid>> quickstatetid=<<peri-quickstatetid>>>
 <$droppable class="can-omni-peripheral" tag="div" actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<parentval>> $subfilter='+[insertbefore:currentTiddler<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
     <<can-omni-toggleadd>>
 </$droppable>
 <$list filter="[<openstatetid>get[viewadd]match[open]]" variable="ignore">
-	<$macrocall $name="quickadd" position="omni-inlist" layout="subui" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> openstatetid=<<openstatetid>> endstate="closed" />
+	<$macrocall $name="quickadd" position="omni-inlist" layout="subui-caption" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> openstatetid=<<openstatetid>> endstate="closed" />
 </$list>
 </$vars>
 \end
@@ -72,6 +80,11 @@ type: text/vnd.tiddlywiki
 <div class="can-omni-itemhandle"></div>
 \end
 
+\define omni-breadcrumbs(statetid)
+<$linkcatcher actions="""<$action-setfield $tiddler=<<cheatsheetstatetid>> text=<<navigateTo>> /><$action-listops $tiddler=<<cheatsheetstatetid>> $field=breadcrumbs $subfilter='-[allafter:include<navigateTo>]'/>""">
+<div class="omni-breadcrumbs $(mode)$"><$list filter="[<__statetid__>get[breadcrumbs]!is[blank]enlist-input[]]"><$link/> -> </$list><<currentTiddler>></div>
+</$linkcatcher>
+\end
 
 \define can-omni-text()
 <$list filter="[<editstatetid>get[editstate]match[edit]]" variable="ignore" 
@@ -151,14 +164,15 @@ testvar? <<testvar>> <br>
 </$reveal>
 \end
 
-\define can-omni-captionheading()
+\define can-omni-captionheading-ro()
+<div class="omni-title-heading view">
+	<$list filter="[<currentTiddler>has[caption]]">{{!!caption}}</$list>
+</div>
+\end
+
+\define omni-captionheading()
 <$vars editFieldName="caption">
-<$set name=caption-or-title filter="[<currentTiddler>get[caption]]" emptyValue={{!!title}} select="0">
-<$list filter="[<editfieldstatetid>get[editstate]match[edit]]" variable="ignore" emptyMessage= """<div class="omni-title-heading view" title="Double-click to edit caption." aria-label="Double-click to edit caption."><$omnidblclick actions=<<omni-startfieldedit-actions>> /><div class="can-omni-subctl"><<caption-or-title>><<can-omni-folder>></div><div class="can-omni-subctl">
-            <<can-omni-link>>
-            <<can-omni-delist>>
-            <<can-omni-delete>>
-        </div></div>""">
+<$list filter="[<editfieldstatetid>get[editstate]match[edit]]" variable="ignore" emptyMessage= """<div class="omni-title-heading view" title="Double-click to edit caption." aria-label="Double-click to edit caption."><$omnidblclick actions=<<omni-startfieldedit-actions>> /><$list filter="[<currentTiddler>has[caption]]">{{!!caption}}</$list></div>""">
 <div class="omni-title-heading">
 	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submitfieldedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submitfieldedit-actions>>" >
@@ -167,14 +181,53 @@ testvar? <<testvar>> <br>
 	</$keyboard></$keyboard></$keyboard>
 </div>
 </$list>
-</$set>
 </$vars>
 \end
 
-\define can-omni-captionheading-ro()
+\define omni-captionortitleheading()
+<$vars editFieldName="caption">
+<$list filter="[<editfieldstatetid>get[editstate]match[edit]]" variable="ignore" emptyMessage= """<div class="omni-title-heading view" title="Double-click to edit caption." aria-label="Double-click to edit caption."><$omnidblclick actions=<<omni-startfieldedit-actions>> /><$list filter="[<currentTiddler>has[caption]]" emptyMessage={{!!title}}>{{!!caption}}</$list></div>""">
+<div class="omni-title-heading">
+	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submitfieldedit-actions>>" >
+	<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submitfieldedit-actions>>" >
+	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-cancelfieldedit-actions>>">
+        <$edit-text class="can-quickadd-textarea" field="newfieldvalue" rows="1" minHeight="0" focus=true/>
+	</$keyboard></$keyboard></$keyboard>
+</div>
+</$list>
+</$vars>
+\end
+
+\define omni-captionortitleheading-ro()
+<div class="omni-title-heading view"<$list filter="[<currentTiddler>has[caption]]" emptyMessage={{!!title}}>{{!!caption}}</div>
+\end
+
+\define omni-captionheading-row()
+<$vars editFieldName="caption">
+<div class="omni-heading-row">
+    <$list filter="[<currentTiddler>has[text]]"><<can-omni-folder>></$list>
+    <<omni-captionheading>>
+    <$list filter="[<editfieldstatetid>get[editstate]match[edit]]" variable="ignore" emptyMessage="""
+        <div class="can-omni-subctl">
+            <<can-omni-title-link>>
+            <<can-omni-delist>>
+            <<can-omni-delete>>
+        </div>""" >
+    </$list>
+</div>
+</$vars>
+\end
+
+\define can-omni-titleheading-ro()
+<div class="omni-title-heading view">
+	{{!!title}}<<can-omni-folder>>
+</div>
+\end
+
+\define can-omni-captiontitle-ro()
 <$set name=caption-or-title filter="[<currentTiddler>get[caption]]" emptyValue={{!!title}} select="0">
 <div class="omni-title-heading view">
-	<<caption-or-title>><<can-omni-folder>>
+	<<caption-or-title>>
 </div>
 </$set>
 \end
@@ -240,7 +293,6 @@ testvar? <<testvar>> <br>
 \end
 
 \define can-omni-outline-region() 
-	
 	<div class="can-omni-text"><<can-omni-teaser>></div> 
 \end
 

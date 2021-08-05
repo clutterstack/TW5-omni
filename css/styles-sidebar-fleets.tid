@@ -24,3 +24,5 @@ ol.omni-toc {
 .omnibus-label {font-weight: 500;}
 .tc-dragover .fleet-label, .tc-dragover .omnibus-label { border-radius: 5px;background-color: #0ff; }
 .can-omni-dragdrop {display: inline;}
+
+ /****** END styles-sidebar-fleets ********/

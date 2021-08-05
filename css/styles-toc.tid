@@ -1,8 +1,12 @@
-title: $:/plugins/can/omni/styles-toc-mode.tid
+title: $:/plugins/can/omni/styles-toc.tid
 tags: 
 
+<style>
+/****** START styles-toc ********/
 
-.can-omni-stream.toc {
+.can-omni-stream {
+    display: flex;
+    flex-direction: column;
     align-content: start;
     flex-shrink: 0;
     max-width:50%; 
@@ -48,3 +52,6 @@ div.omni-toc-heading:hover {
 .can-omni-toc-sub.can-omni-text {
     grid-column: 2/5;
 }
+
+/****** END styles-toc ********/
+</style>

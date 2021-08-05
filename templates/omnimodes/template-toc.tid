@@ -1,0 +1,36 @@
+title: $:/plugins/can/omni/template-toc
+tags: 
+
+
+\define everytoc()
+    <$list filter="[<currentTiddler>tag[omnibus]]"><<can-omni-folder>></$list>
+    <<can-omni-toc-item>>
+\end
+
+\define compose-omni-toplevel() 
+<$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-startedit-actions>> tag="div">
+    <$eventcatcher events="click" selector=".can-omni-link" actions-click=<<omni-navigate-action>> tag="div">
+        <$eventcatcher events="click" selector=".can-omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
+            <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
+                <$eventcatcher events="click" selector=".can-omni-button.can-omni-delete" actions-click=<<omni-delete-action>> tag="div">
+                    <$eventcatcher events="click" selector=".can-omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
+                            <<can-omni-toptools>>
+                            <$macrocall $name=compose-omni depth=0/>        
+</$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher>
+\end
+
+\define compose-omni(mode:toc depth)
+<$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="toc">
+<$qualify name=omniqual title={{!!created}}>
+    <div class="can-omni-stream toc" >
+        <$list filter="[all[current]list[]is[tiddler]]">
+            <$qualify name=createdid title={{!!created}} >
+                <$macrocall $name=everytoc depth=<<__depth__>> />
+            </$qualify>
+        </$list>
+    </div>
+</$qualify>
+</$vars>
+\end
+
+<<compose-omni-toplevel>>

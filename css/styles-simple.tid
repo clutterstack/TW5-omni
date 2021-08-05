@@ -3,15 +3,14 @@ creator: chris
 tags: nothing
 title: $:/plugins/can/omni/styles-simple
 
-/*==== Styles for simple mode ====*/
-
+<style>
+/****** START styles-simple ********/
 
 .can-omni-text {
     grid-column: 4/5;
     padding: 0.2em;
     border: none;
 }
-
 
 /* ---------------------------------------*/
 /* Vertical item handle                   */
@@ -35,3 +34,5 @@ title: $:/plugins/can/omni/styles-simple
     background-color: #999999;
     }
 
+/****** END styles-simple ********/
+</style>

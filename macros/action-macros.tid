@@ -5,6 +5,10 @@ type: text/vnd.tiddlywiki
 
 \define omni-navigate-action() <$action-navigate $to=<<dom-data-currenttid>>/>
 
+<!-- \define omni-nav-leveldown() <$action-sendmessage $message="tm-modal" $param="$:/plugins/can/omni/cheatsheet-modal" modal-tiddler=<<dom-data-title>> depth=<<dom-data-depth>> /> -->
+
+\define omni-nav-leveldown() <$action-setfield $tiddler=<<cheatsheetstatetid>> text=<<dom-data-title>> /><$action-listops $tiddler=<<cheatsheetstatetid>> $field=breadcrumbs $subfilter='[<parentval>]'/>
+
 \define omni-delist-action() <$action-listops $tiddler=<<dom-data-parentval>> $subfilter='-[<dom-data-currenttid>]'/><$action-listops $tiddler=<<dom-data-currenttid>> $field='omniparent' $subfilter='-[<dom-data-parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>
 
 \define omni-delete-action() <$action-sendmessage $message="tm-delete-tiddler" $param=<<dom-data-currenttid>> /><$action-listops $tiddler=<<dom-data-parentval>> $filter='[list<dom-data-parentval>is[tiddler]]'/>
@@ -61,14 +65,14 @@ type: text/vnd.tiddlywiki
 \define omni-toggle-field-view() <$action-setfield $tiddler=<<editfieldstatetid>> editstate="view"  $timestamp='no'/>
 
 \define omni-startfieldedit-actions() 
-<<omni-toggle-field-edit>><$action-setfield newfieldvalue="""$(caption-or-title)$""" $timestamp='no'/>
+<<omni-toggle-field-edit>><$action-setfield newfieldvalue={{{[all[current]get<editFieldName>]}}} $timestamp='no'/>
 \end
 
 \define omni-submitfieldedit-actions() <$action-setfield $(editFieldName)$={{!!newfieldvalue}}  $timestamp='no'/><$action-setfield $field=newfieldvalue /><$action-deletetiddler $tiddler=<<editfieldstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/>
 
 \define omni-cancelfieldedit-actions() <<omni-toggle-field-view>>
 
-\define omni-start-tiddler-drag() "<$action-listops $field=dragstarttiddler $filter=<<parentval>> />"
+\define omni-start-tiddler-drag() <$action-listops $field=dragstarttiddler $filter=<<parentval>> />
 
 \define can-omni-shift-drop() 
 <$list filter="[<modifier>match[shift]]" variable="null">

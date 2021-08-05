@@ -1,13 +1,13 @@
 created: 20200507184921957
 creator: chris
 tags:
-title: $:/plugins/can/omni/styles-exprov1
+title: $:/plugins/can/omni/styles-text-tree
 
+<style>
+/****** START styles-text-tree ********/
 
-.can-omni-stream {
-    margin-left: 1em;
+.can-omni-stream.text-tree {
     grid-template-columns: max-content max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
-    
 }
 
 .omni-branch {
@@ -35,18 +35,10 @@ title: $:/plugins/can/omni/styles-exprov1
     border: none;
 }
 
- .expro .omni-item-container:last-of-type {
+.omni-item-container:last-of-type {
     border-left: 1px solid rgba(0,0,0,0);
 }
 
-.omni-branch-edge {
-    grid-column: 1/2;
-    grid-row: span 2;
-    width: 0
-    box-sizing: border-box;
-    min-height: 1em;
-    margin-bottom: -1em;
-}
 .omni-branch-line {
     grid-column:2/3;
     grid-row: span 1;
@@ -59,31 +51,19 @@ title: $:/plugins/can/omni/styles-exprov1
     margin-left: -1px;
 }
 
-.can-omni-text {
-    padding: 0.2em;
-}
-
- .omni-text-display {
+.omni-text-display {
     grid-column: 4/5;
+    padding-right: 1em;
     border-radius: 0 5px 5px 0;
     border: none;
     background-color: <<colour page-background>>;
  }  
-
-.omni-title-heading.view {display: flex; flex-direction: row;}
-
-.omni-title-heading button {margin-left: 1em;}
 
 .omni-title-heading {
     padding: 0.2em 0.2em 0 0.2em;
     margin-bottom: 0.2em;
     border: none;
     font-size: 1.2rem;
-    margin-right: 0.4em;
-}
-
-
-.omni-showomni.tc-reveal {
 }
 
 
@@ -91,10 +71,9 @@ title: $:/plugins/can/omni/styles-exprov1
 /* Vertical item handle                   */
 /* ---------------------------------------*/
 
-
 .can-omni-itemhandle {
     border-radius: 5px 0 0 5px; 
-    width: 1em; 
+    width: 1.2em; 
     height: 100%; 
     grid-column: 3/4; 
     grid-row: span 1;
@@ -105,39 +84,13 @@ title: $:/plugins/can/omni/styles-exprov1
     flex-direction: column;
     }
 
-.can-omni-edithandle {
-    height:100%;
-    width:100%;
-}
-
-.can-omni-itemhandle:hover {
-    background-color: <<colour muted-foreground>>;
-}
-
 .can-omni-itemhandle .can-omni-link {height: 1em;}
-
 .can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
 .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
 
-.can-omni-itemhandle-inner {
-    border-radius: 5px 0 0 5px; 
-    box-sizing: border-box;
-    height: 100%; 
-    width: 100%;
-    background-color: <<colour page-background>>;
-    margin:0;
-    }
-
-.can-omni-subctl {
-    grid-column: 5/6;
-    padding-left: 0.2em;
+.can-omni-peripheral.inert {
+    height: 10pt;
 }
-
-
-.can-omni-foldbutton {
-    grid-column: 3/4;
-}
-
 
 .can-omni-stream .can-omni-button svg {
     width: 10pt;
@@ -161,3 +114,5 @@ title: $:/plugins/can/omni/styles-exprov1
     margin-left: 2em;
 }
 
+/****** END styles-text-tree ********/
+</style>

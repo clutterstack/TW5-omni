@@ -3,6 +3,8 @@ creator: chris
 tags:
 title: $:/plugins/can/omni/styles-expro
 
+<style>
+/****** START styles-expro ********/
 
 .can-omni-stream {
     grid-template-columns: max-content max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
@@ -160,3 +162,5 @@ can-omni-edithandle {
     margin-left: 2em;
 }
 
+/****** END styles-expro ********/
+</style>

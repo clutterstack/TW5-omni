@@ -3,10 +3,10 @@ creator: chris
 tags: nothing
 title: $:/plugins/can/omni/styles-bar
 
-/*==== Styles for bar mode ====*/
+<style>
+/****** START styles-bar ********/
 
-
-.can-omni-text { grid-column: 4/5; display: flex; flex-direction: row; z-index: 10;}
+.bar .can-omni-text { grid-column: 4/5; display: flex; flex-direction: row; z-index: 10;}
 
 .can-omni-stream.bar {
     border-left: 1px solid <<colour muted-foreground>>;
@@ -18,9 +18,12 @@ title: $:/plugins/can/omni/styles-bar
     margin-left: -0.4em;
     margin-right: 0.4em;
 }
-.can-omni-subctl {
+.bar .can-omni-subctl {
     display: flex; 
     flex-direction: row; 
     flex-wrap: wrap; 
     align-content: flex-start;
     }
+
+/****** END styles-bar ********/
+</style>

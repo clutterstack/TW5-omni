@@ -1,0 +1,71 @@
+title: $:/plugins/can/omni/template-floo
+tags: 
+
+\define topfloo()
+    <div class="omni-item-container toplevel" >
+        <<can-omni-peripheral-inert>>
+        <<can-omni-tree-itemhandle-filler>>
+        <div class="omni-text-display">
+        <<can-omni-captionheading-ro>>
+        <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore"/>
+        </div>
+        <$list filter="[<currentTiddler>tag[omnibus]] +[all[current]list[]limit[1]]" variable="ignore">
+            <<can-omni-omni-show>>
+        </$list>
+        <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=1 />""" variable="ignore"/>
+    </div>
+\end
+
+\define everyfloo(depth)
+    <div class="omni-item-container" >
+        <div class="omni-branch-line"></div>
+        <<can-omni-peripheral-inert>>
+        <<can-omni-tree-itemhandle-filler>>
+        <div class="omni-text-display">
+        <<can-omni-captionheading-ro>>
+        <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore"/>
+        </div>
+        <$list filter="[<currentTiddler>tag[omnibus]] +[all[current]list[]limit[1]]" variable="ignore">
+            <<can-omni-omni-show>>
+        </$list>
+        <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>
+    </div>
+\end
+
+\define compose-omni-toplevel() 
+<$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-startedit-actions>> tag="div">
+    <$eventcatcher events="click" selector=".can-omni-link" actions-click=<<omni-navigate-action>> tag="div">
+        <$eventcatcher events="click" selector=".can-omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
+            <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
+                <$eventcatcher events="click" selector=".can-omni-button.can-omni-delete" actions-click=<<omni-delete-action>> tag="div">
+                    <$eventcatcher events="click" selector=".can-omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
+                        <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="floo">
+                        <$qualify name=omniqual title={{!!created}}>
+                            <div class="can-omni-stream floo" >
+                            <<can-omni-toptools>>
+                                <$list filter="[all[current]list[]is[tiddler]]">
+                                    <$qualify name=createdid title={{!!created}} >
+                                        <$macrocall $name=topfloo />
+                                    </$qualify>
+                                </$list>
+                            </div>
+                        </$qualify>
+                        </$vars>             
+</$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher>
+\end
+
+\define compose-omni(mode:floo depth)
+<$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="floo">
+<$qualify name=omniqual title={{!!created}}>
+    <div class="can-omni-stream floo" >
+        <$list filter="[all[current]list[]is[tiddler]]">
+            <$qualify name=createdid title={{!!created}} >
+                <$macrocall $name=everyfloo depth=<<__depth__>> />
+            </$qualify>
+        </$list>
+    </div>
+</$qualify>
+</$vars>
+\end
+
+<<compose-omni-toplevel>>

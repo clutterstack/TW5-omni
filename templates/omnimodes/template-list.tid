@@ -1,0 +1,50 @@
+title: $:/plugins/can/omni/template-list
+tags: 
+
+\define omni-showomni(depth) 
+    <$vars newdepth={{{[<__depth__>add[1]]}}}>
+        <!--omni-showomni: newdepth: <<newdepth>> <br> -->
+        <$list filter="[<newdepth>compare:integer:lt[10]]" variable=null emptyMessage=<<can-recursionblock>> >
+        <$macrocall $name="compose-omni" mode=<<mode>> depth=<<newdepth>> /></$list>
+    </$vars>
+\end
+
+\define everylist(depth)
+<$list filter="[<currentTiddler>tag[omnibus]list[]limit[1]]" variable="ignore" emptyMessage="""<div class="omni-listitem"><span class="can-details-spacer"/><$link/></div>""">
+    <details><summary><div class=omni-listitem><$link/></div></summary>
+	<$macrocall $name=omni-showomni depth=<<__depth__>> /></details>
+ </$list>
+\end
+
+\define compose-omni-toplevel() 
+<<can-omni-toptools>>
+<$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="list">
+<$qualify name=omniqual title={{!!created}}>
+    <div class="can-omni-stream list" >
+        <$eventcatcher events="click" selector=".can-omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
+            <<can-omni-topadd>>
+        </$eventcatcher>
+        <$list filter="[all[current]list[]]">
+            <$macrocall $name=everylist depth=0 />
+        </$list>
+    </div>
+</$qualify>
+</$vars>
+      
+\end
+
+\define compose-omni(mode:list depth)
+<$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="list">
+<$qualify name=omniqual title={{!!created}}>
+    <div class="can-omni-stream list" >
+        <$list filter="[all[current]list[]]">
+            <!--<$qualify name=createdid title={{!!created}} >-->
+                <$macrocall $name=everylist depth=<<__depth__>> />
+            <!--</$qualify>-->
+        </$list>
+    </div>
+</$qualify>
+</$vars>
+\end
+
+<<compose-omni-toplevel>>

@@ -3,6 +3,8 @@ creator: chris
 tags:
 title: $:/plugins/can/omni/styles-exp
 
+<style>
+/****** START styles-exp ********/
 
 .can-omni-stream {
     grid-template-columns: max-content max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */  
@@ -61,6 +63,11 @@ title: $:/plugins/can/omni/styles-exp
     padding: 0.2em;
 }
 
+.omni-heading-row {
+    display: flex;
+    flex-direction: row;
+}
+
 .omni-text-display {
     grid-column: 4/5;
     padding-right: 1em;
@@ -70,21 +77,30 @@ title: $:/plugins/can/omni/styles-exp
  }  
 
 .omni-title-heading.view {
+    min-width: 30%;
+    min-height: 1em;
+    }
+
+.omni-heading {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    margin-right: -0.4em;
-    }
+}
+
+.omni-caption:hover {
+background: #EEF8FF;
+}
 
 .omni-title-heading button {margin-left: 1em;}
 
 .omni-title-heading {
-    padding: 0.2em 0.2em 0 0.2em;
+    flex: 1 0 5em; /* grow shrink basis */
+    padding: 0.4em 0.2em 0 0;
     margin-bottom: 0.2em;
     border: none;
     font-size: 1.2rem;
 }
 
+.omni-title-heading:hover { background: cyan;}
 
 /* ---------------------------------------*/
 /* Vertical item handle                   */
@@ -160,7 +176,6 @@ can-omni-edithandle {
     line-height: 16pt; 
     background-color: #ffffff;}
 
-.can-omni-bottomadd {
-    margin-left: 2em;
-}
+/****** END styles-exp ********/
 
+</style>

@@ -16,14 +16,17 @@ type: text/vnd.tiddlywiki
     <div class="can-omni-viewswitcher">
 		<$button set="!!omnibus-mode" setTo="edit" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Deluxe editing" aria-label="Deluxe editing">{{$:/plugins/can/omni/omnimode-edit.svg}}</$button>
         <$button set="!!omnibus-mode" setTo="exp" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Tree with captions" aria-label="Tree with captions">exp</$button>
-        <$button set="!!omnibus-mode" setTo="expro" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="RO tree with captions" aria-label="RO tree with captions">ro-exp</$button>
+        <!-- <$button set="!!omnibus-mode" setTo="expro" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="RO tree with captions" aria-label="RO tree with captions">ro-exp</$button> -->
+        <$button set="!!omnibus-mode" setTo="text-tree" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="RO tree -- text only" aria-label="RO tree -- text only">text-tree</$button>
+        <$button set="!!omnibus-mode" setTo="floo" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="RO tree with captions" aria-label="RO tree with captions">floo</$button>
 		<$button set="!!omnibus-mode" setTo="tree" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Bubble tree" aria-label="Bubble tree">tree</$button>
 		<$button set="!!omnibus-mode" setTo="slim" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="slim mode" aria-label="slim mode">slim</$button>
+        <$button set="!!omnibus-mode" setTo="cheatsheet" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="cheatsheet mode" aria-label="cheatsheet mode">cheatsheet</$button>
 		<$button set="!!omnibus-mode" setTo="min" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="min mode (ro)" aria-label="min mode (ro)">min</$button>
         <$button set="!!omnibus-mode" setTo="simple" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="simple mode" aria-label="simple mode">simple</$button>
 		<$button set="!!omnibus-mode" setTo="bar" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="bar mode" aria-label="omnibus bar mode">bar</$button>
 		<!--<$button set="!!omnibus-mode" setTo="todo" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Todo list" aria-label="Todo list"><<unfoldallactions>>{{$:/plugins/can/omni/omnimode-simple.svg}}</$button>-->
-		<$button set="!!omnibus-mode" setTo="list" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="List mode" aria-label="List mode"><<unfoldallactions>>{{$:/plugins/can/omni/omnimode-listwithtags.svg}}</$button>
+		<$button set="!!omnibus-mode" setTo="list" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="List mode" aria-label="List mode">list</$button>
 		<$button set="!!omnibus-mode" setTo="read" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Reading mode" aria-label="Reading mode">{{$:/plugins/can/omni/omnimode-view.svg}}</$button>
         <$button set="!!omnibus-mode" setTo="named" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Edit mode with title" aria-label="Edit mode with title">named</$button>
        <!-- <$button set="!!omnibus-mode" setTo="namedro" class="tc-btn-invisible can-omni-button" selectedClass="can-omni-button-selected" tooltip="Read-only mode with title" aria-label="Read-only mode with title">namedro</$button> -->
@@ -145,7 +148,7 @@ type: text/vnd.tiddlywiki
 		<<can-omni-toggleadd>>
 	</$droppable>
 <$list filter="[<openstatetid>get[viewadd]match[open]]">
-	<$macrocall $name="quickadd" layout="subui" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listtop" openstatetid=<<openstatetid>> endstate="closed" />
+	<$macrocall $name="quickadd" layout="subui-caption" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listtop" openstatetid=<<openstatetid>> endstate="closed" />
 </$list>
 </$vars>
 \end
@@ -156,7 +159,7 @@ type: text/vnd.tiddlywiki
 		<<can-omni-toggleadd>>
 	</$droppable>
 <$list filter="[<openstatetid>get[viewadd]match[open]]">
-	<$macrocall $name="quickadd" layout="subui" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listbottom" openstatetid=<<openstatetid>> endstate="open" />
+	<$macrocall $name="quickadd" layout="subui-caption" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listbottom" openstatetid=<<openstatetid>> endstate="open" />
 </$list>
 </$vars>
 \end
@@ -171,7 +174,7 @@ type: text/vnd.tiddlywiki
 		<$button tag="div" class="can-omni-button tiny tc-btn-invisible" actions="<$action-setfield $tiddler=<<openstatetid>> text='closed'/>">{{$:/core/images/close-button}}</$button>
 	</$reveal>
 	<$reveal type=match state=<<openstatetid>> text="open" tag=div class="can-omni-bottom">
-		<$macrocall $name="quickadd" layout="subui" omniparent=<<parentval>> quickstatetid=<<quickstatetid>> openstatetid=<<openstatetid>> endstate="open" />
+		<$macrocall $name="quickadd" layout="subui-caption" omniparent=<<parentval>> quickstatetid=<<quickstatetid>> openstatetid=<<openstatetid>> endstate="open" />
 	</$reveal>	
 </div>
 </$vars>

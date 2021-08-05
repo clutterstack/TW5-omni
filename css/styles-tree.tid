@@ -3,13 +3,15 @@ creator: chris
 tags: nothing
 title: $:/plugins/can/omni/styles-tree
 
-.can-omni-stream {
+<style>
+/****** START styles-tree ********/
+
+.can-omni-stream.tree {
     margin-left: 1em;
     grid-template-columns: max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
-  
 }
 
-.omni-item-container {
+.tree .omni-item-container {
     grid-column: 1/6;
     display: grid;
     grid-template-columns: max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
@@ -151,3 +153,5 @@ title: $:/plugins/can/omni/styles-tree
 .can-omni-bottomadd {
     margin-left: 2em;
 }
+/****** END styles-tree ********/
+</style>

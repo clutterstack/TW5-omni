@@ -3,35 +3,14 @@ creator: chris
 tags: nothing
 title: $:/plugins/can/omni/styles-min
 
-/*==== Styles for simple mode ====*/
+<style>
+/*==== Styles for minimal mode ====*/
 
-
-.can-omni-text {
-    grid-column: 4/5;
-    padding: 0.2em;
-    border: none;
+.can-omni-stream { 
+display: flex; 
+flex-direction: column;
+/* width: 100%; */
 }
 
-
-/* ---------------------------------------*/
-/* Vertical item handle                   */
-/* ---------------------------------------*/
-
-.can-omni-itemhandle {width: 1.6em; height: 100%; grid-column: 3/4; 
-    grid-row: span 4;}
-
-.can-omni-itemhandle .tc-draggable { height: 100%;}
-
-.can-omni-itemhandle-inner { 
-    box-sizing: content-box; 
-    border-radius: 2px;
-    height: 100%; 
-    width: 1px;
-    background-color: #cccccc;
-    margin-left: 0.4em;
-    }
-
-.can-omni-itemhandle:hover .can-omni-itemhandle-inner { 
-    background-color: #999999;
-    }
-
+/****** END styles-min ********/
+</style>

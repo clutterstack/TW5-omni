@@ -1,7 +1,0 @@
-title: $:/plugins/can/omni/template-min
-tags: $:/tags/Macro
-
-\define everymin(depth)
-    <<can-omni-text-ro>>
-	<$macrocall $name=omni-showomni depth=<<__depth__>> />
-\end

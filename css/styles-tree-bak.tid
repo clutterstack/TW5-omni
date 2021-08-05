@@ -3,6 +3,8 @@ creator: chris
 tags: nothing
 title: $:/plugins/can/omni/styles-tree
 
+/****** START styles-tree-bak ********/
+
 .can-omni-stream {
     margin-left: 1em;
     grid-template-columns: max-content max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
@@ -147,3 +149,5 @@ title: $:/plugins/can/omni/styles-tree
 .can-omni-bottomadd {
     margin-left: 2em;
 }
+
+/****** END styles-tree-bak ********/

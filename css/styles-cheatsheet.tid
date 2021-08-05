@@ -1,0 +1,110 @@
+creator: chris
+title: $:/plugins/can/omni/styles-cheatsheet
+
+<style>
+.can-omni-stream.cheatsheet {
+display: grid;
+gap: 1em 0;
+grid-template-columns: repeat(4, minmax(18em, max-content));
+grid-template-rows: repeat(auto-fit, minmax(0.5em, min-content));
+width: 100%;
+height: 100%;
+padding: 0;
+}
+
+.omni-cheatsheet-titlediv {
+    font-size: 1.8em;
+}
+
+.cheatsheet .can-omni-peripheral { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    flex-basis: 1.2em;
+    margin 0;
+    flex-shrink: 0;
+    }
+
+.cheatsheet .can-omni-bottomadd { 
+display: flex;
+flex-direction: row;
+align-items: center;
+width: 100%;
+background: rgba(0, 0, 0, 0);
+height: 1.2em;
+margin 0;
+}
+
+.cheatsheet .can-omni-bottomadd {
+    grid-column: 1 / -1;
+}
+
+.cheatsheet .can-omni-toggleadd {
+    padding: 0.5em 0;
+    height: 100%;
+}
+
+.cheatsheet svg.tc-image-button {padding: 0;}
+.cheatsheet .can-omni-toggleadd:hover { 
+    background: rgba(200, 255, 255, 0.3);
+  }
+
+.omni-breadcrumbs.cheatsheet {
+    display: flex;
+    flex-direction: row;
+    grid-column: 1 / -1;
+}
+
+.omni-cheatsheet-section-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.omni-cheatsheet-section-container.title {
+grid-column-start: 1;
+}
+
+.omni-cheatsheet-title, .omni-cheatsheet-section {
+background: #ccffce;
+border-radius: 5px;
+padding: 0.5em;
+height: 100%;
+width: 100%;
+}
+
+.omni-cheatsheet-text.link {
+    cursor: pointer;
+}
+
+.cheatsheet .omni-heading-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.cheatsheet .omni-title-heading {
+    flex: 1 0 5em; /* grow shrink basis */
+    padding: 0.4em 0.2em 0 0;
+    margin-bottom: 0.2em;
+    border: none;
+    font-size: 1.2rem;
+}
+
+.omni-cheatsheet-titlediv .omni-title-heading {
+    font-size: 1.8em;
+    line-height: 1.2;
+}
+
+.can-omni-subctl {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.omni-cheatsheet-section > .omni-title-heading.view {
+    font-size: 1.25rem;
+    font-weight: 500;
+}
+
+</style>

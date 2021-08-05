@@ -3,10 +3,12 @@ creator: chris
 tags: nothing
 title: $:/plugins/can/omni/styles-edit
 
-/*==== Styles for edit mode ====*/
+<style>
+/****** START styles-edit ********/
 
+.can-omni-stream p:last-child, .can-omni-stream dl:last-child {margin-bottom: 0.2em;}
 
-.can-omni-stream { 
+.can-omni-stream.edit { 
 display: grid; 
 grid-template-columns: max-content max-content auto 7fr max-content;
 grid-template-rows: auto; 
@@ -19,7 +21,6 @@ grid-template-rows: auto;
     padding: 0.2em;
     border: none;
 }
-
 
 /* ---------------------------------------*/
 /* Vertical item handle                   */
@@ -45,7 +46,6 @@ grid-template-rows: auto;
 
 .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
 
-
 .can-omni-subctl {
     grid-column: 5/6;
     padding-left: 0.2em;
@@ -65,7 +65,6 @@ grid-template-rows: auto;
     justify-content: flex-start;
     margin-top: 0.4em;
     }
-
 
 
 .can-omni-ctlrow {
@@ -105,9 +104,7 @@ grid-template-rows: auto;
     margin-top: 0.4em;
     }
 
-
-
-.can-omni-stream .can-omni-button svg {
+.can-omni-button svg {
     width: 10pt;
     height: 10pt;
 }
@@ -126,5 +123,24 @@ grid-template-rows: auto;
     background-color: #ffffff;}
 
 .can-omni-bottomadd {
-    margin-left: 2em;
+    /*margin-left: 2em;*/
 }
+
+@media (max-width: 620px) {
+
+.can-omni-stream { 
+grid-template-columns: auto auto auto 5fr auto; 
+}
+
+.can-omni-text {
+    grid-column: 4/5;
+}
+
+.can-omni-ctl {  
+    grid-column: 4/5;
+    margin: 0.4em 1em 0 0;
+    }
+}
+
+/****** END styles-edit ********/
+</style>

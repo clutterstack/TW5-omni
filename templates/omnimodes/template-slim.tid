@@ -1,0 +1,45 @@
+title: $:/plugins/can/omni/template-slim
+tags: $:/tags/Macro
+
+\define everyslim(depth)
+	<<can-omni-peripheral>>
+    <<can-omni-folder>>
+	<<can-omni-itemhandle>>
+    <<can-omni-text-region>>
+    <div class="can-omni-subctl">
+        <<can-omni-link>>
+        <<can-omni-delist>>
+        <<can-omni-delete>>
+        <<can-omni-make-omnibus>>
+    </div>
+	<$macrocall $name=omni-showomni depth=<<__depth__>> />
+\end
+
+
+\define compose-omni-toplevel() 
+<$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-startedit-actions>> tag="div">
+    <$eventcatcher events="click" selector=".can-omni-link" actions-click=<<omni-navigate-action>> tag="div">
+        <$eventcatcher events="click" selector=".can-omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
+            <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
+                <$eventcatcher events="click" selector=".can-omni-button.can-omni-delete" actions-click=<<omni-delete-action>> tag="div">
+                    <$eventcatcher events="click" selector=".can-omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
+                            <<can-omni-toptools>>
+                            <$macrocall $name=compose-omni depth=0/>        
+</$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher>
+\end
+
+\define compose-omni(mode:slim depth)
+<$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="slim">
+<$qualify name=omniqual title={{!!created}}>
+    <div class="can-omni-stream slim" >
+        <$list filter="[all[current]list[]is[tiddler]]">
+            <$qualify name=createdid title={{!!created}} >
+                <$macrocall $name=everyedit depth=<<__depth__>> />
+            </$qualify>
+        </$list>
+    </div>
+</$qualify>
+</$vars>
+\end
+
+<<compose-omni-toplevel>>

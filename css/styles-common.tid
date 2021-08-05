@@ -3,18 +3,18 @@ creator: chris
 tags: 
 title: $:/plugins/can/omni/styles-common
 
-/* -------------------------- */
+/****** START styles-common ********/
+
+.can-omni-stream dl, dl dt {margin-top:0;}
+
 /* Omnibus export sidebar tab */
-/* -------------------------- */
 
  .omni-bundle {
      display: flex;
      flex-direction: row;
  }
 
-/* --------------------------------- */
 /* General in-tiddler omnibus styles */
-/* --------------------------------- */
 
 .can-omni-toptools {
 margin: 0 0 0.4em 0;
@@ -24,18 +24,10 @@ justify-content: space-between;
 grid-column: 1/6;
 }
 
-.omni-stream-container {
+.can-omni-stream-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-}
-
-.can-omni-stream { 
-display: grid; 
-grid-template-columns: max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
-grid-template-rows: auto; 
-/*border: 1px solid cyan;*/
-/* width: 100%; */
 }
 
 .can-omni-stream > div.tc-draggable { cursor: pointer; }
@@ -55,6 +47,23 @@ div.omni-text-dblclick {width:100%;}
     width: 100%;
 }
 
+span.can-details-spacer {
+display: inline-block;
+width: 2em;
+}
+
+details {
+margin-left: 2em;
+}
+
+details > summary {
+  cursor: pointer;
+	list-style-position: outside;
+}
+
+.can-quickadd-textarea.tc-tiddler-body {
+    padding: 0.5em;
+}
 
 .can-omni-stream .omni-title-heading .can-quickadd-textarea { 
     margin: 0 0.4em 0 0; 
@@ -71,7 +80,10 @@ div.omni-text-dblclick {width:100%;}
     background-color: <<colour tab-background>>;
     }
 
-.can-omni-text {z-index: 10;}
+.can-omni-text {
+    z-index: 10;
+    padding: 0.2em;
+}
 
 .omni-text-dblclick {min-height: 0.2em;}
 
@@ -86,7 +98,6 @@ div.omni-text-dblclick {width:100%;}
 /* =======================*/
 
 .can-omni-ctlrow {
-    grid-column: 4/6; 
     display: flex; 
     flex-direction:row; 
     flex-wrap: wrap; 
@@ -94,8 +105,7 @@ div.omni-text-dblclick {width:100%;}
     padding-top: 0.1em; 
     margin-right: 2em;}
 
-.can-omni-ctl  { 
-    grid-column: 5/6; 
+.can-omni-ctl  {  
     display: flex; 
     flex-direction: row; 
     justify-content: flex-end; 
@@ -107,9 +117,6 @@ div.omni-text-dblclick {width:100%;}
 .tc-draggable.can-omni-ctlrow:hover svg {
     background: <<colour tiddler-controls-foreground>>;
 }
-
-
-
 
 .can-omni-collapsebutton {
     grid-column: 3/4; 
@@ -136,8 +143,6 @@ a:hover.can-omni-title { color: inherit; text-decoration: none; }
 .omni-title-heading button.tc-tag-label, span.tc-tag-label {
     padding: 0.14em 0.6em;
     font-size: 0.8em;}
-
-
 
 
 a.can-omni-title { color: #cccccc; align-self: flex-end;}
@@ -180,17 +185,6 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
     height: 14pt;
 }
 
-/* don't show the view switcher in a sub-omni */
-
-.can-omni-stream .can-omni-stream .can-omni-toptools .can-omni-viewswitcher {
-    display: none; 
-}
-
-.can-omni-stream .can-omni-stream .can-omni-toptools {
-    grid-column: 1/2;
-}
-
-
 /* ----------------------------------------- */
 /* Above and below item droppable zones */
 /* ----------------------------------------- */
@@ -228,19 +222,6 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 @media (max-width: 620px) {
 
-.can-omni-stream { 
-grid-template-columns: auto auto auto 5fr auto; 
-}
-
-.can-omni-stream .can-omni-text {
-    grid-column: 4/5;
-}
-
-.can-omni-stream .can-omni-ctl {  
-    grid-column: 4/5;
-    margin: 0.4em 1em 0 0;
-    }
-
 .can-omni-stream .can-omni-tag-area {
     grid-column: 5/6;
  }
@@ -249,19 +230,5 @@ grid-template-columns: auto auto auto 5fr auto;
     margin-bottom: -12pt;
 }
 
- /* headings for narrow display */
-
- .can-omni-stream h1, .can-omni-stream h2,  .can-omni-stream h3 {
-     margin-top: 0;
- }
- .can-omni-stream h2 {
-     font-size: 1.4rem;
- }
- .can-omni-stream h3 {
-     font-size: 1.2rem;
- }
- .can-omni-stream h4 {
-     font-size: 1.1rem;
- }
-
 }
+/****** END styles-common ********/

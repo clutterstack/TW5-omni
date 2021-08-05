@@ -3,6 +3,8 @@ creator: chris
 tags: 
 title: $:/plugins/can/omni/styles-text
 
+<style>
+/****** START styles-text ********/
 
 .can-omni-text p, .can-omni-text li, .can-omni-text pre { 
   /* margin-top: 0;  
@@ -16,7 +18,6 @@ title: $:/plugins/can/omni/styles-text
 }
 
 p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
-
 
 /* ----------------------------------------- */
 /* code                                      */
@@ -36,29 +37,27 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
     padding-left: 2em;
 }
 
-
 /* ------------------ */
 /* headings           */
 /* ------------------ */
 
-.can-omni-stream h1 {font-size: 1.5rem;}
+.can-omni-stream h1 {font-size: 1.5em;}
 
  .can-omni-stream h2 {
-     font-size: 1.3rem;
+     font-size: 1.3em;
      margin-bottom: 1em;
-     margin-top:1em;
+     margin-top:0.4em;
  }
  
  .can-omni-stream h3 {
-     font-size: 1.2rem;
+     font-size: 1.2em;
      margin-bottom: 1em;
-     margin-top:1em;
+     margin-top:0.4em;
  }
 
-.can-omni-stream h4 {font-size: 1.1rem; font-weight:500;}
-.can-omni-stream h5 {font-size: 1.0rem; font-weight:500;}
-.can-omni-stream h6 {font-size: 1.0rem;}
-
+.can-omni-stream h4 {font-size: 1.1em; font-weight:500;}
+.can-omni-stream h5 {font-size: 1.0em; font-weight:500;}
+.can-omni-stream h6 {font-size: 1.0em;}
 
 
 /* --------------- */
@@ -73,13 +72,15 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
      margin-top: 0;
  }
  .can-omni-stream h2 {
-     font-size: 1.4rem;
+     font-size: 1.4em;
  }
  .can-omni-stream h3 {
-     font-size: 1.2rem;
+     font-size: 1.2em;
  }
  .can-omni-stream h4 {
-     font-size: 1.1rem;
+     font-size: 1.1em;
  }
 
 }
+/****** END styles-text ********/
+</style>

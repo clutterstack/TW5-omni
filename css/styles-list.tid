@@ -1,0 +1,12 @@
+created: 20200507184921957
+creator: chris
+tags: nothing
+title: $:/plugins/can/omni/styles-list
+
+<style>
+/*==== Styles for list mode ====*/
+
+.can-omni-stream.list {margin-left: 1.5em;}
+
+/****** END styles-list ********/
+</style>

@@ -1,0 +1,67 @@
+title: $:/plugins/can/omni/template-text-tree
+tags: 
+comments: This template gives a read-only tree of tiddler text; if the tiddler has a caption field, its caption is displayed as a heading.
+
+\define toptext-tree()
+    <div class="omni-item-container toplevel" >
+        <<can-omni-peripheral-inert>>
+        <<can-omni-tree-itemhandle-filler>>
+        <div class="omni-text-display">
+            <h1>{{!!caption}}</h1>
+            <<can-omni-text>>
+        </div>
+        <$list filter="[<currentTiddler>tag[omnibus]] +[all[current]list[]limit[1]]" variable="ignore">
+            <<can-omni-omni-show>>
+        </$list>
+        <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=1 />""" variable="ignore"/>
+    </div>
+\end
+
+\define everytext-tree(depth)
+    <div class="omni-item-container" >
+        <div class="omni-branch-line"></div>
+        <<can-omni-peripheral-inert>>
+        <<can-omni-tree-itemhandle-filler>>
+        <div class="omni-text-display">
+        <h1>{{!!caption}}</h1>
+            <<can-omni-text>>
+        </div>
+        <$list filter="[<currentTiddler>tag[omnibus]] +[all[current]list[]limit[1]]" variable="ignore">
+            <<can-omni-omni-show>>
+        </$list>
+        <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>
+    </div>
+\end
+
+\define compose-omni-toplevel() 
+<$eventcatcher events="click" selector=".can-omni-link" actions-click=<<omni-navigate-action>> tag="div">
+    <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="text-tree">
+    <$qualify name=omniqual title={{!!created}}>
+        <div class="can-omni-stream text-tree" >
+        <<can-omni-toptools>>
+            <$list filter="[all[current]list[]is[tiddler]]">
+                <$qualify name=createdid title={{!!created}} >
+                    <$macrocall $name=toptext-tree />
+                </$qualify>
+            </$list>
+        </div>
+    </$qualify>
+    </$vars>             
+</$eventcatcher>
+\end
+
+\define compose-omni(mode:text-tree depth)
+<$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="text-tree">
+<$qualify name=omniqual title={{!!created}}>
+    <div class="can-omni-stream text-tree" >
+        <$list filter="[all[current]list[]is[tiddler]]">
+            <$qualify name=createdid title={{!!created}} >
+                <$macrocall $name=everytext-tree depth=<<__depth__>> />
+            </$qualify>
+        </$list>
+    </div>
+</$qualify>
+</$vars>
+\end
+
+<<compose-omni-toplevel>>

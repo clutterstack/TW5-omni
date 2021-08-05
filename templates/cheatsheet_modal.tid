@@ -1,0 +1,9 @@
+subtitle: <<modal-tiddler>>
+title: $:/plugins/can/omni/cheatsheet-modal
+
+\import [[$:/plugins/can/omni/template-cheatsheet]]
+
+<$tiddler tiddler=<<modal-tiddler>> >
+depth=<<depth>> <br>
+<$macrocall $name=compose-omni />  
+</$tiddler>

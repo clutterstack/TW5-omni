@@ -6,7 +6,7 @@ tags: $:/tags/Stylesheet
 <$transclude tiddler="$:/plugins/can/omni/styles-common" mode="block"/>
 <$transclude tiddler="$:/plugins/can/omni/styles-text" mode="block"/>
 <$list filter="[list[$:/StoryList]has[omnibus-mode]]">
-<$vars mode={{!!omnibus-mode}}>
-<$transclude tiddler=<<stylesheettitle>> mode="block"/>
-</$vars>
+    <$vars mode={{!!omnibus-mode}}>
+    <$transclude tiddler=<<stylesheettitle>> mode="block"/>
+    </$vars>
 </$list>

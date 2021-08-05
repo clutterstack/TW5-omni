@@ -1,16 +1,16 @@
 created: 20200507184921957
 creator: chris
 tags:
-title: $:/plugins/can/omni/styles-exp
+title: $:/plugins/can/omni/styles-floo
 
+<style>
+/****** START styles-floo ********/
 
-.can-omni-stream.tree,.can-omni-stream.exp {
-    margin-left: 1em;
+.can-omni-stream {
     grid-template-columns: max-content max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
-    
 }
 
-.tree .omni-branch, .exp .omni-branch {
+.omni-branch {
     grid-column: 1/6;
     grid-row: span 2;
     border-left: 1px solid;
@@ -22,7 +22,7 @@ title: $:/plugins/can/omni/styles-exp
     grid-template-rows: auto;
 }
 
-.tree .omni-item-container, .exp .omni-item-container {
+.omni-item-container {
     grid-column: 1/6;
     display: grid;
     grid-template-columns: max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
@@ -31,15 +31,15 @@ title: $:/plugins/can/omni/styles-exp
     box-sizing: content-box;
 }
 
-.tree .omni-item-container.toplevel,.exp .omni-item-container.toplevel {
+.omni-item-container.toplevel {
     border: none;
 }
 
-.tree .omni-item-container:last-of-type, .exp .omni-item-container:last-of-type {
+.omni-item-container:last-of-type {
     border-left: 1px solid rgba(0,0,0,0);
 }
 
-.tree .omni-branch-edge, .exp .omni-branch-edge {
+.omni-branch-edge {
     grid-column: 1/2;
     grid-row: span 2;
     width: 0
@@ -47,7 +47,7 @@ title: $:/plugins/can/omni/styles-exp
     min-height: 1em;
     margin-bottom: -1em;
 }
-.tree .omni-branch-line, .exp .omni-branch-line {
+.omni-branch-line {
     grid-column:2/3;
     grid-row: span 1;
     width:1em;
@@ -59,12 +59,13 @@ title: $:/plugins/can/omni/styles-exp
     margin-left: -1px;
 }
 
-.exp .can-omni-text {
+.can-omni-text {
     padding: 0.2em;
 }
 
- .exp .omni-text-display {
+.omni-text-display {
     grid-column: 4/5;
+    padding-right: 1em;
     border-radius: 0 5px 5px 0;
     border: none;
     background-color: <<colour page-background>>;
@@ -74,16 +75,11 @@ title: $:/plugins/can/omni/styles-exp
 
 .omni-title-heading button {margin-left: 1em;}
 
-.exp .omni-title-heading {
+.omni-title-heading {
     padding: 0.2em 0.2em 0 0.2em;
     margin-bottom: 0.2em;
     border: none;
     font-size: 1.2rem;
-    margin-right: 0.4em;
-}
-
-
-.tree .omni-showomni.tc-reveal {
 }
 
 
@@ -91,10 +87,9 @@ title: $:/plugins/can/omni/styles-exp
 /* Vertical item handle                   */
 /* ---------------------------------------*/
 
-
-.tree .can-omni-itemhandle, .exp .can-omni-itemhandle {
+.can-omni-itemhandle {
     border-radius: 5px 0 0 5px; 
-    width: 1em; 
+    width: 1.2em; 
     height: 100%; 
     grid-column: 3/4; 
     grid-row: span 1;
@@ -105,21 +100,21 @@ title: $:/plugins/can/omni/styles-exp
     flex-direction: column;
     }
 
-.tree .can-omni-edithandle, .exp .can-omni-edithandle {
+can-omni-edithandle {
     height:100%;
     width:100%;
 }
 
-.tree .can-omni-itemhandle:hover, .exp .can-omni-itemhandle:hover {
+.tc-btn-invisible..can-omni-itemhandle:hover {
     background-color: <<colour muted-foreground>>;
 }
 
-.tree .can-omni-itemhandle .can-omni-link, .exp .can-omni-itemhandle .can-omni-link {height: 1em;}
+.can-omni-itemhandle .can-omni-link {height: 1em;}
 
-.exp .can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
-.exp .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
+.can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
+.can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
 
-.exp .can-omni-itemhandle-inner {
+.can-omni-itemhandle-inner {
     border-radius: 5px 0 0 5px; 
     box-sizing: border-box;
     height: 100%; 
@@ -128,18 +123,24 @@ title: $:/plugins/can/omni/styles-exp
     margin:0;
     }
 
-.exp .can-omni-subctl {
+.can-omni-subctl {
     grid-column: 5/6;
     padding-left: 0.2em;
 }
 
-
-.exp .can-omni-foldbutton {
-    grid-column: 3/4;
+.can-omni-foldbutton {
+    margin: 0.2em 0 0 0.4em; 
+    height: 1.5em; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start;
 }
 
+.can-omni-peripheral.inert {
+    height: 10pt;
+}
 
-.can-omni-stream.exp .can-omni-button svg {
+.can-omni-stream .can-omni-button svg {
     width: 10pt;
     height: 10pt;
 }
@@ -148,7 +149,7 @@ title: $:/plugins/can/omni/styles-exp
 /* Above and below item droppable zones */
 /* ----------------------------------------- */
 
-.exp .can-omni-peripheral, .exp .can-omni-topadd, .exp .can-omni-bottomadd { 
+.can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
     grid-column: 3/6; 
     border-radius: 4px; 
     display: flex; 
@@ -157,7 +158,9 @@ title: $:/plugins/can/omni/styles-exp
     line-height: 16pt; 
     background-color: #ffffff;}
 
-.exp .can-omni-bottomadd {
+.can-omni-bottomadd {
     margin-left: 2em;
 }
 
+/****** END styles-floo ********/
+</style>
