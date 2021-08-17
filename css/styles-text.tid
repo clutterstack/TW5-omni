@@ -33,7 +33,7 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
 /* ----------------------------------------- */
 
 .can-omni-stream ul {
-    margin: 0;
+    /*margin: 0;*/
     padding-left: 2em;
 }
 

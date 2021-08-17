@@ -104,7 +104,7 @@ grid-template-rows: auto;
     margin-top: 0.4em;
     }
 
-.can-omni-button svg {
+.omni-button svg {
     width: 10pt;
     height: 10pt;
 }

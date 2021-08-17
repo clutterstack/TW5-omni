@@ -1,0 +1,79 @@
+title: $:/plugins/can/omni/rows-plus-v2.svg
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   inkscape:version="1.0 (4035a4f, 2020-05-01)"
+   sodipodi:docname="rows-plus-v2.svg"
+   id="svg2556"
+   version="1.1"
+   viewBox="0 0 22.0 22.0"
+   height="22.0px"
+   width="22.0px">
+  <g
+     transform="rotate(90,10.999473,11)"
+     id="g2923">
+    <path
+       d="m 16.92785,16.454544 5.071095,-5.454545 -5.071095,-5.454543 0.07414,3.7720892 -5.635989,0.2536086 v 2.8576902 l 5.635989,0.25361 z"
+       id="path2203"
+       sodipodi:nodetypes="cccccccc" />
+    <rect
+       id="rect2205"
+       width="2.2598617"
+       height="12"
+       x="-13.62888"
+       y="-17"
+       transform="scale(-1)" />
+    <rect
+       transform="scale(-1)"
+       y="-17"
+       x="-10.632946"
+       height="12"
+       width="2.2598617"
+       id="rect2205-2"/>
+    <path
+       sodipodi:nodetypes="cccccccc"
+       id="path2203-2"
+       d="M 5.071096,16.454544 1e-6,10.999999 5.071096,5.545456 l -0.07414,3.7720896 5.63599,0.2536087 v 2.8576897 l -5.63599,0.25361 z"/>
+  </g>
+  <metadata
+     id="metadata2562">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs2560" />
+  <sodipodi:namedview
+     inkscape:current-layer="svg2556"
+     inkscape:window-maximized="0"
+     inkscape:window-y="23"
+     inkscape:window-x="0"
+     inkscape:cy="14.40129"
+     inkscape:cx="15.103389"
+     inkscape:zoom="3.1678804"
+     showgrid="false"
+     id="namedview2558"
+     inkscape:window-height="729"
+     inkscape:window-width="1280"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0"
+     guidetolerance="10"
+     gridtolerance="10"
+     objecttolerance="10"
+     borderopacity="1"
+     bordercolor="#666666"
+     pagecolor="#ffffff"
+     inkscape:document-rotation="0" />
+</svg>

@@ -21,7 +21,7 @@ tags:
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="list">
 <$qualify name=omniqual title={{!!created}}>
     <div class="can-omni-stream list" >
-        <$eventcatcher events="click" selector=".can-omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
+        <$eventcatcher events="click" selector=".omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
             <<can-omni-topadd>>
         </$eventcatcher>
         <$list filter="[all[current]list[]]">

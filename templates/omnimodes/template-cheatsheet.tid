@@ -3,7 +3,7 @@ title: $:/plugins/can/omni/template-cheatsheet
 \define grid-span-style() grid-row-end: span $(rowspan)$; grid-column-end: span $(colspan)$;
 
 \define cheatsheet-title()
-<$vars rowspan={{!!cheatsheet-rowspan}} colspan={{!!cheatsheet-colspan}}>
+<$vars rowspan={{{[{!!cheatsheet-rowspan}!is[blank]else[2]]}}} colspan={{{[{!!cheatsheet-colspan}!is[blank]else[2]]}}}>
 <div class="omni-cheatsheet-section-container title" style=<<grid-span-style>>>
 <<can-omni-peripheral-inert>>
 <div class=omni-cheatsheet-section >
@@ -11,16 +11,14 @@ title: $:/plugins/can/omni/template-cheatsheet
         <<gridrowspan-ctl>>
         <<gridcolspan-ctl>>
     </div>
-    <div class="omni-cheatsheet-titlediv">
     <<omni-captionortitleheading>>
-    </div>
 </div>
 </div>
 </$vars>
 \end
 
 \define everycheatsheet(depth)
-<$vars link-class={{{[<currentTiddler>tag[omnibus]then[omni-cheatsheet-text link]] :intersection[all[current]list[]limit[1]then[omni-cheatsheet-text link]] ~[[omni-cheatsheet-text]]}}} rowspan={{!!cheatsheet-rowspan}} colspan={{!!cheatsheet-colspan}}>
+<$vars rowspan={{{[{!!cheatsheet-rowspan}!is[blank]else[2]]}}} colspan={{{[{!!cheatsheet-colspan}!is[blank]else[2]]}}}>
 <div class=omni-cheatsheet-section-container style=<<grid-span-style>>>
     <<can-omni-peripheral>>
     <div class="omni-cheatsheet-section">
@@ -32,9 +30,11 @@ title: $:/plugins/can/omni/template-cheatsheet
                 <<gridrowspan-ctl>>
                 <<gridcolspan-ctl>>
             </div>
-            <<omni-captionortitleheading>>
+            <div class="can-omni-subctl">
+            <<omni-captionortitleheading>><$list filter="[<currentTiddler>tag[omnibus]then[omni]] :intersection[all[current]list[]limit[1]then[omni]]" variable=ignore><<omni-closerlook>></$list>
+            </div>
         </$vars>
-        <div class=<<link-class>> data-title=<<currentTiddler>>>
+        <div class="omni-cheatsheet-text">
         <<can-omni-text>>
         </div>
     </div>
@@ -45,10 +45,10 @@ title: $:/plugins/can/omni/template-cheatsheet
 \define compose-omni-toplevel()
 <$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-startedit-actions>> tag="div">
     <$eventcatcher events="click" selector=".can-omni-link" actions-click=<<omni-navigate-action>> tag="div">
-        <$eventcatcher events="click" selector=".can-omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
+        <$eventcatcher events="click" selector=".omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
             <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
-                <$eventcatcher events="click" selector=".can-omni-button.can-omni-delete" actions-click=<<omni-delete-action>> tag="div">
-                    <$eventcatcher events="click" selector=".can-omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
+                <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-delete-action>> tag="div">
+                    <$eventcatcher events="click" selector=".omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
                         <<can-omni-toptools>>
                         <$macrocall $name=compose-omni/>        
 </$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher>
@@ -56,7 +56,7 @@ title: $:/plugins/can/omni/template-cheatsheet
 
 \define compose-omni(mode:cheatsheet depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="cheatsheet">
-    <$eventcatcher tag=div events="click" selector=".omni-cheatsheet-text.link" actions-click=<<omni-nav-leveldown>> class="can-omni-stream cheatsheet" >
+    <$eventcatcher tag=div events="click" selector=".omni-closerlook-button" actions-click=<<omni-nav-leveldown>> class="can-omni-stream cheatsheet" >
         <$macrocall $name="omni-breadcrumbs" statetid=<<cheatsheetstatetid>> />
         <<cheatsheet-title>>
         <$list filter="[all[current]list[]is[tiddler]]">
@@ -64,7 +64,9 @@ title: $:/plugins/can/omni/template-cheatsheet
                 <$macrocall $name=everycheatsheet depth=<<__depth__>> />
             </$qualify>
         </$list>
-    <<can-omni-bottomadd>>
+        <div class="omni-cheatsheet-section-container">
+            <<can-omni-bottomadd>>
+        </div>
     </$eventcatcher>
 </$vars>
 \end
@@ -72,9 +74,9 @@ title: $:/plugins/can/omni/template-cheatsheet
 <$vars omnitid={{!!title}}>
 <$qualify name=omniqual title={{!!created}}>
 <$tiddler tiddler={{{[<cheatsheetstatetid>get[text]else{!!title}]}}}>
-cheatsheetstatetid: <<cheatsheetstatetid>> <br>
+<!-- cheatsheetstatetid: <<cheatsheetstatetid>> <br>
 currentTiddler: <<currentTiddler>> <br>
-omnitid: <<omnitid>> <br>
+omnitid: <<omnitid>> <br> -->
 <<compose-omni-toplevel>>
 </$tiddler>
 </$qualify>

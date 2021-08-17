@@ -61,11 +61,11 @@ details > summary {
 	list-style-position: outside;
 }
 
-.can-quickadd-textarea.tc-tiddler-body {
-    padding: 0.5em;
+.omni-textarea.tc-tiddler-body {
+    padding: 0.5rem;
 }
 
-.can-omni-stream .omni-title-heading .can-quickadd-textarea { 
+.can-omni-stream .omni-title-heading .omni-textarea { 
     margin: 0 0.4em 0 0; 
     border: 1px solid #ccc; 
     }
@@ -151,14 +151,14 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .can-small-text-button .tc-menubar-dropdown-arrow {padding-left: 0.4em;}
 
-.can-omni-button svg, .can-omni-foldbutton svg {width: 1.5em; height: 1.5em; flex: 0 0 auto; fill:<<colour tab-background>>;}
+.omni-button svg, .can-omni-foldbutton svg {width: 1em; height: 1em; flex: 0 0 auto; fill:<<colour tab-background>>;}
 
-.can-omni-button.can-omni-button-selected {color: #66c;} 
-.can-omni-button.can-omni-button-selected svg { fill: #66c; }
+.omni-button.omni-button-selected {color: #66c;} 
+.omni-button.omni-button-selected svg { fill: #66c; }
 
-.can-omni-button:hover, .can-omni-button:hover svg {fill: <<colour tiddler-controls-foreground>>;}
+.omni-button:hover, .omni-button:hover svg {fill: <<colour tiddler-controls-foreground>>;}
 
-.can-omni-button {
+.omni-button {
     color: <<colour tab-background>>;
     display: flex; 
     flex-direction: row; 
@@ -174,13 +174,13 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .can-omni-stream .can-omni-stream .can-omni-foldall {margin-top: 0.4em; flex-direction: column; justify-content: flex-start;}
 
-.can-omni-stream .can-omni-stream .can-omni-foldall .can-omni-button {margin-right: 0; margin-bottom: 0.2em;}
+.can-omni-stream .can-omni-stream .can-omni-foldall .omni-button {margin-right: 0; margin-bottom: 0.2em;}
 
-.can-omni-viewswitcher .can-omni-button svg {
+.can-omni-viewswitcher .omni-button svg {
     width: 20pt;
     height: 20pt;
 }
-.can-omni-foldall .can-omni-button svg {
+.can-omni-foldall .omni-button svg {
     width: 14pt;
     height: 14pt;
 }
@@ -193,7 +193,7 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .can-omni-peripheral.tc-droppable, .can-omni-topadd.tc-droppable, .can-omni-bottomadd.tc-droppable { width: 100%; display: flex; flex-direction: row;}
 
-.can-omni-button.can-omni-toggleadd {
+.omni-button.can-omni-toggleadd {
     width: 100%;
     display: flex; 
     flex-direction: row;
@@ -206,7 +206,7 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .can-omni-peripheral.tc-dragover, .can-omni-topadd.tc-dragover, .can-omni-bottomadd.tc-dragover, .tc-dragover .can-omnibus-droppable { border-radius: 5px;background-color: #0ff; }
 
-.can-omni-peripheral .can-omni-button, .can-omni-bottomadd .can-omni-button {border-radius: 4px; width: 100%;}
+.can-omni-peripheral .omni-button, .can-omni-bottomadd .omni-button {border-radius: 4px; width: 100%;}
 
 .can-quickadd.sub, .can-omni-top { grid-column: 2/6; margin-bottom: 0.8em; }
 

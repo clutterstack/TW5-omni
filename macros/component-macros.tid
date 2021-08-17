@@ -7,11 +7,11 @@ type: text/vnd.tiddlywiki
 \whitespace trim
 
 \define gridrowspan-ctl()
-<$button class="tc-btn-invisible can-omni-button" actions="""<$action-listops $field="cheatsheet-rowspan" $subfilter='+[add[1]] ~[[2]]'/>""">{{$:/plugins/can/omni/rows-plus.svg}}</$button><$button class="tc-btn-invisible can-omni-button" actions="""<$action-listops $field="cheatsheet-rowspan" $subfilter='+[subtract[1]max[1]] ~[[1]]'/>""">{{$:/plugins/can/omni/rows-minus.svg}}</$button>
+<$button class="tc-btn-invisible omni-button" actions="""<$action-listops $field="cheatsheet-rowspan" $subfilter='+[add[1]] ~[[2]]'/>""">{{$:/plugins/can/omni/rows-plus-v4.svg}}</$button><$button class="tc-btn-invisible omni-button" actions="""<$action-listops $field="cheatsheet-rowspan" $subfilter='+[subtract[1]max[1]] ~[[1]]'/>""">{{$:/plugins/can/omni/rows-minus-v4.svg}}</$button>
 \end
 
 \define gridcolspan-ctl()
-<$button class="tc-btn-invisible can-omni-button"  actions="""<$action-listops $field="cheatsheet-colspan" $subfilter='+[add[1]] ~[[2]]'/>""">{{$:/plugins/can/omni/cols-plus.svg}}</$button><$button class="tc-btn-invisible can-omni-button"  actions="""<$action-listops $field="cheatsheet-colspan" $subfilter='+[subtract[1]max[1]] ~[[1]]'/>""">{{$:/plugins/can/omni/cols-minus.svg}}</$button>
+<$button class="tc-btn-invisible omni-button"  actions="""<$action-listops $field="cheatsheet-colspan" $subfilter='+[add[1]] ~[[2]]'/>""">{{$:/plugins/can/omni/cols-plus-v6.svg}}</$button><$button class="tc-btn-invisible omni-button"  actions="""<$action-listops $field="cheatsheet-colspan" $subfilter='+[subtract[1]max[1]] ~[[1]]'/>""">{{$:/plugins/can/omni/cols-minus-v6.svg}}</$button>
 \end
 
 \define can-omni-peripheral()
@@ -30,7 +30,7 @@ type: text/vnd.tiddlywiki
 \end
 
 \define can-omni-folder()
-<div class="can-omni-foldbutton tc-btn-invisible can-small-text-button " data-statetid=<<foldstatetiddler>>>
+<div class="can-omni-foldbutton tc-btn-invisible" data-statetid=<<foldstatetiddler>>>
 <$list filter="[<foldstatetiddler>get[foldstate]match[hide]]" emptyMessage="""<<omni-toggle-view>><$action-setfield $tiddler=<<foldstatetiddler>> foldstate="hide"/>{{$:/core/images/down-arrow}}""" variable="ignore">
 	<$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show"/>
 	{{$:/core/images/right-arrow}}
@@ -99,7 +99,7 @@ emptyMessage=
 	<$keyboard tag="div" class="tc-can-keyboard" key="shift-tab" actions="<<omni-shift-tab-actions>>">
 	<$keyboard tag="div" class="tc-can-keyboard" key="alt-up" actions="<<omni-move-earlier-actions>>">
 	<$keyboard tag="div" class="tc-can-keyboard" key="alt-down" actions="<<omni-move-later-actions>>">
-		<$edit-text tiddler=<<editstatetid>> class="can-quickadd-textarea tc-tiddler-body" field='text' placeholder='New tiddler text' rows="1" minHeight="0" focus=true/>
+		<$edit-text tiddler=<<editstatetid>> class="omni-textarea tc-tiddler-body" field='text' placeholder='New tiddler text' rows="1" minHeight="0" focus=true/>
 	</$keyboard></$keyboard></$keyboard></$keyboard></$keyboard></$keyboard></$keyboard>
 </$list>
 \end
@@ -132,7 +132,7 @@ testvar? <<testvar>> <br>
 	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submitedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submitedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-canceledit-actions>>">
-		<$edit-text class="can-quickadd-textarea tc-tiddler-body" field='text' placeholder='New tiddler text' rows="1" minHeight="0" focus=true/>
+		<$edit-text class="omni-textarea tc-tiddler-body" field='text' placeholder='New tiddler text' rows="1" minHeight="0" focus=true/>
 	</$keyboard></$keyboard></$keyboard>
 </$reveal>
 \end
@@ -143,7 +143,7 @@ testvar? <<testvar>> <br>
 	     <div class="omni-teaser-body">
             <$transclude $tiddler="<<currentTiddler>>" mode="block"/>
          </div>
-         <div class="omni-teaser-indicator can-omni-button">
+         <div class="omni-teaser-indicator omni-button">
             <p>...</p>
         </div>
 	</div>
@@ -159,12 +159,12 @@ testvar? <<testvar>> <br>
 	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submittitleedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submittitleedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-canceltitleedit-actions>>">
-		<$edit-text class="can-quickadd-textarea" field='newtitle' tag=textarea rows="1" minHeight="0" focus=true/>
+		<$edit-text class="omni-textarea" field='newtitle' tag=textarea rows="1" minHeight="0" focus=true/>
 	</$keyboard></$keyboard></$keyboard>
 </$reveal>
 \end
 
-\define can-omni-captionheading-ro()
+\define omni-captionheading-ro()
 <div class="omni-title-heading view">
 	<$list filter="[<currentTiddler>has[caption]]">{{!!caption}}</$list>
 </div>
@@ -177,7 +177,7 @@ testvar? <<testvar>> <br>
 	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submitfieldedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submitfieldedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-cancelfieldedit-actions>>">
-        <$edit-text class="can-quickadd-textarea" field="newfieldvalue" rows="1" minHeight="0" focus=true/>
+        <$edit-text class="omni-textarea" field="newfieldvalue" rows="1" minHeight="0" focus=true/>
 	</$keyboard></$keyboard></$keyboard>
 </div>
 </$list>
@@ -191,7 +191,7 @@ testvar? <<testvar>> <br>
 	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submitfieldedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submitfieldedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-cancelfieldedit-actions>>">
-        <$edit-text class="can-quickadd-textarea" field="newfieldvalue" rows="1" minHeight="0" focus=true/>
+        <$edit-text class="omni-textarea" field="newfieldvalue" rows="1" minHeight="0" focus=true/>
 	</$keyboard></$keyboard></$keyboard>
 </div>
 </$list>
@@ -216,6 +216,13 @@ testvar? <<testvar>> <br>
     </$list>
 </div>
 </$vars>
+\end
+
+\define omni-captionheading-row-ro()
+<div class="omni-heading-row">
+    <$list filter="[<currentTiddler>has[text]]"><<can-omni-folder>></$list>
+    <<omni-captionheading-ro>>
+</div>
 \end
 
 \define can-omni-titleheading-ro()

@@ -5,15 +5,11 @@ title: $:/plugins/can/omni/styles-cheatsheet
 .can-omni-stream.cheatsheet {
 display: grid;
 gap: 1em 0;
-grid-template-columns: repeat(4, minmax(18em, max-content));
-grid-template-rows: repeat(auto-fit, minmax(0.5em, min-content));
+grid-template-columns: repeat(4, minmax(1em, 25%));
+grid-template-rows: repeat(auto-fit, minmax(0.5em, auto));
 width: 100%;
 height: 100%;
 padding: 0;
-}
-
-.omni-cheatsheet-titlediv {
-    font-size: 1.8em;
 }
 
 .cheatsheet .can-omni-peripheral { 
@@ -31,14 +27,11 @@ padding: 0;
 display: flex;
 flex-direction: row;
 align-items: center;
-width: 100%;
+width: 1.2em; /*100%;*/
 background: rgba(0, 0, 0, 0);
-height: 1.2em;
+/*height: 1.2em;*/
 margin 0;
-}
-
-.cheatsheet .can-omni-bottomadd {
-    grid-column: 1 / -1;
+grid-column: 1 / -1;
 }
 
 .cheatsheet .can-omni-toggleadd {
@@ -47,6 +40,12 @@ margin 0;
 }
 
 .cheatsheet svg.tc-image-button {padding: 0;}
+
+.cheatsheet .omni-button svg {
+    color: #aaaaaa;
+    fill: #aaaaaa;
+}
+
 .cheatsheet .can-omni-toggleadd:hover { 
     background: rgba(200, 255, 255, 0.3);
   }
@@ -60,16 +59,22 @@ margin 0;
 .omni-cheatsheet-section-container {
     display: flex;
     flex-direction: row;
+    min-width: 0px;
+    max-width: 100%;
 }
 
 .omni-cheatsheet-section-container.title {
 grid-column-start: 1;
 }
 
-.omni-cheatsheet-title, .omni-cheatsheet-section {
-background: #ccffce;
+
+
+.omni-cheatsheet-section {
+position: relative;
+background: <<colour tiddler-editor-fields-even>>;
 border-radius: 5px;
-padding: 0.5em;
+padding: 1rem 2rem;
+min-width: 0px;
 height: 100%;
 width: 100%;
 }
@@ -85,15 +90,15 @@ width: 100%;
 
 .cheatsheet .omni-title-heading {
     flex: 1 0 5em; /* grow shrink basis */
-    padding: 0.4em 0.2em 0 0;
-    margin-bottom: 0.2em;
+    padding: 0.4em 0.2em 0 0.5rem;
+    margin-bottom: 1rem;
     border: none;
-    font-size: 1.2rem;
+    font-size: 1.6em;
+    font-weight: 500;
 }
 
-.omni-cheatsheet-titlediv .omni-title-heading {
-    font-size: 1.8em;
-    line-height: 1.2;
+.omni-cheatsheet-section-container.title .omni-title-heading {
+    font-size: 2.0em;
 }
 
 .can-omni-subctl {
@@ -102,9 +107,34 @@ width: 100%;
     flex-wrap: wrap;
 }
 
-.omni-cheatsheet-section > .omni-title-heading.view {
-    font-size: 1.25rem;
-    font-weight: 500;
+.cheatsheet .omni-button svg {
+    width: 1.0em;
+    height: 1.0em;
 }
+
+.cheatsheet .omni-textarea {
+    background-color: <<colour tiddler-editor-fields-even>>
+}
+
+.omni-button.omni-closerlook-button {
+    padding-top: 0.6em;
+}
+
+
+.omni-button.omni-closerlook-button svg {
+    width: 1.6em;
+    height: 1.6em;
+    fill: #8888ff;
+}
+
+
+.cheatsheet .tc-tiddler-body {
+    padding: 0 0.5em;
+}
+
+.omni-cheatsheet-section code {
+    background-color: transparent;
+}
+
 
 </style>

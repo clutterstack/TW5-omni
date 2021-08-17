@@ -1,5 +1,4 @@
 title: $:/plugins/can/omni/template-expro
-tags: $:/tags/Macro
 
 \define everyexpro(depth)
 <$set name=testclass filter="[[omni-item-container]] [[$depth$]match[0]then[toplevel]]" >
@@ -10,7 +9,7 @@ tags: $:/tags/Macro
         <<can-omni-peripheral-inert>>
         <<can-omni-tree-itemhandle-filler>>
         <div class="omni-text-display">
-        <<can-omni-captionheading-ro>>
+        <<omni-captionheading-row-ro>>
         <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore"/>
         </div>
         <$list filter="[<currentTiddler>tag[omnibus]] +[all[current]list[]limit[1]]" variable="ignore">
@@ -24,10 +23,10 @@ tags: $:/tags/Macro
 \define compose-omni-toplevel() 
 <$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-startedit-actions>> tag="div">
     <$eventcatcher events="click" selector=".can-omni-link" actions-click=<<omni-navigate-action>> tag="div">
-        <$eventcatcher events="click" selector=".can-omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
+        <$eventcatcher events="click" selector=".omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
             <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
-                <$eventcatcher events="click" selector=".can-omni-button.can-omni-delete" actions-click=<<omni-delete-action>> tag="div">
-                    <$eventcatcher events="click" selector=".can-omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
+                <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-delete-action>> tag="div">
+                    <$eventcatcher events="click" selector=".omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
                             <<can-omni-toptools>>
                         <$macrocall $name=compose-omni depth=0/>        
 </$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher>
@@ -36,14 +35,13 @@ tags: $:/tags/Macro
 \define compose-omni(mode:expro depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="expro">
 <$qualify name=omniqual title={{!!created}}>
-    <div class="can-omni-stream expro" >
+    <div class="can-omni-stream exp" >
         <$list filter="[all[current]list[]is[tiddler]]">
             <$qualify name=createdid title={{!!created}} >
                 <$macrocall $name=everyexpro depth=<<__depth__>> />
             </$qualify>
         </$list>
     </div>
-    <<can-omni-bottomadd>>
 </$qualify>
 </$vars>
 \end

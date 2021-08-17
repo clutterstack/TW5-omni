@@ -6,11 +6,12 @@ title: $:/plugins/can/omni/styles-exp
 <style>
 /****** START styles-exp ********/
 
-.can-omni-stream {
+.exp .can-omni-stream {
     grid-template-columns: max-content max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */  
+    font-size: 16px;
 }
 
-.omni-branch {
+.exp .omni-branch {
     grid-column: 1/6;
     grid-row: span 2;
     border-left: 1px solid;
@@ -22,143 +23,137 @@ title: $:/plugins/can/omni/styles-exp
     grid-template-rows: auto;
 }
 
-.omni-item-container {
+.exp .omni-item-container {
     grid-column: 1/6;
     display: grid;
     grid-template-columns: max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
     grid-template-rows: auto;
     border-left: 1px solid;
-    box-sizing: content-box;
+    /*box-sizing: content-box;*/
 }
 
-.omni-item-container.toplevel {
+.exp .omni-item-container.toplevel {
     border: none;
 }
 
-.omni-item-container:last-of-type {
+.exp .omni-item-container:last-of-type {
     border-left: 1px solid rgba(0,0,0,0);
 }
 
-.omni-branch-edge {
-    grid-column: 1/2;
-    grid-row: span 2;
-    width: 0
-    box-sizing: border-box;
-    min-height: 1em;
-    margin-bottom: -1em;
-}
-.omni-branch-line {
+.exp .omni-branch-line {
     grid-column:2/3;
     grid-row: span 1;
-    width:1em;
+    width: 2em;
     border-left: 1px solid;
     border-bottom: 1px solid;
-    border-radius: 0 0 0 10px;
-    box-sizing: border-box;
+    border-radius: 0 0 0 16px;
+    /* box-sizing: border-box; */
     margin-bottom: -1em;
     margin-left: -1px;
 }
 
-.can-omni-text {
-    padding: 0.2em;
-}
-
-.omni-heading-row {
+.exp .omni-heading-row {
+    padding-top: 0.4em;
     display: flex;
     flex-direction: row;
 }
 
-.omni-text-display {
+.exp .omni-text-display {
     grid-column: 4/5;
-    padding-right: 1em;
+    max-width: 40em;
     border-radius: 0 5px 5px 0;
     border: none;
-    background-color: <<colour page-background>>;
+    background-color: <<colour tiddler-editor-fields-even>>;
  }  
 
-.omni-title-heading.view {
-    min-width: 30%;
-    min-height: 1em;
-    }
-
-.omni-heading {
+.exp .omni-heading {
     display: flex;
     flex-direction: row;
 }
 
-.omni-caption:hover {
+.exp .omni-caption:hover {
 background: #EEF8FF;
 }
 
-.omni-title-heading button {margin-left: 1em;}
-
-.omni-title-heading {
-    flex: 1 0 5em; /* grow shrink basis */
-    padding: 0.4em 0.2em 0 0;
-    margin-bottom: 0.2em;
-    border: none;
-    font-size: 1.2rem;
+.exp .can-omni-title {
+    font-size: 0.5em;
+    padding-left: 0.4em;
 }
 
-.omni-title-heading:hover { background: cyan;}
+
+.exp .omni-title-heading:hover { background: cyan;}
+
+.exp .omni-title-heading button {margin-left: 1em;}
+
+.exp .omni-title-heading {
+    flex: 1 0 5em; /* grow shrink basis */
+    min-width: 30%;
+    min-height: 1em;
+    padding: 0 0.2em;
+    border: none;
+    font-size: 1.2em;
+}
+
+.exp .tc-tiddler-body {
+    min-height:0.4em;
+    padding-right: 1em;
+    padding-top: 1em;
+    margin-top: 0;
+}
 
 /* ---------------------------------------*/
 /* Vertical item handle                   */
 /* ---------------------------------------*/
 
-.can-omni-itemhandle {
+.exp .can-omni-itemhandle {
     border-radius: 5px 0 0 5px; 
     width: 1.2em; 
     height: 100%; 
     grid-column: 3/4; 
     grid-row: span 1;
-    background-color: <<colour page-background>>;
+    background-color: <<colour tiddler-editor-fields-even>>;
     margin:0;
     display: flex;
     flex-direction: column;
     }
 
-can-omni-edithandle {
+.exp .can-omni-edithandle {
     height:100%;
     width:100%;
 }
 
-.tc-btn-invisible..can-omni-itemhandle:hover {
+.exp .tc-btn-invisible.can-omni-itemhandle:hover, .exp .can-omni-title:hover {
     background-color: <<colour muted-foreground>>;
 }
 
-.can-omni-itemhandle .can-omni-link {height: 1em;}
+.exp .can-omni-itemhandle .can-omni-link {height: 1em;}
 
-.can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
-.can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
+.exp .can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
+.exp .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
 
-.can-omni-itemhandle-inner {
+.exp .can-omni-itemhandle-inner {
     border-radius: 5px 0 0 5px; 
-    box-sizing: border-box;
+    /* box-sizing: border-box; */
     height: 100%; 
     width: 100%;
-    background-color: <<colour page-background>>;
+    background-color: <<colour tiddler-editor-fields-even>>;
     margin:0;
     }
 
-.can-omni-subctl {
+.exp .can-omni-subctl {
     display:flex;
     flex-direction: row;
 }
 
-.can-omni-foldbutton {
-    margin: 0.2em 0 0 0.4em; 
-    height: 1.5em; 
-    display: flex; 
-    flex-direction: column; 
-    justify-content: flex-start;
+.exp .can-omni-foldbutton {
+    font-size: 1.5em;
 }
 
-.can-omni-peripheral.inert {
+.exp .can-omni-peripheral.inert {
     height: 10pt;
 }
 
-.can-omni-stream .can-omni-button svg {
+.exp .can-omni-stream .omni-button svg {
     width: 10pt;
     height: 10pt;
 }
@@ -167,7 +162,7 @@ can-omni-edithandle {
 /* Above and below item droppable zones */
 /* ----------------------------------------- */
 
-.can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
+.exp .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
     grid-column: 3/6; 
     border-radius: 4px; 
     display: flex; 

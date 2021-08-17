@@ -1,0 +1,60 @@
+title: $:/plugins/can/omni/microscope-simple.svg
+
+<svg
+    width="22.0px"
+   height="22.0px"
+   viewBox="0 0 22.0 22.0"
+  >
+  <path
+     id="rect893"
+     d="m 14.681602,16.673348 4.155122,0.156011 0.29701,4.842521 -6.110483,-0.233628 z"
+     sodipodi:nodetypes="ccccc" />
+  <rect
+     id="rect88-9-22-2-7"
+     width="14.241741"
+     height="2.3438401"
+     x="5.9569998"
+     y="19.65616"
+     ry="0.54513276" />
+  <rect
+     y="0"
+     x="10.600723"
+     height="15.034748"
+     width="1.9767017"
+     id="rect88-9-22-2-7-5"
+     ry="0.52030295" />
+  <rect
+     style="fill-opacity:1;stroke:none;stroke-width:1.6153"
+     id="rect88-9-22-2-7-5-6"
+     width="3.3926477"
+     height="6.9001808"
+     x="9.8664246"
+     y="5.0962434"
+     ry="0.46245009" />
+  <rect
+     y="6.8719053"
+     x="11.306766"
+     height="4.0329142"
+     width="4.4105711"
+     id="rect88-9-22-2-7-5-6-7"/>
+    <rect
+     id="rect88-9-22-2-7-5-6-7-0"
+     width="8.482933"
+     height="1.5555611"
+     x="7.9533858"
+     y="15.988222"
+     ry="0.46725664" />
+  <g
+     inkscape:label="main"
+     id="layer2"
+     inkscape:groupmode="layer" />
+  <g
+     inkscape:label="Arm"
+     id="layer3"
+     inkscape:groupmode="layer">
+    <path
+       d="m 12.58628,8.6792081 c 0,0 1.435855,0.1495527 2.201604,1.1520653 1.445047,1.8918436 2.116067,5.2059486 0.156632,8.5128316 l 4.28173,2.265195 C 19.73348,15.127535 19.445372,10.780641 16.690699,7.6388854 15.726595,6.5393069 12.419438,5.6008398 12.419438,5.6008398 Z"
+       id="path876"
+       sodipodi:nodetypes="csccscc" />
+  </g>
+</svg>
