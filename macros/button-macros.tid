@@ -46,8 +46,8 @@ tags: $:/tags/Macro
 \end
 
 \define can-omni-title-link()
-<$draggable tag="span" tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> class="omni-button tc-btn-invisible" data-currenttid=<<currentTiddler>> role="button" title="Open tiddler in story" aria-label="Open tiddler in story">
-{{$:/plugins/can/omni/fish-water.svg}}<span class="can-omni-title"><$text text=<<currentTiddler>>/></span>
+<$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >
+<span class="omni-button tc-btn-invisible can-omni-link" data-currenttid=<<currentTiddler>> role="button" title="Open tiddler in story" aria-label="Open tiddler in story">{{$:/plugins/can/omni/fish-water.svg}}<span class="can-omni-title"><$text text=<<currentTiddler>>/></span></span>
 </$draggable>
 \end
 

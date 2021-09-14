@@ -1,0 +1,60 @@
+title: $:/plugins/can/omni/template-cheatsheetro
+
+\define grid-span-style() grid-row-end: span $(rowspan)$; grid-column-end: span $(colspan)$;
+
+\define cheatsheet-title-ro()
+<$vars rowspan={{{[{!!cheatsheet-rowspan}!is[blank]else[2]]}}} colspan={{{[{!!cheatsheet-colspan}!is[blank]else[2]]}}}>
+<div class="omni-cheatsheet-section-container title" style=<<grid-span-style>>>
+<<can-omni-peripheral-inert>>
+<div class=omni-cheatsheet-section >
+    <<omni-captionortitleheading-ro>></div>
+</div>
+</$vars>
+\end
+
+\define everycheatsheetro(depth)
+<$vars rowspan={{{[{!!cheatsheet-rowspan}!is[blank]else[2]]}}} colspan={{{[{!!cheatsheet-colspan}!is[blank]else[2]]}}}>
+<div class=omni-cheatsheet-section-container style=<<grid-span-style>>>
+    <<can-omni-peripheral-inert>>
+    <div class="omni-cheatsheet-section">            
+            <div class="can-omni-subctl">
+            <<omni-captionortitleheading-ro>><$list filter="[<currentTiddler>tag[omnibus]then[omni]] :intersection[all[current]list[]limit[1]then[omni]]" variable=ignore><<omni-closerlook>></$list>
+            </div>
+        <div class="omni-cheatsheet-text">
+        <<can-omni-text-ro>>
+        </div>
+    </div>
+</div>
+\end
+
+\define compose-omni-toplevel()
+<div class="can-omni-toptools">
+    <$list filter="[{!!showmodestate}!match[hide]]" variable="ignore"><span style="width: 2em;"></span><<omni-viewswitcher>></$list>
+</div>
+<$macrocall $name=compose-omni/>        
+\end
+
+\define compose-omni(mode:cheatsheetro depth)
+<$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="cheatsheetro">
+    <$eventcatcher tag=div events="click" selector=".omni-closerlook-button" actions-click=<<omni-nav-leveldown>> class="can-omni-stream cheatsheet" >
+        <!-- <$macrocall $name="omni-breadcrumbs" statetid=<<cheatsheetstatetid>> /> -->
+        <<cheatsheet-title-ro>>
+        <$list filter="[all[current]list[]is[tiddler]]">
+            <$qualify name=createdid title={{!!created}} >
+                <$macrocall $name=everycheatsheetro depth=<<__depth__>> />
+            </$qualify>
+        </$list>
+    </$eventcatcher>
+</$vars>
+\end
+
+<$vars omnitid={{!!title}}>
+<$qualify name=omniqual title={{!!created}}>
+<$tiddler tiddler={{{[<cheatsheetstatetid>get[text]else{!!title}]}}}>
+<!-- cheatsheetstatetid: <<cheatsheetstatetid>> <br>
+currentTiddler: <<currentTiddler>> <br>
+omnitid: <<omnitid>> <br> -->
+<<compose-omni-toplevel>>
+</$tiddler>
+</$qualify>
+</$vars>

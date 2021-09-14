@@ -28,7 +28,6 @@ tags:
             </$qualify>
         </$list>
     </div>
-    <<can-omni-bottomadd>>
 </$qualify>
 </$vars>
 \end

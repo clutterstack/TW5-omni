@@ -1,0 +1,3 @@
+title: $:/plugins/can/omni/styles-cheatsheetro
+
+<$transclude tiddler="$:/plugins/can/omni/styles-cheatsheet" mode="block"/>

@@ -186,7 +186,7 @@ testvar? <<testvar>> <br>
 
 \define omni-captionortitleheading()
 <$vars editFieldName="caption">
-<$list filter="[<editfieldstatetid>get[editstate]match[edit]]" variable="ignore" emptyMessage= """<div class="omni-title-heading view" title="Double-click to edit caption." aria-label="Double-click to edit caption."><$omnidblclick actions=<<omni-startfieldedit-actions>> /><$list filter="[<currentTiddler>has[caption]]" emptyMessage={{!!title}}>{{!!caption}}</$list></div>""">
+<$list filter="[<editfieldstatetid>get[editstate]match[edit]]" variable="ignore" emptyMessage= """<div class="omni-title-heading view" title="Double-click to edit caption." aria-label="Double-click to edit caption."><$omnidblclick actions=<<omni-startfieldedit-actions>> /><$list filter="[<currentTiddler>has[caption]]" variable="null" emptyMessage={{!!title}}>{{!!caption}}</$list></div>""">
 <div class="omni-title-heading">
 	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submitfieldedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submitfieldedit-actions>>" >
@@ -199,7 +199,7 @@ testvar? <<testvar>> <br>
 \end
 
 \define omni-captionortitleheading-ro()
-<div class="omni-title-heading view"<$list filter="[<currentTiddler>has[caption]]" emptyMessage={{!!title}}>{{!!caption}}</div>
+<div class="omni-title-heading view"<$list filter="[<currentTiddler>has[caption]]" variable="null" emptyMessage={{!!title}}>{{!!caption}}</div>
 \end
 
 \define omni-captionheading-row()

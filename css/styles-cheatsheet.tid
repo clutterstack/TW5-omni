@@ -50,10 +50,11 @@ grid-column: 1 / -1;
     background: rgba(200, 255, 255, 0.3);
   }
 
-.omni-breadcrumbs.cheatsheet {
+.omni-breadcrumbs.cheatsheet, .omni-breadcrumbs.cheatsheetro{
     display: flex;
     flex-direction: row;
     grid-column: 1 / -1;
+    color: #aaaaaa; 
 }
 
 .omni-cheatsheet-section-container {
@@ -136,5 +137,31 @@ width: 100%;
     background-color: transparent;
 }
 
+@media (max-width: 620px) {
 
+.can-omni-stream.cheatsheet {
+display: flex;
+flex-direction: column;
+gap: 0;
+}
+
+.cheatsheet .can-omni-peripheral, .can-omni-bottomadd { 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    line-height: 16pt; }
+
+
+.omni-cheatsheet-section-container {
+    display: flex;
+    flex-direction: column;
+    /* min-width: 0px; */
+    max-height: 100%;
+}
+.cheatsheet .can-omni-toggleadd {
+    padding: 0 0.5em;
+    width: 100%;
+}
+
+}
 </style>
