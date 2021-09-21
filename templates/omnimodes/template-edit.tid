@@ -15,7 +15,8 @@ tags: $:/tags/Macro
 			<<can-omni-make-omnibus>>
 		</div>
 	</div>
-    <<can-omni-text-region>>
+    <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text-region>> variable="ignore"/>
+    <!-- <<can-omni-text-region>> -->
 	<!-- <<can-omni-taglist>> -->
 	<$macrocall $name=omni-showomni depth=<<__depth__>> />
 \end

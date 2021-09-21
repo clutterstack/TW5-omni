@@ -5,6 +5,8 @@ type: text/vnd.tiddlywiki
 
 \define omni-navigate-action() <$action-navigate $to=<<dom-data-currenttid>>/>
 
+\define omni-select-node() <$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<dom-data-currenttid>> />
+
 <!-- \define omni-nav-leveldown() <$action-sendmessage $message="tm-modal" $param="$:/plugins/can/omni/cheatsheet-modal" modal-tiddler=<<dom-data-title>> depth=<<dom-data-depth>> /> -->
 
 \define omni-nav-leveldown() <$action-setfield $tiddler=<<cheatsheetstatetid>> text=<<dom-data-title>> /><$action-listops $tiddler=<<cheatsheetstatetid>> $field=breadcrumbs $subfilter='[<parentval>]'/>

@@ -208,7 +208,7 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .can-omni-peripheral .omni-button, .can-omni-bottomadd .omni-button {border-radius: 4px; width: 100%;}
 
-.can-quickadd.sub, .can-omni-top { grid-column: 2/6; margin-bottom: 0.8em; }
+.can-quickadd.sub, .can-omni-top, .can-quickadd.slim { grid-column: 2/6; margin-bottom: 0.8em; }
 
 /* ----------------------------------------- */
 /* omni-bullet  */

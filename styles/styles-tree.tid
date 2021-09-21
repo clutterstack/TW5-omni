@@ -20,15 +20,15 @@ title: $:/plugins/can/omni/styles-tree
     box-sizing: content-box;
 }
 
-.omni-item-container.toplevel {
+.tree .omni-item-container.toplevel {
     border: none;
 }
 
-.omni-item-container:last-of-type {
+.tree .omni-item-container:last-of-type {
     border-left: 1px solid rgba(0,0,0,0);
 }
 
-.omni-branch-edge {
+.tree .omni-branch-edge {
     grid-column: 1/2;
     grid-row: span 2;
     width: 0
@@ -36,7 +36,7 @@ title: $:/plugins/can/omni/styles-tree
     min-height: 1em;
     margin-bottom: -1em;
 }
-.omni-branch-line {
+.tree .omni-branch-line {
     grid-column:2/3;
     grid-row: span 1;
     width:1em;
@@ -48,7 +48,7 @@ title: $:/plugins/can/omni/styles-tree
     margin-left: -1px;
 }
 
-.can-omni-text {
+.tree .can-omni-text {
     border-radius: 0 5px 5px 0;
     background-color: <<colour page-background>>;
     grid-column: 4/5;
@@ -60,7 +60,7 @@ title: $:/plugins/can/omni/styles-tree
 /* Vertical item handle                   */
 /* ---------------------------------------*/
 
-.can-omni-itemhandle {
+.tree .can-omni-itemhandle {
     border-radius: 5px 0 0 5px; 
     width: 1em; 
     height: 100%; 
@@ -73,21 +73,21 @@ title: $:/plugins/can/omni/styles-tree
     flex-direction: column;
     }
 
-.can-omni-edithandle {
+.tree .can-omni-edithandle {
     height:100%;
     width:100%;
 }
 
-.can-omni-itemhandle:hover {
+.tree .can-omni-itemhandle:hover {
     background-color: <<colour muted-foreground>>;
 }
 
-.can-omni-itemhandle .can-omni-link {height: 1em;}
+.tree .can-omni-itemhandle .can-omni-link {height: 1em;}
 
-.can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
-.can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
+.tree .can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
+.tree .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
 
-.can-omni-itemhandle-inner {
+.tree .can-omni-itemhandle-inner {
     border-radius: 5px 0 0 5px; 
     box-sizing: border-box;
     height: 100%; 
@@ -96,7 +96,7 @@ title: $:/plugins/can/omni/styles-tree
     margin:0;
     }
 
-.can-omni-itemhandle-inner { 
+.tree .can-omni-itemhandle-inner { 
     box-sizing: content-box; 
     border-radius: 2px;
     height: 100%; 
@@ -106,7 +106,7 @@ title: $:/plugins/can/omni/styles-tree
     }
 
 
-.can-omni-subctl {
+.tree .can-omni-subctl {
     grid-column: 5/6;
     padding-left: 0.2em;
     display: flex; 
@@ -116,7 +116,7 @@ title: $:/plugins/can/omni/styles-tree
     }
 
 
-.can-omni-foldbutton {
+.tree .can-omni-foldbutton {
     grid-column: 3/4; 
     align-self: start; 
     height: 1.5em; 
@@ -127,12 +127,12 @@ title: $:/plugins/can/omni/styles-tree
     margin-top: 0.4em;
     }
 
-.can-omni-foldbutton {
+.tree .can-omni-foldbutton {
     grid-column: 3/4;
 }
 
 
-.can-omni-stream .omni-button svg {
+.tree .can-omni-stream .omni-button svg {
     width: 10pt;
     height: 10pt;
 }
@@ -141,7 +141,7 @@ title: $:/plugins/can/omni/styles-tree
 /* Above and below item droppable zones */
 /* ----------------------------------------- */
 
-.can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
+.tree .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
     grid-column: 3/6; 
     border-radius: 4px; 
     display: flex; 
@@ -150,7 +150,7 @@ title: $:/plugins/can/omni/styles-tree
     line-height: 16pt; 
     background-color: #ffffff;}
 
-.can-omni-bottomadd {
+.tree .can-omni-bottomadd {
     margin-left: 2em;
 }
 /****** END styles-tree ********/

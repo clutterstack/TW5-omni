@@ -23,6 +23,8 @@ type: text/vnd.tiddlywiki
         <$button set="!!omnibus-mode" setTo="cheatsheetro" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="RO cheatsheet mode" aria-label="RO cheatsheet mode">ro-cheatsheet</$button>
 		<$button set="!!omnibus-mode" setTo="bar" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="bar mode" aria-label="omnibus bar mode">bar</$button>
 		<$button set="!!omnibus-mode" setTo="list" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="List mode" aria-label="List mode">list</$button>
+        <$button set="!!omnibus-mode" setTo="plaintree" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="Plain tree mode" aria-label="Plain tree mode">plaintree</$button>
+        <$button set="!!omnibus-mode" setTo="kbnav" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="kbnav" aria-label="kbnav">kbnav</$button>
 		<!--
         <$button set="!!omnibus-mode" setTo="floo" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="RO tree with captions" aria-label="RO tree with captions">floo</$button>
 		<$button set="!!omnibus-mode" setTo="tree" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="Bubble tree" aria-label="Bubble tree">tree</$button>
@@ -137,24 +139,24 @@ type: text/vnd.tiddlywiki
 </div>
 \end
 
-\define can-omni-topadd()
+\define can-omni-topadd(layout:"subui-caption" endstate:"closed")
 <$vars openstatetid=<<top-quick-openstatetid>> quickstatetid=<<top-quickstatetid>>>
 	<$droppable tag="div" class="can-omni-topadd" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>] +[putfirst[]]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
 		<<can-omni-toggleadd>>
 	</$droppable>
 <$list filter="[<openstatetid>get[viewadd]match[open]]">
-	<$macrocall $name="quickadd" layout="subui-caption" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listtop" openstatetid=<<openstatetid>> endstate="closed" />
+	<$macrocall $name="quickadd" layout=<<__layout__>> quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listtop" openstatetid=<<openstatetid>> endstate=<<__endstate__>> />
 </$list>
 </$vars>
 \end
 
-\define can-omni-bottomadd()
+\define can-omni-bottomadd(layout:"subui-caption" endstate:"closed")
 <$vars openstatetid=<<bottom-quick-openstatetid>> quickstatetid=<<bottom-quickstatetid>>>
 	<$droppable tag="div" class="can-omni-bottomadd" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
 		<<can-omni-toggleadd>>
 	</$droppable>
 <$list filter="[<openstatetid>get[viewadd]match[open]]">
-	<$macrocall $name="quickadd" layout="subui-caption" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listbottom" openstatetid=<<openstatetid>> endstate="open" />
+	<$macrocall $name="quickadd" layout=<<__layout__>> quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listbottom" openstatetid=<<openstatetid>> endstate=<<__endstate__>> />
 </$list>
 </$vars>
 \end

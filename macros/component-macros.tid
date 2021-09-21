@@ -14,13 +14,13 @@ type: text/vnd.tiddlywiki
 <$button class="tc-btn-invisible omni-button"  actions="""<$action-listops $field="cheatsheet-colspan" $subfilter='+[add[1]] ~[[2]]'/>""">{{$:/plugins/can/omni/cols-plus-v6.svg}}</$button><$button class="tc-btn-invisible omni-button"  actions="""<$action-listops $field="cheatsheet-colspan" $subfilter='+[subtract[1]max[1]] ~[[1]]'/>""">{{$:/plugins/can/omni/cols-minus-v6.svg}}</$button>
 \end
 
-\define can-omni-peripheral()
+\define can-omni-peripheral(layout:"subui-caption" endstate:"closed")
 <$vars openstatetid=<<peri-quick-openstatetid>> quickstatetid=<<peri-quickstatetid>>>
 <$droppable class="can-omni-peripheral" tag="div" actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<parentval>> $subfilter='+[insertbefore:currentTiddler<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
     <<can-omni-toggleadd>>
 </$droppable>
 <$list filter="[<openstatetid>get[viewadd]match[open]]" variable="ignore">
-	<$macrocall $name="quickadd" position="omni-inlist" layout="subui-caption" quickstatetid=<<quickstatetid>> omniparent=<<parentval>> openstatetid=<<openstatetid>> endstate="closed" />
+	<$macrocall $name="quickadd" position="omni-inlist" layout=<<__layout__>> quickstatetid=<<quickstatetid>> omniparent=<<parentval>> openstatetid=<<openstatetid>> endstate=<<__endstate__>> />
 </$list>
 </$vars>
 \end
@@ -71,7 +71,7 @@ type: text/vnd.tiddlywiki
 \end
 
 \define can-omni-tree-itemhandle()
-<$button tag="div" class="can-omni-itemhandle tc-btn-invisible" actions=<<omni-handle-toggle-actions>> tooltip="Click to toggle text edit. Drag to move list entry." aria-label="Click to toggle text edit. Drag to move list entry.">
+<$button class="can-omni-itemhandle tc-btn-invisible" tabindex="1" actions=<<omni-handle-toggle-actions>> tooltip="Click to toggle text edit. Drag to move list entry." aria-label="Click to toggle text edit. Drag to move list entry.">
     <$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> class="can-omni-itemhandle-inner"></$draggable>
 </$button>
 \end
