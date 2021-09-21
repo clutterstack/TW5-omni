@@ -16,6 +16,8 @@ title: $:/plugins/can/omni/styles-plaintree
     grid-template-rows: auto;
     /*border-left: 0.1em solid;*/
     /*box-sizing: content-box;*/
+    position: relative;
+
 }
 
 
@@ -32,10 +34,9 @@ title: $:/plugins/can/omni/styles-plaintree
 }
 
 
-.plaintree .can-omni-itemhandle::before {
+.plaintree .omni-item-container::before {
     position: absolute;
-            left: -2em;
-            top: -1.1em;
+            left: 0;
             content: "";
             display: block;
             border-top-left-radius: 0;
@@ -48,15 +49,14 @@ title: $:/plugins/can/omni/styles-plaintree
             width: 2em;
 }
 
-.plaintree .omni-item-container.toplevel > .can-omni-itemhandle::before, .plaintree .omni-item-container.toplevel > .can-omni-itemhandle::after {
+.plaintree .omni-item-container.toplevel::before, .plaintree .omni-item-container.toplevel::after {
     border: none;
 }
 
 
-.plaintree .can-omni-itemhandle::after {
+.plaintree .omni-item-container::after {
     position: absolute;
-            left: -2em;
-            bottom: -1.1em;
+            left: 0;
             content: "";
             display: block;
             border-left: 1px solid #000;
@@ -64,7 +64,7 @@ title: $:/plugins/can/omni/styles-plaintree
 }
 
 
-.plaintree .omni-item-container:last-of-type > .can-omni-itemhandle::after {
+.plaintree .omni-item-container:last-of-type::after {
     border: none;
 }
 
@@ -125,7 +125,7 @@ background: #EEF8FF;
 /* ---------------------------------------*/
 
 .plaintree .can-omni-itemhandle {
-    position: relative;
+    /*position: relative;*/
     border-radius: 5px 0 0 5px; 
     width: 1.2em; 
     height: 100%; 
