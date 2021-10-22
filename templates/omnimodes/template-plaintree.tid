@@ -16,7 +16,7 @@ title: $:/plugins/can/omni/template-plaintree
             <<can-omni-delete>>
         </div>
         </$droppable>
-        <$list filter="[<currentTiddler>tag[omnibus]] +[all[current]list[]limit[1]]" variable="ignore">
+        <$list filter="[all[current]has[omni-list]]" variable="ignore">
             <<can-omni-omni-show>>
         </$list>
         <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>

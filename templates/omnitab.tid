@@ -6,7 +6,7 @@ list-after: $:/core/ui/SideBar/Open
 <div class="omni-sidebar-toc">
 <span class="fleet-label">Omnibuses</span>
 <ol class="tc-toc omni-toc fleet-list">
-<$list filter="[all[shadows+tiddlers]tag[omnibus]!has[draft.of]!sort[modified]]">
+<$list filter="[all[shadows+tiddlers]has[omni-list]!has[draft.of]!sort[modified]]">
 <$macrocall $name="fleettoc-linked-body" root=<<currentTiddler>> />
 </$list>
 </ol>

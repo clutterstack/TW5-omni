@@ -312,9 +312,9 @@ testvar? <<testvar>> <br>
 \end
 
 \define omni-showomni(depth) 
-<$list filter="[<currentTiddler>tag[omnibus]] +[all[current]list[]limit[1]]" variable="ignore">
+<$list filter="[all[current]has[omni-list]]" variable="ignore">
 <$reveal tag="div" class="omni-showomni" type="nomatch" state=<<omnistatetiddler>> text="hide" >
-<$list filter="[<currentTiddler>tag[omnibus]]">
+<$list filter="[all[current]has[omni-list]]">
     <$vars newdepth={{{[<__depth__>add[1]]}}}>
         <!--omni-showomni: newdepth: <<newdepth>> <br> -->
         <$list filter="[<newdepth>compare:integer:lt[10]]" variable=null emptyMessage=<<can-recursionblock>> >
@@ -327,7 +327,7 @@ testvar? <<testvar>> <br>
 
 \define omni-showomni-subtoc() 
 <$reveal tag="div" class="omni-showomni-subtoc" type="nomatch" stateTitle=<<foldstatetiddler>> stateField="foldstate" text="hide" >
-<$list filter="[<currentTiddler>tag[omnibus]]"><<compose-omni-subtoc>></$list>
+<$list filter="[all[current]has[omni-list]]"><<compose-omni-subtoc>></$list>
 </$reveal>
 \end
 

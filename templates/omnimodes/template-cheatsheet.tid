@@ -31,7 +31,7 @@ title: $:/plugins/can/omni/template-cheatsheet
                 <<gridcolspan-ctl>>
             </div>
             <div class="can-omni-subctl">
-            <<omni-captionortitleheading>><$list filter="[<currentTiddler>tag[omnibus]then[omni]] :intersection[all[current]list[]limit[1]then[omni]]" variable=ignore><<omni-closerlook>></$list>
+            <<omni-captionortitleheading>><$list filter="[all[current]has[omni-list]then[omni]]" variable=ignore><<omni-closerlook>></$list>
             </div>
         </$vars>
         <div class="omni-cheatsheet-text">

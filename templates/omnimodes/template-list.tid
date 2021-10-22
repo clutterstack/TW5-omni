@@ -10,7 +10,7 @@ tags:
 \end
 
 \define everylist(depth)
-<$list filter="[<currentTiddler>tag[omnibus]list[]limit[1]]" variable="ignore" emptyMessage="""<div class="omni-listitem"><span class="can-details-spacer"/><$link/></div>""">
+<$list filter="[all[current]has[omni-list]]" variable="ignore" emptyMessage="""<div class="omni-listitem"><span class="can-details-spacer"/><$link/></div>""">
     <details><summary><div class=omni-listitem><$link/></div></summary>
 	<$macrocall $name=omni-showomni depth=<<__depth__>> /></details>
  </$list>

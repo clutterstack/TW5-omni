@@ -18,7 +18,7 @@ title: $:/plugins/can/omni/template-cheatsheetro
     <<can-omni-peripheral-inert>>
     <div class="omni-cheatsheet-section">            
             <div class="can-omni-subctl">
-            <<omni-captionortitleheading-ro>><$list filter="[<currentTiddler>tag[omnibus]then[omni]] :intersection[all[current]list[]limit[1]then[omni]]" variable=ignore><<omni-closerlook>></$list>
+            <<omni-captionortitleheading-ro>><$list filter="[all[current]has[omni-list]then[omni]]" variable=ignore><<omni-closerlook>></$list>
             </div>
         <div class="omni-cheatsheet-text">
         <<can-omni-text-ro>>

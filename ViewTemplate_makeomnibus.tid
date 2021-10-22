@@ -3,7 +3,7 @@ tags: $:/tags/ViewTemplate
 list-after: $:/core/ui/ViewTemplate/body
 
 <$reveal type="nomatch" stateTitle=<<folded-state>> text="hide" tag="div" retain="yes" animate="yes">
-    <$list filter="[all[current]tag[omnibus]]" variable="null">
+    <$list filter="[all[current]has[omni-list]]" variable="null">
         <$vars mode={{{[{!!omnibus-mode}else[edit]]}}}>
         <$vars transclude-modetemplate={{{[[$:/plugins/can/omni/template-]addprefix[{{||]addsuffix<mode>addsuffix[}}]]}}} >
             <<transclude-modetemplate>>

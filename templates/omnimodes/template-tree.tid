@@ -16,7 +16,7 @@ tags: $:/tags/Macro
             <<can-omni-delist>>
             <<can-omni-delete>>
         </div>
-    <$list filter="[<currentTiddler>tag[omnibus]] +[all[current]list[]limit[1]]" variable="ignore">
+    <$list filter="[all[current]has[omni-list]]" variable="ignore">
             <<can-omni-omni-show>>
         </$list>
         <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>

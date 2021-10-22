@@ -21,7 +21,7 @@ tags: $:/tags/Macro
 \end
 
 \define check-if-omni-for-caption()
-<$list filter="[all[current]tag[omnibus]]" emptyMessage="<<omni-link-caption>>" >
+<$list filter="[all[current]has[omni-list]]" emptyMessage="<<omni-link-caption>>" >
 <<omni-dragdrop-caption class:'omnibus-label'>>
 </$list>
 \end
@@ -111,7 +111,7 @@ tags: $:/tags/Macro
 </div>
 \end
 
-\define omnis-filter() [all[shadows+tiddlers]tag[omnibus]!tag[fleet]!has[draft.of]sort[]]
+\define omnis-filter() [all[shadows+tiddlers]has[omni-list]!tag[fleet]!has[draft.of]sort[]]
 
 \define fleetless-omnis()
 <hr>
