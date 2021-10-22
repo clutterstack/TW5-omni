@@ -6,9 +6,9 @@ title: $:/plugins/can/omni/styles-exp
 <style>
 /****** START styles-exp ********/
 
-.exp .can-omni-stream {
+.can-omni-stream.exp {
     grid-template-columns: max-content max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */  
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .exp .omni-branch {
@@ -60,7 +60,7 @@ title: $:/plugins/can/omni/styles-exp
 
 .exp .omni-text-display {
     grid-column: 4/5;
-    max-width: 40em;
+    max-width: 55em;
     border-radius: 0 5px 5px 0;
     border: none;
     background-color: <<colour tiddler-editor-fields-even>>;

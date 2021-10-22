@@ -5,7 +5,7 @@ type: text/vnd.tiddlywiki
 
 \define omni-navigate-action() <$action-navigate $to=<<dom-data-currenttid>>/>
 
-\define omni-select-node() <$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<dom-data-currenttid>> />
+\define omni-select-node() <$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<dom-data-currenttid>> omniparent=<<dom-data-parentval>>/><$list filter="[all[tiddlers+shadows]has[omni-shortcut]]"><$action-listops $tags="$:/tags/KeyboardShortcut"/></$list>
 
 <!-- \define omni-nav-leveldown() <$action-sendmessage $message="tm-modal" $param="$:/plugins/can/omni/cheatsheet-modal" modal-tiddler=<<dom-data-title>> depth=<<dom-data-depth>> /> -->
 
@@ -47,9 +47,9 @@ type: text/vnd.tiddlywiki
 
 \define omni-samplemodal() <$vars nexttid={{{[[$(grandparentval)$]get[list]enlist-input[]after[$(parentval)$]]}}} parentlist={{{[<parentval>get[list]] -[<currentTiddler>]}}}><$action-sendmessage $message="tm-modal" $param="SampleModal" param1=<<parentlist>> /></$vars>
 
-\define omni-move-later-actions()
+<!-- \define omni-move-later-actions()
 <$action-listops $tiddler=<<parentval>> $field="list" $subfilter="+[move[$(currentTiddler)$]]"/>
-\end
+\end -->
 
 \define omni-move-earlier-actions()
 <$action-listops $tiddler=<<parentval>> $field="list" $subfilter="+[move:-1[$(currentTiddler)$]]"/>

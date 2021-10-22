@@ -1,0 +1,9 @@
+tags: 
+title: $:/plugins/can/omni/kbshortcuts/omni-deselect
+key: ((omni-deselect))
+omni-shortcut: yep
+
+<$action-deletetiddler $tiddler="$:/state/can/omni/omniCurrentNode" />
+<$list filter="[all[tiddlers+shadows]has[omni-shortcut]]">
+<$action-listops $tags="-[[$:/tags/KeyboardShortcut]]"/>
+</$list>

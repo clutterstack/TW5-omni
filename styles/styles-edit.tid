@@ -6,7 +6,7 @@ title: $:/plugins/can/omni/styles-edit
 <style>
 /****** START styles-edit ********/
 
-.can-omni-stream p:last-child, .can-omni-stream dl:last-child {margin-bottom: 0.2em;}
+/** .can-omni-stream.edit p:last-child, .can-omni-stream.edit dl:last-child {margin-bottom: 0.2em;} **/
 
 .can-omni-stream.edit { 
 display: grid; 

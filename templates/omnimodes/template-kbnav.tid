@@ -2,8 +2,8 @@ title: $:/plugins/can/omni/template-kbnav
 
 
 \define everykbnav(depth)
-<$set name=testclass filter="[[omni-item-container]] [[$depth$]match[0]then[toplevel]]" >
-    <div class=<<testclass>> >
+<$set name=testclass filter="[[omni-item-container]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]]" >
+    <div class=<<testclass>> data-omnitid=<<currentTiddler>> >
         <$list filter="[[$depth$]!match[0]]">
             <div class="omni-branch-line"></div>
         </$list>
@@ -11,12 +11,12 @@ title: $:/plugins/can/omni/template-kbnav
         <<can-omni-tree-itemhandle>>
         <$droppable class="omni-text-display" tag="div" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>" >
         <<can-omni-text>>
+        </$droppable>
         <div class="can-omni-subctl">
             <<can-omni-link>>
             <<can-omni-delist>>
             <<can-omni-delete>>
         </div>
-        </$droppable>
         <$list filter="[<currentTiddler>tag[omnibus]] +[all[current]list[]limit[1]]" variable="ignore">
             <<can-omni-omni-show>>
         </$list>

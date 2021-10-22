@@ -41,17 +41,20 @@ p > svg, ol >li > svg, ul > li > svg {width: 1.2em; height: 1.2em;}
 /* headings           */
 /* ------------------ */
 
-.can-omni-stream h1 {font-size: 1.5em;}
+.can-omni-stream h1 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    }
 
  .can-omni-stream h2 {
      font-size: 1.3em;
-     margin-bottom: 1em;
+     margin-bottom: 0.5em;
      margin-top:0.4em;
  }
  
  .can-omni-stream h3 {
      font-size: 1.2em;
-     margin-bottom: 1em;
+     margin-bottom: 0.5em;
      margin-top:0.4em;
  }
 

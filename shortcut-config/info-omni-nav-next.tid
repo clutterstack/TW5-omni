@@ -1,0 +1,4 @@
+title: $:/config/ShortcutInfo/omni-nav-next
+
+Make the next tiddler in the parent's list the current omni node (by putting its title into $:/plugins/can/omni/omniCurrentNode).
+

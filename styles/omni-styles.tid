@@ -6,7 +6,7 @@ tags: $:/tags/Stylesheet
 <$transclude tiddler="$:/plugins/can/omni/styles-common" mode="block"/>
 <$transclude tiddler="$:/plugins/can/omni/styles-text" mode="block"/>
 <!-- Transclude all unique omni stylesheets for modes of open omnibus tiddlers -->
-<$list filter="[list[$:/StoryList]get[omnibus-mode]]" variable=omnimode>
+<$list filter="[list[$:/StoryList]each[omnibus-mode]get[omnibus-mode]]" variable=omnimode>
     <$vars mode=<<omnimode>>>
     <$transclude tiddler=<<stylesheettitle>> mode="block"/>
     </$vars>

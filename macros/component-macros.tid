@@ -89,18 +89,18 @@ type: text/vnd.tiddlywiki
 \define can-omni-text()
 <$list filter="[<editstatetid>get[editstate]match[edit]]" variable="ignore" 
 emptyMessage=
-"""<div class="omni-text-dblclick tc-tiddler-body" data-createdid=<<createdid>> data-currenttid=<<currentTiddler>>>
+"""<div class="omni-text-dblclick tc-tiddler-body" data-createdid=<<createdid>> data-currenttid=<<currentTiddler>> data-parentval=<<parentval>> >
 	<$transclude $tiddler="<<currentTiddler>>" mode="block"/>
 </div>""">
-	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submitedit-actions>>" >
-	<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submitedit-actions>>" >
+	<$keyboard tag="div" class="tc-can-keyboard" key="((input-accept-variant))" actions="<<omni-submitedit-actions>>" >
+	<!-- <$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submitedit-actions>>" > -->
 	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-canceledit-actions>>">
 	<$keyboard tag="div" class="tc-can-keyboard" key="tab" actions="<<omni-tab-actions>>">
 	<$keyboard tag="div" class="tc-can-keyboard" key="shift-tab" actions="<<omni-shift-tab-actions>>">
 	<$keyboard tag="div" class="tc-can-keyboard" key="alt-up" actions="<<omni-move-earlier-actions>>">
 	<$keyboard tag="div" class="tc-can-keyboard" key="alt-down" actions="<<omni-move-later-actions>>">
 		<$edit-text tiddler=<<editstatetid>> class="omni-textarea tc-tiddler-body" field='text' placeholder='New tiddler text' rows="1" minHeight="0" focus=true/>
-	</$keyboard></$keyboard></$keyboard></$keyboard></$keyboard></$keyboard></$keyboard>
+	</$keyboard></$keyboard></$keyboard></$keyboard></$keyboard></$keyboard>
 </$list>
 \end
 

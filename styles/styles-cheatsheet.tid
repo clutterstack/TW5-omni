@@ -92,15 +92,22 @@ width: 100%;
 .cheatsheet .omni-title-heading {
     flex: 1 0 5em; /* grow shrink basis */
     padding: 0.4em 0.2em 0 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     border: none;
     font-size: 1.6em;
     font-weight: 500;
 }
 
+.cheatsheet .omni-title-heading > h1 {
+    font-size: 1.4em;
+    margin: 0;
+}
+
+
 .omni-cheatsheet-section-container.title .omni-title-heading {
     font-size: 2.0em;
 }
+
 
 .can-omni-subctl {
     display:flex;
