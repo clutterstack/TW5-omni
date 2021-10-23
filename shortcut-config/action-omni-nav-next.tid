@@ -3,6 +3,6 @@ title: $:/plugins/can/omni/kbshortcuts/omni-nav-next
 key: ((omni-nav-next))
 omni-shortcut: yep
 
-\import $:/plugins/can/omni/omni-shortcut-actions
+\import $:/plugins/can/omni/shortcut-actions
 
 <<omni-nav-next>>

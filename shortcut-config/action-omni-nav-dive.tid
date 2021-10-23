@@ -1,0 +1,8 @@
+tags: 
+title: $:/plugins/can/omni/kbshortcuts/omni-nav-dive
+key: ((omni-nav-dive))
+omni-shortcut: yep
+
+\import $:/plugins/can/omni/shortcut-actions
+
+<<omni-nav-dive>>

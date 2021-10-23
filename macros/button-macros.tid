@@ -18,7 +18,7 @@ tags: $:/tags/Macro
 \define can-omni-delete-old()
 <$button class="omni-button tc-btn-invisible" aria-label="Delete tiddler" tooltip="Delete tiddler">
 <$action-sendmessage $message="tm-delete-tiddler"/>
-<$action-listops $tiddler=<<parentval>> $filter='[list<parentval>is[tiddler]]'/>
+<$action-listops $tiddler=<<parentval>> $field='omni-list' $filter='[<parentval>list[!!omni-list]is[tiddler]]'/>
 <$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> />
 {{$:/core/images/delete-button}}
 </$button>
@@ -29,7 +29,7 @@ tags: $:/tags/Macro
 \end
 
 \define can-omni-delist-old()
-<$button class="omni-button tc-btn-invisible" aria-label="Remove from list" tooltip="Remove from list" actions="<$action-listops $tiddler=<<parentval>> $subfilter='-[<currentTiddler>]'/><$action-listops $field='omniparent' $subfilter='-[<parentval>]' /><$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> /><$action-sendmessage $message='tm-auto-save-wiki'/>">{{$:/plugins/can/omni/delist.svg}}</$button>
+<$button class="omni-button tc-btn-invisible" aria-label="Remove from list" tooltip="Remove from list" actions="<$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='-[<currentTiddler>]'/><$action-listops $field='omniparent' $subfilter='-[<parentval>]' /><$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> /><$action-sendmessage $message='tm-auto-save-wiki'/>">{{$:/plugins/can/omni/delist.svg}}</$button>
 \end
 
 \define can-omni-toggleadd()
@@ -80,7 +80,7 @@ tags: $:/tags/Macro
 \end
 
 \define can-omni-mark-done()
-<$button class="omni-button tc-btn-invisible" aria-label="Tag item as done" tooltip="Tag item as done" actions="<$action-listops $tiddler=<<parentval>> $subfilter='-[<currentTiddler>]'/><$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> /><$action-listops $tags='done'/><$action-sendmessage $message='tm-auto-save-wiki'/>">{{$:/plugins/can/omni/checkmark.svg}}</$button>
+<$button class="omni-button tc-btn-invisible" aria-label="Tag item as done" tooltip="Tag item as done" actions="<$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='-[<currentTiddler>]'/><$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> /><$action-listops $tags='done'/><$action-sendmessage $message='tm-auto-save-wiki'/>">{{$:/plugins/can/omni/checkmark.svg}}</$button>
 \end
 
 \define can-omni-make-omnibus()

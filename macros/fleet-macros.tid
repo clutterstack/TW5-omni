@@ -6,7 +6,7 @@ title: $:/plugins/can/omni/fleet-macros
 \define fleet()
 <$set name=parentval value=<<currentTiddler>> >
 <div class="can-fleet-stream">
-	<$list filter="[all[current]list[]is[tiddler]]">
+	<$list filter="[all[current]list[!!omni-list]is[tiddler]]">
 		<<check-if-omni-for-caption>><br>
         <<fleet>><br>
 	</$list>

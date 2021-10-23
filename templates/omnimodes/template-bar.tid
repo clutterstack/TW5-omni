@@ -36,7 +36,7 @@ tags: $:/tags/Macro
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="bar">
 <$qualify name=omniqual title={{!!created}}>
     <div class="can-omni-stream bar" >
-        <$list filter="[all[current]list[]is[tiddler]]">
+        <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
             <$qualify name=createdid title={{!!created}} >
                 <$macrocall $name=everybar depth=<<__depth__>> />
             </$qualify>

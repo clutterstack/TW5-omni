@@ -9,7 +9,7 @@ title: $:/plugins/can/omni/template-kbnav
         </$list>
         <<can-omni-peripheral layout:slimui endstate:open>>
         <<can-omni-tree-itemhandle>>
-        <$droppable class="omni-text-display" tag="div" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>" >
+        <$droppable class="omni-text-display" tag="div" actions="<<can-omni-shift-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>" >
         <<can-omni-text>>
         </$droppable>
         <div class="can-omni-subctl">
@@ -42,7 +42,7 @@ title: $:/plugins/can/omni/template-kbnav
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="kbnav">
 <$qualify name=omniqual title={{!!created}}>
     <div class="can-omni-stream kbnav" >
-        <$list filter="[all[current]list[]is[tiddler]]">
+        <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
             <$qualify name=createdid title={{!!created}} >
                 <$macrocall $name=everykbnav depth=<<__depth__>> />
             </$qualify>

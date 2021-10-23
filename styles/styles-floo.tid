@@ -6,11 +6,11 @@ title: $:/plugins/can/omni/styles-floo
 <style>
 /****** START styles-floo ********/
 
-.can-omni-stream {
+.can-omni-stream.floo {
     grid-template-columns: max-content max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
 }
 
-.omni-branch {
+.floo .omni-branch {
     grid-column: 1/6;
     grid-row: span 2;
     border-left: 1px solid;
@@ -22,7 +22,7 @@ title: $:/plugins/can/omni/styles-floo
     grid-template-rows: auto;
 }
 
-.omni-item-container {
+.floo .omni-item-container {
     grid-column: 1/6;
     display: grid;
     grid-template-columns: max-content max-content auto 7fr max-content; /* 1em auto 7fr auto;  */
@@ -31,15 +31,15 @@ title: $:/plugins/can/omni/styles-floo
     box-sizing: content-box;
 }
 
-.omni-item-container.toplevel {
+.floo .omni-item-container.toplevel {
     border: none;
 }
 
-.omni-item-container:last-of-type {
+.floo .omni-item-container:last-of-type {
     border-left: 1px solid rgba(0,0,0,0);
 }
 
-.omni-branch-edge {
+.floo .omni-branch-edge {
     grid-column: 1/2;
     grid-row: span 2;
     width: 0
@@ -47,7 +47,7 @@ title: $:/plugins/can/omni/styles-floo
     min-height: 1em;
     margin-bottom: -1em;
 }
-.omni-branch-line {
+.floo .omni-branch-line {
     grid-column:2/3;
     grid-row: span 1;
     width:1em;
@@ -59,11 +59,11 @@ title: $:/plugins/can/omni/styles-floo
     margin-left: -1px;
 }
 
-.can-omni-text {
+.floo .can-omni-text {
     padding: 0.2em;
 }
 
-.omni-text-display {
+.floo .omni-text-display {
     grid-column: 4/5;
     padding-right: 1em;
     border-radius: 0 5px 5px 0;
@@ -71,11 +71,11 @@ title: $:/plugins/can/omni/styles-floo
     background-color: <<colour page-background>>;
  }  
 
-.omni-title-heading.view {display: flex; flex-direction: row;}
+.floo .omni-title-heading.view {display: flex; flex-direction: row;}
 
-.omni-title-heading button {margin-left: 1em;}
+.floo .omni-title-heading button {margin-left: 1em;}
 
-.omni-title-heading {
+.floo .omni-title-heading {
     padding: 0.2em 0.2em 0 0.2em;
     margin-bottom: 0.2em;
     border: none;
@@ -87,7 +87,7 @@ title: $:/plugins/can/omni/styles-floo
 /* Vertical item handle                   */
 /* ---------------------------------------*/
 
-.can-omni-itemhandle {
+.floo .can-omni-itemhandle {
     border-radius: 5px 0 0 5px; 
     width: 1.2em; 
     height: 100%; 
@@ -100,21 +100,21 @@ title: $:/plugins/can/omni/styles-floo
     flex-direction: column;
     }
 
-can-omni-edithandle {
+.floo .can-omni-edithandle {
     height:100%;
     width:100%;
 }
 
-.tc-btn-invisible..can-omni-itemhandle:hover {
+.floo .tc-btn-invisible..can-omni-itemhandle:hover {
     background-color: <<colour muted-foreground>>;
 }
 
-.can-omni-itemhandle .can-omni-link {height: 1em;}
+.floo .can-omni-itemhandle .can-omni-link {height: 1em;}
 
-.can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
-.can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
+.floo .can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
+.floo .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
 
-.can-omni-itemhandle-inner {
+.floo .can-omni-itemhandle-inner {
     border-radius: 5px 0 0 5px; 
     box-sizing: border-box;
     height: 100%; 
@@ -123,12 +123,12 @@ can-omni-edithandle {
     margin:0;
     }
 
-.can-omni-subctl {
+.floo .can-omni-subctl {
     grid-column: 5/6;
     padding-left: 0.2em;
 }
 
-.can-omni-foldbutton {
+.floo .can-omni-foldbutton {
     margin: 0.2em 0 0 0.4em; 
     height: 1.5em; 
     display: flex; 
@@ -136,11 +136,11 @@ can-omni-edithandle {
     justify-content: flex-start;
 }
 
-.can-omni-peripheral.inert {
+.floo .can-omni-peripheral.inert {
     height: 10pt;
 }
 
-.can-omni-stream .omni-button svg {
+.floo .can-omni-stream .omni-button svg {
     width: 10pt;
     height: 10pt;
 }
@@ -149,7 +149,7 @@ can-omni-edithandle {
 /* Above and below item droppable zones */
 /* ----------------------------------------- */
 
-.can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
+.floo .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
     grid-column: 3/6; 
     border-radius: 4px; 
     display: flex; 
@@ -158,7 +158,7 @@ can-omni-edithandle {
     line-height: 16pt; 
     background-color: #ffffff;}
 
-.can-omni-bottomadd {
+.floo .can-omni-bottomadd {
     margin-left: 2em;
 }
 

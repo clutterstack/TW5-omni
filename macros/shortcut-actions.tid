@@ -1,0 +1,55 @@
+title: $:/plugins/can/omni/shortcut-actions
+type: text/vnd.tiddlywiki
+
+\define omniCurrentNode() {{$:/state/can/omni/omniCurrentNode}}
+\define omniParentNode() {{$:/state/can/omni/omniCurrentNode!!omniparent}}
+
+\define omni-nav-next() 
+<$vars nextTiddler={{{[{$:/state/can/omni/omniCurrentNode!!omniparent}get[omni-list]enlist-input[]after{$:/state/can/omni/omniCurrentNode}]}}}>
+<$list filter="[<nextTiddler>is[tiddler]]" variable="ignore">
+<$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<nextTiddler>> />
+</$list>
+</$vars>
+\end
+
+\define omni-nav-prev() 
+<$vars prevTiddler={{{[{$:/state/can/omni/omniCurrentNode!!omniparent}get[omni-list]enlist-input[]before{$:/state/can/omni/omniCurrentNode}]}}}>
+<$list filter="[<prevTiddler>is[tiddler]]" variable="ignore">
+<$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<prevTiddler>> />
+</$list>
+</$vars>
+\end
+
+\define omni-nav-dive() 
+<$vars targTiddler={{{[{$:/state/can/omni/omniCurrentNode}get[omni-list]enlist-input[]first[]]}}} >
+<$list filter="[<targTiddler>is[tiddler]]" variable="ignore">
+<$action-listops $tiddler="$:/state/can/omni/omniCurrentNode" $field="breadcrumbs" $subfilter="[{$:/state/can/omni/omniCurrentNode}]"/>
+<$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<targTiddler>>  />
+</$list>
+</$vars>
+\end
+
+
+
+\define omni-nav-surface() 
+<$vars targTiddler={{{[{$:/state/can/omni/omniCurrentNode}get[breadcrumbs]enlist-input[]last[]]}}} breadcrumbs={{{[{$:/state/can/omni/omniCurrentNode}get[breadcrumbs]enlist-input[]butlast[]]}}} >
+<$list filter="[<targTiddler>is[tiddler]]" variable="ignore">
+<$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<targTiddler>> />
+<$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" breadcrumbs=<<breadcrumbs>> />
+</$list>
+</$vars>
+\end
+
+<!-- 
+ -->
+
+
+<!-- \define omni-move-later-actions()
+<$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter="+[move[$(omniCurrentNode)$]]"/>
+\end -->
+
+<!-- \define omni-tab-actions() 
+<$vars prevtid={{{[[$(parentval)$]get[list]enlist-input[]before[$(currentTiddler)$]]}}}><$list filter="[<prevtid>get[title]]" variable=ignore><$action-setfield $tiddler=$(currentTiddler)$ omniparent=<<prevtid>> /><$action-listops $tiddler=<<prevtid>> $field='omni-list' $subfilter="[[$(currentTiddler)$]]" /><$action-listops $tiddler=<<prevtid>> $field="tags" $subfilter="omnibus"/><$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter="-[[$(currentTiddler)$]]"/></$list></$vars>
+\end -->
+
+<!--  -->

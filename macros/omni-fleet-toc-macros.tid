@@ -11,7 +11,7 @@ tags: $:/tags/Macro
 \end
 
 \define omni-dragdrop-caption(class) 
-<$droppable actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]'/><$action-listops $subfilter='[<actionTiddler>]'/><$action-sendmessage $message='tm-auto-save-wiki'/>" >
+<$droppable actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]'/><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-sendmessage $message='tm-auto-save-wiki'/>" >
   <<omni-link-caption class:$class$ >>
 </$droppable>
 \end
@@ -31,7 +31,7 @@ tags: $:/tags/Macro
   <$vars parentval=<<__root__>> >
   <$set name="toc-item-class" filter=<<__itemClassFilter__>> emptyValue="toc-item-selected" value="toc-item" >
     <li class=<<toc-item-class>>>
-          <$list filter="[all[current]list[]$sort$limit[1]]" variable="ignore" emptyMessage="<$button class='tc-btn-invisible'>{{$:/core/images/blank}}</$button>">
+          <$list filter="[all[current]list[!!omni-list]$sort$limit[1]]" variable="ignore" emptyMessage="<$button class='tc-btn-invisible'>{{$:/core/images/blank}}</$button>">
           <$reveal type="nomatch" stateTitle=<<toc-state>> text="open">
             <$button setTitle=<<toc-state>> setTo="open" class="tc-btn-invisible tc-popup-keep">
               {{$:/core/images/right-arrow}}
@@ -58,7 +58,7 @@ tags: $:/tags/Macro
   <$vars parentval=<<__root__>> >
     <$set name="toc-item-class" filter=<<__itemClassFilter__>> emptyValue="toc-item-selected" value="toc-item">
       <li class=<<toc-item-class>>>
-        <$list filter="[all[current]list[]$sort$limit[1]]" variable="ignore" emptyMessage="<$button class='tc-btn-invisible'>{{$:/core/images/blank}}</$button> <$view field='caption'><$view field='title'/></$view>">
+        <$list filter="[all[current]list[!!omni-list]$sort$limit[1]]" variable="ignore" emptyMessage="<$button class='tc-btn-invisible'>{{$:/core/images/blank}}</$button> <$view field='caption'><$view field='title'/></$view>">
           <$reveal type="nomatch" stateTitle=<<toc-state>> text="open">
             <$button setTitle=<<toc-state>> setTo="open" class="tc-btn-invisible tc-popup-keep">
               {{$:/core/images/right-arrow}}

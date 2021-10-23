@@ -7,7 +7,7 @@ title: $:/plugins/can/omni/omnibus-macros
 <$vars datatiddler=$(omni-datastate)$>
 <$qualify name=omniqual title={{!!created}}>
 <div class="can-omni-stream subtoc" >
-	<$list filter="[all[current]list[]is[tiddler]]">
+	<$list filter="[all[current]list[!!omni-list]is[tiddler]]">
         <$qualify name=createdid title={{!!created}} >
             <<everytoc>>
         </$qualify>

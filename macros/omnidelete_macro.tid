@@ -1,7 +1,7 @@
 title: $:/plugins/can/omnibus/utilities/omnidelete
 tags: $:/tags/Macro
 
-\define recurser() <$list filter="[is[current]list[]]">"<<currentTiddler>>" <<recurser>></$list>
+\define recurser() <$list filter="[is[current]list[!!omni-list]]">"<<currentTiddler>>" <<recurser>></$list>
 
 
 \define omnidelete()

@@ -39,7 +39,7 @@ tags: $:/tags/Macro
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="edit">
 <$qualify name=omniqual title={{!!created}}>
     <div class="can-omni-stream edit" >
-        <$list filter="[all[current]list[]is[tiddler]]">
+        <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
             <$qualify name=createdid title={{!!created}} >
                 <$macrocall $name=everyedit depth=<<__depth__>> />
             </$qualify>

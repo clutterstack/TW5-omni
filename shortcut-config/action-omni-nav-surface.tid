@@ -1,0 +1,8 @@
+tags: 
+title: $:/plugins/can/omni/kbshortcuts/omni-nav-surface
+key: ((omni-nav-surface))
+omni-shortcut: yep
+
+\import $:/plugins/can/omni/shortcut-actions
+
+<<omni-nav-surface>>

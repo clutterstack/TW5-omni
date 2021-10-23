@@ -39,7 +39,7 @@ type: text/vnd.tiddlywiki
 \define recurser(depth:1 maxdepth:50)
 <$list filter="[<__depth__>compare:integer:lteq<__maxdepth__>]" variable=null emptyMessage='"Max depth reached ($maxdepth$)"' >
     <$vars newdepth={{{[<__depth__>add[1]]}}}>
-    <$list filter="[is[current]list[]] [is[current]list[!!warnings]]  [is[current]list[!!blocks]]">"<<currentTiddler>>" <$macrocall $name=recurser depth=<<newdepth>> maxdepth=<<__maxdepth__>>/>
+    <$list filter="[is[current]list[!!omni-list]] [is[current]list[!!warnings]]  [is[current]list[!!blocks]]">"<<currentTiddler>>" <$macrocall $name=recurser depth=<<newdepth>> maxdepth=<<__maxdepth__>>/>
 	</$list>
 	</$vars>
 </$list>
@@ -103,7 +103,7 @@ type: text/vnd.tiddlywiki
 
 
 \define unfoldallactions-old() 
-    <$list filter='[all[current]list[]is[tiddler]]'>
+    <$list filter='[all[current]list[!!omni-list]is[tiddler]]'>
         <$qualify name=createdid title={{!!created}} >
         <$action-setfield $tiddler=<<foldstatetiddler>> $value='show'/>
         </$qualify>
@@ -111,7 +111,7 @@ type: text/vnd.tiddlywiki
 \end
 
 \define foldallactions-old() 
-    <$list filter='[all[current]list[]is[tiddler]]'>
+    <$list filter='[all[current]list[!!omni-list]is[tiddler]]'>
         <$qualify name=createdid title={{!!created}} >
         <$action-setfield $tiddler=<<foldstatetiddler>> $value='hide'/>
         </$qualify>
@@ -122,7 +122,7 @@ type: text/vnd.tiddlywiki
 <div class="can-omni-foldall">
     <$button class="tc-btn-invisible omni-button" tooltip="Unfold all items" aria-label="Unfold all items">
         {{$:/core/images/unfold-all-button}}
-        <$list filter='[all[current]list[]is[tiddler]]'>
+        <$list filter='[all[current]list[!!omni-list]is[tiddler]]'>
             <$qualify name=createdid title={{!!created}} >
             <$action-setfield $tiddler=<<foldstatetiddler>> $value='show'/>
             </$qualify>
@@ -130,7 +130,7 @@ type: text/vnd.tiddlywiki
     </$button>
     <$button class="tc-btn-invisible omni-button" tooltip="Fold all items" aria-label="Fold all items">
         {{$:/core/images/fold-all-button}}
-        <$list filter='[all[current]list[]is[tiddler]]'>
+        <$list filter='[all[current]list[!!omni-list]is[tiddler]]'>
             <$qualify name=createdid title={{!!created}} >
             <$action-setfield $tiddler=<<foldstatetiddler>> $value='hide'/>
             </$qualify>
@@ -141,7 +141,7 @@ type: text/vnd.tiddlywiki
 
 \define can-omni-topadd(layout:"subui-caption" endstate:"closed")
 <$vars openstatetid=<<top-quick-openstatetid>> quickstatetid=<<top-quickstatetid>>>
-	<$droppable tag="div" class="can-omni-topadd" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>] +[putfirst[]]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+	<$droppable tag="div" class="can-omni-topadd" actions="<<can-omni-shift-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>] +[putfirst[]]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
 		<<can-omni-toggleadd>>
 	</$droppable>
 <$list filter="[<openstatetid>get[viewadd]match[open]]">
@@ -152,7 +152,7 @@ type: text/vnd.tiddlywiki
 
 \define can-omni-bottomadd(layout:"subui-caption" endstate:"closed")
 <$vars openstatetid=<<bottom-quick-openstatetid>> quickstatetid=<<bottom-quickstatetid>>>
-	<$droppable tag="div" class="can-omni-bottomadd" actions="<<can-omni-shift-drop>><$action-listops $subfilter='[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+	<$droppable tag="div" class="can-omni-bottomadd" actions="<<can-omni-shift-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
 		<<can-omni-toggleadd>>
 	</$droppable>
 <$list filter="[<openstatetid>get[viewadd]match[open]]">

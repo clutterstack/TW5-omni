@@ -59,7 +59,7 @@ title: $:/plugins/can/omni/template-cheatsheet
     <$eventcatcher tag=div events="click" selector=".omni-closerlook-button" actions-click=<<omni-nav-leveldown>> class="can-omni-stream cheatsheet" >
         <$macrocall $name="omni-breadcrumbs" statetid=<<cheatsheetstatetid>> />
         <!-- <<cheatsheet-title>> -->
-        <$list filter="[all[current]list[]is[tiddler]]">
+        <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
             <$qualify name=createdid title={{!!created}} >
                 <$macrocall $name=everycheatsheet depth=<<__depth__>> />
             </$qualify>

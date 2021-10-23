@@ -16,7 +16,7 @@ grid-template-rows: auto;
 /* width: 100%; */
 }
 
-.can-omni-text {
+.edit .can-omni-text {
     grid-column: 4/5;
     padding: 0.2em;
     border: none;
@@ -26,12 +26,12 @@ grid-template-rows: auto;
 /* Vertical item handle                   */
 /* ---------------------------------------*/
 
-.can-omni-itemhandle {width: 1.6em; height: 100%; grid-column: 3/4; 
+.edit .can-omni-itemhandle {width: 1.6em; height: 100%; grid-column: 3/4; 
     grid-row: span 4;}
 
-.can-omni-itemhandle .tc-draggable { height: 100%;}
+.edit .can-omni-itemhandle .tc-draggable { height: 100%;}
 
-.can-omni-itemhandle-inner { 
+.edit .can-omni-itemhandle-inner { 
     box-sizing: content-box; 
     border-radius: 2px;
     height: 100%; 
@@ -40,13 +40,13 @@ grid-template-rows: auto;
     margin-left: 0.4em;
     }
 
-.can-omni-itemhandle:hover .can-omni-itemhandle-inner { 
+.edit .can-omni-itemhandle:hover .can-omni-itemhandle-inner { 
     background-color: #999999;
     }
 
-.can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
+.edit .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
 
-.can-omni-subctl {
+.edit .can-omni-subctl {
     grid-column: 5/6;
     padding-left: 0.2em;
     display: flex; 
@@ -55,7 +55,7 @@ grid-template-rows: auto;
     align-content: flex-start;
     }
 
-.can-omni-foldbutton {
+.edit .can-omni-foldbutton {
     grid-column: 3/4; 
     align-self: start; 
     height: 1.5em; 
@@ -67,7 +67,7 @@ grid-template-rows: auto;
     }
 
 
-.can-omni-ctlrow {
+.edit .can-omni-ctlrow {
     grid-column: 4/6; 
     display: flex; 
     flex-direction:row; 
@@ -76,7 +76,7 @@ grid-template-rows: auto;
     padding-top: 0.1em; 
     margin-right: 2em;}
 
-.can-omni-ctl  { 
+.edit .can-omni-ctl  { 
     grid-column: 5/6; 
     display: flex; 
     flex-direction: row; 
@@ -86,14 +86,14 @@ grid-template-rows: auto;
     padding-left: 0.4em;
     }
 
-.can-omni-subctl {
+.edit .can-omni-subctl {
     display: flex; 
     flex-direction: row; 
     flex-wrap: wrap; 
     align-content: flex-start;
     }
 
-.can-omni-omnibutton {
+.edit .can-omni-omnibutton {
     grid-column: 3/4; 
     align-self: start; 
     height: 1.5em; 
@@ -104,7 +104,7 @@ grid-template-rows: auto;
     margin-top: 0.4em;
     }
 
-.omni-button svg {
+.edit .omni-button svg {
     width: 10pt;
     height: 10pt;
 }
@@ -113,7 +113,7 @@ grid-template-rows: auto;
 /* Above and below item droppable zones */
 /* ----------------------------------------- */
 
-.can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
+.edit .can-omni-peripheral, .edit .can-omni-topadd, .can-omni-bottomadd { 
     grid-column: 3/6; 
     border-radius: 4px; 
     display: flex; 
@@ -122,21 +122,21 @@ grid-template-rows: auto;
     line-height: 16pt; 
     background-color: #ffffff;}
 
-.can-omni-bottomadd {
+.edit .can-omni-bottomadd {
     /*margin-left: 2em;*/
 }
 
 @media (max-width: 620px) {
 
-.can-omni-stream { 
+.can-omni-stream.edit { 
 grid-template-columns: auto auto auto 5fr auto; 
 }
 
-.can-omni-text {
+.edit .can-omni-text {
     grid-column: 4/5;
 }
 
-.can-omni-ctl {  
+.edit .can-omni-ctl {  
     grid-column: 4/5;
     margin: 0.4em 1em 0 0;
     }

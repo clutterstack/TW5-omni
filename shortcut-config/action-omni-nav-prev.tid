@@ -3,6 +3,6 @@ title: $:/plugins/can/omni/kbshortcuts/omni-nav-prev
 key: ((omni-nav-prev))
 omni-shortcut: yep
 
-\import $:/plugins/can/omni/omni-shortcut-actions
+\import $:/plugins/can/omni/shortcut-actions
 
 <<omni-nav-prev>>

@@ -24,7 +24,7 @@ tags:
         <$eventcatcher events="click" selector=".omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
             <<can-omni-topadd>>
         </$eventcatcher>
-        <$list filter="[all[current]list[]]">
+        <$list filter="[all[current]list[!!omni-list]]">
             <$macrocall $name=everylist depth=0 />
         </$list>
     </div>
@@ -37,7 +37,7 @@ tags:
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="list">
 <$qualify name=omniqual title={{!!created}}>
     <div class="can-omni-stream list" >
-        <$list filter="[all[current]list[]]">
+        <$list filter="[all[current]list[!!omni-list]]">
             <!--<$qualify name=createdid title={{!!created}} >-->
                 <$macrocall $name=everylist depth=<<__depth__>> />
             <!--</$qualify>-->

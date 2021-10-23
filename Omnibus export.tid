@@ -5,9 +5,9 @@ type: text/vnd.tiddlywiki
 
 <$list filter="[all[tiddlers]has[omni-list]]!tag[template]]"  >
 <div class="omni-bundle">
-<$draggable filter="[<currentTiddler>] [list[]]">
+<$draggable filter="[<currentTiddler>] [list[!!omni-list]]">
 <$view field="title"/>
 </$draggable>&nbsp;
-<$macrocall $name="exportButton" exportFilter="[<currentTiddler>] [list[]]" lingoBase="$:/language/Buttons/ExportTiddlers/"/>
+<$macrocall $name="exportButton" exportFilter="[<currentTiddler>] [list[!!omni-list]]" lingoBase="$:/language/Buttons/ExportTiddlers/"/>
 </div>
 </$list>
