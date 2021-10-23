@@ -91,7 +91,7 @@ details > summary {
 
 .can-omni-text .tc-reveal {width: 100%; }
 
-.omni-showomni {grid-column:4/6; }
+.omni-showomni {grid-column:3/5; }
 
 /* =======================*/
 /* Buttons, control rows  */
@@ -119,7 +119,7 @@ details > summary {
 }
 
 .can-omni-collapsebutton {
-    grid-column: 3/4; 
+    grid-column: 2/3; 
     align-self: start; 
     height: 1.1em;
     display: flex; 

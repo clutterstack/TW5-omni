@@ -10,13 +10,13 @@ title: $:/plugins/can/omni/styles-kbnav
 
 .kbnav .omni-item-container {
     display: grid;
-    grid-template-columns: max-content max-content max-content minmax(10em, 55em) max-content; /* 1em auto 7fr auto;  */
+    grid-template-columns: auto 1fr minmax(10em, 55em) auto auto; /* 1em auto 7fr auto;  */
     grid-template-rows: auto;
     position: relative;
 }
 
 .kbnav .omni-branch-line {
-    grid-column:2/3;
+    grid-column:1/2;
     grid-row: span 1;
     width: 2em;
     /*border-left: 1px solid;*/
@@ -69,7 +69,7 @@ title: $:/plugins/can/omni/styles-kbnav
 }
 
 .kbnav .omni-text-display {
-    grid-column: 4/5;
+    grid-column: 3/4;
     /* max-width: 55em; */
     border-radius: 0 5px 5px 0;
     border: none;
@@ -121,7 +121,7 @@ background: #EEF8FF;
     border-radius: 5px 0 0 5px; 
     width: 1.2em; 
     height: 100%; 
-    grid-column: 3/4; 
+    grid-column: 2/3; 
     grid-row: span 1;
     background-color: <<colour tiddler-editor-fields-even>>;
     margin:0;
@@ -178,7 +178,7 @@ background: #EEF8FF;
 /* ----------------------------------------- */
 
 .kbnav .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
-    grid-column: 3/6; 
+    grid-column: 2/5; 
     border-radius: 4px; 
     display: flex; 
     flex-direction: row; 
