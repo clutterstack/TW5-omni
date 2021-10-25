@@ -9,8 +9,9 @@ title: $:/plugins/can/omni/styles-kbnav
 }
 
 .kbnav .omni-item-container {
+    grid-column: 2/4;
     display: grid;
-    grid-template-columns: auto 1fr minmax(10em, 55em) auto auto; /* 1em auto 7fr auto;  */
+    grid-template-columns: min-content min-content minmax(10em, 55em) auto auto; /* 1em auto 7fr auto;  */
     grid-template-rows: auto;
     position: relative;
 }
@@ -110,6 +111,7 @@ background: #EEF8FF;
     padding-right: 1em;
     padding-top: 0em;
     margin-top: 0;
+    width: 100%;
 }
 
 /* ---------------------------------------*/
@@ -178,12 +180,13 @@ background: #EEF8FF;
 /* ----------------------------------------- */
 
 .kbnav .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
-    grid-column: 2/5; 
+    grid-column: 2/6; 
     border-radius: 4px; 
     display: flex; 
     flex-direction: row; 
     justify-content: space-between; 
     line-height: 16pt;}
+
 
 /****** END styles-kbnav ********/
 

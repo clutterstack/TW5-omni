@@ -32,9 +32,15 @@ tags: $:/tags/Macro
 <$button class="omni-button tc-btn-invisible" aria-label="Remove from list" tooltip="Remove from list" actions="<$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='-[<currentTiddler>]'/><$action-listops $field='omniparent' $subfilter='-[<parentval>]' /><$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> /><$action-sendmessage $message='tm-auto-save-wiki'/>">{{$:/plugins/can/omni/delist.svg}}</$button>
 \end
 
+\define omni-addbutton() <div class="omni-button tc-btn-invisible can-omni-addbutton" data-statetid=<<openstatetid>> data-pairtid=<<currentTiddler>> data-position=<<position>>>{{$:/core/images/new-button}}</div>
+
+\define omni-closeaddbutton() 
+<$eventcatcher events="click" selector=".can-omni-closeaddbutton" actions-click=<<omni-toggleadd-action>> tag="div"><div class="omni-button tc-btn-invisible can-omni-closeaddbutton" data-statetid=<<openstatetid>>>
+{{$:/core/images/close-button}}</div></$eventcatcher>
+\end
+
 \define can-omni-toggleadd()
-<div class="omni-button tc-btn-invisible can-omni-toggleadd" data-statetid=<<openstatetid>>>
-<$list filter="[<openstatetid>get[viewadd]match[open]]" emptyMessage="""{{$:/core/images/new-button}}""" variable="ignore">{{$:/core/images/close-button}}</$list></div>
+<$list filter="[<openstatetid>get[viewadd]match[open]]" emptyMessage=<<omni-addbutton>> variable="ignore"><<omni-closeaddbutton>></$list>
 \end
 
 \define can-omni-link()

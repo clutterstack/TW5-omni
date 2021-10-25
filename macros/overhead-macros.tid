@@ -140,38 +140,48 @@ type: text/vnd.tiddlywiki
 \end
 
 \define can-omni-topadd(layout:"subui-caption" endstate:"closed")
-<$vars openstatetid=<<top-quick-openstatetid>> quickstatetid=<<top-quickstatetid>>>
+<$vars openstatetid=<<top-omniadd-openstatetid>> omniaddstatetid=<<top-omniaddstatetid>> position="omni-listtop">
 	<$droppable tag="div" class="can-omni-topadd" actions="<<can-omni-shift-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>] +[putfirst[]]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
 		<<can-omni-toggleadd>>
 	</$droppable>
 <$list filter="[<openstatetid>get[viewadd]match[open]]">
-	<$macrocall $name="quickadd" layout=<<__layout__>> quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listtop" openstatetid=<<openstatetid>> endstate=<<__endstate__>> />
+	<$macrocall $name="omniadd" layout=<<__layout__>> omniaddstatetid=<<omniaddstatetid>> omniparent=<<parentval>> position="omni-listtop" openstatetid=<<openstatetid>> endstate=<<__endstate__>> />
 </$list>
 </$vars>
 \end
 
+
+\define can-omni-peripheral(layout:"subui-caption" endstate:"closed")
+<$vars openstatetid=<<peri-omniadd-openstatetid>> omniaddstatetid=<<peri-omniaddstatetid>>  position="omni-inlist">
+<$droppable class="can-omni-peripheral" tag="div" actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+    <<can-omni-toggleadd>>
+</$droppable>
+</$vars>
+\end
+
+
 \define can-omni-bottomadd(layout:"subui-caption" endstate:"closed")
-<$vars openstatetid=<<bottom-quick-openstatetid>> quickstatetid=<<bottom-quickstatetid>>>
+<$vars openstatetid=<<bottom-omniadd-openstatetid>> omniaddstatetid=<<bottom-omniaddstatetid>> position="omni-listbottom">
 	<$droppable tag="div" class="can-omni-bottomadd" actions="<<can-omni-shift-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
 		<<can-omni-toggleadd>>
 	</$droppable>
 <$list filter="[<openstatetid>get[viewadd]match[open]]">
-	<$macrocall $name="quickadd" layout=<<__layout__>> quickstatetid=<<quickstatetid>> omniparent=<<parentval>> position="omni-listbottom" openstatetid=<<openstatetid>> endstate=<<__endstate__>> />
+	<$macrocall $name="omniadd" layout=<<__layout__>> omniaddstatetid=<<omniaddstatetid>> omniparent=<<parentval>> position="omni-listbottom" openstatetid=<<openstatetid>> endstate=<<__endstate__>> />
 </$list>
 </$vars>
 \end
 
-\define can-omni-quickappend()
-<$vars openstatetid=<<append-quick-openstatetid>>  quickstatetid=<<append-quickstatetid>>>
+\define can-omni-omniaddappend()
+<$vars openstatetid=<<append-omniadd-openstatetid>>  omniaddstatetid=<<append-omniaddstatetid>>>
 <div class="can-omni-bottom">
-	<$reveal type=nomatch state=<<openstatetid>> text="open" tag=div class="can-omni-quickappend"> 
-		<$button tag="div" class="omni-button big tc-btn-invisible" tooltip="Open quickadd interface" aria-label="Open quickadd interface" actions="<$action-setfield $tiddler=<<openstatetid>> text='open'/>" >{{$:/plugins/can/quick/quickadd-toolbar-btn-dark.svg}}</$button>
+	<$reveal type=nomatch state=<<openstatetid>> text="open" tag=div class="can-omni-omniaddappend"> 
+		<$button tag="div" class="omni-button big tc-btn-invisible" tooltip="Open omniadd interface" aria-label="Open omniadd interface" actions="<$action-setfield $tiddler=<<openstatetid>> text='open'/>" >{{$:/plugins/can/omniadd/omniadd-toolbar-btn-dark.svg}}</$button>
 	</$reveal>
-	<$reveal type=match state=<<openstatetid>> text="open" tag=div class="can-omni-quickappend" >
+	<$reveal type=match state=<<openstatetid>> text="open" tag=div class="can-omni-omniaddappend" >
 		<$button tag="div" class="omni-button tiny tc-btn-invisible" actions="<$action-setfield $tiddler=<<openstatetid>> text='closed'/>">{{$:/core/images/close-button}}</$button>
 	</$reveal>
 	<$reveal type=match state=<<openstatetid>> text="open" tag=div class="can-omni-bottom">
-		<$macrocall $name="quickadd" layout="subui-caption" omniparent=<<parentval>> quickstatetid=<<quickstatetid>> openstatetid=<<openstatetid>> endstate="open" />
+		<$macrocall $name="omniadd" layout="subui-caption" omniparent=<<parentval>> omniaddstatetid=<<omniaddstatetid>> openstatetid=<<openstatetid>> endstate="open" />
 	</$reveal>	
 </div>
 </$vars>

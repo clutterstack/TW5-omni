@@ -1,6 +1,4 @@
 title: $:/plugins/can/omni/template-bar
-tags: $:/tags/Macro
-
 
 \define everybar(depth)
 	<<can-omni-peripheral>>

@@ -1,0 +1,109 @@
+title: $:/plugins/can/omniadd/omniadd-macros
+tags: $:/tags/Macro
+
+\define omniaddbutton(buttonstyle)
+<$button class="tc-btn-invisible omni-button can-rightedge $buttonstyle$" actions="<<submit-actions>> <<reset-actions>>">
+{{$:/plugins/can/omniadd/fastarrow-circle.svg}}
+</$button>
+\end
+
+\define omniaddresetbutton(buttonstyle) <$button class="omni-button can-leftedge $buttonstyle$ tc-btn-invisible" actions=<<reset-actions>> >{{$:/plugins/can/omniadd/escape.svg}}</$button>
+
+\define omniaddtitle()
+<div class="can-omniadd-titleadder">
+<$keyboard tag="div" class="can-keyboard-wide" key="ctrl-enter" actions='<<submit-actions>><<reset-actions>>' >
+<$keyboard tag="div" class="can-keyboard-wide" key="cmd-enter" actions='<<submit-actions>><<reset-actions>>' >
+<$keyboard tag="div" class="can-keyboard-wide" key="escape" actions="<$action-setfield $tiddler=<<omniaddstatetid>> $field='edittitle' />">
+<$edit-text class="can-omniadd-titleedit" tiddler=<<omniaddstatetid>> field=edittitle placeholder="Optional title"/>
+</$keyboard></$keyboard></$keyboard>
+<$reveal type="nomatch" stateTitle=<<omniaddstatetid>> stateField="edittitle" text="">
+<$button class="omni-button tiny tc-btn-invisible" actions="<$action-setfield $tiddler=<<omniaddstatetid>> $field='edittitle'/>">{{$:/plugins/can/omniadd/escape.svg}}</$button>
+</$reveal>
+</div>
+\end
+
+\define omniaddcaption()
+<div class="can-omniadd-titleadder">
+<$keyboard tag="div" class="can-keyboard-wide" key="ctrl-enter" actions='<<submit-actions>><<reset-actions>>' >
+<$keyboard tag="div" class="can-keyboard-wide" key="cmd-enter" actions='<<submit-actions>><<reset-actions>>' >
+<$keyboard tag="div" class="can-keyboard-wide" key="escape" actions="<$action-setfield $tiddler=<<omniaddstatetid>> $field='editcaption' />">
+<$edit-text class="can-omniadd-titleedit" tiddler=<<omniaddstatetid>> field=editcaption placeholder="Optional caption"/>
+</$keyboard></$keyboard></$keyboard>
+<$reveal type="nomatch" stateTitle=<<omniaddstatetid>> stateField="editcaption" text="">
+<$button class="omni-button tiny tc-btn-invisible" actions="<$action-setfield $tiddler=<<omniaddstatetid>> $field='editcaption'/>">{{$:/plugins/can/omniadd/escape.svg}}</$button>
+</$reveal>
+</div>
+\end
+
+\define omniaddtext()
+<$keyboard tag="div" class="can-keyboard-wide" key="ctrl-enter" actions="<<submit-actions>> <<reset-actions>>" >
+<$keyboard tag="div" class="can-keyboard-wide" key="cmd-enter" actions="<<submit-actions>> <<reset-actions>>" >
+<$keyboard tag="div" class="can-keyboard-wide" key="escape" actions="<<reset-actions>>" >
+<$edit-text class="omni-textarea" tiddler=<<omniaddstatetid>> field="text" default="" placeholder="Enter omniadd text here" rows="1" minHeight="0" focus=<<focus>>/>
+</$keyboard></$keyboard></$keyboard>
+\end
+
+
+
+\define omniaddstate() $:/state/can/omniadd/$(currentTiddler)$
+
+\define omniadd(tags:"" omniparent:"" focus:"true" buttonstyle:"small" openstatetid endstate:"open" position:"omni-inlist" layout:"fullui" omniaddstatetid)
+<$set name=omniaddstatetid value="$omniaddstatetid$" emptyValue="$(omniaddstate)$" >
+<$vars contTiddler=<<currentTiddler>> focus=$focus$ layout=$layout$ subTags=<<__tags__>> omniParent="$omniparent$" openstatetid="$openstatetid$" >
+<$set name=omniParBrak  filter="[<omniParent>]" >
+<$set name="submit-actions" value="<$tiddler tiddler=<<omniaddstatetid>> ><$set name=theTime value=<<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>>><$set name=newtitle value={{!!edittitle}} emptyValue=<<theTime>> ><$action-setfield newtitle=<<newtitle>>/><$action-createtiddler $basetitle={{!!newtitle}} $savetitle=!!savetitle text={{!!text}} caption={{!!editcaption}}tags=<<subTags>> created=<<theTime>> omniparent=<<omniParBrak>> /><$macrocall $name=$position$/><$action-setfield $tiddler=<<openstatetid>> viewadd=$endstate$/></$set></$set></$tiddler><$action-sendmessage $message='tm-auto-save-wiki'/>" >
+<$set name="reset-actions" value="<$tiddler tiddler=<<omniaddstatetid>> ><$action-setfield $field=edittitle/><$action-setfield $field=editcaption/><$action-setfield text=''/><$action-setfield $tiddler=<<openstatetid>> viewadd=$endstate$/></$tiddler>" >
+<<omniaddui layout:$layout$ buttonstyle:$buttonstyle$>>
+</$set></$set></$set></$vars></$set>
+\end
+
+\define omniaddui(buttonstyle layout)
+<<$layout$ buttonstyle:$buttonstyle$>>
+\end
+
+\define fullui(buttonstyle)
+<div class="can-omniadd fullui">	
+	<<omniaddresetbutton buttonstyle:"small">>
+	<<omniaddtext>>
+	<div class="can-omniadd-btmrow">
+		<<omniaddtitle>>
+		<<omniaddbutton buttonstyle:$buttonstyle$ >>
+	</div>
+</div>
+\end
+
+\define slimui()
+<div class="can-omniadd slim">	
+	<<omniaddresetbutton buttonstyle:"small">>
+	<<omniaddtext>>
+	<<omniaddbutton buttonstyle:"small" >>
+</div>
+\end
+
+\define subui()
+<div class="can-omniadd sub">	
+	<<omniaddtext>>
+	<div class="can-omniadd-btmrow">
+		<<omniaddtitle>>
+		<<omniaddbutton buttonstyle:"big" >>
+	</div>
+</div>
+\end
+
+\define subui-caption()
+<div class="can-omniadd sub">	
+	<div class="can-omniadd-btmrow">
+		<<omniaddcaption>>
+		<<omniaddbutton buttonstyle:"big" >>
+	</div>
+    <<omniaddtext>>
+</div>
+\end
+
+\define arrownote(layout:"fullui")
+<$macrocall $name="omniadd" tags="omniadd" buttonstyle="big" layout=$layout$ />
+\end
+
+\define omniaddsub(tags omniparent focus:"true" buttonstyle endstate) 
+<$macrocall $name="omniadd" tags="[[$(currentTiddler)$]] $tags$" omniparent=$omniparent$ focus=$focus$ buttonstyle=$buttonstyle$ endstate=$endstate$ />
+\end

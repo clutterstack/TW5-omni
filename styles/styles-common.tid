@@ -71,10 +71,10 @@ details > summary {
     }
 
 /* ---------------------------------------*/
-/* Style the quickadd for in an omnibus   */
+/* Style the omniadd for in an omnibus   */
 /* ---------------------------------------*/
 
-.can-quickadd.sub {margin-top: 0;}
+.can-omniadd.sub {margin-top: 0;}
 
 .can-omni-itemhandle:hover .can-omni-itemhandle-inner { 
     background-color: <<colour tab-background>>;
@@ -193,7 +193,7 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .can-omni-peripheral.tc-droppable, .can-omni-topadd.tc-droppable, .can-omni-bottomadd.tc-droppable { width: 100%; display: flex; flex-direction: row;}
 
-.omni-button.can-omni-toggleadd {
+.omni-button.can-omni-toggleadd, .can-omni-addbutton, .can-omni-closeaddbutton {
     width: 100%;
     display: flex; 
     flex-direction: row;
@@ -208,7 +208,7 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .can-omni-peripheral .omni-button, .can-omni-bottomadd .omni-button {border-radius: 4px; width: 100%;}
 
-.can-quickadd.sub, .can-omni-top, .can-quickadd.slim { grid-column: 2/6; margin-bottom: 0.8em; }
+.can-omniadd.sub, .can-omni-top, .can-omniadd.slim { grid-column: 2/6; margin-bottom: 0.8em; }
 
 /* ----------------------------------------- */
 /* omni-bullet  */

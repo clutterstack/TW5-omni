@@ -1,5 +1,5 @@
 title: $:/plugins/can/omni/template-tree
-tags: $:/tags/Macro
+
 
 \define everytree(depth)
     <$set name=testclass filter="[[omni-item-container]] [[$depth$]match[0]then[toplevel]]" >

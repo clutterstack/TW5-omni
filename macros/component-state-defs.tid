@@ -15,15 +15,15 @@ type: text/vnd.tiddlywiki
 
 \define omnistatetiddler() $:/state/can/omni/omni/$(createdid)$
 
-\define top-quick-openstatetid() $:/state/can/omni/top-openstate/$(omniqual)$
-\define top-quickstatetid() $:/state/can/omni/top-quickstate/$(omniqual)$
+\define top-omniadd-openstatetid() $:/state/can/omni/top-openstate/$(omniqual)$
+\define top-omniaddstatetid() $:/state/can/omni/top-omniaddstate/$(omniqual)$
 
-\define bottom-quick-openstatetid() $:/state/can/omni/bottom-openstate/$(omniqual)$
-\define bottom-quickstatetid() $:/state/can/omni/bottom-quickstate/$(omniqual)$
+\define bottom-omniadd-openstatetid() $:/state/can/omni/bottom-openstate/$(omniqual)$
+\define bottom-omniaddstatetid() $:/state/can/omni/bottom-omniaddstate/$(omniqual)$
 
-\define peri-quick-openstatetid() $:/state/can/omni/peri-openstate/$(createdid)$
-\define peri-quickstatetid() $:/state/can/omni/peri-quickstate/$(createdid)$
+\define peri-omniadd-openstatetid() $:/state/can/omni/peri-openstate/$(createdid)$
+\define peri-omniaddstatetid() $:/state/can/omni/peri-omniaddstate/$(createdid)$
 
-\define append-quick-openstatetid() $:/state/can/omni/append-openstate/$(omniqual)$
-\define append-quickstatetid() $:/state/can/omni/append-quickstate/$(omniqual)$
+\define append-omniadd-openstatetid() $:/state/can/omni/append-openstate/$(omniqual)$
+\define append-omniaddstatetid() $:/state/can/omni/append-omniaddstate/$(omniqual)$
 

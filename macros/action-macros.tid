@@ -3,6 +3,9 @@ title: $:/plugins/can/omni/action-macros
 type: text/vnd.tiddlywiki
 
 
+\define omni-toggle-foldstate() <$action-listops $tiddler=<<dom-data-statetid>> $field="foldstate" $subfilter="+[toggle[hide],[show]]"/><$action-listops $tiddler=<<dom-data-statetid>> $field="icon" $subfilter="+[toggle[{{$:/core/images/down-arrow}}],[{{$:/core/images/right-arrow}}]]"/>
+
+
 \define omni-navigate-action() <$action-navigate $to=<<dom-data-currenttid>>/>
 
 \define omni-select-node() <$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<dom-data-currenttid>> omniparent=<<dom-data-parentval>>/><<omni-enable-nav-shortcuts>>
@@ -20,18 +23,38 @@ type: text/vnd.tiddlywiki
 
 \define omni-toggleadd-action() <$action-listops $tiddler=<<dom-data-statetid>> $field="viewadd" $subfilter="+[toggle[open],[closed]]"/>
 
-\define omni-toggle-foldstate() <$action-listops $tiddler=<<dom-data-statetid>> $field="foldstate" $subfilter="+[toggle[hide],[show]]"/><$action-listops $tiddler=<<dom-data-statetid>> $field="icon" $subfilter="+[toggle[{{$:/core/images/down-arrow}}],[{{$:/core/images/right-arrow}}]]"/>
+\define omni-inlist() <$action-listops $field='omni-list' $subfilter='+[insertbefore:pairtid{!!savetitle}]'/>
+
+\define omni-listtop() <$action-listops $field='omni-list' $subfilter='[{!!savetitle}] +[putfirst[]]'/>
+
+\define omni-listbottom() <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='[{!!savetitle}]'/>
+
+\define omni-savetid() {{{[{$(statetid)$get[savetitle]]}}}
+
+\define omni-addtiddler-action() 
+<$wikify name=newtitle text=<<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>> >
+<$action-createtiddler $basetitle=<<newtitle>> $savetitle=!!savetitle created=<<newtitle>> />
+<$qualify name=createdid title=<<newtitle>>>
+<<omni-toggle-edit>>
+</$qualify>
+<$vars pairtid=<<dom-data-pairtid>>>
+	<$macrocall $name=<<dom-data-position>>/>
+</$vars>
+</$wikify>
+\end
 
 \define omni-toggle-edit() <$action-setfield $tiddler=<<editstatetid>> editstate="edit" $timestamp='no'/>
-\define omni-toggle-view() <$action-setfield $tiddler=<<editstatetid>> editstate="view"$timestamp='no'/>
+\define omni-toggle-view() <$action-setfield $tiddler=<<editstatetid>> editstate="view" $timestamp='no'/>
 
 \define omni-startedit-actions() <$vars createdid=<<dom-data-createdid>>><$tiddler tiddler=<<dom-data-currenttid>> ><$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show" $timestamp='no'/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/><$action-setfield $tiddler=<<editstatetid>> throttle.refresh=yes/></$tiddler></$vars><<omni-suspend-nav-shortcuts>>
 
-
-\define omni-startedit-actions-old() <$action-setfield $tiddler=<<foldstatetiddler>> $field="foldstate" $value="show" $timestamp='no'/><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/><<omni-toggle-edit>>
-
-
 \define omni-submitedit-actions() <$action-setfield text={{$(editstatetid)$}}/><$action-deletetiddler $tiddler=<<editstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/><<omni-enable-nav-shortcuts>>
+
+\define ADAPT-THIS-FOR-AFTER_SUBMIT-EDIT-ACTIONS()
+<$list filter="[<openstatetid>get[viewadd]match[open]]">
+	<$macrocall $name="omni-addtiddler-action"/>
+</$list>
+\end
 
 \define omni-canceledit-actions() <$action-deletetiddler $tiddler=<<editstatetid>>/><<omni-toggle-view>><<omni-enable-nav-shortcuts>>
 

@@ -1,5 +1,4 @@
 title: $:/plugins/can/omni/template-edit
-tags: $:/tags/Macro
 
 \define everyedit(depth)
 	<<can-omni-peripheral>>

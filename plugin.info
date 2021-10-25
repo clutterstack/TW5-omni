@@ -7,5 +7,5 @@
     "source": "https://github.com/clutterstack/TW5-omni",
     "list": "readme documentation license",
     "plugin-type": "plugin",
-    "dependents": ["$:/plugins/can/quick", "$:/plugins/can/dragtags", "$:/plugins/can/teaser"]
+    "dependents": ["$:/plugins/can/dragtags", "$:/plugins/can/teaser"]
 }

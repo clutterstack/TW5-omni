@@ -15,13 +15,10 @@ type: text/vnd.tiddlywiki
 \end
 
 \define can-omni-peripheral(layout:"subui-caption" endstate:"closed")
-<$vars openstatetid=<<peri-quick-openstatetid>> quickstatetid=<<peri-quickstatetid>>>
+<$vars openstatetid=<<peri-omniadd-openstatetid>> omniaddstatetid=<<peri-omniaddstatetid>>  position="omni-inlist">
 <$droppable class="can-omni-peripheral" tag="div" actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
     <<can-omni-toggleadd>>
 </$droppable>
-<$list filter="[<openstatetid>get[viewadd]match[open]]" variable="ignore">
-	<$macrocall $name="quickadd" position="omni-inlist" layout=<<__layout__>> quickstatetid=<<quickstatetid>> omniparent=<<parentval>> openstatetid=<<openstatetid>> endstate=<<__endstate__>> />
-</$list>
 </$vars>
 \end
 
