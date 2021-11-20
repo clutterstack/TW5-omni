@@ -1,21 +1,19 @@
-title: $:/plugins/can/omni/template-plaintree
+title: $:/plugins/can/omni/template-kbclean
 
-\define everyplaintree(depth)
-<$set name=testclass filter="[[omni-item-container]] [[$depth$]match[0]then[toplevel]]" >
-    <div class=<<testclass>> >
-        <$list filter="[[$depth$]!match[0]]">
-            <div class="omni-branch-line"></div>
-        </$list>
-        <<can-omni-peripheral layout:slimui endstate:open>>
+\define everykbclean(depth)
+<$set name=testclass filter="[[omni-item-container]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]]" >
+        <<can-omni-peripheral layout:kbcleanadd endstate:open>>
+    <div class=<<testclass>> data-omnitid=<<currentTiddler>> >
         <<can-omni-tree-itemhandle>>
         <$droppable class="omni-text-display" tag="div" actions="<<can-omni-shift-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>" >
         <<can-omni-text>>
+        </$droppable>
         <div class="can-omni-subctl">
-            <<can-omni-link>>
+            <<can-omni-title-link>>
             <<can-omni-delist>>
             <<can-omni-delete>>
+            {{||Drop refsource title here}}
         </div>
-        </$droppable>
         <$list filter="[all[current]has[omni-list]]" variable="ignore">
             <<can-omni-omni-show>>
         </$list>
@@ -27,22 +25,24 @@ title: $:/plugins/can/omni/template-plaintree
 \define compose-omni-toplevel() 
 <$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-ec-startedit-actions>> tag="div">
     <$eventcatcher events="click" selector=".can-omni-link" actions-click=<<omni-navigate-action>> tag="div">
-        <$eventcatcher events="click" selector=".omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
-            <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
-                <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-delete-action>> tag="div">
-                    <$eventcatcher events="click" selector=".omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
+        <$eventcatcher events="click" selector=".omni-text-dblclick" actions-click=<<omni-select-node>> tag="div">
+            <$eventcatcher events="click" selector=".omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
+                <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
+                    <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-ec-delete-action>> tag="div">
+                        <$eventcatcher events="click" selector=".can-omni-addbutton" 
+                        actions-click=<<omni-ec-addtiddler-action>> tag="div">
                             <<can-omni-toptools>>
                         <$macrocall $name=compose-omni depth=0/>        
 </$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher>
 \end
 
-\define compose-omni(mode:plaintree depth)
-<$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="plaintree">
+\define compose-omni(mode:kbclean depth)
+<$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="kbclean" template="everykbclean">
 <$qualify name=omniqual title={{!!created}}>
-    <div class="can-omni-stream plaintree" >
+    <div class="can-omni-stream kbclean" >
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
             <$qualify name=createdid title={{!!created}} >
-                <$macrocall $name=everyplaintree depth=<<__depth__>> />
+                <$macrocall $name=<<template>> depth=<<__depth__>> />
             </$qualify>
         </$list>
     </div>

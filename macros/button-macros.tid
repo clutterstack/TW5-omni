@@ -18,7 +18,7 @@ tags: $:/tags/Macro
 \define can-omni-delete-old()
 <$button class="omni-button tc-btn-invisible" aria-label="Delete tiddler" tooltip="Delete tiddler">
 <$action-sendmessage $message="tm-delete-tiddler"/>
-<$action-listops $tiddler=<<parentval>> $field='omni-list' $filter='[<parentval>list[!!omni-list]is[tiddler]]'/>
+<$action-listops $tiddler=<<parentval>> $field='omni-list' $filter='[<dom-data-parentval>get[omni-list]enlist-input[]is[tiddler]]'/>
 <$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> />
 {{$:/core/images/delete-button}}
 </$button>
@@ -32,14 +32,14 @@ tags: $:/tags/Macro
 <$button class="omni-button tc-btn-invisible" aria-label="Remove from list" tooltip="Remove from list" actions="<$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='-[<currentTiddler>]'/><$action-listops $field='omniparent' $subfilter='-[<parentval>]' /><$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> /><$action-sendmessage $message='tm-auto-save-wiki'/>">{{$:/plugins/can/omni/delist.svg}}</$button>
 \end
 
-\define omni-addbutton() <div class="omni-button tc-btn-invisible can-omni-addbutton" data-statetid=<<openstatetid>> data-pairtid=<<currentTiddler>> data-position=<<position>>>{{$:/core/images/new-button}}</div>
+\define omni-addbutton() <div class="omni-button tc-btn-invisible can-omni-addbutton" data-pairtid=<<currentTiddler>> data-parentval=<<parentval>> data-position=<<position>>>{{$:/core/images/new-button}}</div>
 
 \define omni-closeaddbutton() 
 <$eventcatcher events="click" selector=".can-omni-closeaddbutton" actions-click=<<omni-toggleadd-action>> tag="div"><div class="omni-button tc-btn-invisible can-omni-closeaddbutton" data-statetid=<<openstatetid>>>
 {{$:/core/images/close-button}}</div></$eventcatcher>
 \end
 
-\define can-omni-toggleadd()
+\define can-omni-toggleadd-old()
 <$list filter="[<openstatetid>get[viewadd]match[open]]" emptyMessage=<<omni-addbutton>> variable="ignore"><<omni-closeaddbutton>></$list>
 \end
 
@@ -71,7 +71,7 @@ tags: $:/tags/Macro
 </$button></$draggable>
 \end
 
-\define omni-edit-button() <$button class="omni-button can-omni-edit-button tc-btn-invisible" actions=<<omni-startedit-actions>>  tooltip="Edit text" aria-label="Edit text">{{$:/core/images/edit-button}}</$button>
+\define omni-edit-button() <$button class="omni-button can-omni-edit-button tc-btn-invisible" actions=<<omni-ec-startedit-actions>>  tooltip="Edit text" aria-label="Edit text">{{$:/core/images/edit-button}}</$button>
 \end
 
 

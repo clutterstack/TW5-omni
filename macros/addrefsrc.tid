@@ -1,0 +1,12 @@
+title: $:/plugins/can/omni/addrefsrc.tid
+tags: $:/tags/ViewToolbar
+
+\define addrefsrc() 
+<$vars refsource=<<currentTiddler>> >
+<$list filter="[all[current]list[!!omni-list]]" >
+<$action-setfield refsource=<<refsource>>/>
+</$list>
+</$vars>
+\end
+
+<$button actions=<<addrefsrc>>>stamp source on subtiddlers</$button>

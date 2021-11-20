@@ -1,6 +1,6 @@
-tags: $:/tags/KeyboardShortcut
 title: $:/plugins/can/omni/kbshortcuts/indent
 key: ((omni-indent)) 
+omni-shortcut: yep
 
 \import [[testmodal macro]]
 

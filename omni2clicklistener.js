@@ -9,7 +9,7 @@ dblclick event only, and like 2click2edit it doesn't enclose child content in ye
 but instead adds a listener to its parent element.
 
 In fact, don't enclose anything in it; it won't get rendered. Just close it:
-e.g. <$omnidblclick actions="<<omni-startedit-actions>>"/>
+e.g. <$omnidblclick actions="<<omni-ec-startedit-actions>>"/>
 
 I haven't actually tested messages, so it's possible I haven't got that working properly.
 

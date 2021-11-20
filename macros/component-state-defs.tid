@@ -3,7 +3,7 @@ tags: $:/tags/Macro
 title: $:/plugins/can/omni/component-state-defs
 type: text/vnd.tiddlywiki
 
-\define editstatetid() $:/state/can/omni/editstate/$(createdid)$
+\define editstatetid() [[$:/state/can/omni/editstate/$(createdid)$]]
 
 \define edittitlestatetid() $:/state/can/omni/edittitlestate/$(createdid)$
 

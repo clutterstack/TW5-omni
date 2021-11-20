@@ -21,7 +21,7 @@ title: $:/plugins/can/omni/template-exp
 \end
 
 \define compose-omni-toplevel() 
-<$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-startedit-actions>> tag="div">
+<$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-ec-startedit-actions>> tag="div">
     <$eventcatcher events="click" selector=".can-omni-link" actions-click=<<omni-navigate-action>> tag="div">
         <$eventcatcher events="click" selector=".omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
             <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">

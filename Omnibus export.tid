@@ -3,7 +3,7 @@ tags: $:/tags/MoreSideBar
 title: $:/plugins/can/omni/utilities/export
 type: text/vnd.tiddlywiki
 
-<$list filter="[all[tiddlers]has[omni-list]]!tag[template]]"  >
+<$list filter="[all[tiddlers]has[omni-list]!tag[template]]"  >
 <div class="omni-bundle">
 <$draggable filter="[<currentTiddler>] [list[!!omni-list]]">
 <$view field="title"/>

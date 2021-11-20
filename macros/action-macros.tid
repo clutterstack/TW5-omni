@@ -2,16 +2,22 @@ tags: $:/tags/Macro
 title: $:/plugins/can/omni/action-macros
 type: text/vnd.tiddlywiki
 
-
 \define omni-toggle-foldstate() <$action-listops $tiddler=<<dom-data-statetid>> $field="foldstate" $subfilter="+[toggle[hide],[show]]"/><$action-listops $tiddler=<<dom-data-statetid>> $field="icon" $subfilter="+[toggle[{{$:/core/images/down-arrow}}],[{{$:/core/images/right-arrow}}]]"/>
 
 
 \define omni-navigate-action() <$action-navigate $to=<<dom-data-currenttid>>/>
 
-\define omni-select-node() <$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<dom-data-currenttid>> omniparent=<<dom-data-parentval>>/><<omni-enable-nav-shortcuts>>
+\define omni-select-node() 
+<$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<dom-data-currenttid>> omniparent=<<dom-data-parentval>> breadcrumbs=<<dom-data-breadcrumbs>>/><<omni-enable-nav-shortcuts>>
+\end 
 
-\define omni-suspend-nav-shortcuts() <$list filter="[all[tiddlers+shadows]has[omni-shortcut]]"><$action-listops $tags="-[[$:/tags/KeyboardShortcut]]"/></$list>
-\define omni-enable-nav-shortcuts() <$list filter="[all[tiddlers+shadows]has[omni-shortcut]]"><$action-listops $tags="$:/tags/KeyboardShortcut"/></$list>
+\define omni-suspend-nav-shortcuts() 
+<$list filter="[all[tiddlers+shadows]has[omni-shortcut]]"><$action-listops $tags="-[[$:/tags/KeyboardShortcut]]"/></$list>
+\end
+
+\define omni-enable-nav-shortcuts()  
+<$list filter="[all[tiddlers+shadows]has[omni-shortcut]]"><$action-listops $tags="$:/tags/KeyboardShortcut"/></$list>
+\end
 
 <!-- \define omni-nav-leveldown() <$action-sendmessage $message="tm-modal" $param="$:/plugins/can/omni/cheatsheet-modal" modal-tiddler=<<dom-data-title>> depth=<<dom-data-depth>> /> -->
 
@@ -19,26 +25,45 @@ type: text/vnd.tiddlywiki
 
 \define omni-delist-action() <$action-listops $tiddler=<<dom-data-parentval>> $field='omni-list' $subfilter='-[<dom-data-currenttid>]'/><$action-listops $tiddler=<<dom-data-currenttid>> $field='omniparent' $subfilter='-[<dom-data-parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>
 
-\define omni-delete-action() <$action-sendmessage $message="tm-delete-tiddler" $param=<<dom-data-currenttid>> /><$action-listops $tiddler=<<dom-data-parentval>> $field='omni-list' $filter='[<dom-data-parentval>list[!!omni-list]is[tiddler]]'/>
+\define omni-ec-delete-action() <$action-sendmessage $message="tm-delete-tiddler" $param=<<dom-data-currenttid>> /><$action-listops $tiddler=<<dom-data-parentval>> $field='omni-list' $filter='[<dom-data-parentval>get[omni-list]enlist-input[]is[tiddler]]'/>
+
+\define omni-kb-delete-action() <$action-sendmessage $message="tm-delete-tiddler" /><$action-listops $tiddler=<<parentval>> $field='omni-list' $filter='[<parentval>get[omni-list]enlist-input[]is[tiddler]]'/>
 
 \define omni-toggleadd-action() <$action-listops $tiddler=<<dom-data-statetid>> $field="viewadd" $subfilter="+[toggle[open],[closed]]"/>
 
-\define omni-inlist() <$action-listops $field='omni-list' $subfilter='+[insertbefore:pairtid{!!savetitle}]'/>
+\define omni-inlist() <$action-listops $tiddler=<<dom-data-parentval>> $field='omni-list' $subfilter='+[insertbefore:pairtid<newtitle>]'/>
 
-\define omni-listtop() <$action-listops $field='omni-list' $subfilter='[{!!savetitle}] +[putfirst[]]'/>
+\define omni-listtop() <$action-listops $tiddler=<<dom-data-parentval>> $field='omni-list' $subfilter='[{!!savetitle}] +[putfirst[]]'/>
 
-\define omni-listbottom() <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='[{!!savetitle}]'/>
+\define omni-listbottom() <$action-listops $tiddler=<<dom-data-parentval>> $field='omni-list' $subfilter='[{!!savetitle}]'/>
 
 \define omni-savetid() {{{[{$(statetid)$get[savetitle]]}}}
 
-\define omni-addtiddler-action() 
+\define omni-kb-autoadd-action()
 <$wikify name=newtitle text=<<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>> >
-<$action-createtiddler $basetitle=<<newtitle>> $savetitle=!!savetitle created=<<newtitle>> />
+	<$action-createtiddler $basetitle=<<newtitle>> $savetitle=!!savetitle created=<<newtitle>>  />
+	<$list filter="[<parentval>tag[refsource]]" variable="ignore"><$action-setfield $tiddler=<<newtitle>> refsource=<<parentval>>/></$list>
+	<$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<newtitle>] +[move<newtitle>]'/>
+	<$action-sendmessage $message='tm-auto-save-wiki'/>
+	<$tiddler tiddler=<<newtitle>> >
+	<$qualify name=createdid title=<<newtitle>>>
+		<$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show" $timestamp='no'/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/><$action-setfield $tiddler=<<editstatetid>> throttle.refresh=yes/><<omni-suspend-nav-shortcuts>>
+	</$qualify>
+	</$tiddler>
+</$wikify>
+\end
+
+\define omni-ec-addtiddler-action() 
+<<omni-suspend-nav-shortcuts>>
+<$wikify name=newtitle text=<<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>> >
+<$vars pairtid=<<dom-data-pairtid>> dom-data-currenttid=<<newtitle>>>
+<$action-createtiddler $basetitle=<<newtitle>> $savetitle=!!savetitle created=<<newtitle>>  />
+<$list filter="[<dom-data-parentval>tag[refsource]]" variable="ignore"><$action-setfield $tiddler=<<newtitle>> refsource=<<dom-data-parentval>>/></$list>
+<$macrocall $name=<<dom-data-position>>/>
+<$action-sendmessage $message='tm-auto-save-wiki'/>
 <$qualify name=createdid title=<<newtitle>>>
-<<omni-toggle-edit>>
+<<omni-ec-startedit-actions>>
 </$qualify>
-<$vars pairtid=<<dom-data-pairtid>>>
-	<$macrocall $name=<<dom-data-position>>/>
 </$vars>
 </$wikify>
 \end
@@ -46,20 +71,37 @@ type: text/vnd.tiddlywiki
 \define omni-toggle-edit() <$action-setfield $tiddler=<<editstatetid>> editstate="edit" $timestamp='no'/>
 \define omni-toggle-view() <$action-setfield $tiddler=<<editstatetid>> editstate="view" $timestamp='no'/>
 
-\define omni-startedit-actions() <$vars createdid=<<dom-data-createdid>>><$tiddler tiddler=<<dom-data-currenttid>> ><$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show" $timestamp='no'/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/><$action-setfield $tiddler=<<editstatetid>> throttle.refresh=yes/></$tiddler></$vars><<omni-suspend-nav-shortcuts>>
+\define omni-ec-startedit-actions() <$vars createdid=<<dom-data-createdid>>><$tiddler tiddler=<<dom-data-currenttid>> ><$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show" $timestamp='no'/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/><$action-setfield $tiddler=<<editstatetid>> throttle.refresh=yes/></$tiddler></$vars><<omni-suspend-nav-shortcuts>>
 
-\define omni-submitedit-actions() <$action-setfield text={{$(editstatetid)$}}/><$action-deletetiddler $tiddler=<<editstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/><<omni-enable-nav-shortcuts>>
+\define omni-submitedit-actions() 
+<$action-setfield text={{$(editstatetid)$}}/><$action-deletetiddler $tiddler=<<editstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/><<omni-enable-nav-shortcuts>><<omni-kb-autoadd-action>>
+\end
 
 \define ADAPT-THIS-FOR-AFTER_SUBMIT-EDIT-ACTIONS()
 <$list filter="[<openstatetid>get[viewadd]match[open]]">
-	<$macrocall $name="omni-addtiddler-action"/>
+	<$macrocall $name="omni-kb-addtiddler-action"/>
 </$list>
 \end
 
-\define omni-canceledit-actions() <$action-deletetiddler $tiddler=<<editstatetid>>/><<omni-toggle-view>><<omni-enable-nav-shortcuts>>
+\define omni-kb-canceledit-actions() 
+<$list filter="[all[current]!has[text]!has[caption]then[delete]] :intersection[<editstatetid>!has[text]then[delete]]" variable=ignore>
+<<omni-kb-delete-action>>
+</$list>
+<$action-deletetiddler $tiddler=<<editstatetid>>/>
+<<omni-toggle-view>><<omni-enable-nav-shortcuts>>
+\end
+
+\define omni-ec-canceledit-actions(UNTESTED) 
+<$action-deletetiddler $tiddler=<<editstatetid>>/>
+<$list filter="[all[current]!has[text]!has[caption]then[delete]] :intersection[<editstatetid>!has[text]then[delete]]" variable=ignore>
+<<omni-ec-delete-action>>
+</$list>
+<<omni-toggle-view>><<omni-enable-nav-shortcuts>>
+\end
+
 
 \define omni-handle-toggle-actions()
-<$list filter="[<editstatetid>get[editstate]match[edit]]" variable="ignore" emptyMessage= <<omni-startedit-actions>>><<omni-submitedit-actions>></$list>
+<$list filter="[<editstatetid>get[editstate]match[edit]]" variable="ignore" emptyMessage= <<omni-ec-startedit-actions>>><<omni-submitedit-actions>></$list>
 \end
 
 \define omni-tab-actions()

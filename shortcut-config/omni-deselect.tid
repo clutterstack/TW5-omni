@@ -1,3 +1,0 @@
-title: $:/config/ShortcutInfo/omni-deselect
-
-Clear the $:/plugins/can/omni/omniCurrentNode tiddler and remove the ''key'' field from $:/plugins/can/omni/kbshortcuts/indent

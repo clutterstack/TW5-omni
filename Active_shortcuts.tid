@@ -1,0 +1,4 @@
+title: $:/plugins/can/omni/ActiveShortcuts
+
+
+<$list filter="[all[tiddlers+shadows]tag[$:/tags/KeyboardShortcut]]" />

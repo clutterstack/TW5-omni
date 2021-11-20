@@ -25,6 +25,7 @@ type: text/vnd.tiddlywiki
 		<$button set="!!omnibus-mode" setTo="list" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="List mode" aria-label="List mode">list</$button>
         <$button set="!!omnibus-mode" setTo="plaintree" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="Plain tree mode" aria-label="Plain tree mode">plaintree</$button>
         <$button set="!!omnibus-mode" setTo="kbnav" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="kbnav" aria-label="kbnav">kbnav</$button>
+        <$button set="!!omnibus-mode" setTo="kbclean" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="kbclean" aria-label="kbclean">kbclean</$button>
 		<!--
         <$button set="!!omnibus-mode" setTo="floo" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="RO tree with captions" aria-label="RO tree with captions">floo</$button>
 		<$button set="!!omnibus-mode" setTo="tree" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="Bubble tree" aria-label="Bubble tree">tree</$button>
@@ -68,7 +69,7 @@ type: text/vnd.tiddlywiki
 \define can-omni-foldall()
 <div class="can-omni-foldall">
     <$button class="tc-btn-invisible omni-button" actions=<<unfoldallactions>> tooltip="Unfold all items" aria-label="Unfold all items">{{$:/core/images/unfold-all-button}}</$button>
-    <$button class="tc-btn-invisible omni-button"  actions=<<foldallactions>>tooltip="Fold all items" aria-label="Fold all items">{{$:/core/images/fold-all-button}}</$button>
+    <$button class="tc-btn-invisible omni-button" actions=<<foldallactions>> tooltip="Fold all items" aria-label="Fold all items">{{$:/core/images/fold-all-button}}</$button>
 </div>
 \end
 
@@ -139,37 +140,6 @@ type: text/vnd.tiddlywiki
 </div>
 \end
 
-\define can-omni-topadd(layout:"subui-caption" endstate:"closed")
-<$vars openstatetid=<<top-omniadd-openstatetid>> omniaddstatetid=<<top-omniaddstatetid>> position="omni-listtop">
-	<$droppable tag="div" class="can-omni-topadd" actions="<<can-omni-shift-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>] +[putfirst[]]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
-		<<can-omni-toggleadd>>
-	</$droppable>
-<$list filter="[<openstatetid>get[viewadd]match[open]]">
-	<$macrocall $name="omniadd" layout=<<__layout__>> omniaddstatetid=<<omniaddstatetid>> omniparent=<<parentval>> position="omni-listtop" openstatetid=<<openstatetid>> endstate=<<__endstate__>> />
-</$list>
-</$vars>
-\end
-
-
-\define can-omni-peripheral(layout:"subui-caption" endstate:"closed")
-<$vars openstatetid=<<peri-omniadd-openstatetid>> omniaddstatetid=<<peri-omniaddstatetid>>  position="omni-inlist">
-<$droppable class="can-omni-peripheral" tag="div" actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
-    <<can-omni-toggleadd>>
-</$droppable>
-</$vars>
-\end
-
-
-\define can-omni-bottomadd(layout:"subui-caption" endstate:"closed")
-<$vars openstatetid=<<bottom-omniadd-openstatetid>> omniaddstatetid=<<bottom-omniaddstatetid>> position="omni-listbottom">
-	<$droppable tag="div" class="can-omni-bottomadd" actions="<<can-omni-shift-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
-		<<can-omni-toggleadd>>
-	</$droppable>
-<$list filter="[<openstatetid>get[viewadd]match[open]]">
-	<$macrocall $name="omniadd" layout=<<__layout__>> omniaddstatetid=<<omniaddstatetid>> omniparent=<<parentval>> position="omni-listbottom" openstatetid=<<openstatetid>> endstate=<<__endstate__>> />
-</$list>
-</$vars>
-\end
 
 \define can-omni-omniaddappend()
 <$vars openstatetid=<<append-omniadd-openstatetid>>  omniaddstatetid=<<append-omniaddstatetid>>>

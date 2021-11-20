@@ -1,0 +1,9 @@
+tags: 
+title: $:/plugins/can/omni/kbshortcuts/omni-kb-edit
+key: ((omni-kb-edit))
+omni-shortcut: yep
+
+\import $:/plugins/can/omni/shortcut-actions
+\import $:/plugins/can/omni/component-state-defs
+
+<<omni-kb-startedit-actions>>
