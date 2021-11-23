@@ -5,7 +5,7 @@ title: $:/plugins/can/omni/template-kbclean
         <<can-omni-peripheral layout:kbcleanadd endstate:open>>
     <div class=<<testclass>> data-omnitid=<<currentTiddler>> >
         <<can-omni-tree-itemhandle>>
-        <$droppable class="omni-text-display" tag="div" actions="<<can-omni-shift-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>" >
+        <$droppable class="omni-text-display" tag="div" actions="<<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>" >
         <<can-omni-text>>
         </$droppable>
         <div class="can-omni-subctl">
@@ -38,16 +38,16 @@ title: $:/plugins/can/omni/template-kbclean
 
 \define compose-omni(mode:kbclean depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="kbclean" template="everykbclean">
-<$qualify name=omniqual title={{!!created}}>
+<$vars omniqual={{!!created}}>
     <div class="can-omni-stream kbclean" >
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
-            <$qualify name=createdid title={{!!created}} >
+            <$vars creatednum={{!!created}} >
                 <$macrocall $name=<<template>> depth=<<__depth__>> />
-            </$qualify>
+            </$vars>
         </$list>
     </div>
     <<can-omni-bottomadd layout:slimui endstate:open>>
-</$qualify>
+</$vars>
 </$vars>
 \end
 

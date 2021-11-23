@@ -11,7 +11,7 @@ tags: $:/tags/Macro
 \end
 
 \define omni-dragdrop-caption(class) 
-<$droppable actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]'/><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-sendmessage $message='tm-auto-save-wiki'/>" >
+<$droppable actions="<<omni-move-drop>><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]'/><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-sendmessage $message='tm-auto-save-wiki'/>" >
   <<omni-link-caption class:$class$ >>
 </$droppable>
 \end
@@ -125,7 +125,7 @@ tags: $:/tags/Macro
 \end
 
 \define delist-from-omni(class caption)
-<$droppable actions="<<can-omni-shift-drop>><$action-sendmessage $message='tm-auto-save-wiki'/>" >
+<$droppable actions="<<omni-move-drop>><$action-sendmessage $message='tm-auto-save-wiki'/>" >
 <span class="can-omnibus-droppable $class$">$caption$ :</span>
 </$droppable><br>
 \end

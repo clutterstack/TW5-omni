@@ -8,7 +8,7 @@ title: $:/plugins/can/omni/template-exp
         </$list>
         <<can-omni-peripheral>>
         <<can-omni-tree-itemhandle>>
-        <$droppable class="omni-text-display" tag="div" actions="<<can-omni-shift-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>" >
+        <$droppable class="omni-text-display" tag="div" actions="<<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>" >
         <<omni-captionheading-row>>
         <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore"/>
         </$droppable>
@@ -34,16 +34,16 @@ title: $:/plugins/can/omni/template-exp
 
 \define compose-omni(mode:exp depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="exp">
-<$qualify name=omniqual title={{!!created}}>
+<$vars omniqual={{!!created}}>
     <div class="can-omni-stream exp" >
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
-            <$qualify name=createdid title={{!!created}} >
+            <$vars creatednum={{!!created}} >
                 <$macrocall $name=everyexp depth=<<__depth__>> />
-            </$qualify>
+            </$vars>
         </$list>
     </div>
     <<can-omni-bottomadd>>
-</$qualify>
+</$vars>
 </$vars>
 \end
 

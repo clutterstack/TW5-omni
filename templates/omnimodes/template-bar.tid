@@ -32,15 +32,15 @@ title: $:/plugins/can/omni/template-bar
 
 \define compose-omni(mode:bar depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="bar">
-<$qualify name=omniqual title={{!!created}}>
+<$vars omniqual={{!!created}}>
     <div class="can-omni-stream bar" >
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
-            <$qualify name=createdid title={{!!created}} >
+            <$vars creatednum={{!!created}} >
                 <$macrocall $name=everybar depth=<<__depth__>> />
-            </$qualify>
+            </$vars>
         </$list>
     </div>
-</$qualify>
+</$vars>
 </$vars>
 \end
 

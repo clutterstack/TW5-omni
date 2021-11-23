@@ -1,0 +1,3 @@
+title: $:/config/ShortcutInfo/omni-move-up
+
+Move current node one position earlier in its parent's omni-list field.

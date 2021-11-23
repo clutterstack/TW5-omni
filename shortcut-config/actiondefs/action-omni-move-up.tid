@@ -1,0 +1,8 @@
+tags: 
+title: $:/plugins/can/omni/kbshortcuts/omni-move-up
+key: ((omni-move-up))
+omni-shortcut: yep
+
+\import $:/plugins/can/omni/shortcut-actions
+
+<<omni-move-up>>

@@ -36,16 +36,16 @@ title: $:/plugins/can/omni/template-edit
 
 \define compose-omni(mode:edit depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="edit">
-<$qualify name=omniqual title={{!!created}}>
+<$vars omniqual={{!!created}}>
     <div class="can-omni-stream edit" >
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
-            <$qualify name=createdid title={{!!created}} >
+            <$vars creatednum={{!!created}} >
                 <$macrocall $name=everyedit depth=<<__depth__>> />
-            </$qualify>
+            </$vars>
         </$list>
         <<can-omni-bottomadd>>
     </div>
-</$qualify>
+</$vars>
 </$vars>
 \end
 

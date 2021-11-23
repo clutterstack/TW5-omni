@@ -60,9 +60,9 @@ title: $:/plugins/can/omni/template-cheatsheet
         <$macrocall $name="omni-breadcrumbs" statetid=<<cheatsheetstatetid>> />
         <!-- <<cheatsheet-title>> -->
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
-            <$qualify name=createdid title={{!!created}} >
+            <$vars creatednum={{!!created}} >
                 <$macrocall $name=everycheatsheet depth=<<__depth__>> />
-            </$qualify>
+            </$vars>
         </$list>
         <div class="omni-cheatsheet-section-container">
             <<can-omni-bottomadd>>
@@ -72,12 +72,12 @@ title: $:/plugins/can/omni/template-cheatsheet
 \end
 
 <$vars omnitid={{!!title}}>
-<$qualify name=omniqual title={{!!created}}>
+<$vars omniqual={{!!created}}>
 <$tiddler tiddler={{{[<cheatsheetstatetid>get[text]else{!!title}]}}}>
 <!-- cheatsheetstatetid: <<cheatsheetstatetid>> <br>
 currentTiddler: <<currentTiddler>> <br>
 omnitid: <<omnitid>> <br> -->
 <<compose-omni-toplevel>>
 </$tiddler>
-</$qualify>
+</$vars>
 </$vars>

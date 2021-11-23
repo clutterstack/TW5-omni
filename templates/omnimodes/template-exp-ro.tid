@@ -34,15 +34,15 @@ title: $:/plugins/can/omni/template-expro
 
 \define compose-omni(mode:expro depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="expro">
-<$qualify name=omniqual title={{!!created}}>
+<$vars omniqual={{!!created}}>
     <div class="can-omni-stream exp" >
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
-            <$qualify name=createdid title={{!!created}} >
+            <$vars creatednum={{!!created}} >
                 <$macrocall $name=everyexpro depth=<<__depth__>> />
-            </$qualify>
+            </$vars>
         </$list>
     </div>
-</$qualify>
+</$vars>
 </$vars>
 \end
 

@@ -1,0 +1,7 @@
+title: $:/plugins/can/omni/kbshortcuts/omni-unindent
+key: ((omni-unindent)) 
+omni-shortcut: yep
+
+\import $:/plugins/can/omni/shortcut-actions
+
+<<omni-unindent>>

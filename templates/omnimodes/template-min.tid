@@ -20,15 +20,15 @@ tags:
 
 \define compose-omni(mode:min depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="min">
-<$qualify name=omniqual title={{!!created}}>
+<$vars omniqual={{!!created}}>
     <div class="can-omni-stream min" >
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
-            <$qualify name=createdid title={{!!created}} >
+            <$vars creatednum={{!!created}} >
                 <$macrocall $name=everymin depth=<<__depth__>> />
-            </$qualify>
+            </$vars>
         </$list>
     </div>
-</$qualify>
+</$vars>
 </$vars>
 \end
 

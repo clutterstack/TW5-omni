@@ -3,17 +3,19 @@ tags: $:/tags/Macro
 title: $:/plugins/can/omni/component-state-defs
 type: text/vnd.tiddlywiki
 
-\define editstatetid() [[$:/state/can/omni/editstate/$(createdid)$]]
+\define omniqual() $(creatednum)$-$(baseomni)$
 
-\define edittitlestatetid() $:/state/can/omni/edittitlestate/$(createdid)$
+\define editstatetid() $:/state/can/omni/editstate/$(omniqual)$
 
-\define editfieldstatetid() $:/state/can/omni/edit-$(editFieldName)$/$(createdid)$
+\define edittitlestatetid() $:/state/can/omni/edittitlestate/$(omniqual)$
+
+\define editfieldstatetid() $:/state/can/omni/edit-$(editFieldName)$/$(omniqual)$
 
 \define cheatsheetstatetid() $:/state/can/omni/cheatsheet/$(omniqual)$
 
-\define foldstatetiddler() $:/state/can/omni/fold/$(createdid)$
+\define foldstatetiddler() $:/state/can/omni/fold/$(omniqual)$
 
-\define omnistatetiddler() $:/state/can/omni/omni/$(createdid)$
+\define omnistatetiddler() $:/state/can/omni/omni/$(omniqual)$
 
 \define top-omniadd-openstatetid() $:/state/can/omni/top-openstate/$(omniqual)$
 \define top-omniaddstatetid() $:/state/can/omni/top-omniaddstate/$(omniqual)$
@@ -21,8 +23,8 @@ type: text/vnd.tiddlywiki
 \define bottom-omniadd-openstatetid() $:/state/can/omni/bottom-openstate/$(omniqual)$
 \define bottom-omniaddstatetid() $:/state/can/omni/bottom-omniaddstate/$(omniqual)$
 
-\define peri-omniadd-openstatetid() $:/state/can/omni/peri-openstate/$(createdid)$
-\define peri-omniaddstatetid() $:/state/can/omni/peri-omniaddstate/$(createdid)$
+\define peri-omniadd-openstatetid() $:/state/can/omni/peri-openstate/$(omniqual)$
+\define peri-omniaddstatetid() $:/state/can/omni/peri-omniaddstate/$(omniqual)$
 
 \define append-omniadd-openstatetid() $:/state/can/omni/append-openstate/$(omniqual)$
 \define append-omniaddstatetid() $:/state/can/omni/append-omniaddstate/$(omniqual)$

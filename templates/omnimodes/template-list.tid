@@ -19,7 +19,7 @@ tags:
 \define compose-omni-toplevel() 
 <<can-omni-toptools>>
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="list">
-<$qualify name=omniqual title={{!!created}}>
+<$vars omniqual={{!!created}}>
     <div class="can-omni-stream list" >
         <$eventcatcher events="click" selector=".omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
             <<can-omni-topadd>>
@@ -28,22 +28,22 @@ tags:
             <$macrocall $name=everylist depth=0 />
         </$list>
     </div>
-</$qualify>
+</$vars>
 </$vars>
       
 \end
 
 \define compose-omni(mode:list depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="list">
-<$qualify name=omniqual title={{!!created}}>
+<$vars omniqual={{!!created}}>
     <div class="can-omni-stream list" >
         <$list filter="[all[current]list[!!omni-list]]">
-            <!--<$qualify name=createdid title={{!!created}} >-->
+            <!--<$vars creatednum={{!!created}} >-->
                 <$macrocall $name=everylist depth=<<__depth__>> />
-            <!--</$qualify>-->
+            <!--</$vars>-->
         </$list>
     </div>
-</$qualify>
+</$vars>
 </$vars>
 \end
 

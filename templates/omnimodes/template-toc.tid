@@ -21,15 +21,15 @@ tags:
 
 \define compose-omni(mode:toc depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="toc">
-<$qualify name=omniqual title={{!!created}}>
+<$vars omniqual={{!!created}}>
     <div class="can-omni-stream toc" >
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
-            <$qualify name=createdid title={{!!created}} >
+            <$vars creatednum={{!!created}} >
                 <$macrocall $name=everytoc depth=<<__depth__>> />
-            </$qualify>
+            </$vars>
         </$list>
     </div>
-</$qualify>
+</$vars>
 </$vars>
 \end
 

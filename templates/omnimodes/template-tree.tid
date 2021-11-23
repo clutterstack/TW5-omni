@@ -37,16 +37,16 @@ title: $:/plugins/can/omni/template-tree
 
 \define compose-omni(mode:tree depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="tree">
-<$qualify name=omniqual title={{!!created}}>
+<$vars omniqual={{!!created}}>
     <div class="can-omni-stream tree" >
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
-            <$qualify name=createdid title={{!!created}} >
+            <$vars creatednum={{!!created}} >
                 <$macrocall $name=everytree depth=<<__depth__>> />
-            </$qualify>
+            </$vars>
         </$list>
     </div>
     <<can-omni-bottomadd>>
-</$qualify>
+</$vars>
 </$vars>
 \end
 

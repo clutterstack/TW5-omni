@@ -49,9 +49,9 @@ type: text/vnd.tiddlywiki
 \define unfoldallactions()
 <$wikify name=wicked text='"<<currentTiddler>>" <<recurser>>' >
 <$list filter=<<wicked>> >
-    <$qualify name=createdid title={{!!created}} >
+    <$vars creatednum={{!!created}} >
         <$action-setfield $tiddler=<<foldstatetiddler>> foldstate='show'/>
-    </$qualify>
+    </$vars>
 </$list>
 </$wikify>
 \end
@@ -59,9 +59,9 @@ type: text/vnd.tiddlywiki
 \define foldallactions()
 <$wikify name=wicked text='"<<currentTiddler>>" <<recurser>>' >
 <$list filter=<<wicked>> >
-    <$qualify name=createdid title={{!!created}} >
+    <$vars creatednum={{!!created}} >
         <$action-setfield $tiddler=<<foldstatetiddler>> foldstate='hide'/>
-    </$qualify>
+    </$vars>
 </$list>
 </$wikify>
 \end
@@ -77,9 +77,9 @@ type: text/vnd.tiddlywiki
 \define explodeallactions()
 <$wikify name=wicked text='"<<currentTiddler>>" <<recurser>>' >
 <$list filter=<<wicked>> >
-    <$qualify name=createdid title={{!!created}} >
+    <$vars creatednum={{!!created}} >
         <$action-setfield $tiddler=<<omnistatetiddler>> $value='show'/>
-    </$qualify>
+    </$vars>
 </$list>
 </$wikify>
 \end
@@ -87,9 +87,9 @@ type: text/vnd.tiddlywiki
 \define implodeallactions()
 <$wikify name=wicked text='"<<currentTiddler>>" <<recurser>>' >
 <$list filter=<<wicked>> >
-    <$qualify name=createdid title={{!!created}} >
+    <$vars creatednum={{!!created}} >
         <$action-setfield $tiddler=<<omnistatetiddler>> $value='hide'/>
-    </$qualify>
+    </$vars>
 </$list>
 </$wikify>
 \end
@@ -105,17 +105,17 @@ type: text/vnd.tiddlywiki
 
 \define unfoldallactions-old() 
     <$list filter='[all[current]list[!!omni-list]is[tiddler]]'>
-        <$qualify name=createdid title={{!!created}} >
+        <$vars creatednum={{!!created}} >
         <$action-setfield $tiddler=<<foldstatetiddler>> $value='show'/>
-        </$qualify>
+        </$vars>
     </$list>
 \end
 
 \define foldallactions-old() 
     <$list filter='[all[current]list[!!omni-list]is[tiddler]]'>
-        <$qualify name=createdid title={{!!created}} >
+        <$vars creatednum={{!!created}} >
         <$action-setfield $tiddler=<<foldstatetiddler>> $value='hide'/>
-        </$qualify>
+        </$vars>
     </$list>
 \end
 
@@ -124,17 +124,17 @@ type: text/vnd.tiddlywiki
     <$button class="tc-btn-invisible omni-button" tooltip="Unfold all items" aria-label="Unfold all items">
         {{$:/core/images/unfold-all-button}}
         <$list filter='[all[current]list[!!omni-list]is[tiddler]]'>
-            <$qualify name=createdid title={{!!created}} >
+            <$vars creatednum={{!!created}} >
             <$action-setfield $tiddler=<<foldstatetiddler>> $value='show'/>
-            </$qualify>
+            </$vars>
         </$list>
     </$button>
     <$button class="tc-btn-invisible omni-button" tooltip="Fold all items" aria-label="Fold all items">
         {{$:/core/images/fold-all-button}}
         <$list filter='[all[current]list[!!omni-list]is[tiddler]]'>
-            <$qualify name=createdid title={{!!created}} >
+            <$vars creatednum={{!!created}} >
             <$action-setfield $tiddler=<<foldstatetiddler>> $value='hide'/>
-            </$qualify>
+            </$vars>
         </$list>
     </$button>
 </div>

@@ -39,16 +39,16 @@ type: text/vnd.tiddlywiki
 
 \define omni-savetid() {{{[{$(statetid)$get[savetitle]]}}}
 
-\define omni-kb-autoadd-action()
+\define omni-kb-autoadd-action(need to replace qualify with getting root omni)
 <$wikify name=newtitle text=<<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>> >
 	<$action-createtiddler $basetitle=<<newtitle>> $savetitle=!!savetitle created=<<newtitle>>  />
 	<$list filter="[<parentval>tag[refsource]]" variable="ignore"><$action-setfield $tiddler=<<newtitle>> refsource=<<parentval>>/></$list>
 	<$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<newtitle>] +[move<newtitle>]'/>
 	<$action-sendmessage $message='tm-auto-save-wiki'/>
 	<$tiddler tiddler=<<newtitle>> >
-	<$qualify name=createdid title=<<newtitle>>>
+	<$vars creatednum=<<newtitle>>>
 		<$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show" $timestamp='no'/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/><$action-setfield $tiddler=<<editstatetid>> throttle.refresh=yes/><<omni-suspend-nav-shortcuts>>
-	</$qualify>
+	</$vars>
 	</$tiddler>
 </$wikify>
 \end
@@ -61,9 +61,9 @@ type: text/vnd.tiddlywiki
 <$list filter="[<dom-data-parentval>tag[refsource]]" variable="ignore"><$action-setfield $tiddler=<<newtitle>> refsource=<<dom-data-parentval>>/></$list>
 <$macrocall $name=<<dom-data-position>>/>
 <$action-sendmessage $message='tm-auto-save-wiki'/>
-<$qualify name=createdid title=<<newtitle>>>
+<$vars creatednum=<<newtitle>>>
 <<omni-ec-startedit-actions>>
-</$qualify>
+</$vars>
 </$vars>
 </$wikify>
 \end
@@ -71,7 +71,7 @@ type: text/vnd.tiddlywiki
 \define omni-toggle-edit() <$action-setfield $tiddler=<<editstatetid>> editstate="edit" $timestamp='no'/>
 \define omni-toggle-view() <$action-setfield $tiddler=<<editstatetid>> editstate="view" $timestamp='no'/>
 
-\define omni-ec-startedit-actions() <$vars createdid=<<dom-data-createdid>>><$tiddler tiddler=<<dom-data-currenttid>> ><$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show" $timestamp='no'/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/><$action-setfield $tiddler=<<editstatetid>> throttle.refresh=yes/></$tiddler></$vars><<omni-suspend-nav-shortcuts>>
+\define omni-ec-startedit-actions() <$vars creatednum=<<dom-data-creatednum>>><$tiddler tiddler=<<dom-data-currenttid>> ><$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show" $timestamp='no'/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/><$action-setfield $tiddler=<<editstatetid>> throttle.refresh=yes/></$tiddler></$vars><<omni-suspend-nav-shortcuts>>
 
 \define omni-submitedit-actions() 
 <$action-setfield text={{$(editstatetid)$}}/><$action-deletetiddler $tiddler=<<editstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/><<omni-enable-nav-shortcuts>><<omni-kb-autoadd-action>>
@@ -144,10 +144,10 @@ type: text/vnd.tiddlywiki
 
 \define omni-start-tiddler-drag() <$action-listops $field=dragstarttiddler $filter=<<parentval>> />
 
-\define can-omni-shift-drop() 
-<$list filter="[<modifier>match[shift]]" variable="null">
+\define omni-move-drop() 
+<$list filter="[<modifier>!match[ctrl]!match[meta]]" variable="null">
 	<$set name=dragstarttitle filter="[<actionTiddler>get[dragstarttiddler]]" select="0">
-	<$action-listops $tiddler=<<dragstarttitle>> $field='omni-list' $subfilter='-[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='-[<parentval>]'/><$list filter="[<dragstarttitle>get[list]] -[<actionTiddler>]" emptyMessage="""<$action-listops $tiddler=<<dragstarttitle>> $field="tags" $subfilter="-omnibus"/>""" variable=ignore ></$list>
+	<$action-listops $tiddler=<<dragstarttitle>> $field='omni-list' $subfilter='-[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='-[<parentval>]'/>
 	</$set>
 </$list>
 \end

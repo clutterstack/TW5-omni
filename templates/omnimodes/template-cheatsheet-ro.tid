@@ -40,21 +40,21 @@ title: $:/plugins/can/omni/template-cheatsheetro
         <!-- <$macrocall $name="omni-breadcrumbs" statetid=<<cheatsheetstatetid>> /> -->
         <!-- <<cheatsheet-title-ro>> -->
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
-            <$qualify name=createdid title={{!!created}} >
+            <$vars creatednum={{!!created}} >
                 <$macrocall $name=everycheatsheetro depth=<<__depth__>> />
-            </$qualify>
+            </$vars>
         </$list>
     </$eventcatcher>
 </$vars>
 \end
 
 <$vars omnitid={{!!title}}>
-<$qualify name=omniqual title={{!!created}}>
+<$vars omniqual={{!!created}}>
 <$tiddler tiddler={{{[<cheatsheetstatetid>get[text]else{!!title}]}}}>
 <!-- cheatsheetstatetid: <<cheatsheetstatetid>> <br>
 currentTiddler: <<currentTiddler>> <br>
 omnitid: <<omnitid>> <br> -->
 <<compose-omni-toplevel>>
 </$tiddler>
-</$qualify>
+</$vars>
 </$vars>

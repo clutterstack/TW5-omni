@@ -17,7 +17,7 @@ type: text/vnd.tiddlywiki
 
 \define can-omni-topadd(layout:"subui-caption" endstate:"closed")
 <$vars openstatetid=<<top-omniadd-openstatetid>> omniaddstatetid=<<top-omniaddstatetid>> position="omni-listtop">
-	<$droppable tag="div" class="can-omni-topadd" actions="<<can-omni-shift-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>] +[putfirst[]]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+	<$droppable tag="div" class="can-omni-topadd" actions="<<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>] +[putfirst[]]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
 		<<omni-addbutton>>
 	</$droppable>
 </$vars>
@@ -25,7 +25,7 @@ type: text/vnd.tiddlywiki
 
 \define can-omni-bottomadd(layout:"subui-caption" endstate:"closed")
 <$vars openstatetid=<<bottom-omniadd-openstatetid>> omniaddstatetid=<<bottom-omniaddstatetid>> position="omni-listbottom">
-	<$droppable tag="div" class="can-omni-bottomadd" actions="<<can-omni-shift-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+	<$droppable tag="div" class="can-omni-bottomadd" actions="<<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
 		<<omni-addbutton>>
 	</$droppable>
 </$vars>
@@ -33,7 +33,7 @@ type: text/vnd.tiddlywiki
 
 \define can-omni-peripheral(layout:"subui-caption" endstate:"closed")
 <$vars openstatetid=<<peri-omniadd-openstatetid>> omniaddstatetid=<<peri-omniaddstatetid>> position="omni-inlist">
-<$droppable class="can-omni-peripheral" tag="div" actions="<<can-omni-shift-drop>><$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+<$droppable class="can-omni-peripheral" tag="div" actions="<<omni-move-drop>><$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
     <<omni-addbutton>>
 </$droppable>
 </$vars>
@@ -102,12 +102,9 @@ type: text/vnd.tiddlywiki
 
 \define can-omni-text()
 <!-- omnicrumbs: <<omnicrumbs>> <br> -->
-qualify: <<qualify>> <br>
-editstatetid: <<editstatetid>> <br>
-editstate: {{{[<editstatetid>get[editstate]]}}} <br>
 <$list filter="[<editstatetid>get[editstate]match[edit]]" variable="ignore" 
 emptyMessage=
-"""<div class="omni-text-dblclick tc-tiddler-body" data-createdid=<<createdid>> data-currenttid=<<currentTiddler>> data-parentval=<<parentval>> data-breadcrumbs=<<omnicrumbs>> >
+"""<div class="omni-text-dblclick tc-tiddler-body" data-creatednum=<<creatednum>> data-currenttid=<<currentTiddler>> data-parentval=<<parentval>> data-breadcrumbs=<<omnicrumbs>> >
 	<$transclude $tiddler="<<currentTiddler>>" mode="block"/>
 </div>""">
 	<$keyboard tag="div" class="tc-can-keyboard" key="((input-accept-variant))" actions="<<omni-submitedit-actions>>" >

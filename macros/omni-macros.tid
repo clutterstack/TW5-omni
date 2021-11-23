@@ -5,15 +5,13 @@ title: $:/plugins/can/omni/omnibus-macros
 
 \define compose-omni-subtoc()
 <$vars datatiddler=$(omni-datastate)$>
-<$qualify name=omniqual title={{!!created}}>
 <div class="can-omni-stream subtoc" >
 	<$list filter="[all[current]list[!!omni-list]is[tiddler]]">
-        <$qualify name=createdid title={{!!created}} >
+        <$vars creatednum={{!!created}} >
             <<everytoc>>
-        </$qualify>
+        </$vars>
 	</$list>
 </div>
-</$qualify>
 </$vars>
 \end
 

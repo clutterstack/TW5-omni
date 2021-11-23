@@ -40,31 +40,31 @@ tags:
                 <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-delete-action>> tag="div">
                     <$eventcatcher events="click" selector=".omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
                         <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="floo">
-                        <$qualify name=omniqual title={{!!created}}>
+                        <$vars creatednum={{!!created}}>
                             <div class="can-omni-stream floo" >
                             <<can-omni-toptools>>
                                 <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
-                                    <$qualify name=createdid title={{!!created}} >
+                                    <$vars creatednum={{!!created}} >
                                         <$macrocall $name=topfloo />
-                                    </$qualify>
+                                    </$vars>
                                 </$list>
                             </div>
-                        </$qualify>
+                        </$vars>
                         </$vars>             
 </$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher>
 \end
 
 \define compose-omni(mode:floo depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="floo">
-<$qualify name=omniqual title={{!!created}}>
+<$vars creatednum={{!!created}}>
     <div class="can-omni-stream floo" >
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
-            <$qualify name=createdid title={{!!created}} >
+            <$vars creatednum={{!!created}} >
                 <$macrocall $name=everyfloo depth=<<__depth__>> />
-            </$qualify>
+            </$vars>
         </$list>
     </div>
-</$qualify>
+</$vars>
 </$vars>
 \end
 

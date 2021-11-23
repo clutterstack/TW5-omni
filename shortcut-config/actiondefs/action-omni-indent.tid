@@ -1,7 +1,7 @@
-title: $:/plugins/can/omni/kbshortcuts/indent
+title: $:/plugins/can/omni/kbshortcuts/omni-indent
 key: ((omni-indent)) 
 omni-shortcut: yep
 
-\import [[testmodal macro]]
+\import $:/plugins/can/omni/shortcut-actions
 
-<<testmodal>>
+<<omni-indent>>

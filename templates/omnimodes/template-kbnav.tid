@@ -8,7 +8,7 @@ title: $:/plugins/can/omni/template-kbnav
         </$list>
         <<can-omni-peripheral layout:kbnavadd endstate:open>>
         <<can-omni-tree-itemhandle>>
-        <$droppable class="omni-text-display" tag="div" actions="<<can-omni-shift-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>" >
+        <$droppable class="omni-text-display" tag="div" actions="<<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>" >
         <<can-omni-text>>
         </$droppable>
         <div class="can-omni-subctl">
@@ -26,6 +26,7 @@ title: $:/plugins/can/omni/template-kbnav
 \end
 
 \define compose-omni-toplevel() 
+<$vars baseomni=<<currentTiddler>>>
 <$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-ec-startedit-actions>> tag="div">
     <$eventcatcher events="click" selector=".can-omni-link" actions-click=<<omni-navigate-action>> tag="div">
         <$eventcatcher events="click" selector=".omni-text-dblclick" actions-click=<<omni-select-node>> tag="div">
@@ -36,23 +37,21 @@ title: $:/plugins/can/omni/template-kbnav
                         actions-click=<<omni-ec-addtiddler-action>> tag="div">
                             <<can-omni-toptools>>
                         <$macrocall $name=compose-omni depth=0/>  
-</$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher>
+</$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$vars>
 \end
 
 \define compose-omni(mode:kbnav depth)
-<$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="kbnav" template="everykbnav">
-<$qualify name=omniqual title={{!!created}}>
+<$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="kbnav" template="everykbnav" creatednum={{!!created}}>
     <div class="can-omni-stream kbnav" >
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
         <$set name=omnicrumbs filter="""[<omnicrumbs>enlist-input[]] [<parentval>]""">
-            <$qualify name=createdid title={{!!created}} >
+            <$vars creatednum={{!!created}}>
                 <$macrocall $name=<<template>> depth=<<__depth__>> />
-            </$qualify>
+            </$vars>
         </$set>
         </$list>
     </div>
     <<can-omni-bottomadd layout:slimui endstate:open>>
-</$qualify>
 </$vars>
 \end
 
