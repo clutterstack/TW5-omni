@@ -85,6 +85,13 @@ type: text/vnd.tiddlywiki
 \end
 
 \define can-omni-tree-itemhandle()
+<div class=can-omni-itemhandle data-currenttid=<<currentTiddler>> data-parentval=<<parentval>> data-breadcrumbs=<<omnicrumbs>> title="Click to toggle text edit. Drag to move list entry." aria-label="Click to toggle text edit. Drag to move list entry.">
+    <$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> class="can-omni-itemhandle-inner"></$draggable>
+</div>
+\end
+
+
+\define can-omni-tree-itemhandle-old()
 <$button class="can-omni-itemhandle tc-btn-invisible" tabindex="1" actions=<<omni-handle-toggle-actions>> tooltip="Click to toggle text edit. Drag to move list entry." aria-label="Click to toggle text edit. Drag to move list entry.">
     <$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> class="can-omni-itemhandle-inner"></$draggable>
 </$button>

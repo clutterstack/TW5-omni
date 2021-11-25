@@ -1,7 +1,7 @@
 title: $:/plugins/can/omni/shortcut-actions
 type: text/vnd.tiddlywiki
 
-\define localtestmodal() <$vars selectey=<<grandparent>>><$action-sendmessage $message="tm-modal" $param="dd-walkthrough test modal" selected=<<selectey>>/></$vars>
+\define localtestmodal() <$vars selectey=<<targTiddler>>><$action-sendmessage $message="tm-modal" $param="dd-walkthrough test modal" selected=<<selectey>>/></$vars>
 
 \define omniCurrentNode() {{$:/state/can/omni/omniCurrentNode}}
 
@@ -19,15 +19,15 @@ type: text/vnd.tiddlywiki
 
 
 \define omni-nav-next() 
-<$vars nextTiddler={{{[{$:/state/can/omni/omniCurrentNode!!omniparent}get[omni-list]enlist-input[]after{$:/state/can/omni/omniCurrentNode}]}}}>
-<$list filter="[<nextTiddler>is[tiddler]]" variable="ignore">
+<$vars nextTiddler={{{[{$:/state/can/omni/omniCurrentNode!!omniparent}get[omni-list]enlist-input[]is[tiddler]after{$:/state/can/omni/omniCurrentNode}]}}}>
+<$list filter="[<nextTiddler>is[tiddler]]" variable="ignore" >
 <$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<nextTiddler>> />
 </$list>
 </$vars>
 \end
 
 \define omni-nav-prev() 
-<$vars prevTiddler={{{[{$:/state/can/omni/omniCurrentNode!!omniparent}get[omni-list]enlist-input[]before{$:/state/can/omni/omniCurrentNode}]}}}>
+<$vars prevTiddler={{{[{$:/state/can/omni/omniCurrentNode!!omniparent}get[omni-list]enlist-input[]is[tiddler]before{$:/state/can/omni/omniCurrentNode}]}}}>
 <$list filter="[<prevTiddler>is[tiddler]]" variable="ignore">
 <$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<prevTiddler>> />
 </$list>
@@ -35,8 +35,8 @@ type: text/vnd.tiddlywiki
 \end
 
 \define omni-nav-dive() 
-<$vars targTiddler={{{[{$:/state/can/omni/omniCurrentNode}get[omni-list]enlist-input[]first[]]}}} >
-<$list filter="[<targTiddler>is[tiddler]]" variable="ignore">
+<$vars targTiddler={{{[{$:/state/can/omni/omniCurrentNode}get[omni-list]enlist-input[]is[tiddler]first[]]}}} >
+<$list filter="[<targTiddler>is[tiddler]]" variable="ignore" >
 <$action-listops $tiddler="$:/state/can/omni/omniCurrentNode" $field="breadcrumbs" $subfilter="[{$:/state/can/omni/omniCurrentNode}]"/>
 <$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" omniparent={{$:/state/can/omni/omniCurrentNode}}  />
 <$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<targTiddler>>  />
@@ -45,8 +45,8 @@ type: text/vnd.tiddlywiki
 \end
 
 \define omni-nav-surface() 
-<$vars targTiddler={{{[[$:/state/can/omni/omniCurrentNode]get[breadcrumbs]enlist-input[]last[]]}}} >
-<$list filter="[<targTiddler>is[tiddler]]" variable="ignore">
+<$vars targTiddler={{{[[$:/state/can/omni/omniCurrentNode]get[breadcrumbs]enlist-input[]is[tiddler]last[]]}}} >
+<$list filter="[[$:/state/can/omni/omniCurrentNode]get[breadcrumbs]enlist-input[]count[]compare:number:gt[1]]" variable="ignore">
 <$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<targTiddler>> />
 <$action-listops $tiddler="$:/state/can/omni/omniCurrentNode" $field="breadcrumbs" $subfilter="-[<targTiddler>]"/>
 <$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" omniparent={{{[[$:/state/can/omni/omniCurrentNode]get[breadcrumbs]enlist-input[]last[]]}}}  />
@@ -65,25 +65,16 @@ type: text/vnd.tiddlywiki
 
 
 \define omni-move-up()
-<$action-listops $tiddler={{$:/state/can/omni/omniCurrentNode!!omniparent}} $field='omni-list' $subfilter="+[move:-1{$:/state/can/omni/omniCurrentNode}]" />
+<$action-listops $tiddler={{$:/state/can/omni/omniCurrentNode!!omniparent}} $field='omni-list' $subfilter="[is[tiddler]] +[move:-1{$:/state/can/omni/omniCurrentNode}]" />
 \end
-
-\define omni-move-up-not()
-<$vars prevTiddler={{{[{$:/state/can/omni/omniCurrentNode!!omniparent}get[omni-list]enlist-input[]before{$:/state/can/omni/omniCurrentNode}]}}}>
-<$list filter="[<prevTiddler>is[tiddler]]" variable=ignore>
-<$action-listops $tiddler={{$:/state/can/omni/omniCurrentNode!!omniparent}} $field='omni-list' $subfilter="+[insertbefore:prevTiddler{$:/state/can/omni/omniCurrentNode}]" />
-</$list>
-</$vars>
-\end
-
 
 \define omni-move-down()
-<$action-listops $tiddler={{$:/state/can/omni/omniCurrentNode!!omniparent}} $field='omni-list' $subfilter="+[move{$:/state/can/omni/omniCurrentNode}]" />
+<$action-listops $tiddler={{$:/state/can/omni/omniCurrentNode!!omniparent}} $field='omni-list' $subfilter="[is[tiddler]] +[move{$:/state/can/omni/omniCurrentNode}]" />
 \end
 
 
 \define omni-indent()
-<$vars prevTiddler={{{[{$:/state/can/omni/omniCurrentNode!!omniparent}get[omni-list]enlist-input[]before{$:/state/can/omni/omniCurrentNode}]}}}>
+<$vars prevTiddler={{{[{$:/state/can/omni/omniCurrentNode!!omniparent}get[omni-list]enlist-input[]is[tiddler]before{$:/state/can/omni/omniCurrentNode}]}}}>
 <$list filter="[<prevTiddler>is[tiddler]]" variable=ignore>
 <$action-listops $tiddler=<<prevTiddler>> $field='omni-list' $subfilter="[{$:/state/can/omni/omniCurrentNode}]" />
 <$action-listops $tiddler={{$:/state/can/omni/omniCurrentNode!!omniparent}} $field='omni-list' $subfilter="-[{$:/state/can/omni/omniCurrentNode}]"/>
@@ -95,8 +86,8 @@ type: text/vnd.tiddlywiki
 
 
 \define omni-unindent()
-<$vars grandparent={{{[[$:/state/can/omni/omniCurrentNode]get[breadcrumbs]enlist-input[]last[2]first[]]}}} newPrev={{{[{$:/state/can/omni/omniCurrentNode!!omniparent}]}}}>
-<$list filter="[<grandparent>is[tiddler]]" variable=ignore>
+<$vars grandparent={{{[{$:/state/can/omni/omniCurrentNode!!breadcrumbs}enlist-input[]is[tiddler]butlast[]last[]]}}} newPrev={{{[{$:/state/can/omni/omniCurrentNode!!omniparent}]}}}>
+<$list filter="[[$:/state/can/omni/omniCurrentNode]get[breadcrumbs]enlist-input[]count[]compare:number:gt[1]]" variable=ignore>
 <$action-listops $tiddler=<<grandparent>> $field='omni-list' $subfilter="+[insertbefore:newPrev{$:/state/can/omni/omniCurrentNode}] +[move{$:/state/can/omni/omniCurrentNode}]" />
 <$action-listops $tiddler={{$:/state/can/omni/omniCurrentNode!!omniparent}} $field='omni-list' $subfilter="-[{$:/state/can/omni/omniCurrentNode}]"/>
 <$action-listops $tiddler="$:/state/can/omni/omniCurrentNode" $field="breadcrumbs" $subfilter="-[{$:/state/can/omni/omniCurrentNode!!omniparent}]"/>
