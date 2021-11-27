@@ -69,11 +69,11 @@ type: text/vnd.tiddlywiki
 \end
 
 \define omni-move-up()
-<$action-listops $tiddler={{$:/state/can/omni/omniCurrentNode!!omniparent}} $field='omni-list' $filter="[all[current]get[omni-list]enlist-input[]is[tiddler]] +[move:-1{$:/state/can/omni/omniCurrentNode}]" />
+<$action-listops $tiddler={{$:/state/can/omni/omniCurrentNode!!omniparent}} $field='omni-list' $subfilter="-[all[current]get[omni-list]enlist-input[]!is[tiddler]] +[move:-1{$:/state/can/omni/omniCurrentNode}]" />
 \end
 
 \define omni-move-down()
-<$action-listops $tiddler={{$:/state/can/omni/omniCurrentNode!!omniparent}} $field='omni-list' $filter="[all[current]get[omni-list]enlist-input[]is[tiddler]] +[move{$:/state/can/omni/omniCurrentNode}]" />
+<$action-listops $tiddler={{$:/state/can/omni/omniCurrentNode!!omniparent}} $field='omni-list' $subfilter="-[all[current]get[omni-list]enlist-input[]!is[tiddler]] +[move{$:/state/can/omni/omniCurrentNode}]" />
 \end
 
 \define omni-indent()
