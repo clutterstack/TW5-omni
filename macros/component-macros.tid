@@ -14,18 +14,9 @@ type: text/vnd.tiddlywiki
 <$button class="tc-btn-invisible omni-button"  actions="""<$action-listops $field="cheatsheet-colspan" $subfilter='+[add[1]] ~[[2]]'/>""">{{$:/plugins/can/omni/cols-plus-v6.svg}}</$button><$button class="tc-btn-invisible omni-button"  actions="""<$action-listops $field="cheatsheet-colspan" $subfilter='+[subtract[1]max[1]] ~[[1]]'/>""">{{$:/plugins/can/omni/cols-minus-v6.svg}}</$button>
 \end
 
-
-\define can-omni-topadd(layout:"subui-caption" endstate:"closed")
-<$vars openstatetid=<<top-omniadd-openstatetid>> omniaddstatetid=<<top-omniaddstatetid>> position="omni-listtop">
-	<$droppable tag="div" class="can-omni-topadd" actions="<<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>] +[putfirst[]]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
-		<<omni-addbutton>>
-	</$droppable>
-</$vars>
-\end
-
 \define can-omni-bottomadd(layout:"subui-caption" endstate:"closed")
 <$vars openstatetid=<<bottom-omniadd-openstatetid>> omniaddstatetid=<<bottom-omniaddstatetid>> position="omni-listbottom">
-	<$droppable tag="div" class="can-omni-bottomadd" actions="<<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+	<$droppable tag="div" class="can-omni-bottomadd" actions="""<$list filter="[<actionTiddler>!is[current]]  -[<omnicrumbs>enlist-input[]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""">
 		<<omni-addbutton>>
 	</$droppable>
 </$vars>
@@ -33,7 +24,7 @@ type: text/vnd.tiddlywiki
 
 \define can-omni-peripheral(layout:"subui-caption" endstate:"closed")
 <$vars openstatetid=<<peri-omniadd-openstatetid>> omniaddstatetid=<<peri-omniaddstatetid>> position="omni-inlist">
-<$droppable class="can-omni-peripheral" tag="div" actions="<<omni-move-drop>><$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+<$droppable class="can-omni-peripheral" tag="div" actions="""<$list filter="[<actionTiddler>] -[<omnicrumbs>enlist-input[]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""">
     <<omni-addbutton>>
 </$droppable>
 </$vars>
@@ -50,15 +41,6 @@ type: text/vnd.tiddlywiki
 	{{$:/core/images/right-arrow}}
 </$list>
 </div>
-\end
-
-\define can-omni-folder-old()
-<$button class="can-omni-foldbutton tc-btn-invisible can-small-text-button">
-<$list filter="[<foldstatetiddler>get[text]match[hide]]" emptyMessage="""<<omni-toggle-view>><$action-setfield $tiddler=<<foldstatetiddler>> foldstate="hide"/>{{$:/core/images/down-arrow}}""" variable="ignore">
-	<$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show"/>
-	{{$:/core/images/right-arrow}}
-</$list>
-</$button>
 \end
 
 \define can-omni-omni-show()

@@ -1,7 +1,22 @@
 title: $:/plugins/can/omni/shortcut-actions
 type: text/vnd.tiddlywiki
 
-\define localtestmodal() <$vars selectey=<<targTiddler>>><$action-sendmessage $message="tm-modal" $param="dd-walkthrough test modal" selected=<<selectey>>/></$vars>
+\define localtestmodal() <$vars selectey=<<editstatetid>>><$action-sendmessage $message="tm-modal" $param="dd-walkthrough test modal" selected=<<selectey>>/></$vars>
+
+\define omni-kb-addtiddler()
+<$wikify name=creatednum text=<<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>> >
+	<$vars parentval={{$:/state/can/omni/omniCurrentNode!!omniparent}} currentNode={{$:/state/can/omni/omniCurrentNode}} baseomni={{{[[$:/state/can/omni/omniCurrentNode]get[breadcrumbs]enlist-input[]first[]]}}}>
+		<$action-createtiddler $basetitle=<<creatednum>> created=<<creatednum>>  />
+		<$list filter="[<parentval>tag[refsource]]" variable="ignore"><$action-setfield $tiddler=<<creatednum>> refsource=<<parentval>>/></$list>
+		<$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentNode<creatednum>] +[move<creatednum>]'/>
+		<!-- <$action-sendmessage $message='tm-auto-save-wiki'/> -->
+		<$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<creatednum>> />
+		<$tiddler tiddler=<<creatednum>> >
+		<$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show" $timestamp='no'/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> throttle.refresh=yes/><<omni-suspend-nav-shortcuts>>
+	</$tiddler>
+	</$vars>
+</$wikify>
+\end
 
 \define omniCurrentNode() {{$:/state/can/omni/omniCurrentNode}}
 
@@ -16,7 +31,6 @@ type: text/vnd.tiddlywiki
 </$tiddler>
 <<omni-suspend-nav-shortcuts>>
 \end
-
 
 \define omni-nav-next() 
 <$vars nextTiddler={{{[{$:/state/can/omni/omniCurrentNode!!omniparent}get[omni-list]enlist-input[]is[tiddler]after{$:/state/can/omni/omniCurrentNode}]}}}>
@@ -54,24 +68,13 @@ type: text/vnd.tiddlywiki
 </$vars>
 \end
 
-\define omni-nav-surface-old() 
-<$vars targTiddler={{{[{$:/state/can/omni/omniCurrentNode}get[breadcrumbs]enlist-input[]last[]]}}} breadcrumbs={{{[{$:/state/can/omni/omniCurrentNode}get[breadcrumbs]enlist-input[]butlast[]]}}} >
-<$list filter="[<targTiddler>is[tiddler]]" variable="ignore">
-<$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<targTiddler>> />
-<$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" breadcrumbs=<<breadcrumbs>> />
-</$list>
-</$vars>
-\end
-
-
 \define omni-move-up()
-<$action-listops $tiddler={{$:/state/can/omni/omniCurrentNode!!omniparent}} $field='omni-list' $subfilter="[is[tiddler]] +[move:-1{$:/state/can/omni/omniCurrentNode}]" />
+<$action-listops $tiddler={{$:/state/can/omni/omniCurrentNode!!omniparent}} $field='omni-list' $filter="[all[current]get[omni-list]enlist-input[]is[tiddler]] +[move:-1{$:/state/can/omni/omniCurrentNode}]" />
 \end
 
 \define omni-move-down()
-<$action-listops $tiddler={{$:/state/can/omni/omniCurrentNode!!omniparent}} $field='omni-list' $subfilter="[is[tiddler]] +[move{$:/state/can/omni/omniCurrentNode}]" />
+<$action-listops $tiddler={{$:/state/can/omni/omniCurrentNode!!omniparent}} $field='omni-list' $filter="[all[current]get[omni-list]enlist-input[]is[tiddler]] +[move{$:/state/can/omni/omniCurrentNode}]" />
 \end
-
 
 \define omni-indent()
 <$vars prevTiddler={{{[{$:/state/can/omni/omniCurrentNode!!omniparent}get[omni-list]enlist-input[]is[tiddler]before{$:/state/can/omni/omniCurrentNode}]}}}>
@@ -84,7 +87,6 @@ type: text/vnd.tiddlywiki
 </$vars>
 \end
 
-
 \define omni-unindent()
 <$vars grandparent={{{[{$:/state/can/omni/omniCurrentNode!!breadcrumbs}enlist-input[]is[tiddler]butlast[]last[]]}}} newPrev={{{[{$:/state/can/omni/omniCurrentNode!!omniparent}]}}}>
 <$list filter="[[$:/state/can/omni/omniCurrentNode]get[breadcrumbs]enlist-input[]count[]compare:number:gt[1]]" variable=ignore>
@@ -95,10 +97,6 @@ type: text/vnd.tiddlywiki
 </$list>
 </$vars>
 \end
-
-<!-- 
- -->
-
 
 <!-- \define omni-move-later-actions()
 <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter="+[move[$(omniCurrentNode)$]]"/>

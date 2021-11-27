@@ -1,0 +1,10 @@
+tags: 
+title: $:/plugins/can/omni/kbshortcuts/omni-kb-add
+key: ((omni-kb-add))
+omni-shortcut: yep
+
+\import $:/plugins/can/omni/action-macros
+\import $:/plugins/can/omni/shortcut-actions
+\import $:/plugins/can/omni/component-state-defs
+
+<<omni-kb-addtiddler>>

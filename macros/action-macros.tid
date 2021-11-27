@@ -11,6 +11,13 @@ type: text/vnd.tiddlywiki
 <$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<dom-data-currenttid>> omniparent=<<dom-data-parentval>> breadcrumbs=<<dom-data-breadcrumbs>>/><<omni-enable-nav-shortcuts>>
 \end 
 
+\define omni-deselect-node()
+<$action-deletetiddler $tiddler="$:/state/can/omni/omniCurrentNode" />
+<$list filter="[all[tiddlers+shadows]has[omni-shortcut]]">
+<$action-listops $tags="-[[$:/tags/KeyboardShortcut]]"/>
+</$list>
+\end
+
 \define omni-suspend-nav-shortcuts() 
 <$list filter="[all[tiddlers+shadows]has[omni-shortcut]]"><$action-listops $tags="-[[$:/tags/KeyboardShortcut]]"/></$list>
 \end
@@ -37,7 +44,7 @@ type: text/vnd.tiddlywiki
 
 \define omni-savetid() {{{[{$(statetid)$get[savetitle]]}}}
 
-\define omni-kb-autoadd-action(need to replace qualify with getting root omni)
+\define omni-kb-autoadd-action()
 <$wikify name=newtitle text=<<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>> >
 	<$action-createtiddler $basetitle=<<newtitle>> $savetitle=!!savetitle created=<<newtitle>>  />
 	<$list filter="[<parentval>tag[refsource]]" variable="ignore"><$action-setfield $tiddler=<<newtitle>> refsource=<<parentval>>/></$list>
@@ -72,7 +79,7 @@ type: text/vnd.tiddlywiki
 \define omni-ec-startedit-actions() <$vars creatednum=<<dom-data-creatednum>>><$tiddler tiddler=<<dom-data-currenttid>> ><$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show" $timestamp='no'/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/><$action-setfield $tiddler=<<editstatetid>> throttle.refresh=yes/></$tiddler></$vars><<omni-suspend-nav-shortcuts>>
 
 \define omni-submitedit-actions() 
-<$action-setfield text={{$(editstatetid)$}}/><$action-deletetiddler $tiddler=<<editstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/><<omni-enable-nav-shortcuts>><<omni-kb-autoadd-action>>
+<$action-setfield text={{$(editstatetid)$}}/><$action-deletetiddler $tiddler=<<editstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/><<omni-enable-nav-shortcuts>>
 \end
 
 \define ADAPT-THIS-FOR-AFTER_SUBMIT-EDIT-ACTIONS()
@@ -145,7 +152,7 @@ type: text/vnd.tiddlywiki
 \define omni-move-drop() 
 <$list filter="[<modifier>!match[ctrl]!match[meta]]" variable="null">
 	<$set name=dragstarttitle filter="[<actionTiddler>get[dragstarttiddler]]" select="0">
-	<$action-listops $tiddler=<<dragstarttitle>> $field='omni-list' $subfilter='-[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='-[<parentval>]'/>
+	<$action-listops $tiddler=<<dragstarttitle>> $field='omni-list' $subfilter='-[<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='-[<parentval>]'/><$action-setfield $tiddler=<<actionTiddler>> $field=dragstarttiddler/>
 	</$set>
 </$list>
 \end
