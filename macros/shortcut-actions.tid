@@ -34,7 +34,7 @@ type: text/vnd.tiddlywiki
 
 \define omni-nav-next() 
 <$vars nextTiddler={{{[{$:/state/can/omni/omniCurrentNode!!omniparent}get[omni-list]enlist-input[]is[tiddler]after{$:/state/can/omni/omniCurrentNode}]}}}>
-<$list filter="[<nextTiddler>is[tiddler]]" variable="ignore" >
+<$list filter="[<nextTiddler>is[tiddler]]" variable="ignore" emptyMessage=<<omni-nav-dive>> >
 <$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<nextTiddler>> />
 </$list>
 </$vars>
@@ -42,7 +42,7 @@ type: text/vnd.tiddlywiki
 
 \define omni-nav-prev() 
 <$vars prevTiddler={{{[{$:/state/can/omni/omniCurrentNode!!omniparent}get[omni-list]enlist-input[]is[tiddler]before{$:/state/can/omni/omniCurrentNode}]}}}>
-<$list filter="[<prevTiddler>is[tiddler]]" variable="ignore">
+<$list filter="[<prevTiddler>is[tiddler]]" variable="ignore" emptyMessage=<<omni-nav-surface>>>
 <$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<prevTiddler>> />
 </$list>
 </$vars>
