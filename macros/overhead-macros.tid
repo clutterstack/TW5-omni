@@ -18,14 +18,16 @@ type: text/vnd.tiddlywiki
     <!--They have different workflows for adding and structures for information -->
 		<$button set="!!omnibus-mode" setTo="edit" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="Deluxe editing" aria-label="Deluxe editing">{{$:/plugins/can/omni/omnimode-edit.svg}}</$button>
         <$button set="!!omnibus-mode" setTo="exp" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="Tree with captions" aria-label="Tree with captions">exp</$button>
-        <$button set="!!omnibus-mode" setTo="expro" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="RO tree with captions" aria-label="RO tree with captions">ro-exp</$button>
-        <$button set="!!omnibus-mode" setTo="cheatsheet" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="cheatsheet mode" aria-label="cheatsheet mode">cheatsheet</$button>
-        <$button set="!!omnibus-mode" setTo="cheatsheetro" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="RO cheatsheet mode" aria-label="RO cheatsheet mode">ro-cheatsheet</$button>
-		<$button set="!!omnibus-mode" setTo="bar" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="bar mode" aria-label="omnibus bar mode">bar</$button>
+        <!-- <$button set="!!omnibus-mode" setTo="expro" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="RO tree with captions" aria-label="RO tree with captions">ro-exp</$button> -->
+        <!-- <$button set="!!omnibus-mode" setTo="cheatsheet" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="cheatsheet mode" aria-label="cheatsheet mode">cheatsheet</$button> -->
+        <!-- <$button set="!!omnibus-mode" setTo="cheatsheetro" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="RO cheatsheet mode" aria-label="RO cheatsheet mode">ro-cheatsheet</$button> -->
+		<!-- <$button set="!!omnibus-mode" setTo="bar" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="bar mode" aria-label="omnibus bar mode">bar</$button> -->
 		<$button set="!!omnibus-mode" setTo="list" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="List mode" aria-label="List mode">list</$button>
-        <$button set="!!omnibus-mode" setTo="plaintree" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="Plain tree mode" aria-label="Plain tree mode">plaintree</$button>
+        <!-- <$button set="!!omnibus-mode" setTo="plaintree" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="Plain tree mode" aria-label="Plain tree mode">plaintree</$button> -->
         <$button set="!!omnibus-mode" setTo="kbnav" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="kbnav" aria-label="kbnav">kbnav</$button>
-        <$button set="!!omnibus-mode" setTo="kbclean" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="kbclean" aria-label="kbclean">kbclean</$button>
+        <$button set="!!omnibus-mode" setTo="map" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="map" aria-label="map">map</$button>
+        <$button set="!!omnibus-mode" setTo="min" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="min" aria-label="min">min</$button>
+        <!-- <$button set="!!omnibus-mode" setTo="boxes" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="boxes" aria-label="boxes">boxes</$button> -->
 		<!--
         <$button set="!!omnibus-mode" setTo="floo" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="RO tree with captions" aria-label="RO tree with captions">floo</$button>
 		<$button set="!!omnibus-mode" setTo="tree" class="tc-btn-invisible omni-button" selectedClass="omni-button-selected" tooltip="Bubble tree" aria-label="Bubble tree">tree</$button>

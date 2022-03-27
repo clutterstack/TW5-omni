@@ -1,0 +1,87 @@
+title: $:/plugins/can/omni/template-map
+
+\define everymap(depth posclass)
+<$set name=testclass filter="""[[omni-item-container]] [[$posclass$]enlist-input[]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [[$depth$]addprefix[depth-]]""">
+    <div class=<<testclass>> data-omnitid=<<currentTiddler>> data-depth=$depth$>
+        <$list filter="[[$depth$]!match[0]]">
+            <div class="omni-branch-line"></div>
+        </$list>
+        <<can-omni-peripheral layout:mapadd endstate:open>>
+        <<can-omni-tree-itemhandle>>
+        <$droppable class="omni-text-display" tag="div" actions="""<$list filter="[<actionTiddler>!is[current]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""" >
+        <<can-omni-title-link>>
+        <<omni-captionheading>>
+        <<can-omni-text>>
+        </$droppable>
+        <$list filter="[all[current]has[omni-list]]" variable="ignore">
+                <<can-omni-omni-show>>
+        </$list>
+    </div>
+    <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>
+
+</$set>
+\end
+
+\define compose-omni-toplevel() 
+<$vars baseomni=<<currentTiddler>>>
+<$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-ec-startedit-actions>> tag="div">
+    <$eventcatcher events="click" selector=".can-omni-link" actions-click=<<omni-navigate-action>> tag="div">
+    <$eventcatcher selector=".omni-textarea" $focusin=<<omni-suspend-nav-shortcuts>> tag="div">
+        <$eventcatcher events="click" selector=".can-omni-itemhandle" actions-click=<<omni-select-node>> tag="div">
+            <$eventcatcher events="click" selector=".omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
+                <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
+                    <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-ec-delete-action>> tag="div">
+                        <$eventcatcher events="click" selector=".can-omni-addbutton" 
+                        actions-click=<<omni-ec-addtiddler-action>> tag="div">
+                            <<can-omni-toptools>>
+                            <div class="can-omni-stream map" >
+                                <$macrocall $name=compose-omni depth=0/>                              
+                            </div>
+</$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$vars>
+\end
+
+\define compose-omni(mode:map depth)
+<$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="map" template="everymap" creatednum={{!!created}}>
+    <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
+        <$set name=omnicrumbs filter="""[<omnicrumbs>enlist-input[]] [<parentval>]""">
+            <$vars creatednum={{!!created}}>
+                <$macrocall $name=<<template>> depth=<<__depth__>>  />
+            </$vars>
+        </$set>
+    </$list>
+    <<can-omni-bottomadd layout:slimui endstate:open depthclass:depth-$depth$ >>
+</$vars>
+\end
+
+\define eh()
+<$macrocall $name=omni-stream-size baseomni=<<currentTiddler>>/>
+\end
+
+\define addcurveset(depth streamsize) 
+<!-- Modelled on omni-showomni -->
+
+streamsize! $streamsize$
+eh! $(eh)$
+<$list filter="[all[current]has[omni-list]]" > <!-- only run if there are omnitids -->
+<$vars parentval=<<currentTiddler>> >
+    <$vars newdepth={{{[<__depth__>add[1]]}}}>
+        <!--omni-showomni: newdepth: <<newdepth>> <br> -->
+        <$list filter="[{<omnistatetiddler>}!match[hide]] :filter[<newdepth>compare:integer:lt[10]]" variable=null>
+            <!-- as long as current tiddler's subtids aren't hidden and we're not too deep -->
+            <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
+                boop! Level <<__depth__>> !
+                <$list filter="""[<__depth__>!match[0]]""" variable="ignore">
+                calling non-depth-zero container-coords
+                    <$macrocall $name=container-coords mode="curve" parenttid=<<parentval>> childtid=<<currentTiddler>> streamsize="$(eh)$" />
+                </$list>
+                <$macrocall $name=addcurveset depth=<<newdepth>> streamsize="$(eh)$"/>
+            </$list>
+        </$list>
+    </$vars>
+</$vars>
+</$list>
+\end
+
+
+<<compose-omni-toplevel>>
+<!-- <$macrocall $name=addcurveset depth=0 streamsize=<<eh>> /> -->

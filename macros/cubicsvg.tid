@@ -1,0 +1,26 @@
+title: $:/plugins/can/omni/macros/cubicsvg
+tags: $:/tags/Macro
+
+\define cubecurve(startx, starty, h1x, h1y, h2x, h2y, endx, endy)
+
+$$$image/svg+xml
+<svg xmlns="http://www.w3.org/2000/svg">
+
+<path d="M $startx$ $starty$ C $h1x$ $h1y$ $h2x$ $h2y$ $endx$ $endy$" stroke="black" fill="transparent"/>
+
+<polyline points="$startx$ $starty$ $h1x$ $h1y$ $h2x$ $h2y$ $endx$ $endy$" stroke="red" fill="transparent"/>
+
+</svg>
+$$$
+
+\end
+
+
+
+<$vars startx=10 starty=160 endx=180 endy=20>
+
+<$vars h1x={{{[<startx>add[40]]}}} h1y=<<starty>> h2x={{{[<endx>subtract[40]]}}} h2y=<<endy>> >
+
+<$macrocall $name=cubecurve startx=<<startx>> starty=<<starty>> h1x=<<h1x>> h1y=<<h1y>> h2x=<<h2x>> h2y=<<h2y>> endx=<<endx>> endy=<<endy>>/>
+
+</$vars>

@@ -1,0 +1,97 @@
+title: $:/plugins/can/omni/template-map-copy
+
+\define everymap(depth posclass)
+<$set name=testclass filter="""[[omni-item-container]] [[$posclass$]enlist-input[]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [[$depth$]addprefix[depth-]]""">
+    <div class=<<testclass>> data-omnitid=<<currentTiddler>> data-depth=$depth$>
+        <$list filter="[[$depth$]!match[0]]">
+            <div class="omni-branch-line"></div>
+        </$list>
+        <<can-omni-peripheral layout:mapadd endstate:open>>
+        <<can-omni-tree-itemhandle>>
+        <$droppable class="omni-text-display" tag="div" actions="""<$list filter="[<actionTiddler>!is[current]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""" >
+        <<can-omni-title-link>>
+        <<omni-captionheading>>
+        <<can-omni-text>>
+        </$droppable>
+        <$list filter="[all[current]has[omni-list]]" variable="ignore">
+                <<can-omni-omni-show>>
+        </$list>
+    </div>
+    <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>
+
+</$set>
+\end
+
+\define compose-omni-toplevel() 
+<$vars baseomni=<<currentTiddler>>>
+<$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-ec-startedit-actions>> tag="div">
+    <$eventcatcher events="click" selector=".can-omni-link" actions-click=<<omni-navigate-action>> tag="div">
+    <$eventcatcher selector=".omni-textarea" $focusin=<<omni-suspend-nav-shortcuts>> tag="div">
+        <$eventcatcher events="click" selector=".can-omni-itemhandle" actions-click=<<omni-select-node>> tag="div">
+            <$eventcatcher events="click" selector=".omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
+                <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
+                    <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-ec-delete-action>> tag="div">
+                        <$eventcatcher events="click" selector=".can-omni-addbutton" 
+                        actions-click=<<omni-ec-addtiddler-action>> tag="div">
+                            <<can-omni-toptools>>
+                            <div class="can-omni-stream map" >
+                                <$macrocall $name=compose-omni depth=0/>  
+                            </div>
+</$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$vars>
+\end
+
+\define compose-omni(mode:map depth)
+<$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="map" template="everymap" creatednum={{!!created}} firsttid={{{[all[current]list[!!omni-list]is[tiddler]first[]]}}} lasttid={{{[all[current]list[!!omni-list]is[tiddler]last[]]}}}>
+        <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
+        <$set name=omnicrumbs filter="""[<omnicrumbs>enlist-input[]] [<parentval>]""">
+        <$set name=posclass filter="""[all[current]match<firsttid>then[first]] [all[current]match<lasttid>then[last]]""">
+            <$list filter="""[range[1],[$depth$]] :filter[[$depth$]!match[0]] :filter[<posclass>!search:title[first]]""" variable=gapdepth>
+                <$vars spacerclass={{{[<gapdepth>subtract[1]addprefix[depth-]addprefix[omni-spacer ]addsuffix[ lala ]addsuffix<posclass>]}}}>
+                    <div class=<<spacerclass>> > </div>
+                </$vars>
+            </$list>
+            <$vars creatednum={{!!created}}>
+                <$macrocall $name=<<template>> depth=<<__depth__>> posclass=<<posclass>> />
+            </$vars>
+        </$set></$set>
+        </$list>
+        <!---
+        <$list filter="[all[current]list[!!omni-list]is[tiddler]butfirst[]butlast[]]">
+            <$set name=omnicrumbs filter="""[<omnicrumbs>enlist-input[]] [<parentval>]""">
+                <$list filter="""[range[1],[$depth$]] :filter[[$depth$]!match[0]]""" variable=gapdepth>
+                    <$vars spacerclass={{{[<gapdepth>subtract[1]addprefix[depth-]addprefix[omni-spacer ]]}}}>
+                    <div class=<<spacerclass>> > </div>
+                    </$vars>
+                </$list>
+                <$vars creatednum={{!!created}}>
+                    <$macrocall $name=<<template>> depth=<<__depth__>> />
+                </$vars>
+            </$set>
+         </$list>
+        <$list filter="[all[current]list[!!omni-list]is[tiddler]butfirst[]last[]]">
+            <$set name=omnicrumbs filter="""[<omnicrumbs>enlist-input[]] [<parentval>]""">
+                <$list filter="""[range[1],[$depth$]] :filter[[$depth$]!match[0]]""" variable=gapdepth>
+                    <$vars spacerclass={{{[<gapdepth>subtract[1]addprefix[depth-]addprefix[omni-spacer ]]}}}>
+                    <div class=<<spacerclass>> > </div>
+                    </$vars>
+                </$list>
+                <$vars creatednum={{!!created}}>
+                    <$macrocall $name=<<template>> depth=<<__depth__>> posclass=last/>
+                </$vars>
+            </$set>
+         </$list> -->
+         
+        <$list filter="""[range[1],[$depth$]] :filter[[$depth$]!match[0]]""" variable=gapdepth>
+            <$vars spacerclass={{{[<gapdepth>subtract[1]addprefix[depth-]addprefix[omni-spacer ]]}}}>
+                <div class=<<spacerclass>> > </div>
+            </$vars>
+        </$list>
+    <<can-omni-bottomadd layout:slimui endstate:open depthclass:depth-$depth$ >>
+</$vars>
+\end
+
+<<compose-omni-toplevel>>
+
+
+
+            

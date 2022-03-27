@@ -118,16 +118,7 @@ details > summary {
     background: <<colour tiddler-controls-foreground>>;
 }
 
-.can-omni-collapsebutton {
-    grid-column: 2/3; 
-    align-self: start; 
-    height: 1.1em;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: flex-start;
-    margin-top: 0.2em;
-    margin-left: 0.1em;
-    }
+
 
 .can-omni-collapsebutton svg {fill: <<colour tab-background>>; width: 1em; height: 1em;}
 
@@ -189,7 +180,7 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 /* Above and below item droppable zones */
 /* ----------------------------------------- */
 
-.can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { grid-column: 2/6; border-radius: 4px; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background-color: #ffffff;}
+/* .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { grid-column: 2/6; border-radius: 4px; display: flex; flex-direction: row; justify-content: space-between; line-height: 16pt; background-color: #ffffff;} */
 
 .can-omni-peripheral.tc-droppable, .can-omni-topadd.tc-droppable, .can-omni-bottomadd.tc-droppable { width: 100%; display: flex; flex-direction: row;}
 

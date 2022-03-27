@@ -1,0 +1,255 @@
+creator: chris
+title: $:/plugins/can/omni/styles-map
+
+<style>
+/****** START styles-map ********/
+
+.can-omni-stream.map {
+    font-size: 16px;
+    display: grid;
+    column-gap: 20px;
+    /* grid-template-columns: auto; */
+}
+
+.map .omni-svg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.map .omni-item-container {
+    /* grid-column: 2/4; */
+    z-index: 9999;
+    display: grid;
+    grid-template-columns: min-content min-content minmax(10em, 55em) auto auto; /* 1em auto 7fr auto;  */
+    grid-template-rows: auto;
+    position: relative;
+    padding-right: 1em;
+}
+
+.map .omni-item-container.toplevel { grid-column: 1/2;}
+.map .depth-0 { grid-column: 1/2;}
+.map .depth-1 { grid-column: 2/3;}
+.map .depth-2 { grid-column: 3/4;}
+.map .depth-3 { grid-column: 4/5;}
+.map .depth-4 { grid-column: 5/6;}
+.map .depth-5 { grid-column: 6/7;}
+.map .depth-6 { grid-column: 7/8;}
+.map .depth-7 { grid-column: 8/9;}
+.map .depth-8 { grid-column: 9/10;}
+.map .depth-9 { grid-column: 10/11;}
+.map .depth-10 { grid-column: 11/12;}
+.map .depth-11 { grid-column: 12/13;}
+.map .depth-12 { grid-column: 13/14;}
+.map .depth-13 { grid-column: 14/15;}
+.map .depth-14 { grid-column: 15/16;}
+.map .depth-15 { grid-column: 16/17;}
+.map .depth-16 { grid-column: 17/18;}
+
+/* .map .omni-showomni {
+    grid-column: 5/6;
+    background: red;
+} */
+
+
+.map .can-omni-collapsebutton {
+    border-top: 1px solid;
+    border-radius: 0;
+    position: absolute;
+    right: 0;
+    top: 4em;
+}
+
+.map .omni-branch-line {
+    grid-column:1/2;
+    grid-row: span 1;
+    width: 1em;
+    /*border-left: 1px solid;*/
+    /*border-bottom: 1px solid;*/
+    border-radius: 0 0 0 16px;
+    /* box-sizing: border-box; */
+    /*margin-bottom: -1em;*/
+   /* margin-left: -1px;*/
+}
+
+.map .omni-heading-row {
+    padding-top: 0.4em;
+    display: flex;
+    flex-direction: row;
+}
+
+.map .omni-text-display {
+    grid-column: 3/4;
+    /* max-width: 55em; */
+    border-radius: 0 5px 5px 0;
+    border: none;
+    background-color: <<colour tiddler-editor-fields-even>>;
+    display: flex;
+    flex-direction: column;
+    padding-right: 1em;
+ }  
+
+.map .omni-heading {
+    display: flex;
+    flex-direction: row;
+}
+
+.map .omni-caption:hover {
+background: #EEF8FF;
+}
+
+.map .can-omni-title {
+    padding-left: 0.4em;
+}
+
+.map .omni-title-heading:hover { background: cyan;}
+
+.map .omni-title-heading button {margin-left: 1em;}
+
+.map .omni-title-heading {
+    /* flex: 1 0 5em;*/ /* grow shrink basis */
+    min-width: 30%;
+    min-height: 1em;
+    padding: 0 0.2em;
+    border: none;
+    font-size: 1.2em;
+}
+
+.map .tc-tiddler-body {
+    min-height:0.4em;
+    padding-right: 1em;
+    padding-top: 0em;
+    margin-top: 0;
+    width: 100%;
+}
+
+/* ---------------------------------------*/
+/* Vertical item handle                   */
+/* ---------------------------------------*/
+
+.map .can-omni-itemhandle {
+    /*position: relative;*/
+    border-radius: 5px 0 0 5px; 
+    width: 1.2em; 
+    height: 100%; 
+    grid-column: 2/3; 
+    grid-row: span 1;
+    background-color: <<colour tiddler-editor-fields-even>>;
+    margin:0;
+    display: flex;
+    flex-direction: column;
+    }
+
+.map .omni-item-container.currentNode > .can-omni-itemhandle {
+    background-color: #999999;
+}
+
+.map .can-omni-edithandle {
+    height:100%;
+    width:100%;
+}
+
+.map .tc-btn-invisible.can-omni-itemhandle:hover, .map .can-omni-title:hover {
+    background-color: <<colour muted-foreground>>;
+}
+
+.map .can-omni-itemhandle .can-omni-link {height: 1em;}
+
+.map .can-omni-itemhandle .can-omni-link svg {fill: <<colour foreground>>;}
+.map .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
+
+.map .can-omni-itemhandle-inner {
+    border-radius: 5px 0 0 5px; 
+    /* box-sizing: border-box; */
+    height: 100%; 
+    width: 100%;
+    margin:0;
+    }
+
+.map .can-omni-subctl {
+    display:flex;
+    flex-direction: column;
+}
+
+.map .can-omni-foldbutton {
+    font-size: 1.5em;
+}
+
+.map .can-omni-peripheral.inert {
+    height: 10pt;
+}
+
+.map .omni-button {
+    color: <<colour foreground>>;
+}
+
+.map .omni-button svg, .map .can-omni-foldbutton svg { 
+    fill:<<colour foreground>>;}
+
+.map .can-omni-stream .omni-button svg {
+    width: 10pt;
+    height: 10pt;
+}
+
+/* ----------------------------------------- */
+/* Above and below item droppable zones */
+/* ----------------------------------------- */
+
+.map .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
+    border-radius: 4px; 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    line-height: 16pt;}
+
+.map .can-omni-peripheral, .can-omni-topadd { 
+    grid-column: 2/6; 
+}
+
+
+/* ------------------ */
+/* headings           */
+/* ------------------ */
+
+.map.can-omni-stream h1 {
+    font-size: 1.75em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    }
+
+.map.can-omni-stream h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    margin-top:0.4em;
+ }
+ 
+.map.can-omni-stream h3 {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    margin-top:0.4em;
+ }
+
+.map.can-omni-stream h4 {
+    font-size: 1.2em; 
+    font-weight:600;
+    margin-bottom: 0.5em;
+    margin-top:0.4em;}
+
+.map.can-omni-stream h5 {font-size: 1.1em; font-weight:600;}
+.map.can-omni-stream h6 {font-size: 1.0em; font-weight: 600;}
+
+
+/* --------------- */
+/* media-dependent */
+/* --------------- */
+
+
+
+
+/****** END styles-map ********/
+
+</style>

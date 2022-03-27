@@ -1,5 +1,5 @@
 title: $:/plugins/can/omni/addrefsrc.tid
-tags: $:/tags/ViewToolbar
+tags: not$:/tags/ViewToolbar
 
 \define addrefsrc() 
 <$vars refsource=<<currentTiddler>> >

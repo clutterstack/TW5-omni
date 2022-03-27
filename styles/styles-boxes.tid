@@ -1,14 +1,14 @@
 creator: chris
-title: $:/plugins/can/omni/styles-kbnav
+title: $:/plugins/can/omni/styles-boxes
 
 <style>
-/****** START styles-kbnav ********/
+/****** START styles-boxes ********/
 
-.can-omni-stream.kbnav {
+.can-omni-stream.boxes {
     font-size: 16px;
 }
 
-.kbnav .omni-item-container {
+.boxes .omni-item-container {
     grid-column: 2/4;
     display: grid;
     grid-template-columns: min-content min-content minmax(10em, 55em) auto auto; /* 1em auto 7fr auto;  */
@@ -16,7 +16,7 @@ title: $:/plugins/can/omni/styles-kbnav
     position: relative;
 }
 
-.kbnav .omni-branch-line {
+.boxes .omni-branch-line {
     grid-column:1/2;
     grid-row: span 1;
     width: 1em;
@@ -28,7 +28,7 @@ title: $:/plugins/can/omni/styles-kbnav
    /* margin-left: -1px;*/
 }
 
-.kbnav .omni-item-container::before {
+.boxes .omni-item-container::before {
     position: absolute;
             left: 0;
             content: "";
@@ -43,12 +43,12 @@ title: $:/plugins/can/omni/styles-kbnav
             width: 1em;
 }
 
-.kbnav .omni-item-container.toplevel::before, .kbnav .omni-item-container.toplevel::after {
+.boxes .omni-item-container.toplevel::before, .boxes .omni-item-container.toplevel::after {
     display: none;
 }
 
 
-.kbnav .omni-item-container::after {
+.boxes .omni-item-container::after {
     position: absolute;
             left: 0;
             content: "";
@@ -58,18 +58,18 @@ title: $:/plugins/can/omni/styles-kbnav
 }
 
 
-.kbnav .omni-item-container:last-of-type::after {
+.boxes .omni-item-container:last-of-type::after {
     border: none;
 }
 
 
-.kbnav .omni-heading-row {
+.boxes .omni-heading-row {
     padding-top: 0.4em;
     display: flex;
     flex-direction: row;
 }
 
-.kbnav .omni-text-display {
+.boxes .omni-text-display {
     grid-column: 3/4;
     /* max-width: 55em; */
     border-radius: 0 5px 5px 0;
@@ -79,24 +79,24 @@ title: $:/plugins/can/omni/styles-kbnav
     flex-direction: row;
  }  
 
-.kbnav .omni-heading {
+.boxes .omni-heading {
     display: flex;
     flex-direction: row;
 }
 
-.kbnav .omni-caption:hover {
+.boxes .omni-caption:hover {
 background: #EEF8FF;
 }
 
-.kbnav .can-omni-title {
+.boxes .can-omni-title {
     padding-left: 0.4em;
 }
 
-.kbnav .omni-title-heading:hover { background: cyan;}
+.boxes .omni-title-heading:hover { background: cyan;}
 
-.kbnav .omni-title-heading button {margin-left: 1em;}
+.boxes .omni-title-heading button {margin-left: 1em;}
 
-.kbnav .omni-title-heading {
+.boxes .omni-title-heading {
     flex: 1 0 5em; /* grow shrink basis */
     min-width: 30%;
     min-height: 1em;
@@ -105,7 +105,7 @@ background: #EEF8FF;
     font-size: 1.2em;
 }
 
-.kbnav .tc-tiddler-body {
+.boxes .tc-tiddler-body {
     min-height:0.4em;
     padding-right: 1em;
     padding-top: 0em;
@@ -117,7 +117,7 @@ background: #EEF8FF;
 /* Vertical item handle                   */
 /* ---------------------------------------*/
 
-.kbnav .can-omni-itemhandle {
+.boxes .can-omni-itemhandle {
     /*position: relative;*/
     border-radius: 5px 0 0 5px; 
     width: 1.2em; 
@@ -130,25 +130,25 @@ background: #EEF8FF;
     flex-direction: column;
     }
 
-.kbnav .omni-item-container.currentNode > .can-omni-itemhandle {
+.boxes .omni-item-container.currentNode > .can-omni-itemhandle {
     background-color: #999999;
 }
 
-.kbnav .can-omni-edithandle {
+.boxes .can-omni-edithandle {
     height:100%;
     width:100%;
 }
 
-.kbnav .tc-btn-invisible.can-omni-itemhandle:hover, .kbnav .can-omni-title:hover {
+.boxes .tc-btn-invisible.can-omni-itemhandle:hover, .boxes .can-omni-title:hover {
     background-color: <<colour muted-foreground>>;
 }
 
-.kbnav .can-omni-itemhandle .can-omni-link {height: 1em;}
+.boxes .can-omni-itemhandle .can-omni-link {height: 1em;}
 
-.kbnav .can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
-.kbnav .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
+.boxes .can-omni-itemhandle .can-omni-link svg {fill: <<colour muted-foreground>>;}
+.boxes .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
 
-.kbnav .can-omni-itemhandle-inner {
+.boxes .can-omni-itemhandle-inner {
     border-radius: 5px 0 0 5px; 
     /* box-sizing: border-box; */
     height: 100%; 
@@ -156,45 +156,29 @@ background: #EEF8FF;
     margin:0;
     }
 
-.kbnav .can-omni-subctl {
+.boxes .can-omni-subctl {
     display:flex;
     flex-direction: row;
 }
 
-.kbnav .can-omni-foldbutton {
+.boxes .can-omni-foldbutton {
     font-size: 1.5em;
 }
 
-.kbnav .can-omni-peripheral.inert {
+.boxes .can-omni-peripheral.inert {
     height: 10pt;
 }
 
-.kbnav .can-omni-stream .omni-button svg {
+.boxes .can-omni-stream .omni-button svg {
     width: 10pt;
     height: 10pt;
-}
-
-/* ----------------------------------------- */
-/* can-omni-omni-show button */
-/* ----------------------------------------- */
-
-
-.kbnav .can-omni-collapsebutton {
-    grid-column: 2/3; 
-    align-self: start; 
-    height: 1.1em;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: flex-start;
-    margin-top: 0.2em;
-    margin-left: 0.1em;
 }
 
 /* ----------------------------------------- */
 /* Above and below item droppable zones */
 /* ----------------------------------------- */
 
-.kbnav .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
+.boxes .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
     grid-column: 2/6; 
     border-radius: 4px; 
     display: flex; 
@@ -208,34 +192,34 @@ background: #EEF8FF;
 /* headings           */
 /* ------------------ */
 
-.kbnav.can-omni-stream h1 {
+.boxes.can-omni-stream h1 {
     font-size: 1.75em;
     font-weight: 600;
     margin-bottom: 0.5em;
     }
 
-.kbnav.can-omni-stream h2 {
+.boxes.can-omni-stream h2 {
     font-size: 1.5em;
     font-weight: 600;
     margin-bottom: 0.5em;
     margin-top:0.4em;
  }
  
-.kbnav.can-omni-stream h3 {
+.boxes.can-omni-stream h3 {
     font-size: 1.3em;
     font-weight: 600;
     margin-bottom: 0.5em;
     margin-top:0.4em;
  }
 
-.kbnav.can-omni-stream h4 {
+.boxes.can-omni-stream h4 {
     font-size: 1.2em; 
     font-weight:600;
     margin-bottom: 0.5em;
     margin-top:0.4em;}
 
-.kbnav.can-omni-stream h5 {font-size: 1.1em; font-weight:600;}
-.kbnav.can-omni-stream h6 {font-size: 1.0em; font-weight: 600;}
+.boxes.can-omni-stream h5 {font-size: 1.1em; font-weight:600;}
+.boxes.can-omni-stream h6 {font-size: 1.0em; font-weight: 600;}
 
 
 /* --------------- */
@@ -245,6 +229,6 @@ background: #EEF8FF;
 
 
 
-/****** END styles-kbnav ********/
+/****** END styles-boxes ********/
 
 </style>
