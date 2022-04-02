@@ -94,6 +94,8 @@ Get the size of an omni tiddler's
         this.containerDiv.style.position="absolute";
         this.containerDiv.style.positionTop="0";
         this.containerDiv.style.positionLeft="0";
+        this.containerDiv.style.width=streamsize[0];
+        this.containerDiv.style.height=streamsize[1];
         // put the svg into it
         this.containerDiv.innerHTML = thesvg;
         parent.insertBefore(this.containerDiv,nextSibling);
