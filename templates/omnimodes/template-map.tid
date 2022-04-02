@@ -17,9 +17,27 @@ title: $:/plugins/can/omni/template-map
                 <<can-omni-omni-show>>
         </$list>
     </div>
-    <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>
+    <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=map-showomni depth=<<__depth__>> />""" variable="ignore"/>
 
 </$set>
+\end
+
+
+\define map-showomni(depth) 
+<$list filter="[all[current]has[omni-list]]" variable="ignore">
+<!-- <$reveal tag="div" class="omni-showomni" type="nomatch" state=<<omnistatetiddler>> text="hide" > -->
+<$list filter="[all[current]has[omni-list]]">
+    <$vars newdepth={{{[<__depth__>add[1]]}}}>
+        <!--omni-showomni: newdepth: <<newdepth>> <br> -->
+        <$list filter="[{<omnistatetiddler}!match[hide]] :filter[<newdepth>compare:integer:lt[10]]" variable=null emptyMessage=<<can-recursionblock>> >
+        <$macrocall $name="compose-omni" mode=<<mode>> depth=<<newdepth>> />
+        depth before linkcurves: <<__depth__>>
+        <$linkcurves baseomni=<<baseomni>> />
+        </$list>
+    </$vars>
+</$list>
+<!-- </$reveal> -->
+</$list>
 \end
 
 \define compose-omni-toplevel() 
@@ -53,15 +71,9 @@ title: $:/plugins/can/omni/template-map
 </$vars>
 \end
 
-\define eh()
-<$macrocall $name=omni-stream-size baseomni=<<currentTiddler>>/>
-\end
-
-\define addcurveset(depth streamsize) 
+\define addcurveset(depth) 
 <!-- Modelled on omni-showomni -->
 
-streamsize! $streamsize$
-eh! $(eh)$
 <$list filter="[all[current]has[omni-list]]" > <!-- only run if there are omnitids -->
 <$vars parentval=<<currentTiddler>> >
     <$vars newdepth={{{[<__depth__>add[1]]}}}>
@@ -70,11 +82,9 @@ eh! $(eh)$
             <!-- as long as current tiddler's subtids aren't hidden and we're not too deep -->
             <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
                 boop! Level <<__depth__>> !
-                <$list filter="""[<__depth__>!match[0]]""" variable="ignore">
-                calling non-depth-zero container-coords
-                    <$macrocall $name=container-coords mode="curve" parenttid=<<parentval>> childtid=<<currentTiddler>> streamsize="$(eh)$" />
-                </$list>
-                <$macrocall $name=addcurveset depth=<<newdepth>> streamsize="$(eh)$"/>
+                calling linkcurves widget
+                    <$linkcurves baseomni=<<baseomni>>/>
+                <$macrocall $name=addcurveset depth=<<newdepth>> />
             </$list>
         </$list>
     </$vars>
@@ -84,4 +94,4 @@ eh! $(eh)$
 
 
 <<compose-omni-toplevel>>
-<!-- <$macrocall $name=addcurveset depth=0 streamsize=<<eh>> /> -->
+<!-- <$macrocall $name=addcurveset depth=0/> -->
