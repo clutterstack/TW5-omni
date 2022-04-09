@@ -32,7 +32,14 @@ tags: $:/tags/Macro
 <$button class="omni-button tc-btn-invisible" aria-label="Remove from list" tooltip="Remove from list" actions="<$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='-[<currentTiddler>]'/><$action-listops $field='omniparent' $subfilter='-[<parentval>]' /><$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> /><$action-sendmessage $message='tm-auto-save-wiki'/>">{{$:/plugins/can/omni/delist.svg}}</$button>
 \end
 
-\define omni-addbutton() <div class="omni-button tc-btn-invisible can-omni-addbutton" data-pairtid=<<currentTiddler>> data-parentval=<<parentval>> data-position=<<position>>>{{$:/core/images/new-button}}</div>
+\define omni-addbutton() <div class="omni-button tc-btn-invisible can-omni-addbutton" role="button" data-pairtid=<<currentTiddler>> data-parentval=<<parentval>> data-position=<<position>>>{{$:/core/images/new-button}}</div>
+
+
+\define omni-childbutton()
+<div class="omni-button tc-btn-invisible can-omni-addbutton" data-parentval=<<currentTiddler>> data-position="omni-listbottom">
+{{$:/core/images/new-button}}
+</div>
+\end
 
 \define omni-closeaddbutton() 
 <$eventcatcher events="click" selector=".can-omni-closeaddbutton" actions-click=<<omni-toggleadd-action>> tag="div"><div class="omni-button tc-btn-invisible can-omni-closeaddbutton" data-statetid=<<openstatetid>>>
