@@ -13,7 +13,7 @@ title: $:/plugins/can/omni/styles-teaser
 
 .omni-teaser-body {
     position: relative;
-    height: 2em;
+    height: 3em;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -39,11 +39,16 @@ title: $:/plugins/can/omni/styles-teaser
         rgba( 255, 255, 255, 1 ) 100% );
     background-image: -webkit-linear-gradient( top, 
         rgba( 0, 0, 0, 1 ) 0%,
-        rgba( 255, 255, 255, 0 ) 60%, 
+        rgba( 255, 255, 255, 0 ) 80%, 
         rgba( 255, 255, 255, 0 ) 100% );
     <!-- background: red; -->
     background-clip: text;
 -webkit-background-clip: text;
+color: transparent;
+}
+
+.omni-teaser-body a.tc-tiddlylink {
+
 color: transparent;
 }
 

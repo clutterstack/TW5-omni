@@ -120,7 +120,7 @@ title: $:/plugins/can/omni/styles-tree
     grid-column: 3/4; 
     align-self: start; 
     height: 1.5em; 
-    z-index: 9999; 
+    z-index: 100; 
     display: flex; 
     flex-direction: column; 
     justify-content: flex-start;

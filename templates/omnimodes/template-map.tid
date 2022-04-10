@@ -14,10 +14,10 @@ title: $:/plugins/can/omni/template-map
         <<can-omni-teaser>>
         </$list>
         </$droppable>
-        <div class="can-omni-subctl" >
+        <div class="can-omni-subctl" tabindex="0">
         <<omni-menubutton>>
-        <$list filter="[{$(menustatetiddler)$!!menustate}match[show]]" variable="ignore">
-            <div class><<can-omni-delist>><<can-omni-delete>></div>
+        <$list filter="[{$(menustatetiddler)$!!menustate}match[show]]"  variable="ignore">
+        <<can-omni-delist>><<can-omni-delete>>
         </$list>
         </div>
         <$list filter="[all[current]has[omni-list]]" emptyMessage=<<omni-add-child>> variable="ignore">

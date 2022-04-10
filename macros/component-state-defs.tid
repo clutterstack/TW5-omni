@@ -13,7 +13,7 @@ type: text/vnd.tiddlywiki
 
 \define cheatsheetstatetid() $:/state/can/omni/cheatsheet/$(omniqual)$
 
-\define foldstatetiddler() $:/state/can/omni/fold/$(omniqualraw)$
+\define foldstatetiddler() $:/state/can/omni/fold/$(omniqual)$
 
 \define menustatetiddler() $:/state/can/omni/menu/$(omniqual)$
 

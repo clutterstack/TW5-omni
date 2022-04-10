@@ -2,10 +2,13 @@ tags: $:/tags/Macro
 title: $:/plugins/can/omni/action-macros
 type: text/vnd.tiddlywiki
 
-\define omni-toggle-foldstate() <$action-listops $tiddler=<<dom-data-statetid>> $field="foldstate" $subfilter="+[toggle[hide],[show]]"/><$action-listops $tiddler=<<dom-data-statetid>> $field="icon" $subfilter="+[toggle[{{$:/core/images/down-arrow}}],[{{$:/core/images/right-arrow}}]]"/>
+\define omni-toggle-foldstate() 
+<$action-listops $tiddler=<<dom-data-statetid>> $field="foldstate" $subfilter="+[toggle[hide],[show]]"/>
+<!-- <$action-listops $tiddler=<<dom-data-statetid>> $field="icon" $subfilter="+[toggle[{{$:/core/images/down-arrow}}],[{{$:/core/images/right-arrow}}]]"/> -->
+\end
 
 
-\define omni-toggle-menustate() <$action-listops $tiddler=<<dom-data-statetid>> $field="menustate" $subfilter="+[toggle[hide],[show]]"/>
+\define omni-toggle-menustate() <$action-listops $tiddler=<<dom-data-statetid>> $field="menustate" $subfilter="+[toggle[show],[hide]]"/>
 
 \define omni-navigate-action() <$action-navigate $to=<<dom-data-currenttid>>/>
 

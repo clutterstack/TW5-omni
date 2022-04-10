@@ -53,10 +53,7 @@ type: text/vnd.tiddlywiki
 
 \define omni-menubutton()
 <div class="can-omni-menubutton tc-btn-invisible" data-statetid=<<menustatetiddler>>>
-<$list filter="[<menustatetiddler>get[menustate]match[show]]" emptyMessage="""<$action-setfield $tiddler=<<menustatetiddler>> menustate="show"/>{{$:/core/images/menu-button}}""" variable="ignore">
-	<$action-setfield $tiddler=<<menustatetiddler>> menustate="hide"/>
 	{{$:/core/images/menu-button}}
-</$list>
 </div>
 \end
 
