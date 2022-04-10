@@ -3,7 +3,7 @@ tags:
 
 
 \define everytoc()
-    <$list filter="[all[current]has[omni-list]]"><<can-omni-folder>></$list>
+    <$list filter="[all[current]has[omni-list]]"><<omni-foldbutton>></$list>
     <<can-omni-toc-item>>
 \end
 

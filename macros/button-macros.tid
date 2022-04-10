@@ -60,13 +60,6 @@ tags: $:/tags/Macro
 </$draggable>
 \end
 
-
-\define can-omni-link-old()
-<$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >
-<$button class="omni-button tc-btn-invisible" to={{!!title}} tooltip="Open tiddler in story" aria-label="Open tiddler in story">{{$:/plugins/can/omni/fish-water.svg}}</$button>
-</$draggable>
-\end
-
 \define omni-closerlook()
 <div class="omni-button omni-closerlook-button tc-btn-invisible" data-title=<<currentTiddler>> tooltip="Closer look" aria-label="Closer look">{{$:/plugins/can/omni/microscope-simple.svg}}</div>
 \end
@@ -81,16 +74,6 @@ tags: $:/tags/Macro
 \define omni-edit-button() <$button class="omni-button can-omni-edit-button tc-btn-invisible" actions=<<omni-ec-startedit-actions>>  tooltip="Edit text" aria-label="Edit text">{{$:/core/images/edit-button}}</$button>
 \end
 
-
-
-
-
-\define can-omni-title-link-old()
-<$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >
-<$button class="omni-button tc-btn-invisible" to={{!!title}} tooltip="Tiddler link" aria-label="Tiddler link">
-<div>{{$:/plugins/can/omni/fish-water.svg}}</div><div class="can-omni-title"><$text text=<<currentTiddler>>/></div>
-</$button></$draggable>
-\end
 
 \define can-omni-mark-done()
 <$button class="omni-button tc-btn-invisible" aria-label="Tag item as done" tooltip="Tag item as done" actions="<$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='-[<currentTiddler>]'/><$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> /><$action-listops $tags='done'/><$action-sendmessage $message='tm-auto-save-wiki'/>">{{$:/plugins/can/omni/checkmark.svg}}</$button>

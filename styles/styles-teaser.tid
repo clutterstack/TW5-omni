@@ -17,10 +17,42 @@ title: $:/plugins/can/omni/styles-teaser
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    background-image: linear-gradient( top, 
+            rgba( 255, 255, 255, 0 ) 0%,
+            rgba( 255, 255, 255, 0 ) 40%,
+            rgba( 255, 255, 255, 1 ) 60%,
+            rgba( 255, 255, 255, 1 ) 100% );
+    background-image: -moz-linear-gradient( top, 
+        rgba( 255, 255, 255, 0 ) 0%,
+        rgba( 255, 255, 255, 0 ) 40%, 
+        rgba( 255, 255, 255, 1 ) 60%,
+        rgba( 255, 255, 255, 1 ) 100% );
+    background-image: -ms-linear-gradient( top, 
+        rgba( 255, 255, 255, 0 ) 0%, 
+        rgba( 255, 255, 255, 0 ) 40%,
+        rgba( 255, 255, 255, 1 ) 60%,
+        rgba( 255, 255, 255, 1 ) 100% );
+    background-image: -o-linear-gradient( top, 
+        rgba( 255, 255, 255, 0 ) 0%, 
+        rgba( 255, 255, 255, 0 ) 40%,
+        rgba( 255, 255, 255, 1 ) 60%,
+        rgba( 255, 255, 255, 1 ) 100% );
+    background-image: -webkit-linear-gradient( top, 
+        rgba( 0, 0, 0, 1 ) 0%,
+        rgba( 255, 255, 255, 0 ) 60%, 
+        rgba( 255, 255, 255, 0 ) 100% );
+    <!-- background: red; -->
+    background-clip: text;
+-webkit-background-clip: text;
+color: transparent;
 }
 
+<!-- .omni-teaser-body p {
+    color: rgba( 255, 255, 255, 0 );
+} -->
+
 .omni-teaser-body::after {
-    background-image: linear-gradient( top, 
+    /* background-image: linear-gradient( top, 
             rgba( 255, 255, 255, 0 ) 0%,
             rgba( 255, 255, 255, 0 ) 40%,
             rgba( 255, 255, 255, 1 ) 60%,
@@ -43,7 +75,7 @@ title: $:/plugins/can/omni/styles-teaser
         background-image: -webkit-linear-gradient( top, 
             rgba( 255, 255, 255, 0 ) 0%,
             rgba( 255, 255, 255, 0 ) 40%, 
-            rgba( 255, 255, 255, 1 ) 100% );
+            rgba( 255, 255, 255, 1 ) 100% ); */
     content: " ";
     height: 100%;
     width: 100%;

@@ -1,6 +1,8 @@
 creator: chris
 title: $:/plugins/can/omni/styles-map
 
+<$transclude tiddler="$:/plugins/can/omni/styles-teaser" mode="block"/>
+
 <style>
 /****** START styles-map ********/
 
@@ -163,13 +165,18 @@ background: #EEF8FF;
     margin:0;
     }
 
+
+.map .can-omni-ctlrow {
+    margin-right: 0;
+}
+
 .map .can-omni-subctl {
     display:flex;
     flex-direction: column;
 }
 
 .map .can-omni-foldbutton {
-    font-size: 1.5em;
+    font-size: 1.2em;
 }
 
 .map .can-omni-peripheral.inert {

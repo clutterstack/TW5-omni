@@ -3,7 +3,7 @@ title: $:/plugins/can/omni/template-edit
 \define everyedit(depth)
 	<<can-omni-peripheral>>
 	<<can-omni-itemhandle>>
-	<<can-omni-folder>>
+	<<omni-foldbutton>>
 	<div class="can-omni-ctlrow">			
 		<div>
 			<<can-omni-title-link>>

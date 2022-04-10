@@ -42,7 +42,7 @@ type: text/vnd.tiddlywiki
 <div class="can-omni-peripheral inert"></div>
 \end
 
-\define can-omni-folder()
+\define omni-foldbutton()
 <div class="can-omni-foldbutton tc-btn-invisible" data-statetid=<<foldstatetiddler>>>
 <$list filter="[<foldstatetiddler>get[foldstate]match[hide]]" emptyMessage="""<<omni-toggle-view>><$action-setfield $tiddler=<<foldstatetiddler>> foldstate="hide"/>{{$:/core/images/down-arrow}}""" variable="ignore">
 	<$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show"/>
@@ -154,9 +154,9 @@ testvar? <<testvar>> <br>
 	     <div class="omni-teaser-body">
             <$transclude $tiddler="<<currentTiddler>>" mode="block"/>
          </div>
-         <div class="omni-teaser-indicator omni-button">
+         <!-- <div class="omni-teaser-indicator omni-button">
             <p>...</p>
-        </div>
+        </div> -->
 	</div>
 \end
 
@@ -216,7 +216,7 @@ testvar? <<testvar>> <br>
 \define omni-captionheading-row()
 <$vars editFieldName="caption">
 <div class="omni-heading-row">
-    <$list filter="[<currentTiddler>has[text]]"><<can-omni-folder>></$list>
+    <$list filter="[<currentTiddler>has[text]]"><<omni-foldbutton>></$list>
     <<omni-captionheading>>
     <$list filter="[<editfieldstatetid>get[editstate]match[edit]]" variable="ignore" emptyMessage="""
         <div class="can-omni-subctl">
@@ -231,14 +231,14 @@ testvar? <<testvar>> <br>
 
 \define omni-captionheading-row-ro()
 <div class="omni-heading-row">
-    <$list filter="[<currentTiddler>has[text]]"><<can-omni-folder>></$list>
+    <$list filter="[<currentTiddler>has[text]]"><<omni-foldbutton>></$list>
     <<omni-captionheading-ro>>
 </div>
 \end
 
 \define can-omni-titleheading-ro()
 <div class="omni-title-heading view">
-	{{!!title}}<<can-omni-folder>>
+	{{!!title}}<<omni-foldbutton>>
 </div>
 \end
 

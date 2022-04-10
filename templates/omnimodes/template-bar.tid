@@ -2,7 +2,7 @@ title: $:/plugins/can/omni/template-bar
 
 \define everybar(depth)
 	<<can-omni-peripheral>>
-	<<can-omni-folder>>
+	<<omni-foldbutton>>
     <$draggable class="can-omni-ctlrow" tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >			
 		<div>
 			<<can-omni-title-link>>
