@@ -5,32 +5,32 @@ type: text/vnd.tiddlywiki
 
 \define omniqual() $(creatednum)$-$(baseomni)$
 
-\define editstatetid() [[$:/state/can/omni/editstate/$(omniqual)$]]
+\define editstatetid() $:/state/can/omni/editstate/$(omniqual)$
 
-\define edittitlestatetid() [[$:/state/can/omni/edittitlestate/$(omniqual)$]]
+\define edittitlestatetid() $:/state/can/omni/edittitlestate/$(omniqual)$
 
-\define editfieldstatetid() [[$:/state/can/omni/edit-$(editFieldName)$/$(omniqual)$]]
+\define editfieldstatetid() $:/state/can/omni/edit-$(editFieldName)$/$(omniqual)$
 
-\define cheatsheetstatetid()[[$:/state/can/omni/cheatsheet/$(omniqual)$]]
+\define cheatsheetstatetid() $:/state/can/omni/cheatsheet/$(omniqual)$
 
-\define foldstatetiddler() [[$:/state/can/omni/fold/$(omniqual)$]]
+\define foldstatetiddler() $:/state/can/omni/fold/$(omniqualraw)$
 
-\define menustatetiddler() [[$:/state/can/omni/menu/$(omniqual)$]]
+\define menustatetiddler() $:/state/can/omni/menu/$(omniqual)$
 
-\define omnistatetiddler() [[$:/state/can/omni/omni/$(omniqual)$]]
+\define omnistatetiddler() $:/state/can/omni/omni/$(omniqual)$
 
-\define top-omniadd-openstatetid() [[$:/state/can/omni/top-openstate/$(omniqual)$]]
-\define top-omniaddstatetid() [[$:/state/can/omni/top-omniaddstate/$(omniqual)$]]
+\define top-omniadd-openstatetid() $:/state/can/omni/top-openstate/$(omniqual)$
+\define top-omniaddstatetid() $:/state/can/omni/top-omniaddstate/$(omniqual)$
 
-\define bottom-omniadd-openstatetid() [[$:/state/can/omni/bottom-openstate/$(omniqual)$]]
-\define bottom-omniaddstatetid() [[$:/state/can/omni/bottom-omniaddstate/$(omniqual)$]]
+\define bottom-omniadd-openstatetid() $:/state/can/omni/bottom-openstate/$(omniqual)$
+\define bottom-omniaddstatetid() $:/state/can/omni/bottom-omniaddstate/$(omniqual)$
 
-\define peri-omniadd-openstatetid() [[$:/state/can/omni/peri-openstate/$(omniqual)$]]
-\define peri-omniaddstatetid() [[$:/state/can/omni/peri-omniaddstate/$(omniqual)$]]
+\define peri-omniadd-openstatetid() $:/state/can/omni/peri-openstate/$(omniqual)$
+\define peri-omniaddstatetid() $:/state/can/omni/peri-omniaddstate/$(omniqual)$
 
-\define child-omniadd-openstatetid() [[$:/state/can/omni/child-openstate/$(omniqual)$
-\define child-omniaddstatetid() [[$:/state/can/omni/child-omniaddstate/$(omniqual)$
+\define child-omniadd-openstatetid() $:/state/can/omni/child-openstate/$(omniqual)$
+\define child-omniaddstatetid() $:/state/can/omni/child-omniaddstate/$(omniqual)$
 
-\define append-omniadd-openstatetid() [[$:/state/can/omni/append-openstate/$(omniqual)$]]
-\define append-omniaddstatetid() [[$:/state/can/omni/append-omniaddstate/$(omniqual)$]]
+\define append-omniadd-openstatetid() $:/state/can/omni/append-openstate/$(omniqual)$
+\define append-omniaddstatetid() $:/state/can/omni/append-omniaddstate/$(omniqual)$
 

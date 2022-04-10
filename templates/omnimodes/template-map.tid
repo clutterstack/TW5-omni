@@ -7,16 +7,19 @@ title: $:/plugins/can/omni/template-map
         <<can-omni-tree-itemhandle>>
         <$droppable class="omni-text-display" tag="div" actions="""<$list filter="[<actionTiddler>!is[current]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""" >
         <div class="can-omni-ctlrow">
-            <<can-omni-title-link>><<omni-foldbutton>><<omni-menubutton>>
+            <<can-omni-title-link>><<omni-foldbutton>>
         </div>
         <!-- <<omni-captionheading>> -->
         <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore">
         <<can-omni-teaser>>
         </$list>
         </$droppable>
+        <div class="can-omni-subctl" >
+        <<omni-menubutton>>
         <$list filter="[{$(menustatetiddler)$!!menustate}match[show]]" variable="ignore">
-            <div class="can-omni-subctl"><<can-omni-delist>><<can-omni-delete>></div>
+            <div class><<can-omni-delist>><<can-omni-delete>></div>
         </$list>
+        </div>
         <$list filter="[all[current]has[omni-list]]" emptyMessage=<<omni-add-child>> variable="ignore">
                 <<omni-showbutton>>
         </$list>

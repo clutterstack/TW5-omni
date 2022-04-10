@@ -33,7 +33,7 @@ title: $:/plugins/can/omni/styles-map
     /* grid-column: 2/4; */
     z-index: 9999;
     display: grid;
-    grid-template-columns: min-content min-content minmax(min-content, 125em); /* 1em auto 7fr auto;  */
+    grid-template-columns: min-content min-content minmax(min-content, 125em) max-content; /* 1em auto 7fr auto;  */
     grid-template-rows: auto;
     position: relative;
     /*padding-right: 1em;*/
@@ -173,6 +173,7 @@ background: #EEF8FF;
 .map .can-omni-subctl {
     display:flex;
     flex-direction: column;
+    background-color: <<colour tiddler-editor-fields-even>>;
 }
 
 .map .can-omni-foldbutton, .map .can-omni-menubutton {
