@@ -51,6 +51,15 @@ type: text/vnd.tiddlywiki
 </div>
 \end
 
+\define omni-menubutton()
+<div class="can-omni-menubutton tc-btn-invisible" data-statetid=<<menustatetiddler>>>
+<$list filter="[<menustatetiddler>get[menustate]match[show]]" emptyMessage="""<$action-setfield $tiddler=<<menustatetiddler>> menustate="show"/>{{$:/core/images/menu-button}}""" variable="ignore">
+	<$action-setfield $tiddler=<<menustatetiddler>> menustate="hide"/>
+	{{$:/core/images/menu-button}}
+</$list>
+</div>
+\end
+
 \define omni-showbutton()
 <$button class="can-omni-collapsebutton tc-btn-invisible" title="Show/hide omnibus tiddlers">
 <$list filter="[<omnistatetiddler>get[text]match[hide]]" emptyMessage="""<$action-setfield $tiddler=<<omnistatetiddler>> $value="hide"/>{{$:/plugins/can/omni/hide-omni.svg}}""" variable="ignore">

@@ -7,13 +7,16 @@ title: $:/plugins/can/omni/template-map
         <<can-omni-tree-itemhandle>>
         <$droppable class="omni-text-display" tag="div" actions="""<$list filter="[<actionTiddler>!is[current]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""" >
         <div class="can-omni-ctlrow">
-            <<can-omni-title-link>><<omni-foldbutton>>
+            <<can-omni-title-link>><<omni-foldbutton>><<omni-menubutton>>
         </div>
         <!-- <<omni-captionheading>> -->
         <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore">
         <<can-omni-teaser>>
         </$list>
         </$droppable>
+        <$list filter="[{$(menustatetiddler)$!!menustate}match[show]]" variable="ignore">
+            <div class="can-omni-subctl"><<can-omni-delist>><<can-omni-delete>></div>
+        </$list>
         <$list filter="[all[current]has[omni-list]]" emptyMessage=<<omni-add-child>> variable="ignore">
                 <<omni-showbutton>>
         </$list>
@@ -50,6 +53,7 @@ title: $:/plugins/can/omni/template-map
         <$eventcatcher events="click" selector=".can-omni-itemhandle" actions-click=<<omni-select-node>> tag="div">
             <$eventcatcher events="click" selector=".omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
                 <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
+                    <$eventcatcher events="click" selector=".can-omni-menubutton" actions-click=<<omni-toggle-menustate>> tag="div">
                     <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-ec-delete-action>> tag="div">
                         <$eventcatcher events="click" selector=".can-omni-addbutton" 
                         actions-click=<<omni-ec-addtiddler-action>> tag="div">
@@ -58,7 +62,7 @@ title: $:/plugins/can/omni/template-map
                                 <$macrocall $name=compose-omni depth=0/> 
                                 <$linkcurves <<currentTiddler>> />                             
                             </div>
-</$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$vars>
+</$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$vars>
 \end
 
 \define compose-omni(mode:map depth)

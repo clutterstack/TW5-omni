@@ -175,7 +175,7 @@ background: #EEF8FF;
     flex-direction: column;
 }
 
-.map .can-omni-foldbutton {
+.map .can-omni-foldbutton, .map .can-omni-menubutton {
     font-size: 1.2em;
 }
 
@@ -189,7 +189,7 @@ background: #EEF8FF;
     color: <<colour foreground>>;
 }
 
-.map .omni-button svg, .map .can-omni-foldbutton svg { 
+.map .omni-button svg, .map .can-omni-foldbutton svg, .map .can-omni-menubutton svg { 
     fill:<<colour foreground>>;}
 
 .map .can-omni-stream .omni-button svg {
