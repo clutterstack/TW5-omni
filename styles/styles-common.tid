@@ -195,7 +195,7 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .can-omni-toggleadd:hover {background-color: #efefef;}
 
-.can-omni-peripheral.tc-dragover, .can-omni-topadd.tc-dragover, .can-omni-bottomadd.tc-dragover, .tc-dragover .can-omnibus-droppable { border-radius: 5px;background-color: #0ff; }
+.can-omni-peripheral.tc-dragover, .can-omni-topadd.tc-dragover, .can-omni-bottomadd.tc-dragover, .tc-dragover .can-omnibus-droppable, .omni-add-child.tc-dragover { border-radius: 5px;background-color: #0ff; }
 
 .can-omni-peripheral .omni-button, .can-omni-bottomadd .omni-button {border-radius: 4px; width: 100%;}
 

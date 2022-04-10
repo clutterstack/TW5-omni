@@ -4,29 +4,37 @@ title: $:/plugins/can/omni/styles-map
 <style>
 /****** START styles-map ********/
 
+.can-omni-toptools { /* note this will have an impact on other omnis open in other modes */
+    z-index: 9999;
+    position: relative;
+}
+
 .can-omni-stream.map {
+    position: relative;
+    z-index: 25000;
     font-size: 16px;
     display: grid;
-    column-gap: 20px;
-    /* grid-template-columns: auto; */
+    column-gap: 50px;
+    align-items: start;
+    grid-template-columns: repeat(auto-fill, max-content);
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
 
 .map .omni-svg-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    
 }
 
 .map .omni-item-container {
     /* grid-column: 2/4; */
     z-index: 9999;
     display: grid;
-    grid-template-columns: min-content min-content minmax(10em, 55em) auto auto; /* 1em auto 7fr auto;  */
+    grid-template-columns: min-content min-content minmax(min-content, 125em); /* 1em auto 7fr auto;  */
     grid-template-rows: auto;
     position: relative;
-    padding-right: 1em;
+    /*padding-right: 1em;*/
+    margin-right: -1em;
+    
 }
 
 .map .omni-item-container.toplevel { grid-column: 1/2;}
@@ -48,30 +56,15 @@ title: $:/plugins/can/omni/styles-map
 .map .depth-15 { grid-column: 16/17;}
 .map .depth-16 { grid-column: 17/18;}
 
-/* .map .omni-showomni {
-    grid-column: 5/6;
-    background: red;
-} */
 
-
-.map .can-omni-collapsebutton {
-    border-top: 1px solid;
-    border-radius: 0;
-    position: absolute;
-    right: 0;
-    top: 4em;
-}
-
-.map .omni-branch-line {
-    grid-column:1/2;
-    grid-row: span 1;
-    width: 1em;
-    /*border-left: 1px solid;*/
-    /*border-bottom: 1px solid;*/
-    border-radius: 0 0 0 16px;
-    /* box-sizing: border-box; */
-    /*margin-bottom: -1em;*/
-   /* margin-left: -1px;*/
+.map .can-omni-collapsebutton, .map .omni-add-child {
+    width: 1.6em;
+    margin-right: -1.6em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 1em;
 }
 
 .map .omni-heading-row {
@@ -181,6 +174,8 @@ background: #EEF8FF;
     height: 10pt;
 }
 
+
+
 .map .omni-button {
     color: <<colour foreground>>;
 }
@@ -198,6 +193,7 @@ background: #EEF8FF;
 /* ----------------------------------------- */
 
 .map .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
+    z-index: 9999;
     border-radius: 4px; 
     display: flex; 
     flex-direction: row; 

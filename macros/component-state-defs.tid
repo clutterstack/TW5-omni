@@ -26,6 +26,9 @@ type: text/vnd.tiddlywiki
 \define peri-omniadd-openstatetid() $:/state/can/omni/peri-openstate/$(omniqual)$
 \define peri-omniaddstatetid() $:/state/can/omni/peri-omniaddstate/$(omniqual)$
 
+\define child-omniadd-openstatetid() $:/state/can/omni/child-openstate/$(omniqual)$
+\define child-omniaddstatetid() $:/state/can/omni/child-omniaddstate/$(omniqual)$
+
 \define append-omniadd-openstatetid() $:/state/can/omni/append-openstate/$(omniqual)$
 \define append-omniaddstatetid() $:/state/can/omni/append-omniaddstate/$(omniqual)$
 

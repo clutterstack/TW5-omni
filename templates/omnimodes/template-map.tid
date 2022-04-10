@@ -3,21 +3,21 @@ title: $:/plugins/can/omni/template-map
 \define everymap(depth posclass)
 <$set name=testclass filter="""[[omni-item-container]] [[$posclass$]enlist-input[]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [[$depth$]addprefix[depth-]]""">
     <div class=<<testclass>> data-omnitid=<<currentTiddler>> data-depth=$depth$>
-        <$list filter="[[$depth$]!match[0]]">
-            <div class="omni-branch-line"></div>
-        </$list>
         <<can-omni-peripheral layout:mapadd endstate:open>>
         <<can-omni-tree-itemhandle>>
         <$droppable class="omni-text-display" tag="div" actions="""<$list filter="[<actionTiddler>!is[current]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""" >
         <<can-omni-title-link>>
-        <<omni-captionheading>>
+        <!-- <<omni-captionheading>> -->
         <<can-omni-text>>
         </$droppable>
-        <$list filter="[all[current]has[omni-list]]" variable="ignore">
-                <<can-omni-omni-show>>
+        <$list filter="[all[current]has[omni-list]]" emptyMessage=<<omni-add-child>> variable="ignore">
+                <<omni-showbutton>>
         </$list>
     </div>
-    <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=map-showomni depth=<<__depth__>> />""" variable="ignore"/>
+    <$list filter="""[all[current]has[omni-list]]""" variable="null">
+        <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=map-showomni depth=<<__depth__>> />""" variable="ignore"/>
+    </$list>
+    
 
 </$set>
 \end
@@ -31,8 +31,6 @@ title: $:/plugins/can/omni/template-map
         <!--omni-showomni: newdepth: <<newdepth>> <br> -->
         <$list filter="[{<omnistatetiddler}!match[hide]] :filter[<newdepth>compare:integer:lt[10]]" variable=null emptyMessage=<<can-recursionblock>> >
         <$macrocall $name="compose-omni" mode=<<mode>> depth=<<newdepth>> />
-        depth before linkcurves: <<__depth__>>
-        <$linkcurves baseomni=<<baseomni>> />
         </$list>
     </$vars>
 </$list>
@@ -53,7 +51,8 @@ title: $:/plugins/can/omni/template-map
                         actions-click=<<omni-ec-addtiddler-action>> tag="div">
                             <<can-omni-toptools>>
                             <div class="can-omni-stream map" >
-                                <$macrocall $name=compose-omni depth=0/>                              
+                                <$macrocall $name=compose-omni depth=0/> 
+                                <$linkcurves <<currentTiddler>> />                             
                             </div>
 </$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$vars>
 \end
@@ -71,27 +70,5 @@ title: $:/plugins/can/omni/template-map
 </$vars>
 \end
 
-\define addcurveset(depth) 
-<!-- Modelled on omni-showomni -->
-
-<$list filter="[all[current]has[omni-list]]" > <!-- only run if there are omnitids -->
-<$vars parentval=<<currentTiddler>> >
-    <$vars newdepth={{{[<__depth__>add[1]]}}}>
-        <!--omni-showomni: newdepth: <<newdepth>> <br> -->
-        <$list filter="[{<omnistatetiddler>}!match[hide]] :filter[<newdepth>compare:integer:lt[10]]" variable=null>
-            <!-- as long as current tiddler's subtids aren't hidden and we're not too deep -->
-            <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
-                boop! Level <<__depth__>> !
-                calling linkcurves widget
-                    <$linkcurves baseomni=<<baseomni>>/>
-                <$macrocall $name=addcurveset depth=<<newdepth>> />
-            </$list>
-        </$list>
-    </$vars>
-</$vars>
-</$list>
-\end
-
-
 <<compose-omni-toplevel>>
-<!-- <$macrocall $name=addcurveset depth=0/> -->
+<!-- <$linkcurves <<currentTiddler>> /> -->

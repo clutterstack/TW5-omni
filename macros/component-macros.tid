@@ -3,7 +3,6 @@ creator: chris
 tags: $:/tags/Macro
 title: $:/plugins/can/omni/component-macros
 type: text/vnd.tiddlywiki
-
 \whitespace trim
 
 \define gridrowspan-ctl()
@@ -30,6 +29,15 @@ type: text/vnd.tiddlywiki
 </$vars>
 \end
 
+
+\define omni-add-child(layout:"subui-caption" endstate:"closed")
+<$vars openstatetid=<<child-omniadd-openstatetid>> omniaddstatetid=<<child-omniaddstatetid>> >
+<$droppable class="omni-add-child" tag="div" actions="""<$list filter="[<actionTiddler>] -[<omnicrumbs>enlist-input[]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $tiddler=<<currentTiddler>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<actionTiddler>]'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""">
+    <<omni-childbutton>>
+</$droppable>
+</$vars>
+\end
+
 \define can-omni-peripheral-inert()
 <div class="can-omni-peripheral inert"></div>
 \end
@@ -43,7 +51,7 @@ type: text/vnd.tiddlywiki
 </div>
 \end
 
-\define can-omni-omni-show()
+\define omni-showbutton()
 <$button class="can-omni-collapsebutton tc-btn-invisible" title="Show/hide omnibus tiddlers">
 <$list filter="[<omnistatetiddler>get[text]match[hide]]" emptyMessage="""<$action-setfield $tiddler=<<omnistatetiddler>> $value="hide"/>{{$:/plugins/can/omni/hide-omni.svg}}""" variable="ignore">
 	<$action-setfield $tiddler=<<omnistatetiddler>> $value="show"/>
