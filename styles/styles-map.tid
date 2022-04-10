@@ -19,7 +19,9 @@ title: $:/plugins/can/omni/styles-map
     grid-template-columns: repeat(auto-fill, max-content);
     overflow-x: scroll;
     overflow-y: hidden;
+    
 }
+
 
 .map .omni-svg-container {
     

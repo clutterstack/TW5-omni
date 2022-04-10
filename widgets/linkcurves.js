@@ -36,12 +36,14 @@ Draw svg curves between tiddlers in map mode
         clearTimeout(timeoutID);
         timeoutID = setTimeout( function() {
             self.theSVG = self.doSVG();
+            // self.refreshSelf();
+            return true;
         }, 40);
     }
 
     LinkcurvesWidget.prototype.doSVG = function() {
         // Get the omni-stream element's dimensions
-        const streamsize = [this.streamdiv.offsetWidth, this.streamdiv.offsetHeight];
+        const streamsize = [this.streamdiv.scrollWidth, this.streamdiv.scrollHeight];
         // console.log("streamsize: " + streamsize)
         var curvestrings = "";
         // for every tiddler in the baseomni's omni-list, add a bunch of curves to curvestrings
@@ -53,18 +55,23 @@ Draw svg curves between tiddlers in map mode
             ${this.curveset(title)}`;
             }
         }
-         
-         this.containerDiv.className = "omni-absolute-svgdiv";
-         this.containerDiv.style.position="absolute";
-         this.containerDiv.style.top="0";
-         this.containerDiv.style.left="0";
-         this.containerDiv.style.width=streamsize[0];
-         this.containerDiv.style.height=streamsize[1];
+        this.containerDiv.className = "omni-absolute-svgdiv";
+        this.containerDiv.style.position="absolute";
+        this.containerDiv.style.top=0; //this.streamdiv.scrollTop;
+        this.containerDiv.style.left=0; //this.streamdiv.scrollLeft;
+        this.containerDiv.style.width = streamsize[0]+"px";
+        this.containerDiv.style.height = streamsize[1]+"px";
         // console.log(curvestrings);
         // create the svg string to put in the container div
         this.containerDiv.innerHTML = this.composesvg(streamsize, curvestrings);
     }
 
+    LinkcurvesWidget.prototype.composesvg = function(streamsize, svgpaths) {
+        return `<svg width="${streamsize[0]}" height="${streamsize[1]}" viewBox="0 0 ${streamsize[0]} ${streamsize[1]}" xmlns="http://www.w3.org/2000/svg">
+        ${svgpaths}
+        </svg>
+        `;
+    }
 
     LinkcurvesWidget.prototype.curveset = function(omnititle) {
         const omnilist = this.wiki.getTiddlerList(omnititle,"omni-list");
@@ -74,7 +81,7 @@ Draw svg curves between tiddlers in map mode
         var curves = `<line x1=${startpoint[0]} y1=${startpoint[1]} x2=${startpoint[0] + this.stublength} y2=${startpoint[1]} stroke=\"black\" fill=\"none\"/>`;} else {
         var curves = ""; }
         const curvestart = [startpoint[0] + this.stublength, startpoint[1]];
-        console.log("this.stublength: "+this.stublength);
+        // console.log("this.stublength: "+this.stublength);
         for (let title of omnilist) {
             if (this.getnode(title)) {
                 const endpoint = this.leftmidpoint(this.getnode(title));
@@ -86,12 +93,6 @@ Draw svg curves between tiddlers in map mode
         }
         return curves;
     }
-
-    LinkcurvesWidget.prototype.stub = function(omnititle) {
-        const startpoint = this.rightmidpoint(this.getnode(omnititle));
-        return `<line x1=${startpoint[0]} y1=${startpoint[1]} x2=${startpoint[0] + this.stublength} y2=${startpoint[1]}\" stroke=\"black\" fill=\"none\"/>`   
-    }
-
 
     LinkcurvesWidget.prototype.getnode = function(title) {
         return this.streamdiv.querySelector("div[data-omnitid=\'"+title+"\']");
@@ -116,20 +117,11 @@ Draw svg curves between tiddlers in map mode
             return "svgpath: startpoint: " + startpoint + " endpoint: " + endpoint 
         }
     }
-
-    LinkcurvesWidget.prototype.composesvg = function(streamsize, svgpaths) {
-        return `<svg width="${streamsize[0]}" height="${streamsize[1]}" viewBox="0 0 ${streamsize[0]} ${streamsize[1]}" xmlns="http://www.w3.org/2000/svg">
-        ${svgpaths}
-        </svg>
-        `;
-    }
-
     
     /*
     Render this widget into the DOM
     */
-    LinkcurvesWidget.prototype.render = function(parent,nextSibling) {
-        
+    LinkcurvesWidget.prototype.render = function(parent,nextSibling) { 
         this.parentDomNode = parent;
         this.computeAttributes();
         this.execute();
@@ -149,9 +141,7 @@ Draw svg curves between tiddlers in map mode
         parent.insertBefore(this.containerDiv,nextSibling);
         this.domNodes.push(this.containerDiv);
         // this.renderChildren(this.containerDiv,null);
-        
     };
-
 
     /*
     Compute the internal state of the widget
@@ -166,25 +156,14 @@ Draw svg curves between tiddlers in map mode
     /*
     Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
     */
+   // Refresh of svgs with window resize is handled with a listener set in this.render()
     LinkcurvesWidget.prototype.refresh = function(changedTiddlers) {
         if (changedTiddlers) {
             this.refreshSelf();
                 return true;
         }
-
-
-
-
-
-
-    // var changedAttributes = this.computeAttributes();
-	// if($tw.utils.count(changedAttributes) > 0) {
-	// 	return this.refreshSelf();
-	// }
-	// return this.refreshChildren(changedTiddlers);
     };
     
-
     exports.linkcurves = LinkcurvesWidget;
     
     })();

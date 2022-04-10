@@ -7,7 +7,7 @@ title: $:/plugins/can/omni/template-map
         <<can-omni-tree-itemhandle>>
         <$droppable class="omni-text-display" tag="div" actions="""<$list filter="[<actionTiddler>!is[current]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""" >
         <<can-omni-title-link>>
-        <!-- <<omni-captionheading>> -->
+        <<omni-captionheading>>
         <<can-omni-text>>
         </$droppable>
         <$list filter="[all[current]has[omni-list]]" emptyMessage=<<omni-add-child>> variable="ignore">
