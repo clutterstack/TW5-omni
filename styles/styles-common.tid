@@ -112,7 +112,7 @@ details > summary {
     align-content: flex-start; 
     padding-top: 0.4em; 
     padding-left: 0.4em;
-    }
+}
 
 .tc-draggable.can-omni-ctlrow:hover svg {
     background: <<colour tiddler-controls-foreground>>;

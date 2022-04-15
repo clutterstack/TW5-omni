@@ -20,8 +20,7 @@ title: $:/plugins/can/omni/styles-map
     align-items: start;
     grid-template-columns: repeat(auto-fill, max-content);
     overflow-x: scroll;
-    overflow-y: hidden;
-    
+    overflow-y: hidden;  
 }
 
 
@@ -33,7 +32,9 @@ title: $:/plugins/can/omni/styles-map
     /* grid-column: 2/4; */
     z-index: 100;
     display: grid;
-    grid-template-columns: min-content min-content minmax(min-content, 125em) max-content; /* 1em auto 7fr auto;  */
+    grid-template-areas: "peri peri peri peri"
+                       "handle text menu margin";
+    grid-template-columns: min-content minmax(min-content, 125em) max-content max-content; /* 1em auto 7fr auto;  */
     grid-template-rows: auto;
     position: relative;
     /*padding-right: 1em;*/
@@ -62,6 +63,7 @@ title: $:/plugins/can/omni/styles-map
 
 
 .map .can-omni-collapsebutton, .map .omni-add-child {
+    grid-area: margin;
     width: 1.6em;
     margin-right: -1.6em;
     display: flex;
@@ -78,9 +80,9 @@ title: $:/plugins/can/omni/styles-map
 }
 
 .map .omni-text-display {
-    grid-column: 3/4;
+    grid-area:text;
     /* max-width: 55em; */
-    border-radius: 0 5px 5px 0;
+   /* border-radius: 0 5px 5px 0;*/
     border: none;
     background-color: <<colour tiddler-editor-fields-even>>;
     display: flex;
@@ -131,7 +133,7 @@ background: #EEF8FF;
     border-radius: 5px 0 0 5px; 
     width: 1.2em; 
     height: 100%; 
-    grid-column: 2/3; 
+    grid-area: handle; 
     grid-row: span 1;
     background-color: <<colour tiddler-editor-fields-even>>;
     margin:0;
@@ -171,9 +173,11 @@ background: #EEF8FF;
 }
 
 .map .can-omni-subctl {
+    grid-area: menu;
     display:flex;
     flex-direction: column;
     background-color: <<colour tiddler-editor-fields-even>>;
+    border-radius: 0 5px 5px 0;
     padding-right: 0.4em;
     gap: 0.8em;
 }
@@ -212,10 +216,9 @@ background: #EEF8FF;
     justify-content: space-between; 
     line-height: 16pt;}
 
-.map .can-omni-peripheral, .can-omni-topadd { 
-    grid-column: 2/6; 
+.map .can-omni-peripheral { 
+    grid-area: peri; 
 }
-
 
 /* ------------------ */
 /* headings           */
