@@ -14,7 +14,7 @@ title: $:/plugins/can/omni/template-map
         <<can-omni-teaser>>
         </$list>
         </$droppable>
-        <div class="can-omni-subctl" tabindex="0">
+        <div class="omni-subctl" tabindex="0">
         <<omni-menubutton>>
         <$list filter="[{$(menustatetiddler)$!!menustate}match[show]]"  variable="ignore">
         <<can-omni-delist>><<can-omni-delete>>

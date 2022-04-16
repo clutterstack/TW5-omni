@@ -220,7 +220,7 @@ background: #EEF8FF;
     margin:0;
     }
 
-.map .can-omni-subctl {
+.map .omni-subctl {
     display:flex;
     flex-direction: column;
 }

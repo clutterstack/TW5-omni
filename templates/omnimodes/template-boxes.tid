@@ -11,14 +11,14 @@ title: $:/plugins/can/omni/template-boxes
         <$droppable class="omni-text-display" tag="div" actions="""<$list filter="[<actionTiddler>!is[current]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""" >
         <<can-omni-text>>
         </$droppable>
-        <div class="can-omni-subctl">
+        <div class="omni-subctl">
             <<can-omni-title-link>>
             <<can-omni-delist>>
             <<can-omni-delete>>
             {{||Drop refsource title here}}
         </div>
         <$list filter="[all[current]has[omni-list]]" variable="ignore">
-            <<can-omni-omni-show>>
+            <<omni-showbutton>>
         </$list>
         <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>
     </div>

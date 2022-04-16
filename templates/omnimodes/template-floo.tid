@@ -10,7 +10,7 @@ tags:
         <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore"/>
         </div>
         <$list filter="[all[current]has[omni-list]]" variable="ignore">
-            <<can-omni-omni-show>>
+            <<omni-showbutton>>
         </$list>
         <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=1 />""" variable="ignore"/>
     </div>
@@ -26,7 +26,7 @@ tags:
         <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore"/>
         </div>
         <$list filter="[all[current]has[omni-list]]" variable="ignore">
-            <<can-omni-omni-show>>
+            <<omni-showbutton>>
         </$list>
         <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>
     </div>

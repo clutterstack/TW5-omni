@@ -7,7 +7,7 @@ title: $:/plugins/can/omni/template-cheatsheet
 <div class="omni-cheatsheet-section-container title" style=<<grid-span-style>>>
 <<can-omni-peripheral-inert>>
 <div class=omni-cheatsheet-section >
-    <div class="can-omni-subctl">
+    <div class="omni-subctl">
         <<gridrowspan-ctl>>
         <<gridcolspan-ctl>>
     </div>
@@ -23,14 +23,14 @@ title: $:/plugins/can/omni/template-cheatsheet
     <<can-omni-peripheral>>
     <div class="omni-cheatsheet-section">
         <$vars editFieldName="caption">
-            <div class="can-omni-subctl">
+            <div class="omni-subctl">
                 <<can-omni-link>>
                 <<can-omni-delist>>
                 <<can-omni-delete>>
                 <<gridrowspan-ctl>>
                 <<gridcolspan-ctl>>
             </div>
-            <div class="can-omni-subctl">
+            <div class="omni-subctl">
             <<omni-captionortitleheading>><$list filter="[all[current]has[omni-list]then[omni]]" variable=ignore><<omni-closerlook>></$list>
             </div>
         </$vars>

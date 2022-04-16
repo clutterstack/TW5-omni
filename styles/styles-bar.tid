@@ -18,7 +18,7 @@ title: $:/plugins/can/omni/styles-bar
     margin-left: -0.4em;
     margin-right: 0.4em;
 }
-.bar .can-omni-subctl {
+.bar .omni-subctl {
     display: flex; 
     flex-direction: row; 
     flex-wrap: wrap; 

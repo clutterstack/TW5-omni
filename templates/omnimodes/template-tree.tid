@@ -12,12 +12,12 @@ title: $:/plugins/can/omni/template-tree
         <div class="can-omni-text" >
             <<can-omni-text>>
         </div>
-        <div class="can-omni-subctl">
+        <div class="omni-subctl">
             <<can-omni-delist>>
             <<can-omni-delete>>
         </div>
     <$list filter="[all[current]has[omni-list]]" variable="ignore">
-            <<can-omni-omni-show>>
+            <<omni-showbutton>>
         </$list>
         <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>
     </div>

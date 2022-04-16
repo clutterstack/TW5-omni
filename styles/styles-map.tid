@@ -172,7 +172,7 @@ background: #EEF8FF;
     margin-right: 0;
 }
 
-.map .can-omni-subctl {
+.map .omni-subctl {
     grid-area: menu;
     display:flex;
     flex-direction: column;

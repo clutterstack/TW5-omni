@@ -7,7 +7,7 @@ title: $:/plugins/can/omni/template-bar
 		<div>
 			<<can-omni-title-link>>
 		</div>
-		<div class="can-omni-subctl">
+		<div class="omni-subctl">
 			<<can-omni-delist>>
 			<<can-omni-delete>>
 			<<can-omni-make-omnibus>>

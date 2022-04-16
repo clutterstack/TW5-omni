@@ -140,7 +140,7 @@ background: #EEF8FF;
     margin:0;
     }
 
-.exp .can-omni-subctl {
+.exp .omni-subctl {
     display:flex;
     flex-direction: row;
 }

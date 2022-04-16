@@ -17,7 +17,7 @@ title: $:/plugins/can/omni/template-cheatsheetro
 <div class=omni-cheatsheet-section-container style=<<grid-span-style>>>
     <<can-omni-peripheral-inert>>
     <div class="omni-cheatsheet-section">            
-            <div class="can-omni-subctl">
+            <div class="omni-subctl">
             <<omni-captionortitleheading-ro>><$list filter="[all[current]has[omni-list]then[omni]]" variable=ignore><<omni-closerlook>></$list>
             </div>
         <div class="omni-cheatsheet-text">

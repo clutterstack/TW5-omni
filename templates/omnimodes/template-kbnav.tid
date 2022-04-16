@@ -11,14 +11,14 @@ title: $:/plugins/can/omni/template-kbnav
         <$droppable class="omni-text-display" tag="div" actions="""<$list filter="[<actionTiddler>!is[current]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""" >
         <<can-omni-text>>
         </$droppable>
-        <div class="can-omni-subctl">
+        <div class="omni-subctl">
             <<can-omni-title-link>>
             <<can-omni-delist>>
             <<can-omni-delete>>
             {{||Drop refsource title here}}
         </div>
         <$list filter="[all[current]has[omni-list]]" variable="ignore">
-            <<can-omni-omni-show>>
+            <<omni-showbutton>>
         </$list>
         <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>
     </div>
@@ -37,13 +37,14 @@ title: $:/plugins/can/omni/template-kbnav
                         <$eventcatcher events="click" selector=".can-omni-addbutton" 
                         actions-click=<<omni-ec-addtiddler-action>> tag="div">
                             <<can-omni-toptools>>
-                        <$macrocall $name=compose-omni depth=0/>  
+                            <div class="can-omni-stream kbnav" >
+                                <$macrocall $name=compose-omni depth=0/>  
+                            </div>
 </$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$vars>
 \end
 
 \define compose-omni(mode:kbnav depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="kbnav" template="everykbnav" creatednum={{!!created}}>
-    <div class="can-omni-stream kbnav" >
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
         <$set name=omnicrumbs filter="""[<omnicrumbs>enlist-input[]] [<parentval>]""">
             <$vars creatednum={{!!created}}>
@@ -51,7 +52,6 @@ title: $:/plugins/can/omni/template-kbnav
             </$vars>
         </$set>
         </$list>
-    </div>
     <<can-omni-bottomadd layout:slimui endstate:open>>
 </$vars>
 \end

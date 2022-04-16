@@ -154,7 +154,7 @@ background: #EEF8FF;
     margin:0;
     }
 
-.plaintree .can-omni-subctl {
+.plaintree .omni-subctl {
     display:flex;
     flex-direction: row;
 }

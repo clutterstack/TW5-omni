@@ -123,7 +123,7 @@ background: #EEF8FF;
     margin:0;
     }
 
-.kbclean .can-omni-subctl {
+.kbclean .omni-subctl {
     display:flex;
     flex-direction: row;
 }

@@ -156,7 +156,7 @@ background: #EEF8FF;
     margin:0;
     }
 
-.boxes .can-omni-subctl {
+.boxes .omni-subctl {
     display:flex;
     flex-direction: row;
 }

@@ -109,7 +109,7 @@ width: 100%;
 }
 
 
-.can-omni-subctl {
+.omni-subctl {
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;

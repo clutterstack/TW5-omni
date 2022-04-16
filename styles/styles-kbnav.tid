@@ -9,9 +9,12 @@ title: $:/plugins/can/omni/styles-kbnav
 }
 
 .kbnav .omni-item-container {
-    grid-column: 2/4;
+    grid-column: 2/5;
     display: grid;
-    grid-template-columns: min-content min-content minmax(10em, 55em) auto auto; /* 1em auto 7fr auto;  */
+    /* grid-template-areas: "branch peri peri peri"
+                       ". handle text menu"
+                       "fish container container container";*/
+    grid-template-columns: max-content 1em minmax(10em, 55em) min-content; /* 1em auto 7fr auto;  */
     grid-template-rows: auto;
     position: relative;
 }
@@ -156,7 +159,8 @@ background: #EEF8FF;
     margin:0;
     }
 
-.kbnav .can-omni-subctl {
+.kbnav .omni-subctl {
+    grid-column: 4/5;
     display:flex;
     flex-direction: row;
 }
@@ -175,7 +179,7 @@ background: #EEF8FF;
 }
 
 /* ----------------------------------------- */
-/* can-omni-omni-show button */
+/* omni-showbutton button */
 /* ----------------------------------------- */
 
 
@@ -195,7 +199,7 @@ background: #EEF8FF;
 /* ----------------------------------------- */
 
 .kbnav .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
-    grid-column: 2/6; 
+    grid-column: 2/5;
     border-radius: 4px; 
     display: flex; 
     flex-direction: row; 

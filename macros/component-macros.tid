@@ -225,7 +225,7 @@ testvar? <<testvar>> <br>
     <$list filter="[<currentTiddler>has[text]]"><<omni-foldbutton>></$list>
     <<omni-captionheading>>
     <$list filter="[<editfieldstatetid>get[editstate]match[edit]]" variable="ignore" emptyMessage="""
-        <div class="can-omni-subctl">
+        <div class="omni-subctl">
             <<can-omni-title-link>>
             <<can-omni-delist>>
             <<can-omni-delete>>

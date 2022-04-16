@@ -171,7 +171,7 @@ background: #EEF8FF;
     margin-right: 0;
 }
 
-.cleanmap .can-omni-subctl {
+.cleanmap .omni-subctl {
     grid-area: menu;
     display:flex;
     flex-direction: column;
@@ -181,7 +181,7 @@ background: #EEF8FF;
     gap: 0.8em;
 }
 
-.cleanmap .can-omni-ctlrow svg, .cleanmap .can-omni-subctl svg {width: }
+.cleanmap .can-omni-ctlrow svg, .cleanmap .omni-subctl svg {width: }
 
 .cleanmap .can-omni-foldbutton, .cleanmap .can-omni-menubutton {
     font-size: 1.2em;
