@@ -105,7 +105,7 @@ can-omni-edithandle {
     width:100%;
 }
 
-.tc-btn-invisible..can-omni-itemhandle:hover {
+.omni-button..can-omni-itemhandle:hover {
     background-color: <<colour muted-foreground>>;
 }
 

@@ -12,7 +12,7 @@ THis tiddler isn't used yet. It's for adding tags through the TW widget, but tha
 \define can-omni-tagaddbutton() 
 <$set name="newTagNameTiddler" value=<<qualify "$:/temp/NewTagName">>>
 <$set name="tag" value={{{ [<newTagNameTiddler>get[text]] }}}>
-<$button set="$:/temp/NewTagName" setTo="" class="can-omnibus-meta-controls tc-btn-invisible">
+<$button set="$:/temp/NewTagName" setTo="" class="can-omnibus-meta-controls omni-button">
 <$macrocall $name="add-tag-actions" actions=<<__actions__>>/>
 <$action-deletetiddler $tiddler=<<newTagNameTiddler>>/>
 {{$:/plugins/can/omni/new-tag.svg}}
@@ -26,13 +26,13 @@ THis tiddler isn't used yet. It's for adding tags through the TW widget, but tha
 <div class="can-omni-tagadd">
   <$set name="tabIndex" value={{$:/config/EditTabIndex}}>
   <$reveal type="match" state="!!omni-tagaddtoggle" text="show" tag=div class="omni-button-container">
-	<$button class="can-omnibus-meta-controls tc-btn-invisible" actions="<$action-setfield omni-tagaddtoggle='hide'/>">{{$:/core/images/cancel-button}}</$button>
+	<$button class="can-omnibus-meta-controls omni-button" actions="<$action-setfield omni-tagaddtoggle='hide'/>">{{$:/core/images/cancel-button}}</$button>
   </$reveal>
 	<$reveal type="match" state="!!omni-tagaddtoggle" text="show" tag=div>
   <$macrocall $name="tag-picker"/>
   </$reveal>
   <$reveal type="nomatch" state="!!omni-tagaddtoggle" text="show" tag=div class="omni-button-container">
-  <$button class="can-omnibus-meta-controls tc-btn-invisible" actions="<$action-setfield omni-tagaddtoggle='show'/>">{{$:/plugins/can/omni/new-tag.svg}}</$button>
+  <$button class="can-omnibus-meta-controls omni-button" actions="<$action-setfield omni-tagaddtoggle='show'/>">{{$:/plugins/can/omni/new-tag.svg}}</$button>
   </$reveal>
   <$reveal type="match" state="!!omni-tagaddtoggle" text="show" tag=div class="omni-button-container">
 	<<can-omni-tagaddbutton>>

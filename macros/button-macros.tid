@@ -4,19 +4,19 @@ tags: $:/tags/Macro
 
 \define can-omni-levelctl() 
 <div class="can-omni-levelctl">
-	<$button class="omni-button tc-btn-invisible" aria-label="Unindent" tooltip="Unindent" actions="<<omni-leveldn-actions>>">{{$:/plugins/can/omni/unindent.svg}}</$button>
-	<$button class="omni-button tc-btn-invisible" aria-label="Indent" tooltip="Indent" actions="<<omni-levelup-actions>>">{{$:/plugins/can/omni/indent.svg}}</$button>
+	<$button class="omni-button" aria-label="Unindent" tooltip="Unindent" actions="<<omni-leveldn-actions>>">{{$:/plugins/can/omni/unindent.svg}}</$button>
+	<$button class="omni-button" aria-label="Indent" tooltip="Indent" actions="<<omni-levelup-actions>>">{{$:/plugins/can/omni/indent.svg}}</$button>
 </div>
 \end
 
 \define can-omni-delete()
-<div class="omni-button tc-btn-invisible can-omni-delete" data-currenttid=<<currentTiddler>> data-parentval=<<parentval>> role="button" aria-label="Delete tiddler" title="Delete tiddler">
+<div class="omni-button can-omni-delete" data-currenttid=<<currentTiddler>> data-parentval=<<parentval>> role="button" aria-label="Delete tiddler" title="Delete tiddler">
 {{$:/core/images/delete-button}}
 </div>
 \end
 
 \define can-omni-delete-old()
-<$button class="omni-button tc-btn-invisible" aria-label="Delete tiddler" tooltip="Delete tiddler">
+<$button class="omni-button" aria-label="Delete tiddler" tooltip="Delete tiddler">
 <$action-sendmessage $message="tm-delete-tiddler"/>
 <$action-listops $tiddler=<<parentval>> $field='omni-list' $filter='[<dom-data-parentval>get[omni-list]enlist-input[]is[tiddler]]'/>
 <$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> />
@@ -25,24 +25,24 @@ tags: $:/tags/Macro
 \end
 
 \define can-omni-delist()
-<div class="omni-button tc-btn-invisible can-omni-delist" data-currenttid=<<currentTiddler>> data-parentval=<<parentval>> role="button" aria-label="Remove from list" title="Remove from list" >{{$:/plugins/can/omni/delist.svg}}</div>
+<div class="omni-button can-omni-delist" data-currenttid=<<currentTiddler>> data-parentval=<<parentval>> role="button" aria-label="Remove from list" title="Remove from list" >{{$:/plugins/can/omni/delist.svg}}</div>
 \end
 
 \define can-omni-delist-old()
-<$button class="omni-button tc-btn-invisible" aria-label="Remove from list" tooltip="Remove from list" actions="<$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='-[<currentTiddler>]'/><$action-listops $field='omniparent' $subfilter='-[<parentval>]' /><$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> /><$action-sendmessage $message='tm-auto-save-wiki'/>">{{$:/plugins/can/omni/delist.svg}}</$button>
+<$button class="omni-button" aria-label="Remove from list" tooltip="Remove from list" actions="<$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='-[<currentTiddler>]'/><$action-listops $field='omniparent' $subfilter='-[<parentval>]' /><$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> /><$action-sendmessage $message='tm-auto-save-wiki'/>">{{$:/plugins/can/omni/delist.svg}}</$button>
 \end
 
-\define omni-addbutton() <div class="omni-button tc-btn-invisible can-omni-addbutton" role="button" data-pairtid=<<currentTiddler>> data-parentval=<<parentval>> data-position=<<position>>>{{$:/core/images/new-button}}</div>
+\define omni-addbutton() <div class="omni-button can-omni-addbutton" role="button" data-pairtid=<<currentTiddler>> data-parentval=<<parentval>> data-position=<<position>>>{{$:/core/images/new-button}}</div>
 
 
 \define omni-childbutton()
-<div class="omni-button tc-btn-invisible can-omni-addbutton" data-parentval=<<currentTiddler>> data-position="omni-listbottom">
+<div class="omni-button can-omni-addbutton" data-parentval=<<currentTiddler>> data-position="omni-listbottom">
 {{$:/core/images/new-button}}
 </div>
 \end
 
 \define omni-closeaddbutton() 
-<$eventcatcher events="click" selector=".can-omni-closeaddbutton" actions-click=<<omni-toggleadd-action>> tag="div"><div class="omni-button tc-btn-invisible can-omni-closeaddbutton" data-statetid=<<openstatetid>>>
+<$eventcatcher events="click" selector=".can-omni-closeaddbutton" actions-click=<<omni-toggleadd-action>> tag="div"><div class="omni-button can-omni-closeaddbutton" data-statetid=<<openstatetid>>>
 {{$:/core/images/close-button}}</div></$eventcatcher>
 \end
 
@@ -51,34 +51,34 @@ tags: $:/tags/Macro
 \end
 
 \define can-omni-link()
-<$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>>><div class="omni-button tc-btn-invisible can-omni-link" data-currenttid=<<currentTiddler>> role="button" title="Open tiddler in story" aria-label="Open tiddler in story">{{$:/plugins/can/omni/fish-water.svg}}</div></$draggable>
+<$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>>><div class="omni-button can-omni-link" data-currenttid=<<currentTiddler>> role="button" title="Open tiddler $(currentTiddler)$ in story" aria-label="Open tiddler $(currentTiddler)$ in story">{{$:/plugins/can/omni/fish-water.svg}}</div></$draggable>
 \end
 
 \define can-omni-title-link()
 <$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >
-<span class="omni-button tc-btn-invisible can-omni-link" data-currenttid=<<currentTiddler>> role="button" title="Open tiddler in story" aria-label="Open tiddler in story">{{$:/plugins/can/omni/fish-water.svg}}<span class="can-omni-title"><$text text=<<currentTiddler>>/></span></span>
+<span class="omni-button can-omni-link" data-currenttid=<<currentTiddler>> role="button" title="Open tiddler in story" aria-label="Open tiddler in story">{{$:/plugins/can/omni/fish-water.svg}}<span class="can-omni-title"><$text text=<<currentTiddler>>/></span></span>
 </$draggable>
 \end
 
 \define omni-closerlook()
-<div class="omni-button omni-closerlook-button tc-btn-invisible" data-title=<<currentTiddler>> tooltip="Closer look" aria-label="Closer look">{{$:/plugins/can/omni/microscope-simple.svg}}</div>
+<div class="omni-button omni-closerlook-button omni-button" data-title=<<currentTiddler>> tooltip="Closer look" aria-label="Closer look">{{$:/plugins/can/omni/microscope-simple.svg}}</div>
 \end
 
 \define can-omni-title()
 <$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >
-<$button class="omni-button can-omni-title tc-btn-invisible" to={{!!title}} tooltip="Tiddler link" aria-label="Tiddler link">
+<$button class="omni-button can-omni-title omni-button" to={{!!title}} tooltip="Tiddler link" aria-label="Tiddler link">
 <div class="can-omni-title"><$text text=<<currentTiddler>>/></div>
 </$button></$draggable>
 \end
 
-\define omni-edit-button() <$button class="omni-button can-omni-edit-button tc-btn-invisible" actions=<<omni-ec-startedit-actions>>  tooltip="Edit text" aria-label="Edit text">{{$:/core/images/edit-button}}</$button>
+\define omni-edit-button() <$button class="omni-button can-omni-edit-button omni-button" actions=<<omni-ec-startedit-actions>>  tooltip="Edit text" aria-label="Edit text">{{$:/core/images/edit-button}}</$button>
 \end
 
 
 \define can-omni-mark-done()
-<$button class="omni-button tc-btn-invisible" aria-label="Tag item as done" tooltip="Tag item as done" actions="<$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='-[<currentTiddler>]'/><$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> /><$action-listops $tags='done'/><$action-sendmessage $message='tm-auto-save-wiki'/>">{{$:/plugins/can/omni/checkmark.svg}}</$button>
+<$button class="omni-button" aria-label="Tag item as done" tooltip="Tag item as done" actions="<$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='-[<currentTiddler>]'/><$action-setfield $tiddler=<<datatiddler>> $index=<<currentTiddler>> /><$action-listops $tags='done'/><$action-sendmessage $message='tm-auto-save-wiki'/>">{{$:/plugins/can/omni/checkmark.svg}}</$button>
 \end
 
 \define can-omni-make-omnibus()
-<$button class="omni-button tc-btn-invisible" aria-label="Tag item as omnibus" tooltip="Tag item as omnibus" actions="<$action-listops $tags='omnibus'/><$action-sendmessage $message='tm-auto-save-wiki'/>">{{$:/plugins/can/omni/make-omni.svg}}</$button>
+<$button class="omni-button" aria-label="Tag item as omnibus" tooltip="Tag item as omnibus" actions="<$action-listops $tags='omnibus'/><$action-sendmessage $message='tm-auto-save-wiki'/>">{{$:/plugins/can/omni/make-omni.svg}}</$button>
 \end

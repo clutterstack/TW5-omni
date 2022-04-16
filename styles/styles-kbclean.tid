@@ -106,7 +106,7 @@ background: #EEF8FF;
     width:100%;
 }
 
-.kbclean .tc-btn-invisible.can-omni-itemhandle:hover, .kbclean .can-omni-title:hover {
+.kbclean .omni-button.can-omni-itemhandle:hover, .kbclean .can-omni-title:hover {
     background-color: <<colour muted-foreground>>;
 }
 

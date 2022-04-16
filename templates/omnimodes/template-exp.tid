@@ -13,7 +13,7 @@ title: $:/plugins/can/omni/template-exp
         <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore"/>
         </$droppable>
         <$list filter="[all[current]has[omni-list]]" variable="ignore">
-            <<omni-showbutton>>
+            <<omni-collapsebutton>>
         </$list>
         <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>
     </div>

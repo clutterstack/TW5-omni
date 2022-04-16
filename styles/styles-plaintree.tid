@@ -136,7 +136,7 @@ background: #EEF8FF;
     width:100%;
 }
 
-.plaintree .tc-btn-invisible.can-omni-itemhandle:hover, .plaintree .can-omni-title:hover {
+.plaintree .omni-button.can-omni-itemhandle:hover, .plaintree .can-omni-title:hover {
     background-color: <<colour muted-foreground>>;
 }
 

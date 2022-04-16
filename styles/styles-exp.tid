@@ -122,7 +122,7 @@ background: #EEF8FF;
     width:100%;
 }
 
-.exp .tc-btn-invisible.can-omni-itemhandle:hover, .exp .can-omni-title:hover {
+.exp .omni-button.can-omni-itemhandle:hover, .exp .can-omni-title:hover {
     background-color: <<colour muted-foreground>>;
 }
 

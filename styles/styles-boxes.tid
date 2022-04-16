@@ -139,7 +139,7 @@ background: #EEF8FF;
     width:100%;
 }
 
-.boxes .tc-btn-invisible.can-omni-itemhandle:hover, .boxes .can-omni-title:hover {
+.boxes .omni-button.can-omni-itemhandle:hover, .boxes .can-omni-title:hover {
     background-color: <<colour muted-foreground>>;
 }
 

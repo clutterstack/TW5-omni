@@ -120,9 +120,9 @@ details > summary {
 
 
 
-.can-omni-collapsebutton svg {fill: <<colour tab-background>>; width: 1em; height: 1em;}
+.omni-collapsebutton svg {fill: <<colour tab-background>>; width: 1em; height: 1em;}
 
-.can-omni-foldbutton:hover svg, .can-omni-collapsebutton:hover svg {fill: <<colour tiddler-controls-foreground>>;}
+.can-omni-foldbutton:hover svg, .omni-collapsebutton:hover svg {fill: <<colour tiddler-controls-foreground>>;}
 
 .can-omni-title { font-size: 0.8em;}
 span.can-omni-title {vertical-align: bottom;}
@@ -151,9 +151,13 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .omni-button {
     color: <<colour tab-background>>;
-    /*display: flex; 
-    flex-direction: row; 
-    align-self: flex-start;*/
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333333;
+    fill: #333333;
 }
 
 .can-omni-ctlrow .tc-draggable {

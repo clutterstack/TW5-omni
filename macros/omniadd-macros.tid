@@ -2,12 +2,12 @@ title: $:/plugins/can/omniadd/omniadd-macros
 tags: $:/tags/Macro
 
 \define omniaddbutton(buttonstyle)
-<$button class="tc-btn-invisible omni-button can-rightedge $buttonstyle$" actions="<<submit-actions>> <<reset-actions>>">
+<$button class="omni-button can-rightedge $buttonstyle$" actions="<<submit-actions>> <<reset-actions>>">
 {{$:/plugins/can/omniadd/fastarrow-circle.svg}}
 </$button>
 \end
 
-\define omniaddresetbutton(buttonstyle) <$button class="omni-button can-leftedge $buttonstyle$ tc-btn-invisible" actions=<<reset-actions>> >{{$:/plugins/can/omniadd/escape.svg}}</$button>
+\define omniaddresetbutton(buttonstyle) <$button class="omni-button can-leftedge $buttonstyle$ omni-button" actions=<<reset-actions>> >{{$:/plugins/can/omniadd/escape.svg}}</$button>
 
 \define omniaddtitle()
 <div class="can-omniadd-titleadder">
@@ -17,7 +17,7 @@ tags: $:/tags/Macro
 <$edit-text class="can-omniadd-titleedit" tiddler=<<omniaddstatetid>> field=edittitle placeholder="Optional title"/>
 </$keyboard></$keyboard></$keyboard>
 <$reveal type="nomatch" stateTitle=<<omniaddstatetid>> stateField="edittitle" text="">
-<$button class="omni-button tiny tc-btn-invisible" actions="<$action-setfield $tiddler=<<omniaddstatetid>> $field='edittitle'/>">{{$:/plugins/can/omniadd/escape.svg}}</$button>
+<$button class="omni-button tiny omni-button" actions="<$action-setfield $tiddler=<<omniaddstatetid>> $field='edittitle'/>">{{$:/plugins/can/omniadd/escape.svg}}</$button>
 </$reveal>
 </div>
 \end
@@ -30,7 +30,7 @@ tags: $:/tags/Macro
 <$edit-text class="can-omniadd-titleedit" tiddler=<<omniaddstatetid>> field=editcaption placeholder="Optional caption"/>
 </$keyboard></$keyboard></$keyboard>
 <$reveal type="nomatch" stateTitle=<<omniaddstatetid>> stateField="editcaption" text="">
-<$button class="omni-button tiny tc-btn-invisible" actions="<$action-setfield $tiddler=<<omniaddstatetid>> $field='editcaption'/>">{{$:/plugins/can/omniadd/escape.svg}}</$button>
+<$button class="omni-button tiny omni-button" actions="<$action-setfield $tiddler=<<omniaddstatetid>> $field='editcaption'/>">{{$:/plugins/can/omniadd/escape.svg}}</$button>
 </$reveal>
 </div>
 \end

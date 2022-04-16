@@ -6,19 +6,30 @@ title: $:/plugins/can/omni/styles-kbnav
 
 .can-omni-stream.kbnav {
     font-size: 16px;
+    grid-column: 3/6;
 }
 
 .kbnav .omni-item-container {
-    grid-column: 2/5;
+    /*grid-column: 3/6;*/
     display: grid;
     /* grid-template-areas: "branch peri peri peri"
                        ". handle text menu"
                        "fish container container container";*/
-    grid-template-columns: max-content 1em minmax(10em, 55em) min-content; /* 1em auto 7fr auto;  */
+    grid-template-columns: max-content 1em min-content minmax(10em, 55em) auto; /* 1em auto 7fr auto;  */
     grid-template-rows: auto;
     position: relative;
 }
 
+.kbnav .omni-collapsebutton {
+    grid-column: 2/3; 
+    align-self: start; 
+    height: 1.1em;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start;
+    margin-top: 0.2em;
+    margin-left: 0.1em;
+}
 .kbnav .omni-branch-line {
     grid-column:1/2;
     grid-row: span 1;
@@ -29,6 +40,35 @@ title: $:/plugins/can/omni/styles-kbnav
     /* box-sizing: border-box; */
     /*margin-bottom: -1em;*/
    /* margin-left: -1px;*/
+}
+
+.kbnav .can-omni-itemhandle {
+    grid-column: 2/3; 
+    grid-row: span 1;
+    /*position: relative;*/
+    border-radius: 5px 0 0 5px; 
+    width: 1.2em; 
+    height: 100%; 
+    background-color: <<colour tiddler-editor-fields-even>>;
+    margin:0;
+    display: flex;
+    flex-direction: column;
+    }
+.kbnav .omni-text-display {
+    grid-column: 3/5;
+    /* max-width: 55em; */
+    border-radius: 0 5px 5px 0;
+    border: none;
+    background-color: <<colour tiddler-editor-fields-even>>;
+    display: flex;
+    flex-direction: row;
+ }  
+
+.kbnav .omni-subctl {
+    grid-column: 5/6;
+    display:flex;
+    flex-direction: row;
+    gap: 0.2em;
 }
 
 .kbnav .omni-item-container::before {
@@ -46,9 +86,7 @@ title: $:/plugins/can/omni/styles-kbnav
             width: 1em;
 }
 
-.kbnav .omni-item-container.toplevel::before, .kbnav .omni-item-container.toplevel::after {
-    display: none;
-}
+
 
 
 .kbnav .omni-item-container::after {
@@ -60,6 +98,9 @@ title: $:/plugins/can/omni/styles-kbnav
             height: calc(1.1em + 100%);
 }
 
+.kbnav .omni-item-container.toplevel::before, .kbnav .omni-item-container.toplevel::after {
+    display: none;
+}
 
 .kbnav .omni-item-container:last-of-type::after {
     border: none;
@@ -72,15 +113,7 @@ title: $:/plugins/can/omni/styles-kbnav
     flex-direction: row;
 }
 
-.kbnav .omni-text-display {
-    grid-column: 3/4;
-    /* max-width: 55em; */
-    border-radius: 0 5px 5px 0;
-    border: none;
-    background-color: <<colour tiddler-editor-fields-even>>;
-    display: flex;
-    flex-direction: row;
- }  
+
 
 .kbnav .omni-heading {
     display: flex;
@@ -120,18 +153,7 @@ background: #EEF8FF;
 /* Vertical item handle                   */
 /* ---------------------------------------*/
 
-.kbnav .can-omni-itemhandle {
-    /*position: relative;*/
-    border-radius: 5px 0 0 5px; 
-    width: 1.2em; 
-    height: 100%; 
-    grid-column: 2/3; 
-    grid-row: span 1;
-    background-color: <<colour tiddler-editor-fields-even>>;
-    margin:0;
-    display: flex;
-    flex-direction: column;
-    }
+
 
 .kbnav .omni-item-container.currentNode > .can-omni-itemhandle {
     background-color: #999999;
@@ -142,7 +164,7 @@ background: #EEF8FF;
     width:100%;
 }
 
-.kbnav .tc-btn-invisible.can-omni-itemhandle:hover, .kbnav .can-omni-title:hover {
+.kbnav .omni-button.can-omni-itemhandle:hover, .kbnav .can-omni-title:hover {
     background-color: <<colour muted-foreground>>;
 }
 
@@ -159,11 +181,7 @@ background: #EEF8FF;
     margin:0;
     }
 
-.kbnav .omni-subctl {
-    grid-column: 4/5;
-    display:flex;
-    flex-direction: row;
-}
+
 
 .kbnav .can-omni-foldbutton {
     font-size: 1.5em;
@@ -173,39 +191,17 @@ background: #EEF8FF;
     height: 10pt;
 }
 
-.kbnav .can-omni-stream .omni-button svg {
-    width: 10pt;
-    height: 10pt;
-}
-
-/* ----------------------------------------- */
-/* omni-showbutton button */
-/* ----------------------------------------- */
-
-
-.kbnav .can-omni-collapsebutton {
-    grid-column: 2/3; 
-    align-self: start; 
-    height: 1.1em;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: flex-start;
-    margin-top: 0.2em;
-    margin-left: 0.1em;
-}
-
-/* ----------------------------------------- */
-/* Above and below item droppable zones */
-/* ----------------------------------------- */
-
-.kbnav .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
-    grid-column: 2/5;
+.kbnav .can-omni-peripheral, .kbnav .can-omni-topadd, .kbnav .can-omni-bottomadd { 
+    grid-column: 1/-1;
     border-radius: 4px; 
     display: flex; 
     flex-direction: row; 
     justify-content: space-between; 
     line-height: 16pt;}
 
+.kbnav .can-omni-bottomadd {
+    grid-column: 3/-1;
+}
 
 
 /* ------------------ */

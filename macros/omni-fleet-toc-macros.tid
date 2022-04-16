@@ -5,7 +5,7 @@ tags: $:/tags/Macro
 
 \define omni-link-caption(class)
 <$draggable tag="span" tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >
-    <$button class="can-omni-dragdrop tc-btn-invisible $class$" to={{!!title}} tooltip="Tiddler link" aria-label="Tiddler link"><<omnilabel chars:35>>
+    <$button class="can-omni-dragdrop omni-button $class$" to={{!!title}} tooltip="Tiddler link" aria-label="Tiddler link"><<omnilabel chars:35>>
     </$button>
 </$draggable>
 \end
@@ -31,14 +31,14 @@ tags: $:/tags/Macro
   <$vars parentval=<<__root__>> >
   <$set name="toc-item-class" filter=<<__itemClassFilter__>> emptyValue="toc-item-selected" value="toc-item" >
     <li class=<<toc-item-class>>>
-          <$list filter="[all[current]list[!!omni-list]$sort$limit[1]]" variable="ignore" emptyMessage="<$button class='tc-btn-invisible'>{{$:/core/images/blank}}</$button>">
+          <$list filter="[all[current]list[!!omni-list]$sort$limit[1]]" variable="ignore" emptyMessage="<$button class='omni-button'>{{$:/core/images/blank}}</$button>">
           <$reveal type="nomatch" stateTitle=<<toc-state>> text="open">
-            <$button setTitle=<<toc-state>> setTo="open" class="tc-btn-invisible tc-popup-keep">
+            <$button setTitle=<<toc-state>> setTo="open" class="omni-button tc-popup-keep">
               {{$:/core/images/right-arrow}}
             </$button>
           </$reveal>
           <$reveal type="match" stateTitle=<<toc-state>> text="open">
-            <$button setTitle=<<toc-state>> setTo="close" class="tc-btn-invisible tc-popup-keep">
+            <$button setTitle=<<toc-state>> setTo="close" class="omni-button tc-popup-keep">
               {{$:/core/images/down-arrow}}
             </$button>
           </$reveal>
@@ -58,15 +58,15 @@ tags: $:/tags/Macro
   <$vars parentval=<<__root__>> >
     <$set name="toc-item-class" filter=<<__itemClassFilter__>> emptyValue="toc-item-selected" value="toc-item">
       <li class=<<toc-item-class>>>
-        <$list filter="[all[current]list[!!omni-list]$sort$limit[1]]" variable="ignore" emptyMessage="<$button class='tc-btn-invisible'>{{$:/core/images/blank}}</$button> <$view field='caption'><$view field='title'/></$view>">
+        <$list filter="[all[current]list[!!omni-list]$sort$limit[1]]" variable="ignore" emptyMessage="<$button class='omni-button'>{{$:/core/images/blank}}</$button> <$view field='caption'><$view field='title'/></$view>">
           <$reveal type="nomatch" stateTitle=<<toc-state>> text="open">
-            <$button setTitle=<<toc-state>> setTo="open" class="tc-btn-invisible tc-popup-keep">
+            <$button setTitle=<<toc-state>> setTo="open" class="omni-button tc-popup-keep">
               {{$:/core/images/right-arrow}}
               <<omnilabel chars:35>>
             </$button>
           </$reveal>
           <$reveal type="match" stateTitle=<<toc-state>> text="open">
-            <$button setTitle=<<toc-state>> setTo="close" class="tc-btn-invisible tc-popup-keep">
+            <$button setTitle=<<toc-state>> setTo="close" class="omni-button tc-popup-keep">
               {{$:/core/images/down-arrow}}
               <<omnilabel chars:35>>
             </$button>

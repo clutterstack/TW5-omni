@@ -105,7 +105,7 @@ title: $:/plugins/can/omni/styles-floo
     width:100%;
 }
 
-.floo .tc-btn-invisible..can-omni-itemhandle:hover {
+.floo .omni-button..can-omni-itemhandle:hover {
     background-color: <<colour muted-foreground>>;
 }
 

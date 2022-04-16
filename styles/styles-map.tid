@@ -62,7 +62,7 @@ title: $:/plugins/can/omni/styles-map
 .map .depth-16 { grid-column: 17/18;}
 
 
-.map .can-omni-collapsebutton, .map .omni-add-child {
+.map .omni-collapsebutton, .map .omni-add-child {
     grid-area: margin;
     width: 1.6em;
     margin-right: -1.6em;
@@ -150,7 +150,7 @@ background: #EEF8FF;
     width:100%;
 }
 
-.map .tc-btn-invisible.can-omni-itemhandle:hover, .map .can-omni-title:hover {
+.map .omni-button.can-omni-itemhandle:hover, .map .can-omni-title:hover {
     background-color: <<colour muted-foreground>>;
 }
 

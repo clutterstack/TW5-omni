@@ -49,7 +49,7 @@ title: $:/plugins/can/omni/styles-map-copy
 } */
 
 
-.map .can-omni-collapsebutton {
+.map .omni-collapsebutton {
     border-top: 1px solid;
     border-radius: 0;
     position: absolute;
@@ -203,7 +203,7 @@ background: #EEF8FF;
     width:100%;
 }
 
-.map .tc-btn-invisible.can-omni-itemhandle:hover, .map .can-omni-title:hover {
+.map .omni-button.can-omni-itemhandle:hover, .map .can-omni-title:hover {
     background-color: <<colour muted-foreground>>;
 }
 

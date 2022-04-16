@@ -6,11 +6,11 @@ type: text/vnd.tiddlywiki
 \whitespace trim
 
 \define gridrowspan-ctl()
-<$button class="tc-btn-invisible omni-button" actions="""<$action-listops $field="cheatsheet-rowspan" $subfilter='+[add[1]] ~[[2]]'/>""">{{$:/plugins/can/omni/rows-plus-v4.svg}}</$button><$button class="tc-btn-invisible omni-button" actions="""<$action-listops $field="cheatsheet-rowspan" $subfilter='+[subtract[1]max[1]] ~[[1]]'/>""">{{$:/plugins/can/omni/rows-minus-v4.svg}}</$button>
+<$button class="omni-button" actions="""<$action-listops $field="cheatsheet-rowspan" $subfilter='+[add[1]] ~[[2]]'/>""">{{$:/plugins/can/omni/rows-plus-v4.svg}}</$button><$button class="omni-button" actions="""<$action-listops $field="cheatsheet-rowspan" $subfilter='+[subtract[1]max[1]] ~[[1]]'/>""">{{$:/plugins/can/omni/rows-minus-v4.svg}}</$button>
 \end
 
 \define gridcolspan-ctl()
-<$button class="tc-btn-invisible omni-button"  actions="""<$action-listops $field="cheatsheet-colspan" $subfilter='+[add[1]] ~[[2]]'/>""">{{$:/plugins/can/omni/cols-plus-v6.svg}}</$button><$button class="tc-btn-invisible omni-button"  actions="""<$action-listops $field="cheatsheet-colspan" $subfilter='+[subtract[1]max[1]] ~[[1]]'/>""">{{$:/plugins/can/omni/cols-minus-v6.svg}}</$button>
+<$button class="omni-button"  actions="""<$action-listops $field="cheatsheet-colspan" $subfilter='+[add[1]] ~[[2]]'/>""">{{$:/plugins/can/omni/cols-plus-v6.svg}}</$button><$button class="omni-button"  actions="""<$action-listops $field="cheatsheet-colspan" $subfilter='+[subtract[1]max[1]] ~[[1]]'/>""">{{$:/plugins/can/omni/cols-minus-v6.svg}}</$button>
 \end
 
 \define can-omni-bottomadd(layout:"subui-caption" endstate:"closed" depthclass)
@@ -43,7 +43,7 @@ type: text/vnd.tiddlywiki
 \end
 
 \define omni-foldbutton()
-<div class="can-omni-foldbutton tc-btn-invisible" data-statetid=<<foldstatetiddler>>>
+<div class="can-omni-foldbutton omni-button" data-statetid=<<foldstatetiddler>>>
 <$list filter="[<foldstatetiddler>get[foldstate]match[hide]]" emptyMessage="""<<omni-toggle-view>><$action-setfield $tiddler=<<foldstatetiddler>> foldstate="hide"/>{{$:/core/images/down-arrow}}""" variable="ignore">
 	<$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show"/>
 	{{$:/core/images/right-arrow}}
@@ -52,13 +52,13 @@ type: text/vnd.tiddlywiki
 \end
 
 \define omni-menubutton()
-<div class="can-omni-menubutton tc-btn-invisible" data-statetid=<<menustatetiddler>>>
+<div class="can-omni-menubutton omni-button" data-statetid=<<menustatetiddler>>>
 	{{$:/core/images/menu-button}}
 </div>
 \end
 
-\define omni-showbutton()
-<$button class="can-omni-collapsebutton tc-btn-invisible" title="Show/hide omnibus tiddlers">
+\define omni-collapsebutton()
+<$button class="omni-collapsebutton omni-button" title="Show/hide omnibus tiddlers">
 <$list filter="[<omnistatetiddler>get[text]match[hide]]" emptyMessage="""<$action-setfield $tiddler=<<omnistatetiddler>> $value="hide"/>{{$:/plugins/can/omni/hide-omni.svg}}""" variable="ignore">
 	<$action-setfield $tiddler=<<omnistatetiddler>> $value="show"/>
 	{{$:/plugins/can/omni/make-omni.svg}}
@@ -67,7 +67,7 @@ type: text/vnd.tiddlywiki
 \end
 
 \define can-omni-itemhandle()
-<$button tag="div" class="can-omni-itemhandle tc-btn-invisible" tooltip="Click to toggle text edit. Drag to move list entry." aria-label="Click to toggle text edit. Drag to move list entry.">
+<$button tag="div" class="can-omni-itemhandle omni-button" tooltip="Click to toggle text edit. Drag to move list entry." aria-label="Click to toggle text edit. Drag to move list entry.">
 <$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >
 <div class="can-omni-itemhandle-inner"></div>
 <$reveal type="nomatch" stateTitle=<<editstatetid>> stateField=editstate text="edit">
@@ -88,7 +88,7 @@ type: text/vnd.tiddlywiki
 
 
 \define can-omni-tree-itemhandle-old()
-<$button class="can-omni-itemhandle tc-btn-invisible" tabindex="1" actions=<<omni-handle-toggle-actions>> tooltip="Click to toggle text edit. Drag to move list entry." aria-label="Click to toggle text edit. Drag to move list entry.">
+<$button class="can-omni-itemhandle omni-button" tabindex="1" actions=<<omni-handle-toggle-actions>> tooltip="Click to toggle text edit. Drag to move list entry." aria-label="Click to toggle text edit. Drag to move list entry.">
     <$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> class="can-omni-itemhandle-inner"></$draggable>
 </$button>
 \end

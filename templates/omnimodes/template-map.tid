@@ -21,7 +21,7 @@ title: $:/plugins/can/omni/template-map
         </$list>
         </div>
         <$list filter="[all[current]has[omni-list]]" emptyMessage=<<omni-add-child>> variable="ignore">
-                <<omni-showbutton>>
+                <<omni-collapsebutton>>
         </$list>
     </div>
     <$list filter="""[all[current]has[omni-list]]""" variable="null">
