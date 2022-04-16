@@ -1,0 +1,273 @@
+creator: chris
+title: $:/plugins/can/omni/styles-cleanmap
+
+<$transclude tiddler="$:/plugins/can/omni/styles-teaser" mode="block"/>
+
+<style>
+/****** START styles-cleanmap ********/
+
+.can-omni-toptools { /* note this will have an impact on other omnis open in other modes */
+    z-index: 100;
+    position: relative;
+}
+
+.can-omni-stream.cleanmap {
+    position: relative;
+    z-index: 100;
+    font-size: 16px;
+    display: grid;
+    column-gap: 50px;
+    align-items: start;
+    grid-template-columns: repeat(auto-fill, fit-content(400px));
+    overflow-x: scroll;
+    overflow-y: hidden;  
+}
+
+
+.cleanmap .omni-svg-container {
+    
+}
+
+.cleanmap .omni-item-container {
+    /* grid-column: 2/4; */
+    z-index: 100;
+    display: grid;
+    grid-template-areas: "peri peri peri peri"
+                       "handle text menu margin";
+    grid-template-columns: min-content minmax(100px, 800px) max-content max-content; /* 1em auto 7fr auto;  */
+    grid-template-rows: auto;
+    position: relative;
+    /*padding-right: 1em;*/
+   /* margin-right: -1em; */
+    
+}
+
+.cleanmap .omni-item-container.toplevel { grid-column: 1/2;}
+.cleanmap .depth-0 { grid-column: 1/2;}
+.cleanmap .depth-1 { grid-column: 2/3;}
+.cleanmap .depth-2 { grid-column: 3/4;}
+.cleanmap .depth-3 { grid-column: 4/5;}
+.cleanmap .depth-4 { grid-column: 5/6;}
+.cleanmap .depth-5 { grid-column: 6/7;}
+.cleanmap .depth-6 { grid-column: 7/8;}
+.cleanmap .depth-7 { grid-column: 8/9;}
+.cleanmap .depth-8 { grid-column: 9/10;}
+.cleanmap .depth-9 { grid-column: 10/11;}
+.cleanmap .depth-10 { grid-column: 11/12;}
+.cleanmap .depth-11 { grid-column: 12/13;}
+.cleanmap .depth-12 { grid-column: 13/14;}
+.cleanmap .depth-13 { grid-column: 14/15;}
+.cleanmap .depth-14 { grid-column: 15/16;}
+.cleanmap .depth-15 { grid-column: 16/17;}
+.cleanmap .depth-16 { grid-column: 17/18;}
+
+
+.cleanmap .can-omni-collapsebutton, .cleanmap .omni-add-child {
+    grid-area: margin;
+    width: 1.6em;
+    margin-right: -1.6em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 1em;
+}
+
+.cleanmap .omni-heading-row {
+    padding-top: 0.4em;
+    display: flex;
+    flex-direction: row;
+}
+
+.cleanmap .omni-text-display {
+    grid-area:text;
+    /* max-width: 55em; */
+   /* border-radius: 0 5px 5px 0;*/
+    border: none;
+    background-color: <<colour tiddler-editor-fields-even>>;
+    display: flex;
+    flex-direction: column;
+ }  
+
+.cleanmap .omni-heading {
+    display: flex;
+    flex-direction: row;
+}
+
+.cleanmap .omni-caption:hover {
+background: #EEF8FF;
+}
+
+.cleanmap .can-omni-title {
+    padding-left: 0.4em;
+}
+
+.cleanmap .omni-title-heading:hover { background: cyan;}
+
+.cleanmap .omni-title-heading button {margin-left: 1em;}
+
+.cleanmap .omni-title-heading {
+    /* flex: 1 0 5em;*/ /* grow shrink basis */
+    min-width: 30%;
+    min-height: 1em;
+    padding: 0 0.2em;
+    border: none;
+    font-size: 1.2em;
+}
+
+.cleanmap .tc-tiddler-body {
+    min-height:0.4em;
+    /*padding-right: 1em;*/
+    padding-top: 0em;
+    margin-top: 0;
+    width: 100%;
+}
+
+/* ---------------------------------------*/
+/* Vertical item handle                   */
+/* ---------------------------------------*/
+
+.cleanmap .can-omni-itemhandle {
+    /*position: relative;*/
+    border-radius: 5px 0 0 5px; 
+    width: 1.2em; 
+    height: 100%; 
+    grid-area: handle; 
+    grid-row: span 1;
+    background-color: <<colour tiddler-editor-fields-even>>;
+    margin:0;
+    display: flex;
+    flex-direction: column;
+    }
+
+.cleanmap .omni-item-container.currentNode > .can-omni-itemhandle {
+    background-color: #10099;
+}
+
+.cleanmap .can-omni-edithandle {
+    height:100%;
+    width:100%;
+}
+
+.cleanmap .tc-btn-invisible.can-omni-itemhandle:hover, .cleanmap .can-omni-title:hover {
+    background-color: <<colour muted-foreground>>;
+}
+
+.cleanmap .can-omni-itemhandle .can-omni-link {height: 1em;}
+
+.cleanmap .can-omni-itemhandle .can-omni-link svg {fill: <<colour foreground>>;}
+.cleanmap .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
+
+.cleanmap .can-omni-itemhandle-inner {
+    border-radius: 5px 0 0 5px; 
+    /* box-sizing: border-box; */
+    height: 100%; 
+    width: 100%;
+    margin:0;
+    }
+
+
+.cleanmap .can-omni-ctlrow {
+    margin-right: 0;
+}
+
+.cleanmap .can-omni-subctl {
+    grid-area: menu;
+    display:flex;
+    flex-direction: column;
+    background-color: <<colour tiddler-editor-fields-even>>;
+    border-radius: 0 5px 5px 0;
+    padding-right: 0.4em;
+    gap: 0.8em;
+}
+
+.cleanmap .can-omni-ctlrow svg, .cleanmap .can-omni-subctl svg {width: }
+
+.cleanmap .can-omni-foldbutton, .cleanmap .can-omni-menubutton {
+    font-size: 1.2em;
+}
+
+.cleanmap .can-omni-peripheral.inert {
+    height: 10pt;
+}
+
+
+
+.cleanmap .omni-button {
+    color: <<colour foreground>>;
+}
+
+.cleanmap .omni-button svg, .cleanmap .can-omni-foldbutton svg, .cleanmap .can-omni-menubutton svg { 
+    fill:<<colour foreground>>;
+    width: 0.6em;
+    height: 0.6em;}
+
+
+
+
+
+.cleanmap .can-omni-stream .omni-button svg {
+    width: 8pt;
+    height: 8pt;
+}
+
+/* ----------------------------------------- */
+/* Above and below item droppable zones */
+/* ----------------------------------------- */
+
+.cleanmap .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
+    z-index: 100;
+    border-radius: 4px; 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    line-height: 16pt;}
+
+.cleanmap .can-omni-peripheral { 
+    grid-area: peri; 
+}
+
+/* ------------------ */
+/* headings           */
+/* ------------------ */
+
+.cleanmap.can-omni-stream h1 {
+    font-size: 1.75em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    }
+
+.cleanmap.can-omni-stream h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    margin-top:0.4em;
+ }
+ 
+.cleanmap.can-omni-stream h3 {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    margin-top:0.4em;
+ }
+
+.cleanmap.can-omni-stream h4 {
+    font-size: 1.2em; 
+    font-weight:600;
+    margin-bottom: 0.5em;
+    margin-top:0.4em;}
+
+.cleanmap.can-omni-stream h5 {font-size: 1.1em; font-weight:600;}
+.cleanmap.can-omni-stream h6 {font-size: 1.0em; font-weight: 600;}
+
+
+/* --------------- */
+/* media-dependent */
+/* --------------- */
+
+
+
+
+/****** END styles-cleanmap ********/
+
+</style>

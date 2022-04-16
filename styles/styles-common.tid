@@ -151,9 +151,9 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .omni-button {
     color: <<colour tab-background>>;
-    display: flex; 
+    /*display: flex; 
     flex-direction: row; 
-    align-self: flex-start;
+    align-self: flex-start;*/
 }
 
 .can-omni-ctlrow .tc-draggable {
