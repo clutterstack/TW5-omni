@@ -99,11 +99,11 @@ Draw svg curves between tiddlers in map mode
     }
 
     LinkcurvesWidget.prototype.leftmidpoint = function(node) {
-        return [node.offsetLeft, node.offsetTop + 50];
+        return [node.offsetLeft, node.offsetTop + 25];
     }
 
     LinkcurvesWidget.prototype.rightmidpoint = function(node) {
-        return [node.offsetLeft + node.offsetWidth, node.offsetTop + 50]; //Math.round(node.offsetHeight/2)
+        return [node.offsetLeft + node.offsetWidth, node.offsetTop + 25]; //Math.round(node.offsetHeight/2)
     }
 
     LinkcurvesWidget.prototype.svgpath = function(startpoint, endpoint) {

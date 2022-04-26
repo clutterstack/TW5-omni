@@ -34,7 +34,7 @@ title: $:/plugins/can/omni/styles-cleanmap
     display: grid;
     grid-template-areas: "peri peri peri peri"
                        "handle text menu margin";
-    grid-template-columns: min-content minmax(100px, 800px) max-content max-content; /* 1em auto 7fr auto;  */
+    grid-template-columns: min-content minmax(100px, 800px) min-content max-content; /* 1em auto 7fr auto;  */
     grid-template-rows: auto;
     position: relative;
     /*padding-right: 1em;*/
@@ -69,7 +69,8 @@ title: $:/plugins/can/omni/styles-cleanmap
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
+    padding-left: 0.1em;
     padding-top: 1em;
 }
 
@@ -169,6 +170,7 @@ background: #EEF8FF;
 
 .cleanmap .can-omni-ctlrow {
     margin-right: 0;
+    line-height: 14px;
 }
 
 .cleanmap .omni-subctl {
@@ -177,10 +179,14 @@ background: #EEF8FF;
     flex-direction: column;
     background-color: <<colour tiddler-editor-fields-even>>;
     border-radius: 0 5px 5px 0;
-    padding-right: 0.4em;
     gap: 0.8em;
+    padding-top: 0.1em;
+    padding-right: 0.1em;
 }
 
+.cleanmap .omni-subctl .omni-button svg, .cleanmap .can-omni-ctlrow .omni-button svg {
+    fill: <<colour muted-foreground>>;
+}
 .cleanmap .can-omni-ctlrow svg, .cleanmap .omni-subctl svg { }
 
 .cleanmap .can-omni-foldbutton, .cleanmap .can-omni-menubutton {
@@ -195,6 +201,8 @@ background: #EEF8FF;
 
 .cleanmap .omni-button {
     color: <<colour foreground>>;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .cleanmap .omni-button svg, .cleanmap .can-omni-foldbutton svg, .cleanmap .can-omni-menubutton svg { 
