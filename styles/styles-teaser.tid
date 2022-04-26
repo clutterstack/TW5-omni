@@ -13,7 +13,7 @@ title: $:/plugins/can/omni/styles-teaser
 
 .omni-teaser-body {
     position: relative;
-    height: 3em;
+    height: 2.4em;
     overflow: hidden;
     display: flex;
     flex-direction: column;

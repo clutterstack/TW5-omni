@@ -18,7 +18,7 @@ title: $:/plugins/can/omni/styles-map
     display: grid;
     column-gap: 50px;
     align-items: start;
-    grid-template-columns: repeat(auto-fill, max-content);
+    grid-template-columns: repeat(auto-fill, fit-content(400px));
     overflow-x: scroll;
     overflow-y: hidden;  
 }
@@ -34,11 +34,11 @@ title: $:/plugins/can/omni/styles-map
     display: grid;
     grid-template-areas: "peri peri peri peri"
                        "handle text menu margin";
-    grid-template-columns: min-content minmax(min-content, 125em) max-content max-content; /* 1em auto 7fr auto;  */
+    grid-template-columns: min-content minmax(100px, 800px) max-content max-content; /* 1em auto 7fr auto;  */
     grid-template-rows: auto;
     position: relative;
     /*padding-right: 1em;*/
-    margin-right: -1em;
+   /* margin-right: -1em; */
     
 }
 
@@ -87,7 +87,6 @@ title: $:/plugins/can/omni/styles-map
     background-color: <<colour tiddler-editor-fields-even>>;
     display: flex;
     flex-direction: column;
-    padding-right: 1em;
  }  
 
 .map .omni-heading {
@@ -118,7 +117,7 @@ background: #EEF8FF;
 
 .map .tc-tiddler-body {
     min-height:0.4em;
-    padding-right: 1em;
+    /*padding-right: 1em;*/
     padding-top: 0em;
     margin-top: 0;
     width: 100%;
@@ -182,6 +181,8 @@ background: #EEF8FF;
     gap: 0.8em;
 }
 
+.map .can-omni-ctlrow svg, .map .omni-subctl svg { }
+
 .map .can-omni-foldbutton, .map .can-omni-menubutton {
     font-size: 1.2em;
 }
@@ -197,11 +198,17 @@ background: #EEF8FF;
 }
 
 .map .omni-button svg, .map .can-omni-foldbutton svg, .map .can-omni-menubutton svg { 
-    fill:<<colour foreground>>;}
+    fill:<<colour foreground>>;
+    width: 0.6em;
+    height: 0.6em;}
+
+
+
+
 
 .map .can-omni-stream .omni-button svg {
-    width: 10pt;
-    height: 10pt;
+    width: 8pt;
+    height: 8pt;
 }
 
 /* ----------------------------------------- */
