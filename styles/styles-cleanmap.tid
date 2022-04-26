@@ -181,7 +181,7 @@ background: #EEF8FF;
     gap: 0.8em;
 }
 
-.cleanmap .can-omni-ctlrow svg, .cleanmap .omni-subctl svg {width: }
+.cleanmap .can-omni-ctlrow svg, .cleanmap .omni-subctl svg { }
 
 .cleanmap .can-omni-foldbutton, .cleanmap .can-omni-menubutton {
     font-size: 1.2em;

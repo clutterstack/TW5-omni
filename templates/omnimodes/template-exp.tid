@@ -3,9 +3,6 @@ title: $:/plugins/can/omni/template-exp
 \define everyexp(depth)
 <$set name=testclass filter="[[omni-item-container]] [[$depth$]match[0]then[toplevel]]" >
     <div class=<<testclass>> >
-        <$list filter="[[$depth$]!match[0]]">
-            <div class="omni-branch-line"></div>
-        </$list>
         <<can-omni-peripheral>>
         <<can-omni-tree-itemhandle>>
         <$droppable class="omni-text-display" tag="div" actions="<<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>" >
