@@ -1,13 +1,14 @@
-title: $:/plugins/can/omni/template-map
+title: $:/plugins/can/omni/template-pins
 
-\define everymap(depth posclass)
-<$set name=testclass filter="""[[omni-item-container]] [[$posclass$]enlist-input[]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [[$depth$]addprefix[depth-]]""">
-    <div class=<<testclass>> data-omnitid=<<currentTiddler>> data-depth=$depth$>
-        <<can-omni-peripheral layout:mapadd endstate:open>>
+\define everypins(depth posclass)
+<$set name=containerclass filter="""[[omni-item-container]] [[$posclass$]enlist-input[]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [[$depth$]addprefix[depth-]]""">
+<$piece title=<<currentTiddler>> omnititle=<<parentval>> depth=$depth$>
+    <div class=<<containerclass>> data-omnitid=<<currentTiddler>> data-depth=$depth$>
+        <<can-omni-peripheral layout:pinsadd endstate:open>>
         <<can-omni-tree-itemhandle>>
         <$droppable class="omni-text-display" tag="div" actions="""<$list filter="[<actionTiddler>!is[current]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""" >
         <div class="can-omni-ctlrow">
-            <<can-omni-title-link>><<omni-foldbutton>>
+            <<can-omni-link>><<omni-foldbutton>>
         </div>
         <!-- <<omni-captionheading>> -->
         <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore">
@@ -25,15 +26,15 @@ title: $:/plugins/can/omni/template-map
         </$list>
     </div>
     <$list filter="""[all[current]has[omni-list]]""" variable="null">
-        <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=map-showomni depth=<<__depth__>> />""" variable="ignore"/>
+        <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=pins-showomni depth=<<__depth__>> />""" variable="ignore"/>
     </$list>
-    
+</$piece>   
 
 </$set>
 \end
 
 
-\define map-showomni(depth) 
+\define pins-showomni(depth) 
 <$list filter="[all[current]has[omni-list]]" variable="ignore">
 <!-- <$reveal tag="div" class="omni-showomni" type="nomatch" state=<<omnistatetiddler>> text="hide" > -->
 <$list filter="[all[current]has[omni-list]]">
@@ -61,15 +62,14 @@ title: $:/plugins/can/omni/template-map
                         <$eventcatcher events="click" selector=".can-omni-addbutton" 
                         actions-click=<<omni-ec-addtiddler-action>> tag="div">
                             <<can-omni-toptools>>
-                            <div class="can-omni-stream cleanmap" >
+                            <div class="can-omni-stream pins" >
                                 <$macrocall $name=compose-omni depth=0/> 
-                                <$linkcurves <<currentTiddler>> />                             
                             </div>
 </$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$vars>
 \end
 
-\define compose-omni(mode:map depth)
-<$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="map" template="everymap" creatednum={{!!created}}>
+\define compose-omni(mode:pins depth)
+<$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="pins" template="everypins" creatednum={{!!created}}>
     <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
         <$set name=omnicrumbs filter="""[<omnicrumbs>enlist-input[]] [<parentval>]""">
             <$vars creatednum={{!!created}}>
@@ -82,4 +82,3 @@ title: $:/plugins/can/omni/template-map
 \end
 
 <<compose-omni-toplevel>>
-<!-- <$linkcurves <<currentTiddler>> /> -->

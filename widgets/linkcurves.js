@@ -26,9 +26,6 @@ Draw svg curves between tiddlers in map mode
     /* 
     Helper functions
     */
-
-
-
     LinkcurvesWidget.prototype.resizeRefresh = function(event) {
         // "debounce" window resize refreshing
         var timeoutID
