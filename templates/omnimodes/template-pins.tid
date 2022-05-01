@@ -25,10 +25,10 @@ title: $:/plugins/can/omni/template-pins
                 <<omni-collapsebutton>>
         </$list>
     </div>
-    <$list filter="""[all[current]has[omni-list]]""" variable="null">
+</$piece>   
+<$list filter="""[all[current]has[omni-list]]""" variable="null">
         <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=pins-showomni depth=<<__depth__>> />""" variable="ignore"/>
     </$list>
-</$piece>   
 
 </$set>
 \end
@@ -77,7 +77,7 @@ title: $:/plugins/can/omni/template-pins
             </$vars>
         </$set>
     </$list>
-    <<can-omni-bottomadd layout:slimui endstate:open depthclass:depth-$depth$ >>
+    <!-- <<can-omni-bottomadd layout:slimui endstate:open depthclass:depth-$depth$ >> -->
 </$vars>
 \end
 

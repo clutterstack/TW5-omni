@@ -15,8 +15,9 @@ title: $:/plugins/can/omni/styles-pins
     position: relative;
     z-index: 100;
     font-size: 16px;
+    min-height: 800px;
     overflow-x: scroll;
-    overflow-y: hidden;  
+    overflow-y: scroll;  
 }
 
 
