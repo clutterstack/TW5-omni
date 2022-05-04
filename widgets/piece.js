@@ -4,10 +4,8 @@ type: application/javascript
 module-type: widget
 
 Widget that can be moved around. Needs a positioned parent container, and omnibus title (or more accurately, a sidecar tiddler title root), and a tiddler title (or more accurately a key to use to find the piece's location in the sidecar tiddler).
-
-
-
 \*/
+
 (function(){
 
     /*jslint node: true, browser: true */
@@ -43,7 +41,6 @@ Widget that can be moved around. Needs a positioned parent container, and omnibu
 
         // Add event handlers
         $tw.utils.addEventListeners(domNode,[
-            {name: "touchstart", handlerObject: this, handlerMethod: "handleTouchStartEvent"},
             {name: "mousedown", handlerObject: this, handlerMethod: "handleMouseDownEvent"}
         ]);
 
@@ -71,6 +68,7 @@ Widget that can be moved around. Needs a positioned parent container, and omnibu
         this.initcoords = this.getCoords();
         // console.log(`execute: initcoords = ${this.coords}`);
         this.coords = this.initcoords;
+        this.offsetfromstart = 0;
 
         // Make child widgets
         this.makeChildWidgets();
@@ -80,20 +78,15 @@ Widget that can be moved around. Needs a positioned parent container, and omnibu
     pieceWidget.prototype.getCoords = function() {
         const defcoords = this.createCoords(this.depth, 1);
         const titlestring = this.pieceTitle;
-
-        //console.log("omniTitle, pieceTitle: " + this.omniTitle + ", "+ this.pieceTitle)
-        //console.log("sidecar tiddler title to use: "+this.sidecar)
-
-        const testdata = this.wiki.getTiddlerData(this.sidecar);
-        //console.log(`typeof(textdata): ${typeof(testdata)}`)
+        let testdata = this.wiki.getTiddlerData(this.sidecar);
+        //console.log(`typeof(testdata): ${typeof(testdata)}`)
         if (testdata == undefined) {
-           // console.log("getTiddlerData didn't find valid data in the sidecar tiddler");
+            // console.log("getTiddlerData didn't find valid data in the sidecar tiddler");
             this.wiki.setText(this.sidecar, "text", titlestring, defcoords);
+            testdata = this.wiki.getTiddlerData(this.sidecar);
         }
         //next see if we can pull a coords value for the current piece
-        const test2data = this.wiki.getTiddlerData(this.sidecar);
-        //console.log(`test2data: ${JSON.stringify(test2data)}`)
-        const extracteditem = test2data[titlestring];
+        const extracteditem = testdata[titlestring];
         //console.log(`extracteditem: ${JSON.stringify(extracteditem)}`)
         return (extracteditem != undefined ) ? extracteditem : defcoords;
     };
@@ -128,91 +121,50 @@ Widget that can be moved around. Needs a positioned parent container, and omnibu
         } 
         return this.refreshChildren(changedTiddlers);
     };
-    
-    pieceWidget.prototype.pieceMove = function(x,y) {
-        console.log(`${x},${y}`);
-        this.render
-    };
 
     pieceWidget.prototype.writeCoords = function() {
-        //need to add the data this.coords to the data tiddler this.sidecar.
-//exports.setTiddlerData = function(title,data,fields,options)
-//exports.setText = function(title,field,index,value,options)
         this.wiki.setText(this.sidecar, undefined, this.pieceTitle, this.coords);
     };
 
- 
     pieceWidget.prototype.handleMouseDownEvent = function(event) {
         event.preventDefault();
         event.stopPropagation();
         this.startDrag = [event.offsetX,event.offsetY];
+        this.waitingforframe = null;
         // console.log(`start mouse drag: this.coords is ${this.coords} and the startDrag position is ${this.startDrag}`);
-        this.brushDown = true;
         this.domNode.addEventListener("mousemove", this.handleMouseMoveEvent.bind(this));
         this.domNode.addEventListener("mouseup", this.handleMouseUpEvent.bind(this));
+        this.domNode.addEventListener("mouseleave", this.handleMouseUpEvent.bind(this));
     };
-    
+
     pieceWidget.prototype.handleMouseMoveEvent = function(event) {
-        // console.log("mousemove triggered")
-        if(this.brushDown) {
-            // console.log("mousemove: brush is down")
-            event.preventDefault();
-            // event.stopPropagation();
-            const offsetfromstart = [event.offsetX - this.startDrag[0], event.offsetY - this.startDrag[1] ]
-            this.coords = [this.coords[0] + offsetfromstart[0],this.coords[1] + offsetfromstart[1]];
-            console.log(`mouse move: ${this.coords}`)
-            this.positionStyles(this.coords[0], this.coords[1]);
-        }
-    };
-    
-    pieceWidget.prototype.handleMouseUpEvent = function(event) {
         event.preventDefault();
         // event.stopPropagation();
-        // console.log(this.coords)
+        // console.log("mousemove triggered")
+        
+        if(!this.waitingforframe) { // if we're not still in the middle of a draw
+            this.offsetfromstart = [event.offsetX - this.startDrag[0], event.offsetY - this.startDrag[1] ]
+            this.coords = [this.coords[0] + this.offsetfromstart[0],this.coords[1] + this.offsetfromstart[1]];
+            //console.log(`mouse move: ${this.coords}`)
+            window.requestAnimationFrame(this.movePiece.bind(this));
+        }
+    };
+    
+    pieceWidget.prototype.movePiece = function() {
+        this.positionStyles(this.coords[0], this.coords[1]);
+        this.waitingforframe = null;
+    };
+
+    pieceWidget.prototype.handleMouseUpEvent = function(event) {
+        event.preventDefault();
+        event.stopPropagation();
         this.domNode.removeEventListener("mousemove", this.handleMouseMoveEvent.bind(this));
-        if(this.brushDown) {
-            this.brushDown = false;
             this.writeCoords();
-            console.log(`mouse drop: ${this.coords}. this.brushDown= ${this.brushDown}`);
-        }
-        this.domNode.removeEventListener("mouseup", this.handleMouseUpEvent.bind(this));
-    };
+            // console.log(`mouse drop: ${this.coords}.`);
+            this.domNode.removeEventListener("mouseup", this.handleMouseUpEvent.bind(this));
+            this.domNode.removeEventListener("mouseleave", this.handleMouseUpEvent.bind(this));
+        };
     
-
-    pieceWidget.prototype.handleTouchStartEvent = function(event) {
-        // Not written yet
-        console.log("write handlers for touch!")
-        this.brushDown = true;
-        console.log(event.touches[0].offsetX,event.touches[0].offsetY);
-        event.preventDefault();
-        event.stopPropagation();
-        return false;
-    };
-    
-    pieceWidget.prototype.handleTouchMoveEvent = function(event) {
-        // Not written yet
-        console.log("write handlers for touch!")
-        if(this.brushDown) {
-            this.coords = [event.touches[0].offsetX,event.touches[0].offsetY];
-            console.log(`touchmove: this.coords: ${this.coords}`)
-            this.positionStyles(this.coords[0], this.coords[1]);
-        }
-        event.preventDefault();
-        event.stopPropagation();
-        return false;
-    };
-    
-    pieceWidget.prototype.handleTouchEndEvent = function(event) {
-        // Not written yet
-        console.log("write handlers for touch!")
-        if(this.brushDown) {
-            this.brushDown = false;
-        }
-        event.preventDefault();
-        event.stopPropagation();
-        return false;
-    };
-
     exports.piece = pieceWidget;
     
     })();
