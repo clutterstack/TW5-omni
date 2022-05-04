@@ -165,7 +165,7 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
     flex-direction:row;
 }
 
-.can-omni-foldall, .can-omni-viewswitcher {display: flex; flex-direction: row; justify-content: flex-end;}
+.can-omni-foldall, .can-omni-viewswitcher {display: flex; flex-direction: row; justify-content: flex-end; gap: 0.6em;}
 
 .can-omni-stream .can-omni-stream .can-omni-foldall {margin-top: 0.4em; flex-direction: column; justify-content: flex-start;}
 

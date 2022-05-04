@@ -1,0 +1,133 @@
+title: $:/plugins/can/omni/template-levels
+
+\define everylevels(depth posclass)
+<$set name=testclass filter="""[[omni-item-container]] [[$posclass$]enlist-input[]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [[$depth$]addprefix[depth-]]""">
+    <div class=<<testclass>> data-omnitid=<<currentTiddler>> data-depth=$depth$ data-window-level=0 >
+        <<can-omni-peripheral layout:levelsadd endstate:open>>
+        <<can-omni-tree-itemhandle>>
+        <$droppable class="omni-text-display" tag="div" actions="""<$list filter="[<actionTiddler>!is[current]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""" >
+        <div class="can-omni-ctlrow">
+            <<can-omni-link>><<omni-foldbutton>>
+        </div>
+        <!-- <<omni-captionheading>> -->
+        <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore">
+        <<can-omni-teaser>>
+        </$list>
+        </$droppable>
+        <div class="omni-subctl" tabindex="0">
+        <<omni-menubutton>>
+        <$list filter="[{$(menustatetiddler)$!!menustate}match[show]]"  variable="ignore">
+        <<can-omni-delist>><<can-omni-delete>>
+        </$list>
+        </div>
+        <$list filter="[all[current]!has[omni-list]]" variable="ignore">
+             <<omni-add-child>>
+        </$list>
+    </div>
+    <!-- <$list filter="""[all[current]has[omni-list]]""" variable="null">
+        <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=levels-showomni depth=<<__depth__>> />""" variable="ignore"/>
+    </$list> -->
+    
+
+</$set>
+\end
+
+
+\define levels-showomni(depth) 
+<$list filter="[all[current]has[omni-list]]" variable="ignore">
+<!-- <$reveal tag="div" class="omni-showomni" type="nomatch" state=<<omnistatetiddler>> text="hide" > -->
+<$list filter="[all[current]has[omni-list]]">
+    <$vars newdepth={{{[<__depth__>add[1]]}}}>
+        <!--omni-showomni: newdepth: <<newdepth>> <br> -->
+        <$list filter="[{<omnistatetiddler}!match[hide]] :filter[<newdepth>compare:integer:lt[10]]" variable=null emptyMessage=<<can-recursionblock>> >
+        <$macrocall $name="compose-omni" mode=<<mode>> depth=<<newdepth>> />
+        </$list>
+    </$vars>
+</$list>
+<!-- </$reveal> -->
+</$list>
+\end
+
+\define compose-omni-toplevel() 
+<$vars baseomni=<<currentTiddler>>>
+<$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-ec-startedit-actions>> tag="div">
+    <$eventcatcher events="click" selector=".can-omni-link" actions-click=<<omni-navigate-action>> tag="div">
+    <$eventcatcher selector=".omni-textarea" $focusin=<<omni-suspend-nav-shortcuts>> tag="div">
+        <$eventcatcher events="click" selector=".can-omni-itemhandle" actions-click=<<omni-select-node>> tag="div">
+            <$eventcatcher events="click" selector=".omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
+                <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
+                    <$eventcatcher events="click" selector=".can-omni-menubutton" actions-click=<<omni-toggle-menustate>> tag="div">
+                    <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-ec-delete-action>> tag="div">
+                        <$eventcatcher events="click" selector=".can-omni-addbutton" 
+                        actions-click=<<omni-ec-addtiddler-action>> tag="div">
+                            <<omni-levels-toptools>>
+                            <div class={{{can-omni-stream levels [{!!omnicols}match[2]then[twocol]] +[join[ ]]}}}>
+                                <$macrocall $name=compose-omni depth=0/> 
+                            </div>
+</$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$vars>
+\end
+
+\define compose-omni(mode:levels cols:1 depth)
+
+<$list filter="[all[current]list[!!omni-list]is[tiddler]]">
+    <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="levels" template="everylevels" creatednum={{!!created}}>   
+     <<omni-window-level>>
+    <!-- If levelwindow is 0, show the text of each subtid of the base-omni -->
+    <!-- Otherwise, show the text of the "level"th subtid of each 0th-level subtiddler -->
+    <$list filter="[{!!levelwindow}match[0]]" emptyMessage="""<$macrocall $name="windowomni" level={{!!levelwindow}}/>""" variable="ignore">
+        <$macrocall $name=<<template>> depth=0  />
+    </$list>
+    </$vars>
+</$list>
+
+<!-- For each one, select the 1st, second, third etc. subtiddler -->
+<!-- For that tiddler, show the subtiddlers. -->
+
+
+    <!-- <$list filter="""[{$(baseomni)$!!levelwindow}match[$depth$]""" variable="ignore">
+        <<can-omni-bottomadd layout:slimui endstate:open depthclass:depth-$depth$ >>
+    </$list> -->
+\end
+
+
+\define windowomni(level)
+ <!-- If levelwindow is 3, show the text of the first subtid   -->
+ <$vars prune={{{[[$level$]subtract[1]]}}}>
+    <!-- <$list filter="[{!!levelwindow}match[$level$]]" variable="ignore"> -->
+        <$list filter="[all[current]list[!!omni-list]is[tiddler]rest<prune>first[]]">
+            <$macrocall $name=<<template>> depth=1  />
+            <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
+                <$macrocall $name=<<template>> depth=1  />
+            </$list>
+        </$list>
+    <!-- </$list> -->
+</$vars>
+\end
+
+\define omni-levels-toptools()
+    <div class="can-omni-toptools">
+        <<can-omni-foldall>><span style="width: 2em;"></span><<omni-levels-colswitcher>>
+        <$list filter="[{!!showmodestate}!match[hide]]" variable="ignore"><<omni-viewswitcher>></$list>
+    </div>
+\end
+
+\define omni-levels-colswitcher()
+ <div class="can-omni-foldall">
+    <$button class="omni-button" actions="""<$action-listops $field="omnicols" $subfilter="+[toggle[2],[1]]"/>""" tooltip="Toggle side-by-side" aria-label="Toggle side-by-side"><$text text={{{[{!!omnicols}match[1]then[2]else[1]]}}} /> col</$button>
+</div>   
+\end
+
+\define omni-window-level()
+<div class="can-omni-foldall">
+    <$button class="omni-button" actions=<<window-shallower>> tooltip="Shallower level" aria-label="Shallower level">< </$button>
+    {{!!levelwindow}}
+    <$button class="omni-button" actions=<<window-deeper>> tooltip="Deeper level" aria-label="Deeper level">></$button>
+</div>
+\end
+
+\define window-deeper() <$action-listops $field="levelwindow" $filter="[{!!levelwindow}!is[blank]else[0]] +[add[1]] +[min[2]]" $timestamp='no'/><$action-sendmessage $message='tm-auto-save-wiki'/>
+
+\define window-shallower() <$action-listops $field="levelwindow" $filter="[{!!levelwindow}!is[blank]else[1]] +[subtract[1]] +[max[0]]" $timestamp='no'/><$action-sendmessage $message='tm-auto-save-wiki'/>
+
+<<compose-omni-toplevel>>
+<!-- <$linkcurves <<currentTiddler>> /> -->

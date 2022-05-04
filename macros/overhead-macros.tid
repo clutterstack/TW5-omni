@@ -16,17 +16,18 @@ type: text/vnd.tiddlywiki
     <div class="can-omni-viewswitcher">
     <!-- There are at least 3 types of view: captioned-first, text-only, and titled-->
     <!--They have different workflows for adding and structures for information -->
-		<$button set="!!omnibus-mode" setTo="edit" class="omni-button" selectedClass="omni-button-selected" tooltip="Deluxe editing" aria-label="Deluxe editing">{{$:/plugins/can/omni/omnimode-edit.svg}}</$button>
+		<!-- <$button set="!!omnibus-mode" setTo="edit" class="omni-button" selectedClass="omni-button-selected" tooltip="Deluxe editing" aria-label="Deluxe editing">{{$:/plugins/can/omni/omnimode-edit.svg}}</$button> -->
 		<$button set="!!omnibus-mode" setTo="pins" class="omni-button" selectedClass="omni-button-selected" tooltip="Deluxe editing" aria-label="Deluxe editing">pins</$button>
+		<$button set="!!omnibus-mode" setTo="levels" class="omni-button" selectedClass="omni-button-selected" tooltip="levels mode" aria-label="levels mode">levels</$button>
         <!-- <$button set="!!omnibus-mode" setTo="exp" class="omni-button" selectedClass="omni-button-selected" tooltip="Tree with captions" aria-label="Tree with captions">exp</$button> -->
         <!-- <$button set="!!omnibus-mode" setTo="expro" class="omni-button" selectedClass="omni-button-selected" tooltip="RO tree with captions" aria-label="RO tree with captions">ro-exp</$button> -->
-        <!-- <$button set="!!omnibus-mode" setTo="cheatsheet" class="omni-button" selectedClass="omni-button-selected" tooltip="cheatsheet mode" aria-label="cheatsheet mode">cheatsheet</$button> -->
+        <$button set="!!omnibus-mode" setTo="cheatsheet" class="omni-button" selectedClass="omni-button-selected" tooltip="cheatsheet mode" aria-label="cheatsheet mode">cheatsheet</$button>
         <!-- <$button set="!!omnibus-mode" setTo="cheatsheetro" class="omni-button" selectedClass="omni-button-selected" tooltip="RO cheatsheet mode" aria-label="RO cheatsheet mode">ro-cheatsheet</$button> -->
 		<!-- <$button set="!!omnibus-mode" setTo="bar" class="omni-button" selectedClass="omni-button-selected" tooltip="bar mode" aria-label="omnibus bar mode">bar</$button> -->
-		<$button set="!!omnibus-mode" setTo="list" class="omni-button" selectedClass="omni-button-selected" tooltip="List mode" aria-label="List mode">list</$button>
+		<!-- <$button set="!!omnibus-mode" setTo="list" class="omni-button" selectedClass="omni-button-selected" tooltip="List mode" aria-label="List mode">list</$button> -->
         <!-- <$button set="!!omnibus-mode" setTo="plaintree" class="omni-button" selectedClass="omni-button-selected" tooltip="Plain tree mode" aria-label="Plain tree mode">plaintree</$button> -->
         <$button set="!!omnibus-mode" setTo="kbnav" class="omni-button" selectedClass="omni-button-selected" tooltip="kbnav" aria-label="kbnav">kbnav</$button>
-        <$button set="!!omnibus-mode" setTo="map" class="omni-button" selectedClass="omni-button-selected" tooltip="map" aria-label="map">map</$button>
+        <!-- <$button set="!!omnibus-mode" setTo="map" class="omni-button" selectedClass="omni-button-selected" tooltip="map" aria-label="map">map</$button> -->
         <$button set="!!omnibus-mode" setTo="cleanmap" class="omni-button" selectedClass="omni-button-selected" tooltip="cleanmap" aria-label="cleanmap">cleanmap</$button>
         <$button set="!!omnibus-mode" setTo="min" class="omni-button" selectedClass="omni-button-selected" tooltip="min" aria-label="min">min</$button>
         <!-- <$button set="!!omnibus-mode" setTo="boxes" class="omni-button" selectedClass="omni-button-selected" tooltip="boxes" aria-label="boxes">boxes</$button> -->

@@ -3,7 +3,9 @@ title: $:/plugins/can/omni/widgets/piece.js
 type: application/javascript
 module-type: widget
 
-Widget that can be moved around
+Widget that can be moved around. Needs a positioned parent container, and omnibus title (or more accurately, a sidecar tiddler title root), and a tiddler title (or more accurately a key to use to find the piece's location in the sidecar tiddler).
+
+
 
 \*/
 (function(){
@@ -173,7 +175,7 @@ Widget that can be moved around
             this.writeCoords();
             console.log(`mouse drop: ${this.coords}. this.brushDown= ${this.brushDown}`);
         }
- 
+        this.domNode.removeEventListener("mouseup", this.handleMouseUpEvent.bind(this));
     };
     
 

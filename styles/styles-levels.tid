@@ -1,0 +1,261 @@
+creator: chris
+title: $:/plugins/can/omni/styles-levels
+
+<$transclude tiddler="$:/plugins/can/omni/styles-teaser" mode="block"/>
+
+<style>
+/****** START styles-levels ********/
+
+.can-omni-toptools { /* note this will have an impact on other omnis open in other modes */
+    z-index: 100;
+    position: relative;
+}
+
+.can-omni-stream.levels {
+    position: relative;
+    z-index: 100;
+    font-size: 16px;
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 50px;
+    align-items: start; 
+}
+
+.can-omni-stream.levels.twocol {
+    grid-template-columns: 1fr 1fr;
+}
+
+.levels .omni-item-container {
+    /* grid-column: 2/4; */
+    z-index: 100;
+    display: grid;
+    grid-template-areas: "peri peri peri peri"
+                       "handle text menu margin";
+    grid-template-columns: min-content minmax(100px, 800px) min-content max-content; /* 1em auto 7fr auto;  */
+    grid-template-rows: auto;
+    position: relative;
+    /*padding-right: 1em;*/
+   /* margin-right: -1em; */
+    
+}
+
+.levels .col1 { grid-column: 1/2;}
+.levels .col2 { grid-column: 2/3;}
+
+.levels .omni-collapsebutton, .levels .omni-add-child {
+    grid-area: margin;
+    width: 1.6em;
+    margin-right: -1.6em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 0.1em;
+    padding-top: 1em;
+}
+
+.levels .omni-heading-row {
+    padding-top: 0.4em;
+    display: flex;
+    flex-direction: row;
+}
+
+.levels .omni-text-display {
+    grid-area:text;
+    /* max-width: 55em; */
+   /* border-radius: 0 5px 5px 0;*/
+    border: none;
+    background-color: <<colour tiddler-editor-fields-even>>;
+    display: flex;
+    flex-direction: column;
+ }  
+
+.levels .omni-heading {
+    display: flex;
+    flex-direction: row;
+}
+
+.levels .omni-caption:hover {
+background: #EEF8FF;
+}
+
+.levels .can-omni-title {
+    padding-left: 0.4em;
+}
+
+.levels .omni-title-heading:hover { background: cyan;}
+
+.levels .omni-title-heading button {margin-left: 1em;}
+
+.levels .omni-title-heading {
+    /* flex: 1 0 5em;*/ /* grow shrink basis */
+    min-width: 30%;
+    min-height: 1em;
+    padding: 0 0.2em;
+    border: none;
+    font-size: 1.2em;
+}
+
+.levels .tc-tiddler-body {
+    min-height:0.4em;
+    /*padding-right: 1em;*/
+    padding-top: 0em;
+    margin-top: 0;
+    width: 100%;
+}
+
+/* ---------------------------------------*/
+/* Vertical item handle                   */
+/* ---------------------------------------*/
+
+.levels .can-omni-itemhandle {
+    /*position: relative;*/
+    border-radius: 5px 0 0 5px; 
+    width: 1.2em; 
+    height: 100%; 
+    grid-area: handle; 
+    grid-row: span 1;
+    background-color: <<colour tiddler-editor-fields-even>>;
+    margin:0;
+    display: flex;
+    flex-direction: column;
+    }
+
+.levels .omni-item-container.currentNode > .can-omni-itemhandle {
+    background-color: #10099;
+}
+
+.levels .can-omni-edithandle {
+    height:100%;
+    width:100%;
+}
+
+.levels .omni-button.can-omni-itemhandle:hover, .levels .can-omni-title:hover {
+    background-color: <<colour muted-foreground>>;
+}
+
+.levels .can-omni-itemhandle .can-omni-link {height: 1em;}
+
+.levels .can-omni-itemhandle .can-omni-link svg {fill: <<colour foreground>>;}
+.levels .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
+
+.levels .can-omni-itemhandle-inner {
+    border-radius: 5px 0 0 5px; 
+    /* box-sizing: border-box; */
+    height: 100%; 
+    width: 100%;
+    margin:0;
+    }
+
+
+.levels .can-omni-ctlrow {
+    margin-right: 0;
+    line-height: 14px;
+}
+
+.levels .omni-subctl {
+    grid-area: menu;
+    display:flex;
+    flex-direction: column;
+    background-color: <<colour tiddler-editor-fields-even>>;
+    border-radius: 0 5px 5px 0;
+    gap: 0.8em;
+    padding-top: 0.1em;
+    padding-right: 0.1em;
+}
+
+.levels .omni-subctl .omni-button svg, .levels .can-omni-ctlrow .omni-button svg {
+    fill: <<colour muted-foreground>>;
+}
+.levels .can-omni-ctlrow svg, .levels .omni-subctl svg { }
+
+.levels .can-omni-foldbutton, .levels .can-omni-menubutton {
+    font-size: 1.2em;
+}
+
+.levels .can-omni-peripheral.inert {
+    height: 10pt;
+}
+
+
+
+.levels .omni-button {
+    color: <<colour foreground>>;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.levels .omni-button svg, .levels .can-omni-foldbutton svg, .levels .can-omni-menubutton svg { 
+    fill:<<colour foreground>>;
+    width: 0.6em;
+    height: 0.6em;}
+
+
+
+
+
+.levels .can-omni-stream .omni-button svg {
+    width: 8pt;
+    height: 8pt;
+}
+
+/* ----------------------------------------- */
+/* Above and below item droppable zones */
+/* ----------------------------------------- */
+
+.levels .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
+    z-index: 100;
+    border-radius: 4px; 
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+    line-height: 16pt;}
+
+.levels .can-omni-peripheral { 
+    grid-area: peri; 
+}
+
+/* ------------------ */
+/* headings           */
+/* ------------------ */
+
+.levels.can-omni-stream h1 {
+    font-size: 1.75em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    }
+
+.levels.can-omni-stream h2 {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    margin-top:0.4em;
+ }
+ 
+.levels.can-omni-stream h3 {
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-bottom: 0.5em;
+    margin-top:0.4em;
+ }
+
+.levels.can-omni-stream h4 {
+    font-size: 1.2em; 
+    font-weight:600;
+    margin-bottom: 0.5em;
+    margin-top:0.4em;}
+
+.levels.can-omni-stream h5 {font-size: 1.1em; font-weight:600;}
+.levels.can-omni-stream h6 {font-size: 1.0em; font-weight: 600;}
+
+
+/* --------------- */
+/* media-dependent */
+/* --------------- */
+
+
+
+
+/****** END styles-levels ********/
+
+</style>

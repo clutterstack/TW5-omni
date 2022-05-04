@@ -29,7 +29,7 @@ title: $:/plugins/can/omni/template-cheatsheetro
 
 \define compose-omni-toplevel()
 <div class="can-omni-toptools">
-    <$list filter="[{!!showmodestate}!match[hide]]" variable="ignore"><span style="width: 2em;"></span><<omni-viewswitcher>></$list>
+    <$list filter="[{!!showmodestate}!match[hide]]" variable="ignore"><span style="width: 2em;"></span><<omni-tcher>></$list>
 </div>
 <$macrocall $name=compose-omni/>        
 \end
