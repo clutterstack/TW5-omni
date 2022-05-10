@@ -15,28 +15,36 @@ title: $:/plugins/can/omni/styles-pins
     position: relative;
     z-index: 100;
     font-size: 16px;
-    min-height: 800px;
+    display: grid;
+    column-gap: 50px;
+    align-items: start;
+    grid-template-columns: repeat(auto-fill, fit-content(400px));
+    width: 100%;
+    height: 1000px;
     overflow-x: scroll;
     overflow-y: scroll;  
 }
 
-
-.pins .omni-svg-container {
-    
+.pins .omni-svg-container { 
 }
 
 .pins .omni-item-container {
-    /* grid-column: 2/4; */
     z-index: 100;
     display: grid;
     grid-template-areas: "peri peri peri peri"
                        "handle text menu margin";
     grid-template-columns: min-content minmax(100px, 800px) min-content max-content; /* 1em auto 7fr auto;  */
     grid-template-rows: auto;
-    position: relative;
     /*padding-right: 1em;*/
-   /* margin-right: -1em; */
-    
+   /* margin-right: -1em; */   
+}
+
+.pins .omni-item-container.omni-relative {
+    position: relative;  
+}
+
+.pins .omni-item-container.omni-absolute {
+    position: absolute;  
 }
 
 .pins .omni-item-container.toplevel { grid-column: 1/2;}

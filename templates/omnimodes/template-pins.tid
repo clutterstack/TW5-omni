@@ -1,14 +1,13 @@
 title: $:/plugins/can/omni/template-pins
 
 \define everypins(depth posclass)
-<$set name=containerclass filter="""[[omni-item-container]] [[$posclass$]enlist-input[]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [[$depth$]addprefix[depth-]]""">
-<$piece title=<<currentTiddler>> omnititle=<<parentval>> depth=$depth$>
-    <div class=<<containerclass>> data-omnitid=<<currentTiddler>> data-depth=$depth$>
+<$set name=containerclass filter="""[[omni-item-container]] [[omni-absolute]] [[$posclass$]enlist-input[]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [[$depth$]addprefix[depth-]]""">
+    <div class=<<containerclass>> data-omnitid=<<currentTiddler>> data-depth=$depth$ style={{{[[left=]] [[$(baseomni)$-sidecar]getindex{!!title}addprefix[px]] +[join[]]}}}>
         <<can-omni-peripheral layout:pinsadd endstate:open>>
         <<can-omni-tree-itemhandle>>
         <$droppable class="omni-text-display" tag="div" actions="""<$list filter="[<actionTiddler>!is[current]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""" >
         <div class="can-omni-ctlrow">
-            <<can-omni-link>><<omni-foldbutton>>
+            <<can-omni-link>><<omni-pinhandle>><<omni-foldbutton>>
         </div>
         <!-- <<omni-captionheading>> -->
         <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore">
@@ -25,7 +24,6 @@ title: $:/plugins/can/omni/template-pins
                 <<omni-collapsebutton>>
         </$list>
     </div>
-</$piece>   
 <$list filter="""[all[current]has[omni-list]]""" variable="null">
         <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=pins-showomni depth=<<__depth__>> />""" variable="ignore"/>
     </$list>
@@ -51,20 +49,19 @@ title: $:/plugins/can/omni/template-pins
 
 \define compose-omni-toplevel() 
 <$vars baseomni=<<currentTiddler>>>
-<$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-ec-startedit-actions>> tag="div">
-    <$eventcatcher events="click" selector=".can-omni-link" actions-click=<<omni-navigate-action>> tag="div">
-    <$eventcatcher selector=".omni-textarea" $focusin=<<omni-suspend-nav-shortcuts>> tag="div">
-        <$eventcatcher events="click" selector=".can-omni-itemhandle" actions-click=<<omni-select-node>> tag="div">
-            <$eventcatcher events="click" selector=".omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
-                <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
-                    <$eventcatcher events="click" selector=".can-omni-menubutton" actions-click=<<omni-toggle-menustate>> tag="div">
-                    <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-ec-delete-action>> tag="div">
-                        <$eventcatcher events="click" selector=".can-omni-addbutton" 
-                        actions-click=<<omni-ec-addtiddler-action>> tag="div">
+<$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-ec-startedit-actions>> tag="div" stopPropagation="always">
+    <$eventcatcher events="click" selector=".can-omni-link" actions-click=<<omni-navigate-action>> tag="div" stopPropagation="always">
+    <$eventcatcher selector=".omni-textarea" $focusin=<<omni-suspend-nav-shortcuts>> tag="div"  stopPropagation="always">
+        <$eventcatcher events="click" selector=".can-omni-itemhandle" actions-click=<<omni-select-node>> tag="div"  stopPropagation="always">
+            <$eventcatcher events="click" selector=".omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div" stopPropagation="always">
+                <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div" stopPropagation="always">
+                    <$eventcatcher events="click" selector=".can-omni-menubutton" actions-click=<<omni-toggle-menustate>> tag="div" stopPropagation="always">
+                    <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-ec-delete-action>> tag="div" stopPropagation="always">
+                        <$eventcatcher events="click" selector=".can-omni-addbutton" actions-click=<<omni-ec-addtiddler-action>> tag="div" stopPropagation="always">
                             <<can-omni-toptools>>
-                            <div class="can-omni-stream pins" >
+                            <$piece omnititle=<<baseomni>> class="can-omni-stream pins" >
                                 <$macrocall $name=compose-omni depth=0/> 
-                            </div>
+                            </$piece>
 </$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$vars>
 \end
 
@@ -79,6 +76,12 @@ title: $:/plugins/can/omni/template-pins
     </$list>
     <!-- <<can-omni-bottomadd layout:slimui endstate:open depthclass:depth-$depth$ >> -->
 </$vars>
+\end
+
+\define omni-pinhandle()
+<div class="omni-pinhandle omni-button" data-omnitid=<<currentTiddler>>>
+move
+</div>
 \end
 
 <<compose-omni-toplevel>>
