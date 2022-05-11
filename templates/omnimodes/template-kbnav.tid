@@ -9,9 +9,12 @@ title: $:/plugins/can/omni/template-kbnav
         <<can-omni-peripheral layout:kbnavadd endstate:open>>
         <<can-omni-tree-itemhandle>>
         <$droppable class="omni-text-display" tag="div" actions="""<$list filter="[<actionTiddler>!is[current]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""" >
-        <<can-omni-text>>
+        <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore">
+        <<can-omni-teaser>>
+        </$list>
         </$droppable>
         <div class="omni-subctl">
+            <<omni-foldbutton>>
             <<can-omni-link>>
             <<can-omni-delist>>
             <<can-omni-delete>>

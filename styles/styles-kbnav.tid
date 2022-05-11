@@ -1,6 +1,8 @@
 creator: chris
 title: $:/plugins/can/omni/styles-kbnav
 
+<$transclude tiddler="$:/plugins/can/omni/styles-teaser" mode="block"/>
+
 <style>
 /****** START styles-kbnav ********/
 
