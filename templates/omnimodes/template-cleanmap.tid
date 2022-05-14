@@ -2,49 +2,42 @@ title: $:/plugins/can/omni/template-cleanmap
 
 \define everycleanmap(depth posclass)
 <$set name=testclass filter="""[[omni-item-container]] [[$posclass$]enlist-input[]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [[$depth$]addprefix[depth-]]""">
-    <div class=<<testclass>> data-omnitid=<<currentTiddler>> data-depth=$depth$>
+    <div class=<<testclass>> data-omnitid=<<currentTiddler>> data-depth=$depth$ style={{{[[grid-row: span]] [{!!omni-list}enlist-input[]count[]] +[join[ ]]}}}>
         <<can-omni-peripheral layout:cleanmapadd endstate:open>>
         <<can-omni-tree-itemhandle>>
         <$droppable class="omni-text-display" tag="div" actions="""<$list filter="[<actionTiddler>!is[current]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""" >
-        <div class="can-omni-ctlrow">
-            <<can-omni-link>><<omni-foldbutton>>
-        </div>
-        <!-- <<omni-captionheading>> -->
-        <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore">
-        <<can-omni-teaser>>
-        </$list>
+            <div class="can-omni-ctlrow">
+                <<can-omni-link>><<omni-foldbutton>>
+            </div>
+            <!-- <<omni-captionheading>> -->
+            <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore">
+                <<can-omni-teaser>>
+            </$list>
         </$droppable>
         <div class="omni-subctl" tabindex="0">
-        <<omni-menubutton>>
-        <$list filter="[{$(menustatetiddler)$!!menustate}match[show]]"  variable="ignore">
-        <<can-omni-delist>><<can-omni-delete>>
-        </$list>
+            <<omni-menubutton>>
+            <$list filter="[{$(menustatetiddler)$!!menustate}match[show]]"  variable="ignore">
+                <<can-omni-delist>><<can-omni-delete>>
+            </$list>
         </div>
         <$list filter="[all[current]has[omni-list]]" emptyMessage=<<omni-add-child>> variable="ignore">
-                <<omni-collapsebutton>>
+            <<omni-collapsebutton>>
         </$list>
     </div>
     <$list filter="""[all[current]has[omni-list]]""" variable="null">
         <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=cleanmap-showomni depth=<<__depth__>> />""" variable="ignore"/>
     </$list>
-    
-
 </$set>
 \end
 
 
 \define cleanmap-showomni(depth) 
-<$list filter="[all[current]has[omni-list]]" variable="ignore">
-<!-- <$reveal tag="div" class="omni-showomni" type="nomatch" state=<<omnistatetiddler>> text="hide" > -->
 <$list filter="[all[current]has[omni-list]]">
     <$vars newdepth={{{[<__depth__>add[1]]}}}>
-        <!--omni-showomni: newdepth: <<newdepth>> <br> -->
         <$list filter="[{<omnistatetiddler}!match[hide]] :filter[<newdepth>compare:integer:lt[10]]" variable=null emptyMessage=<<can-recursionblock>> >
-        <$macrocall $name="compose-omni" mode=<<mode>> depth=<<newdepth>> />
+            <$macrocall $name="compose-omni" mode=<<mode>> depth=<<newdepth>> />
         </$list>
     </$vars>
-</$list>
-<!-- </$reveal> -->
 </$list>
 \end
 
@@ -70,6 +63,7 @@ title: $:/plugins/can/omni/template-cleanmap
 
 \define compose-omni(mode:cleanmap depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="cleanmap" template="everycleanmap" creatednum={{!!created}}>
+    <!-- <div class={{{omni-container [[$depth$]addprefix[depth-]] +[join[ ]]}}}> -->
     <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
         <$set name=omnicrumbs filter="""[<omnicrumbs>enlist-input[]] [<parentval>]""">
             <$vars creatednum={{!!created}}>
@@ -77,6 +71,7 @@ title: $:/plugins/can/omni/template-cleanmap
             </$vars>
         </$set>
     </$list>
+    <!-- </div> -->
     <<can-omni-bottomadd layout:slimui endstate:open depthclass:depth-$depth$ >>
 </$vars>
 \end
