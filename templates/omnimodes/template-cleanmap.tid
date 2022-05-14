@@ -2,7 +2,7 @@ title: $:/plugins/can/omni/template-cleanmap
 
 \define everycleanmap(depth posclass)
 <$set name=testclass filter="""[[omni-item-container]] [[$posclass$]enlist-input[]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [{!!omni-colour}] [[$depth$]addprefix[depth-]]""">
-    <div class=<<testclass>> data-omnitid=<<currentTiddler>> data-depth=$depth$ style={{{[[grid-row: span]] [{!!omni-list}enlist-input[]count[]] +[join[ ]]}}}>
+    <div class=<<testclass>> data-omnitid=<<currentTiddler>> data-depth=$depth$ style={{{[[grid-row: span]] [{!!omni-list}enlist-input[]count[]add[1]] +[join[ ]]}}}>
         <<can-omni-peripheral layout:cleanmapadd endstate:open>>
         <<can-omni-tree-itemhandle>>
         <$droppable class="omni-text-display" tag="div" actions="""<$list filter="[<actionTiddler>!is[current]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""" >
