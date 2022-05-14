@@ -57,6 +57,14 @@ type: text/vnd.tiddlywiki
 </div>
 \end
 
+
+
+\define omni-colours()
+<div class="omni-colour-switch">
+<$button class="colour1 omni-swatch" actions=<<add-item-class "colour1">>></$button><$button class="colour2 omni-swatch" actions=<<add-item-class "colour2">>></$button><$button class="colour3 omni-swatch" actions=<<add-item-class "colour3">>></$button>
+</div>
+\end
+
 \define omni-collapsebutton()
 <$button class="omni-collapsebutton omni-button" title="Show/hide omnibus tiddlers">
 <$list filter="[<omnistatetiddler>get[text]match[hide]]" emptyMessage="""<$action-setfield $tiddler=<<omnistatetiddler>> $value="hide"/>{{$:/plugins/can/omni/hide-omni.svg}}""" variable="ignore">
@@ -84,13 +92,6 @@ type: text/vnd.tiddlywiki
 <div class=can-omni-itemhandle data-currenttid=<<currentTiddler>> data-parentval=<<parentval>> data-breadcrumbs=<<omnicrumbs>> title="Click to toggle text edit. Drag to move list entry." aria-label="Click to toggle text edit. Drag to move list entry.">
     <$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> class="can-omni-itemhandle-inner"></$draggable>
 </div>
-\end
-
-
-\define can-omni-tree-itemhandle-old()
-<$button class="can-omni-itemhandle omni-button" tabindex="1" actions=<<omni-handle-toggle-actions>> tooltip="Click to toggle text edit. Drag to move list entry." aria-label="Click to toggle text edit. Drag to move list entry.">
-    <$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> class="can-omni-itemhandle-inner"></$draggable>
-</$button>
 \end
 
 \define can-omni-tree-itemhandle-filler()

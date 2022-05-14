@@ -45,24 +45,28 @@ title: $:/plugins/can/omni/styles-cleanmap
     
 }
 
-.cleanmap .omni-item-container.depth-0 { grid-column: 1/2;}
-.cleanmap .omni-item-container.depth-1 { grid-column: 2/3;}
-.cleanmap .omni-item-container.depth-2 { grid-column: 3/4;}
-.cleanmap .omni-item-container.depth-3 { grid-column: 4/5;}
-.cleanmap .omni-item-container.depth-4 { grid-column: 5/6;}
-.cleanmap .omni-item-container.depth-5 { grid-column: 6/7;}
-.cleanmap .omni-item-container.depth-6 { grid-column: 7/8;}
-.cleanmap .omni-item-container.depth-7 { grid-column: 8/9;}
-.cleanmap .omni-item-container.depth-8 { grid-column: 9/10;}
-.cleanmap .omni-item-container.depth-9 { grid-column: 10/11;}
-.cleanmap .omni-item-container.depth-10 { grid-column: 11/12;}
-.cleanmap .omni-item-container.depth-11 { grid-column: 12/13;}
-.cleanmap .omni-item-container.depth-12 { grid-column: 13/14;}
-.cleanmap .omni-item-container.depth-13 { grid-column: 14/15;}
-.cleanmap .omni-item-container.depth-14 { grid-column: 15/16;}
-.cleanmap .omni-item-container.depth-15 { grid-column: 16/17;}
-.cleanmap .omni-item-container.depth-16 { grid-column: 17/18;}
+.cleanmap .depth-0 { grid-column: 1/2;}
+.cleanmap .depth-1 { grid-column: 2/3;}
+.cleanmap .depth-2 { grid-column: 3/4;}
+.cleanmap .depth-3 { grid-column: 4/5;}
+.cleanmap .depth-4 { grid-column: 5/6;}
+.cleanmap .depth-5 { grid-column: 6/7;}
+.cleanmap .depth-6 { grid-column: 7/8;}
+.cleanmap .depth-7 { grid-column: 8/9;}
+.cleanmap .depth-8 { grid-column: 9/10;}
+.cleanmap .depth-9 { grid-column: 10/11;}
+.cleanmap .depth-10 { grid-column: 11/12;}
+.cleanmap .depth-11 { grid-column: 12/13;}
+.cleanmap .depth-12 { grid-column: 13/14;}
+.cleanmap .depth-13 { grid-column: 14/15;}
+.cleanmap .depth-14 { grid-column: 15/16;}
+.cleanmap .depth-15 { grid-column: 16/17;}
+.cleanmap .depth-16 { grid-column: 17/18;}
 
+
+.cleanmap .colour1 .omni-text-display, .cleanmap .colour1 .can-omni-itemhandle, .cleanmap .colour1 .omni-subctl, .cleanmap .omni-swatch.colour1 {background-color: #e8f8ff}
+.cleanmap .colour2 .omni-text-display, .cleanmap .colour2 .can-omni-itemhandle, .cleanmap .colour2 .omni-subctl, .cleanmap .omni-swatch.colour2 {background-color: #efffe8}
+.cleanmap .colour3 .omni-text-display, .cleanmap .colour3 .can-omni-itemhandle, .cleanmap .colour3 .omni-subctl, .cleanmap .omni-swatch.colour3 {background-color: #ffe8f6}
 
 .cleanmap .omni-collapsebutton, .cleanmap .omni-add-child {
     grid-area: margin;
@@ -80,6 +84,20 @@ title: $:/plugins/can/omni/styles-cleanmap
     padding-top: 0.4em;
     display: flex;
     flex-direction: row;
+}
+
+.cleanmap .omni-colour-switch {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+.cleanmap .omni-swatch {
+    width: 0.6em;
+    height: 0.6em;
+    border-radius: 0.5em;
+    align-self: flex-end;
 }
 
 .cleanmap .omni-text-display {
@@ -225,13 +243,15 @@ background: #EEF8FF;
 /* Above and below item droppable zones */
 /* ----------------------------------------- */
 
-.cleanmap .can-omni-peripheral, .can-omni-topadd, .can-omni-bottomadd { 
+.cleanmap .can-omni-peripheral, .cleanmap .can-omni-topadd, .cleanmap .can-omni-bottomadd { 
     z-index: 100;
     border-radius: 4px; 
     display: flex; 
     flex-direction: row; 
     justify-content: space-between; 
-    line-height: 16pt;}
+    line-height: 16pt;
+    /* background-color: <<colour background>>;*/
+    }
 
 .cleanmap .can-omni-peripheral { 
     grid-area: peri; 

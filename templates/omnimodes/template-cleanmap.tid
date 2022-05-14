@@ -1,7 +1,7 @@
 title: $:/plugins/can/omni/template-cleanmap
 
 \define everycleanmap(depth posclass)
-<$set name=testclass filter="""[[omni-item-container]] [[$posclass$]enlist-input[]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [[$depth$]addprefix[depth-]]""">
+<$set name=testclass filter="""[[omni-item-container]] [[$posclass$]enlist-input[]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [{!!omni-colour}] [[$depth$]addprefix[depth-]]""">
     <div class=<<testclass>> data-omnitid=<<currentTiddler>> data-depth=$depth$ style={{{[[grid-row: span]] [{!!omni-list}enlist-input[]count[]] +[join[ ]]}}}>
         <<can-omni-peripheral layout:cleanmapadd endstate:open>>
         <<can-omni-tree-itemhandle>>
@@ -17,7 +17,7 @@ title: $:/plugins/can/omni/template-cleanmap
         <div class="omni-subctl" tabindex="0">
             <<omni-menubutton>>
             <$list filter="[{$(menustatetiddler)$!!menustate}match[show]]"  variable="ignore">
-                <<can-omni-delist>><<can-omni-delete>>
+                <<can-omni-delist>><<can-omni-delete>><<omni-colours>>
             </$list>
         </div>
         <$list filter="[all[current]has[omni-list]]" emptyMessage=<<omni-add-child>> variable="ignore">

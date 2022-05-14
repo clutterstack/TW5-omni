@@ -2,6 +2,8 @@ tags: $:/tags/Macro
 title: $:/plugins/can/omni/action-macros
 type: text/vnd.tiddlywiki
 
+\define add-item-class(colour) <$action-setfield omni-colour=$colour$/>
+
 \define omni-toggle-foldstate() 
 <$action-listops $tiddler=<<dom-data-statetid>> $field="foldstate" $subfilter="+[toggle[hide],[show]]"/>
 <!-- <$action-listops $tiddler=<<dom-data-statetid>> $field="icon" $subfilter="+[toggle[{{$:/core/images/down-arrow}}],[{{$:/core/images/right-arrow}}]]"/> -->
