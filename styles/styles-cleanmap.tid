@@ -18,7 +18,7 @@ title: $:/plugins/can/omni/styles-cleanmap
     display: grid;
     column-gap: 50px;
     align-items: start;
-    grid-template-columns: repeat(auto-fill, fit-content(400px));
+    grid-template-columns: repeat(auto-fill, minmax(100px, 800px));
     overflow-x: scroll;
     overflow-y: hidden;  
     grid-auto-flow: row;
