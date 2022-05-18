@@ -21,7 +21,7 @@ title: $:/plugins/can/omni/template-kbnav
             {{||Drop refsource title here}}
         </div>
         <$list filter="[all[current]has[omni-list]]" variable="ignore">
-            <<can-omni-omni-show>>
+            <<omni-collapsebutton>>
         </$list>
         <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>
     </div>
