@@ -1,17 +1,8 @@
 created: 20211104030630107
 list-after: $:/core/ui/ViewTemplate/body
-tags: $:/tags/ViewTemplate
+tags: $:/tags/NotViewTemplate
 title: $:/plugins/can/omni/makeomnibutton
 type: text/vnd.tiddlywiki
-
-\define makeomnibutton()
-<$list filter="[all[current]!has[omni-list]]" variable=ignore>
-<$vars dom-data-parentval=<<currentTiddler>> dom-data-position=omni-listbottom >
-<hr>
-<$button actions="""<<omni-ec-addtiddler-action>><$action-setfield omnibus-mode=kbnav/>""" >Add subtid</$button>
-</$vars>
-</$list>
-\end
 
 \define can-sourcetag()
 	<$droppable tag="div" class="can-sourcetag tc-tiddler-controls" actions="<$action-setfield refsource=<<actionTiddler>> /><$action-sendmessage $message='tm-auto-save-wiki'/>">
