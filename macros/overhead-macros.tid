@@ -22,6 +22,7 @@ type: text/vnd.tiddlywiki
         <!-- <$button set="!!omnibus-mode" setTo="exp" class="omni-button" selectedClass="omni-button-selected" tooltip="Tree with captions" aria-label="Tree with captions">exp</$button> -->
         <!-- <$button set="!!omnibus-mode" setTo="expro" class="omni-button" selectedClass="omni-button-selected" tooltip="RO tree with captions" aria-label="RO tree with captions">ro-exp</$button> -->
         <$button set="!!omnibus-mode" setTo="cheatsheet" class="omni-button" selectedClass="omni-button-selected" tooltip="cheatsheet mode" aria-label="cheatsheet mode">cheatsheet</$button>
+        <$button set="!!omnibus-mode" setTo="annot" class="omni-button" selectedClass="omni-button-selected" tooltip="annotation mode" aria-label="annotation mode">annot</$button>
         <!-- <$button set="!!omnibus-mode" setTo="cheatsheetro" class="omni-button" selectedClass="omni-button-selected" tooltip="RO cheatsheet mode" aria-label="RO cheatsheet mode">ro-cheatsheet</$button> -->
 		<!-- <$button set="!!omnibus-mode" setTo="bar" class="omni-button" selectedClass="omni-button-selected" tooltip="bar mode" aria-label="omnibus bar mode">bar</$button> -->
 		<!-- <$button set="!!omnibus-mode" setTo="list" class="omni-button" selectedClass="omni-button-selected" tooltip="List mode" aria-label="List mode">list</$button> -->

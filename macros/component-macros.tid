@@ -58,7 +58,6 @@ type: text/vnd.tiddlywiki
 \end
 
 
-
 \define omni-colours()
 <div class="omni-colour-switch">
 <$button class="colour1 omni-swatch" actions=<<add-item-class "colour1">>></$button><$button class="colour2 omni-swatch" actions=<<add-item-class "colour2">>></$button><$button class="colour3 omni-swatch" actions=<<add-item-class "colour3">>></$button><$button class="omni-swatch" actions=<<add-item-class "">>></$button>
@@ -103,70 +102,6 @@ type: text/vnd.tiddlywiki
 <div class="omni-breadcrumbs $(mode)$"><$list filter="[<__statetid__>get[breadcrumbs]!is[blank]enlist-input[]]"><$link/> -> </$list><<currentTiddler>></div>
 </$linkcatcher>
 \end
-
-\define can-omni-text()
-<!-- omnicrumbs: <<omnicrumbs>> <br> -->
-<$list filter="[<editstatetid>get[editstate]match[edit]]" variable="ignore" 
-emptyMessage=
-"""<div class="omni-text-dblclick tc-tiddler-body" data-creatednum=<<creatednum>> data-currenttid=<<currentTiddler>> data-parentval=<<parentval>> data-breadcrumbs=<<omnicrumbs>> >
-	<$transclude $tiddler="<<currentTiddler>>" mode="block"/>
-</div>""">
-	<$keyboard tag="div" class="tc-can-keyboard" key="((input-accept-variant))" actions="<<omni-submitedit-actions>>" >
-	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-kb-canceledit-actions>>">
-	<$keyboard tag="div" class="tc-can-keyboard" key="tab" actions="<<omni-indent>>">
-	<$keyboard tag="div" class="tc-can-keyboard" key="shift-tab" actions="<<omni-unindent>>">
-	<$keyboard tag="div" class="tc-can-keyboard" key="alt-up" actions="<<omni-move-earlier-actions>>">
-	<$keyboard tag="div" class="tc-can-keyboard" key="alt-down" actions="<<omni-move-later-actions>>">
-		<$edit-text tiddler=<<editstatetid>> class="omni-textarea tc-tiddler-body" field='text' placeholder='New tiddler text' rows="1" minHeight="0" focus=true/>
-	</$keyboard></$keyboard></$keyboard></$keyboard></$keyboard></$keyboard>
-</$list>
-\end
-
-\define can-omni-text-with-siblings() 
-
-List works... -- <$list filter="[[$(parentval)$]] [list[$(parentval)$]] [[Testvars]]"/>
-
-<$importvariables filter="[[$(parentval)$]] [list[$(parentval)$]] [[Testvars]]">
-
-subtid: <<subtid>> <br>
-parentval: <<parentval>> <br>
-
-testvar? <<testvar>> <br>
-{{$(subtid)$}}
-
-</$importvariables>
-\end
-
-\define can-omni-nb-text()
-<$reveal type="nomatch" stateTitle=<<editstatetid>> stateField=editstate text="edit" tag=div>
-<$vars subtid=<<currentTiddler>> >
-    <div class="omni-text-as-button tc-tiddler-body" title="Double-click to edit text." aria-label="Double-click to edit text.">
-    <$omnidblclick actions="<<omni-ec-startedit-actions>>"/>
-	<<can-omni-text-with-siblings>>
-	</div>
-    </$vars>
-</$reveal>
-<$reveal type="match" stateTitle=<<editstatetid>> stateField=editstate text="edit" tag=div>
-	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submitedit-actions>>" >
-	<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submitedit-actions>>" >
-	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-canceledit-actions>>">
-		<$edit-text class="omni-textarea tc-tiddler-body" field='text' placeholder='New tiddler text' rows="1" minHeight="0" focus=true/>
-	</$keyboard></$keyboard></$keyboard>
-</$reveal>
-\end
-
-\define can-omni-teaser() 
-    <div class="tc-tiddler-body omni-teaser">
-        <$omnidblclick actions="<<omni-ec-startedit-actions>>"/>
-	     <div class="omni-teaser-body">
-            <$transclude $tiddler="<<currentTiddler>>" mode="block"/>
-         </div>
-         <!-- <div class="omni-teaser-indicator omni-button">
-            <p>...</p>
-        </div> -->
-	</div>
-\end
-
 
 \define can-omni-titleheading()
 <$reveal type="nomatch" stateTitle=<<edittitlestatetid>> stateField=editstate text="edit" tag="div" class="omni-title-heading view" title="Double-click to edit title." aria-label="Double-click to edit title.">
@@ -257,31 +192,6 @@ testvar? <<testvar>> <br>
 </$set>
 \end
 
-\define can-omni-text-region()	
-        <$reveal tag="div" class="can-omni-text" type="match" stateTitle=<<foldstatetiddler>> stateField="foldstate" text="hide" >
-            <<can-omni-teaser>>
-        </$reveal>
-        <$reveal tag="div" class="can-omni-text" type="nomatch" stateTitle=<<foldstatetiddler>> stateField="foldstate" text="hide" >
-            <<can-omni-text>>
-        </$reveal>
-\end
-
-\define can-omni-text-ro()
-    <$reveal tag="div" class="can-omni-text" type="nomatch" stateTitle=<<foldstatetiddler>> stateField="foldstate" text="hide" >
-        <div class="tc-tiddler-body">
-	        <$transclude $tiddler="<<currentTiddler>>" mode="block"/>
-	    </div>
-    </$reveal>
-\end
-
-\define can-omni-nb-region()	
-        <$reveal tag="div" class="can-omni-text" type="nomatch" stateTitle=<<foldstatetiddler>> stateField="foldstate" text="hide" >
-        <$importvariables filter="[[$(parentval)$]]"> 
-            <<can-omni-text>>
-            </$importvariables>
-        </$reveal>
-\end
-
 \define set-toc-view-tiddler() <$action-setfield $tiddler=<<parentval>> toc-view-tiddler=<<currentTiddler>> />
 
 \define omni-toc-heading-class-filter() omni-toc-heading [<parentval>get[toc-view-tiddler]match<currentTiddler>then[selected]]
@@ -304,21 +214,8 @@ testvar? <<testvar>> <br>
     </div>
 \end
 
-\define can-omni-todo-region() 
-	
-	<div class="can-omni-text">
-		<div class="can-omni-todo-text">
-		<<can-omni-text>>
-		</div>
-	</div>
-\end
-
 \define can-omni-bullet()
 <div class="can-omni-bullet"></div>
-\end
-
-\define can-omni-outline-region() 
-	<div class="can-omni-text"><<can-omni-teaser>></div> 
 \end
 
 \define can-reset-omni-depth()
