@@ -21,13 +21,13 @@ type: text/vnd.tiddlywiki
 
 \define omniCurrentNode() {{$:/state/can/omni/omniCurrentNode}}
 
-\define omni-kb-startedit-actions() 
+\define omni-kb-startedit-actions()
 <$tiddler tiddler={{$:/state/can/omni/omniCurrentNode}} >
 <$vars baseomni={{{[[$:/state/can/omni/omniCurrentNode]get[breadcrumbs]enlist-input[]first[]]}}} creatednum={{!!created}}>
 <$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show" $timestamp='no'/>
 <$action-setfield $tiddler=<<editstatetid>> editstate="edit" $timestamp='no'/>
 <$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/>
-<$action-setfield $tiddler=<<editstatetid>> throttle.refresh=yes/>
+<$action-setfield $tiddler=<<editstatetid>> throttle.refresh='yes'/>
 </$vars>
 </$tiddler>
 <<omni-suspend-nav-shortcuts>>

@@ -143,7 +143,9 @@ Widget that can be moved around. Needs a positioned parent container, and omnibu
              this.refreshSelf();
             return true;
          } 
-            return this.refreshChildren(changedTiddlers);;
+         if(changedTiddlers) { // not sure if need this condition; was troubleshooting a "changedtiddlers is undefined" message in annot testing
+            return this.refreshChildren(changedTiddlers);
+        }
     };
 
     pieceWidget.prototype.handleMouseDownEvent = function(event) {

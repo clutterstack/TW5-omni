@@ -61,17 +61,17 @@ tags: $:/tags/Macro
 \end
 
 \define omni-closerlook()
-<div class="omni-button omni-closerlook-button omni-button" data-title=<<currentTiddler>> tooltip="Closer look" aria-label="Closer look">{{$:/plugins/can/omni/microscope-simple.svg}}</div>
+<div class="omni-button omni-closerlook-button" data-title=<<currentTiddler>> tooltip="Closer look" aria-label="Closer look">{{$:/plugins/can/omni/microscope-simple.svg}}</div>
 \end
 
 \define can-omni-title()
 <$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >
-<$button class="omni-button can-omni-title omni-button" to={{!!title}} tooltip="Tiddler link" aria-label="Tiddler link">
+<$button class="omni-button can-omni-title" to={{!!title}} tooltip="Tiddler link" aria-label="Tiddler link">
 <div class="can-omni-title"><$text text=<<currentTiddler>>/></div>
 </$button></$draggable>
 \end
 
-\define omni-edit-button() <$button class="omni-button can-omni-edit-button omni-button" actions=<<omni-ec-startedit-actions>>  tooltip="Edit text" aria-label="Edit text">{{$:/core/images/edit-button}}</$button>
+\define omni-edit-button() <$button class="can-omni-edit-button omni-button" actions=<<omni-ec-startedit-actions>>  tooltip="Edit text" aria-label="Edit text">{{$:/core/images/edit-button}}</$button>
 \end
 
 

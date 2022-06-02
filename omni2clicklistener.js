@@ -75,7 +75,11 @@ ClickListener.prototype.execute = function() {
 Selectively refreshes the widget if needed. Returns true if the widget or any of its children needed re-rendering
 */
 ClickListener.prototype.refresh = function(changedTiddlers) {
-	return false;
+    if (changedTiddlers) {
+        this.refreshSelf();
+            return true;
+    }
+    return false;
 };
 
 exports.omnidblclick = ClickListener;
