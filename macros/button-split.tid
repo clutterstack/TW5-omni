@@ -1,38 +1,53 @@
 title: $:/plugins/can/omni/buttons/split
 
-\define splitsubtid()
-<$wikify name=newtid text=<<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>> >
-    <!-- copy selected text to a new tiddler  -->
-    <$action-sendmessage $message="tm-edit-text-operation" $param="save-selection" tiddler=<<newtid>> field=text />
-    <!-- <$list filter="""[<newtid>get[text]is[empty]]""" variable=ignore>
-        <$action-deletetiddler $tiddler=<<newtid>> />
-    </$list> -->
-    <!-- insert the new tiddler in the omni-list, after the original subtid -->
-    <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore<newtid>] +[move<newtid>]'/>
-    <!-- give it a subtid (should really only do this if it doesn't have one) -->
-    <$action-createtiddler $basetitle={{{[<newtid>addsuffix[-annot]]}}} text="" >
-        <$action-listops $tiddler=<<newtid>> $field='omni-list' $subfilter='+[<createTiddler-title>]'/>
-    </$action-createtiddler>
+\define splitsubtid() 
+<$action-sendmessage
+	$message="tm-edit-text-operation"
+	$param="omnisplit"
+	tagnew="yes"
+/><<omni-submitedit-actions>>
+<$vars first={{{[all[current]addsuffix[-1]]}}} second={{{[all[current]addsuffix[-2]]}}} third={{{[all[current]addsuffix[-3]]}}} >
+    <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:first<third>] +[move<third>]' />
+    <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:first<second>] +[move<second>]' />
+</$vars>
+\end
 
-    <!-- replace selected text with a marker -->
-    <!-- <$tiddler tiddler=<<editstatetid>>> -->
+\define renamesubtids()
+<!-- get the number of existing subtids -->
+<!-- <$vars numtids=4> {{{[all[current]list[!!omni-list]is[tiddler]count[]]}}}> -->
+<!-- for range  -->
+<!-- <$list filter="[range<numtids>]" variable="num"> -->
+<$vars num=4>
+<$action-sendmessage $message="tm-rename-tiddler" from={{{[all[current]list[!!omni-list]is[tiddler]rest<num>first[]]}}} to={{{[all[current]addsuffix[-]addsuffix<num>]}}} />
+<!-- </$list> -->
+</$vars>
+\end
+
+\define slush()
+<$action-sendmessage $message="tm-rename-tiddler" from=<<currentTiddler>> to={{{[all[current]addsuffix[-1]]}}} />
+  <!-- copy selected text to a field on the state tiddler  -->
+    <$action-sendmessage $message="tm-edit-text-operation" $param="save-selection" tiddler=<<annotstatetid>> field="highlighted" />
     <$action-sendmessage $message="tm-edit-text-operation" $param="replace-selection" text="%split-marker%" />
-    <$action-setfield $tiddler=<<editstatetid>> text={{!!text}}/>
-    <!-- <$action-sendmessage $message="tm-auto-save-wiki" /> -->
-    <!-- </$tiddler> -->
-</$wikify>
-<!-- <$vars oldtext={{{[<currentTiddler>get[text]]}}}> -->
-<$wikify name=newnum text=<<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>> >
-    <!-- get the contents from after the split -->
-        <$list filter=[<editstatetid>get[text]split[%split-marker%]butfirst[]trim[]length[]!match[0]] variable=null>
-            <$action-createtiddler $basetitle={{{[<newnum>addsuffix[-a]]}}} text={{{[<editstatetid>get[text]split[%split-marker%]butfirst[]]}}} >
-                <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore<createTiddler-title>] +[move:2<createTiddler-title>]'/>
-            </$action-createtiddler>
-            <!-- <$action-createtiddler $basetitle={{{[<newnum>addsuffix[-a-annot]]}}} text="" >
-                <$action-listops $tiddler={{{[<newnum>addsuffix[-a]]}}} $field='omni-list' $subfilter='+[<createTiddler-title>]'/>
-            </$action-createtiddler> -->
-        </$list>
-</$wikify>
+    <!--  copy the text before the split, if any, to a field -->
+    <$action-setfield $tiddler=<<annotstatetid>> beforesplit={{{[<editstatetid>get[text]splitbefore[%split-marker%]removesuffix[%split-marker%]]}}} />
+    <!-- copy the text after the split, if any, to another field -->
+    <$action-setfield $tiddler=<<annotstatetid>> aftersplit={{{[<editstatetid>get[text]split[%split-marker%]butfirst[]]}}} />
+    <!-- If there's something after the split marker, that goes into a new tiddler -->
+    <$list filter="[<editstatetid>get[text]splitbefore[%split-marker%]removesuffix[%split-marker%]!is[blank]]" variable="ignore">
+        <$action-createtiddler $basetitle={{{[<currentTiddler>addsuffix[-c]]}}} text={{{[<annotstatetid>get[aftersplit]]}}} >
+            <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore<createTiddler-title>] +[move<createTiddler-title>]' />
+        </$action-createtiddler>
+    </$list>
+    <!--  If beforesplit has something in it, that's what stays in the original tiddler and we need to put the highlighted text into another tiddler -->
+    <!-- <$list filter="[<annotstatetid>has[beforesplit]]" variable="ignore">
+        <$action-createtiddler $basetitle={{{[<currentTiddler>addsuffix[-b]]}}} text={{{[<annotstatetid>get[highlighted]]}}}>
+        <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore<createTiddler-title>] +[move<createTiddler-title>]' />
+        </$action-createtiddler>
+    </$list> -->
+        <!-- Now want the original tiddler to have the first non-empty text (so it stays with any annotation) -->
+        <!-- Need to do this last because the filtered lists are looking at the text field (I think changing fields in editstatetid and -->
+        <!-- filtering on them in the same action may not be allowed) -->
+    <!-- <$action-setfield $tiddler=<<editstatetid>> text={{{[<annotstatetid>get[beforesplit]!is[blank]] ~[<annotstatetid>get[highlighted]]}}} /> -->
 <$action-setfield text={{{[<editstatetid>get[text]split[%split-marker%]first[]]}}}/>
     <!-- <<omni-toggle-view>> -->
     <<omni-kb-canceledit-actions>>

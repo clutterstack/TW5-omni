@@ -89,10 +89,6 @@ type: text/vnd.tiddlywiki
 <$action-setfield text={{$(editstatetid)$}}/><$action-deletetiddler $tiddler=<<editstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/><<omni-enable-nav-shortcuts>>
 \end
 
-\define omni-splitsubmit-actions() 
-<$action-deletetiddler $tiddler=<<editstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/><<omni-enable-nav-shortcuts>>
-\end
-
 \define ADAPT-THIS-FOR-AFTER_SUBMIT-EDIT-ACTIONS()
 <$list filter="[<openstatetid>get[viewadd]match[open]]">
 	<$macrocall $name="omni-kb-addtiddler-action"/>

@@ -1,77 +1,64 @@
 title: $:/plugins/can/omni/template-annot
 
-\define everyannot(depth posclass)
-<$set name=containerclass filter="""[[omni-item-container]] [[$posclass$]enlist-input[]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [{!!omni-colour}] [[$depth$]addprefix[depth-]]""">
-    <div class=<<containerclass>> data-omnitid=<<currentTiddler>> data-depth=$depth$ >
-        <<can-omni-tree-itemhandle>>
-        <!-- <div class="can-omni-ctlrow">
-            <<can-omni-title-link>><<omni-foldbutton>>
-        </div> -->
-        <div class="omni-text-display" tag="div">
-            <$vars depth=<<__depth__>> >
-            <<omni-annot-text>> 
-            </$vars>
-        </div>
-    </div>
-    <$macrocall $name=annot-showomni depth=<<__depth__>> />
-</$set>
-\end
-
-
-\define annot-showomni(depth) 
-<$list filter="[all[current]has[omni-list]]">
-    <$vars newdepth={{{[<__depth__>add[1]]}}}>
-        <$list filter="[{<omnistatetiddler}!match[hide]] :filter[<newdepth>compare:integer:lt[2]]" variable=null>
-            <$macrocall $name="compose-omni" mode=<<mode>> depth=<<newdepth>> />
-        </$list>
-    </$vars>
-</$list>
-\end
-
-\define omni-annot-text(depth)
-<!-- omnicrumbs: <<omnicrumbs>> <br> -->
+\define omni-annot-text()
 <$list filter="[<editstatetid>get[editstate]match[edit]]" variable="ignore" 
 emptyMessage=
-"""<div class="omni-text-dblclick tc-tiddler-body" data-creatednum=<<creatednum>> data-currenttid=<<currentTiddler>> data-parentval=<<parentval>> >
-	<$transclude $tiddler="<<currentTiddler>>" mode="block"/>
-</div>""">
-	<!-- <$keyboard tag="div" class="tc-can-keyboard" key="((input-accept-variant))" actions="<<omni-submitedit-actions>>" > -->
-	<$keyboard tag="div" class="tc-can-keyboard" key="((input-accept-variant))" actions=<<omni-splitsubmit-actions>> >
+'<div class="omni-text-dblclick tc-tiddler-body"  data-creatednum=<<creatednum>> data-currenttid=<<currentTiddler>> >
+
+	<$codeblock code={{{ [<currentTiddler>get[text]] }}} language="javascript"/>
+
+</div>'>
+	<$keyboard tag="div" class="tc-can-keyboard" key="((input-accept-variant))" actions=<<omni-submitedit-actions>> >
 	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-kb-canceledit-actions>>">
 	<$keyboard tag="div" class="tc-can-keyboard" key="alt-up" actions="<<omni-move-earlier-actions>>">
 	<$keyboard tag="div" class="tc-can-keyboard" key="alt-down" actions="<<omni-move-later-actions>>">
-		<$edit class="omni-textarea tc-tiddler-body" field='text' placeholder='New tiddler text' rows="1" minHeight="0" focus=true>
-        <$list filter="""[<depth>match[0]]""" variable=ignore>
-        {{||$:/plugins/can/omni/buttons/split}}
-        </$list>
+		<$edit class="omni-textarea tc-tiddler-body" tiddler=<<editstatetid>> field='text' placeholder='New tiddler text' rows="1" minHeight="0" focus=true >
+            {{||$:/plugins/can/omni/buttons/split}}
         </$edit>
-	</$keyboard></$keyboard>
-    </$keyboard>
-    </$keyboard>
+	</$keyboard></$keyboard></$keyboard></$keyboard>
 </$list>
 \end
 
-\define compose-omni-toplevel() 
+\define omni-annot-annotation()
+<$list filter="[<editstatetid>get[annoteditstate]match[edit]]" variable="ignore" 
+    emptyMessage=
+    '<div class="omni-annot-dblclick tc-tiddler-body"  data-creatednum=<<creatednum>> data-currenttid=<<currentTiddler>> >
+	<$transclude tiddler=<<currentTiddler>> field="annot" mode="block"/>
+    </div>'>
+	<$keyboard tag="div" class="tc-can-keyboard" key="((input-accept-variant))" actions=<<omni-submitannot-actions>> >
+	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-kb-canceledit-actions>>">
+		<$edit class="omni-textarea tc-tiddler-body" tiddler=<<editstatetid>> field='annot' placeholder='New annotation text' rows="1" minHeight="0" focus=true></$edit>
+	</$keyboard></$keyboard>
+</$list>
+\end
+
+\define compose-omni() 
 <$vars baseomni=<<currentTiddler>>>
     <$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-ec-startedit-actions>> tag="div">
+    <$eventcatcher events="dblclick" selector=".omni-annot-dblclick" actions-dblclick=<<omni-startannot-actions>> tag="div">
         <<can-omni-toptools>>
         <div class="can-omni-stream annot">
-            <$macrocall $name=compose-omni depth=0/>                          
+            <$vars parentval=<<currentTiddler>> mode="annot" template="everyannot">
+                <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
+                    <$vars creatednum={{!!created}}>
+                        <div class={{{[[omni-item-container]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [{!!omni-colour}]}}} data-omnitid=<<currentTiddler>> >
+                            <<can-omni-tree-itemhandle>>
+                            <!-- <div class="can-omni-ctlrow">
+                            <<can-omni-title-link>><<omni-foldbutton>>
+                            </div> -->
+                            <div class="omni-text-display" tag="div">
+                                <<omni-annot-text>>
+                            </div>
+                            <div class="omni-annot-display" tag="div">
+                                <<omni-annot-annotation>>
+                            </div>
+                        </div>
+                    </$vars>    
+                </$list>
+            </$vars>                         
         </div>
-    </$eventcatcher>
+    </$eventcatcher></$eventcatcher>
 </$vars>
 \end
 
-\define compose-omni(mode:annot depth)
-<$vars parentval=<<currentTiddler>> mode="annot" template="everyannot" creatednum={{!!created}}>
-    <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
-        <$set name=omnicrumbs filter="""[<omnicrumbs>enlist-input[]] [<parentval>]""">
-            <$vars creatednum={{!!created}}>
-                <$macrocall $name=<<template>> depth=<<__depth__>>  />
-            </$vars>
-        </$set>
-    </$list>
-</$vars>
-\end
-
-<<compose-omni-toplevel>>
+<<compose-omni>>

@@ -7,6 +7,8 @@ type: text/vnd.tiddlywiki
 
 \define editstatetid() $:/state/can/omni/editstate/$(omniqual)$
 
+\define annotstatetid() $:/state/can/omni/annotstate/$(omniqual)$
+
 \define edittitlestatetid() $:/state/can/omni/edittitlestate/$(omniqual)$
 
 \define editfieldstatetid() $:/state/can/omni/edit-$(editFieldName)$/$(omniqual)$
