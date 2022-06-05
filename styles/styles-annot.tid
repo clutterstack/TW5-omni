@@ -28,10 +28,11 @@ title: $:/plugins/can/omni/styles-annot
     grid-template-areas: "handle text annot margin";
     grid-template-columns: min-content 45% 45% 1em; /* 1em auto 7fr auto;  */
     grid-template-rows: auto;
-    position: relative;
-    /*padding-right: 1em;*/
-   /* margin-right: -1em; */
-    
+    position: relative; 
+}
+
+.annot .omni-item-container:hover {
+    background: #eeeeee;
 }
 
 .annot .colour1 .omni-text-display, .annot .colour1 .can-omni-itemhandle, .annot .colour1 .omni-subctl, .annot .omni-swatch.colour1 {background-color: #e8f8ff}
@@ -122,10 +123,22 @@ background: #EEF8FF;
 .annot .omni-textarea.tc-tiddler-body {
     /*min-height:1.4em; */
     /*padding-right: 1em;*/
-    padding-top: 0em;
+    padding: 0;
     margin-top: 0;
     width: 100%;
     height: 100%;
+}
+
+.annot .CodeMirror {
+    line-height: inherit;
+}
+
+.annot .CodeMirror-lines {
+    padding: 0;
+}
+.annot .tc-editor-toolbar {
+    height: 0;
+    margin: 0;
 }
 
 .annot .omni-split-button {
@@ -138,12 +151,14 @@ background: #EEF8FF;
 .annot pre.hljs {
     margin: 0;
     height: 100%;
+    border: none;
 }
 
 .annot pre code.hljs {
     padding: 0;
     height: 100%;
     overflow: hidden;
+    font-size: 1em;
 }
 /* ---------------------------------------*/
 /* Vertical item handle                   */
@@ -156,8 +171,8 @@ background: #EEF8FF;
     height: 100%; 
     grid-area: handle; 
     grid-row: span 1;
-    background-color: <<colour tiddler-editor-fields-even>>;
-    margin:0;
+    /* background-color: <<colour tiddler-editor-fields-even>>;
+    margin:0;*/
     display: flex;
     flex-direction: column;
     }

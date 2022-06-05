@@ -34,16 +34,28 @@ FramedEngine.prototype.createTextOperation = function() {
             editTiddlerTitle = this.editTitle,
             textEnd = operation.text.length,
             beforeSlice = operation.text.substring(0, operation.selStart).trimEnd(),
-            afterSlice = operation.text.substring(operation.selEnd).trimEnd(),
+            highlight = operation.selection,
+            afterSlice = operation.text.substring(operation.selEnd).trimStart(),
             newTidTitleRoot = event.paramObject.title || this.getVariable("currentTiddler");
             // currentTitle = this.getVariable("currentTiddler");
         if(editTiddler && editTiddler.fields["draft.of"]) {
             editTiddlerTitle = editTiddler.fields["draft.of"];
         }
-        if (operation.selection.length == 0 && operation.selStart > 0 && operation.selStart < textEnd) { // if selection length is zero and it's in the middle somewhere, we split the tiddler in two.
+        // Delete orig tiddler since we're replacing it, so next time we run this we don't try to reuse sliced tid titles
+        this.wiki.deleteTiddler(this.getVariable("currentTiddler"));
+        if (highlight.length == 0 && operation.selStart > 0 && operation.selStart < textEnd) { // if selection length is zero and it's in the middle somewhere, we split the tiddler in two.
             operation.cutStart = 0;
             operation.cutEnd = textEnd;
-            operation.replacement = beforeSlice; // first half goes in orig tiddler
+            var firsthalfTitle = this.wiki.generateNewTitle(newTidTitleRoot + "-1");
+            this.wiki.addTiddler(new $tw.Tiddler( // first half goes in new tiddler
+                this.wiki.getCreationFields(),
+                this.wiki.getModificationFields(),
+                {
+                    title: firsthalfTitle,
+                    text: beforeSlice,
+                    tags: event.paramObject.tagnew === "yes" ?  [editTiddlerTitle] : []
+                }
+            ));
             var secondhalfTitle = this.wiki.generateNewTitle(newTidTitleRoot + "-2");
             this.wiki.addTiddler(new $tw.Tiddler( // second half goes in new tiddler
                 this.wiki.getCreationFields(),
@@ -54,11 +66,20 @@ FramedEngine.prototype.createTextOperation = function() {
                     tags: event.paramObject.tagnew === "yes" ?  [editTiddlerTitle] : []
                 }
             ));
-        } else if ( operation.selection.length > 0 && operation.selection.length < operation.text.length) { // if we have a selection and it's not the whole text
+        } else if ( highlight.length > 0 && highlight.length < operation.text.length) { // if we have a selection and it's not the whole text
             operation.cutStart = 0;
             operation.cutEnd = textEnd;
             if (operation.selStart == 0) { // selection is at start YAY THIS WORKS
-                operation.replacement = operation.selection.trimEnd(); // selection will go back into original tiddler
+                var firsthalfTitle = this.wiki.generateNewTitle(newTidTitleRoot+"-1");
+                this.wiki.addTiddler(new $tw.Tiddler( // first half goes in 1st new tiddler
+                    this.wiki.getCreationFields(),
+                    this.wiki.getModificationFields(),
+                    {
+                        title: firsthalfTitle,
+                        text: highlight,
+                        tags: event.paramObject.tagnew === "yes" ?  [editTiddlerTitle] : []
+                    }
+                ));
                 var secondhalfTitle = this.wiki.generateNewTitle(newTidTitleRoot+"-2");
                 this.wiki.addTiddler(new $tw.Tiddler( // second half goes in new tiddler
                     this.wiki.getCreationFields(),
@@ -70,14 +91,23 @@ FramedEngine.prototype.createTextOperation = function() {
                     }
                 ));
             } else if ( operation.selStart > 0 && operation.selEnd < textEnd ) { //selection's in the middle
-                operation.replacement = beforeSlice; //first slice goes back into orig tiddler
+                var beforeSliceTitle = this.wiki.generateNewTitle(newTidTitleRoot+"-1");
+                this.wiki.addTiddler(new $tw.Tiddler( // first slice goes into a new tiddler
+                    this.wiki.getCreationFields(),
+                    this.wiki.getModificationFields(),
+                    {
+                        title: beforeSliceTitle,
+                        text: beforeSlice,
+                        tags: event.paramObject.tagnew === "yes" ?  [editTiddlerTitle] : []
+                    }
+                ));
                 var selectionTitle = this.wiki.generateNewTitle(newTidTitleRoot+"-2");
                 this.wiki.addTiddler(new $tw.Tiddler( // selection goes into a new tiddler
                     this.wiki.getCreationFields(),
                     this.wiki.getModificationFields(),
                     {
                         title: selectionTitle,
-                        text: operation.selection.trimEnd,
+                        text: highlight,
                         tags: event.paramObject.tagnew === "yes" ?  [editTiddlerTitle] : []
                     }
                 ));
@@ -92,14 +122,23 @@ FramedEngine.prototype.createTextOperation = function() {
                     }
                 ));
             } else if ( operation.selEnd == textEnd ) { //selection's at the end
-                operation.replacement = beforeSlice; //first slice goes back into orig tiddler
+                var firsthalfTitle = this.wiki.generateNewTitle(newTidTitleRoot+"-1");
+                this.wiki.addTiddler(new $tw.Tiddler( // before-selection stuff goes in new tiddler
+                    this.wiki.getCreationFields(),
+                    this.wiki.getModificationFields(),
+                    {
+                        title: firsthalfTitle,
+                        text: beforeSlice,
+                        tags: event.paramObject.tagnew === "yes" ?  [editTiddlerTitle] : []
+                    }
+                ));
                 var secondhalfTitle = this.wiki.generateNewTitle(newTidTitleRoot+"-2");
                 this.wiki.addTiddler(new $tw.Tiddler( // selection goes in new tiddler
                     this.wiki.getCreationFields(),
                     this.wiki.getModificationFields(),
                     {
                         title: secondhalfTitle,
-                        text: operation.selection.trimEnd,
+                        text: highlight,
                         tags: event.paramObject.tagnew === "yes" ?  [editTiddlerTitle] : []
                     }
                 ));
