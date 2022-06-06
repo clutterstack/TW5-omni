@@ -42,7 +42,7 @@ FramedEngine.prototype.createTextOperation = function() {
             editTiddlerTitle = editTiddler.fields["draft.of"];
         }
         // Delete orig tiddler since we're replacing it, so next time we run this we don't try to reuse sliced tid titles
-        this.wiki.deleteTiddler(this.getVariable("currentTiddler"));
+        //this.wiki.deleteTiddler(this.getVariable("currentTiddler"));
         if (highlight.length == 0 && operation.selStart > 0 && operation.selStart < textEnd) { // if selection length is zero and it's in the middle somewhere, we split the tiddler in two.
             operation.cutStart = 0;
             operation.cutEnd = textEnd;
