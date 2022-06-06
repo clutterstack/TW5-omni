@@ -15,7 +15,7 @@ title: $:/plugins/can/omni/styles-annot
     position: relative;
     z-index: 100;
     font-size: 16px;
-    overflow-x: scroll;
+    overflow-x: hidden;
     overflow-y: hidden;  
 }
 
@@ -29,6 +29,10 @@ title: $:/plugins/can/omni/styles-annot
     grid-template-columns: min-content 45% 45% 1em; /* 1em auto 7fr auto;  */
     grid-template-rows: auto;
     position: relative; 
+}
+
+.annot p:last-of-type {
+    margin: 0;
 }
 
 .annot .omni-item-container:hover {
