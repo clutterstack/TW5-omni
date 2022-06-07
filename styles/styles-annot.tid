@@ -148,7 +148,7 @@ background: #EEF8FF;
 .annot .omni-split-button {
     position: fixed;
     left: 5px;
-    top: 50%;
+    top: 20%;
     width: 40px;
 }
 

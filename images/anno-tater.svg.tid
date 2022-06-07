@@ -1,0 +1,96 @@
+title: $:/plugins/can/omni/anno-tater.svg
+
+<svg
+   viewBox="0 0 174.4841 174.4841"
+   height="150px"
+   width="150px">
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient909"
+       inkscape:collect="always">
+      <stop
+         id="stop905"
+         offset="0"
+         style="stop-color:#d7bdbd;stop-opacity:1" />
+      <stop
+         id="stop907"
+         offset="1"
+         style="stop-color:#997f7f;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient
+       gradientTransform="translate(-22.694175,-34.923366)"
+       gradientUnits="userSpaceOnUse"
+       y2="67.479889"
+       x2="110.45069"
+       y1="80.888046"
+       x1="122.87326"
+       id="linearGradient911"
+       xlink:href="#linearGradient909"
+       inkscape:collect="always" />
+  </defs>
+  <g
+     transform="translate(-20.450202,-12.16152)"
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <circle
+       r="84.003197"
+       cy="99.403572"
+       cx="107.69225"
+       id="path930"
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:6.47771;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <path
+       sodipodi:open="true"
+       d="M 80.624203,53.95986 A 52.897141,52.897141 0 0 1 150.33182,68.102828 52.897141,52.897141 0 0 1 142.9436,138.84595 52.897141,52.897141 0 0 1 71.81797,138.28068 52.897141,52.897141 0 0 1 65.555069,67.42907"
+       sodipodi:arc-type="arc"
+       sodipodi:end="3.790769"
+       sodipodi:start="4.1752199"
+       sodipodi:ry="52.897141"
+       sodipodi:rx="52.897141"
+       sodipodi:cy="99.407005"
+       sodipodi:cx="107.69198"
+       sodipodi:type="arc"
+       id="path913"
+       style="fill:none;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:6.71336;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+    <g
+       transform="translate(-24.686498,23.381955)"
+       id="g981">
+      <path
+         style="fill:url(#linearGradient911);fill-opacity:1;stroke:#000000;stroke-width:5.29167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 124.64914,19.724 c -3.92222,-4.288663 -18.0747,-8.655011 -24.38666,-4.77073 -6.188082,3.808048 -8.631662,11.034376 -15.317902,14.154623 -6.9147,3.226858 -14.559,4.007858 -20.423764,9.383889 -6.478267,5.938412 -4.242728,21.499764 3.311962,25.9437 9.048042,5.322382 18.721452,6.597882 28.703672,3.863952 7.416892,-2.03134 19.655522,-10.239954 22.651392,-15.515111 9.34352,-16.452201 14.43459,-23.248687 5.4613,-33.060323 z"
+         id="path833"
+         sodipodi:nodetypes="ssssssss" />
+      <ellipse
+         transform="matrix(0.99500634,-0.09981175,-0.0799738,0.99679697,0,0)"
+         ry="2.2476661"
+         rx="2.3553753"
+         cy="51.7174"
+         cx="91.171494"
+         id="path870-2"
+         style="fill:#725555;fill-opacity:1;fill-rule:evenodd;stroke-width:4.37073;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke" />
+      <ellipse
+         style="fill:#725555;fill-opacity:1;fill-rule:evenodd;stroke-width:3.11593;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke"
+         id="path870-2-7"
+         cx="113.5201"
+         cy="42.803871"
+         rx="1.6203907"
+         ry="1.6605064"
+         transform="matrix(0.99423419,-0.10723049,-0.07441516,0.99722735,0,0)" />
+      <ellipse
+         style="fill:#725555;fill-opacity:1;fill-rule:evenodd;stroke-width:4.37073;stroke-miterlimit:4;stroke-dasharray:none;paint-order:markers fill stroke"
+         id="path870-2-1"
+         cx="103.97011"
+         cy="67.261185"
+         rx="2.3553753"
+         ry="2.2476661"
+         transform="matrix(0.99500634,-0.09981175,-0.0799738,0.99679697,0,0)" />
+    </g>
+    <circle
+       r="10.579927"
+       cy="99.403572"
+       cx="107.69225"
+       id="path965"
+       style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#ffffff;stroke-width:5.29167;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:markers fill stroke" />
+  </g>
+</svg>

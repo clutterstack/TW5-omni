@@ -1,0 +1,14 @@
+title: $:/plugins/can/omni/templates/intermediate/annot-md
+
+\define thelistfilter() [all[current]get[omni-list]enlist-input[]is[tiddler]]
+
+<$vars numtids={{{[all[current]get[omni-list]enlist-input[]is[tiddler]count[]]}}}>
+<$list filter="[range<numtids>]" variable=num><$vars thetid={{{[all[current]get[omni-list]enlist-input[]is[tiddler]nth<num>]}}}><div class={{{annot [[item-]addsuffix<num>]}}}>                
+    <div class="annot-slice"><$view tiddler=<<thetid>> field="annot"/></div>
+    <div class="source-slice"><pre>
+        <$text text="```"/>
+        <$view tiddler=<<thetid>> field="text"/>        
+        <$text text="```"/>
+    </pre></div>
+</div></$vars>
+</$list></$vars>

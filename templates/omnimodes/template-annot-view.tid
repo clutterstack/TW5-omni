@@ -1,0 +1,4 @@
+title: $:/plugins/can/omni/template-annot-view
+tags: 
+
+{{||$:/plugins/can/omni/templates/intermediate/annot-view}}

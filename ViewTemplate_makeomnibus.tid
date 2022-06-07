@@ -4,7 +4,8 @@ list-after: $:/core/ui/ViewTemplate/body
 
 <$reveal type="nomatch" stateTitle=<<folded-state>> text="hide" tag="div" retain="yes" animate="yes">
     <$list filter="[all[current]has[omni-list]]" variable="null">
-        <$vars mode={{{[{!!omnibus-mode}!is[blank]else[map]]}}}>
+        <$vars mode={{{[{!!omnibus-mode}!is[blank]else[cleanmap]]}}}>
+        <<can-omni-toptools>>
         <$vars transclude-modetemplate={{{[[$:/plugins/can/omni/template-]addprefix[{{||]addsuffix<mode>addsuffix[}}]]}}} >
             <<transclude-modetemplate>>
         </$vars></$vars>

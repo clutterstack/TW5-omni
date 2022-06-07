@@ -1,0 +1,47 @@
+title: $:/plugins/can/omni/styles-annot-view
+
+<style>
+/*==== Styles for list mode ====*/
+
+.annot {
+    display: grid;
+    grid-template-columns: 48% 48%;
+}
+
+
+.annot-slice {
+    grid-column: 1/2;
+}
+
+
+.source-slice {
+    grid-column:2/3;
+    background: #eeffee;
+}
+
+
+.source-slice pre {
+    border: none;
+    background: none;
+    margin: 0;
+}
+
+
+@media (max-width: 800px) {
+
+.annot {
+    display: flex;
+    flex-direction: column;
+}
+
+.source-slice {
+    border-radius: 0.5em;
+}
+
+
+
+
+
+}
+/****** END styles-list ********/
+</style>

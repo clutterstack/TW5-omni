@@ -19,6 +19,9 @@ type: text/vnd.tiddlywiki
 		<!-- <$button set="!!omnibus-mode" setTo="edit" class="omni-button" selectedClass="omni-button-selected" tooltip="Deluxe editing" aria-label="Deluxe editing">{{$:/plugins/can/omni/omnimode-edit.svg}}</$button> -->
 		<$button set="!!omnibus-mode" setTo="pins" class="omni-button" selectedClass="omni-button-selected" tooltip="Deluxe editing" aria-label="Deluxe editing">pins</$button>
 		<$button set="!!omnibus-mode" setTo="levels" class="omni-button" selectedClass="omni-button-selected" tooltip="levels mode" aria-label="levels mode">levels</$button>
+        <$button set="!!omnibus-mode" setTo="annot-view" class="omni-button" selectedClass="omni-button-selected" tooltip="annotation view mode" aria-label="annotation view mode">annot-view</$button>
+        <$button set="!!omnibus-mode" setTo="output-html" class="omni-button" selectedClass="omni-button-selected" tooltip="html output mode" aria-label="html output mode">annot-html</$button>
+        <$button set="!!omnibus-mode" setTo="output-html-md" class="omni-button" selectedClass="omni-button-selected" tooltip="html/md output mode" aria-label="html/md output mode">annot-html/md</$button>
         <!-- <$button set="!!omnibus-mode" setTo="exp" class="omni-button" selectedClass="omni-button-selected" tooltip="Tree with captions" aria-label="Tree with captions">exp</$button> -->
         <!-- <$button set="!!omnibus-mode" setTo="expro" class="omni-button" selectedClass="omni-button-selected" tooltip="RO tree with captions" aria-label="RO tree with captions">ro-exp</$button> -->
         <$button set="!!omnibus-mode" setTo="cheatsheet" class="omni-button" selectedClass="omni-button-selected" tooltip="cheatsheet mode" aria-label="cheatsheet mode">cheatsheet</$button>
