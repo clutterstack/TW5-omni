@@ -6,44 +6,11 @@ type: text/vnd.tiddlywiki
 
 \define can-omni-toptools()
     <div class="can-omni-toptools">
-        <$list filter="[<mode>!match[tree]!match[todo]!match[list]!match[cheatsheet]!match[cheetsheetro]]" variable="null"><<can-omni-foldall>></$list><span style="width: 2em;"></span>
+        <$list filter="[<mode>!match[tree]!match[todo]!match[list]!match[cheatsheet]!match[cheetsheetro]]" variable="null"><<can-omni-foldall>></$list><span style="width: 14em;"></span>
         <$list filter="[<mode>!match[cheatsheet]!match[cheatsheetro]]" variable="null"><<can-omni-exploder>></$list>
         <$list filter="[{!!showmodestate}!match[hide]]" variable="ignore"><<omni-viewswitcher>></$list>
+        <$list filter="[<mode>match[annot]]" variable="null"><<omni-setlang>></$list>
     </div>
-\end
-
-\define omni-viewswitcher()
-    <div class="can-omni-viewswitcher">
-    <!-- There are at least 3 types of view: captioned-first, text-only, and titled-->
-    <!--They have different workflows for adding and structures for information -->
-		<!-- <$button set="!!omnibus-mode" setTo="edit" class="omni-button" selectedClass="omni-button-selected" tooltip="Deluxe editing" aria-label="Deluxe editing">{{$:/plugins/can/omni/omnimode-edit.svg}}</$button> -->
-		<$button set="!!omnibus-mode" setTo="pins" class="omni-button" selectedClass="omni-button-selected" tooltip="Deluxe editing" aria-label="Deluxe editing">pins</$button>
-		<$button set="!!omnibus-mode" setTo="levels" class="omni-button" selectedClass="omni-button-selected" tooltip="levels mode" aria-label="levels mode">levels</$button>
-        <$button set="!!omnibus-mode" setTo="annot-view" class="omni-button" selectedClass="omni-button-selected" tooltip="annotation view mode" aria-label="annotation view mode">annot-view</$button>
-        <$button set="!!omnibus-mode" setTo="output-html" class="omni-button" selectedClass="omni-button-selected" tooltip="html output mode" aria-label="html output mode">annot-html</$button>
-        <$button set="!!omnibus-mode" setTo="output-html-md" class="omni-button" selectedClass="omni-button-selected" tooltip="html/md output mode" aria-label="html/md output mode">annot-html/md</$button>
-        <!-- <$button set="!!omnibus-mode" setTo="exp" class="omni-button" selectedClass="omni-button-selected" tooltip="Tree with captions" aria-label="Tree with captions">exp</$button> -->
-        <!-- <$button set="!!omnibus-mode" setTo="expro" class="omni-button" selectedClass="omni-button-selected" tooltip="RO tree with captions" aria-label="RO tree with captions">ro-exp</$button> -->
-        <$button set="!!omnibus-mode" setTo="cheatsheet" class="omni-button" selectedClass="omni-button-selected" tooltip="cheatsheet mode" aria-label="cheatsheet mode">cheatsheet</$button>
-        <$button set="!!omnibus-mode" setTo="annot" class="omni-button" selectedClass="omni-button-selected" tooltip="annotation mode" aria-label="annotation mode">annot</$button>
-        <!-- <$button set="!!omnibus-mode" setTo="cheatsheetro" class="omni-button" selectedClass="omni-button-selected" tooltip="RO cheatsheet mode" aria-label="RO cheatsheet mode">ro-cheatsheet</$button> -->
-		<!-- <$button set="!!omnibus-mode" setTo="bar" class="omni-button" selectedClass="omni-button-selected" tooltip="bar mode" aria-label="omnibus bar mode">bar</$button> -->
-		<!-- <$button set="!!omnibus-mode" setTo="list" class="omni-button" selectedClass="omni-button-selected" tooltip="List mode" aria-label="List mode">list</$button> -->
-        <!-- <$button set="!!omnibus-mode" setTo="plaintree" class="omni-button" selectedClass="omni-button-selected" tooltip="Plain tree mode" aria-label="Plain tree mode">plaintree</$button> -->
-        <$button set="!!omnibus-mode" setTo="kbnav" class="omni-button" selectedClass="omni-button-selected" tooltip="kbnav" aria-label="kbnav">kbnav</$button>
-        <!-- <$button set="!!omnibus-mode" setTo="map" class="omni-button" selectedClass="omni-button-selected" tooltip="map" aria-label="map">map</$button> -->
-        <$button set="!!omnibus-mode" setTo="cleanmap" class="omni-button" selectedClass="omni-button-selected" tooltip="cleanmap" aria-label="cleanmap">cleanmap</$button>
-        <$button set="!!omnibus-mode" setTo="min" class="omni-button" selectedClass="omni-button-selected" tooltip="min" aria-label="min">min</$button>
-        <!-- <$button set="!!omnibus-mode" setTo="boxes" class="omni-button" selectedClass="omni-button-selected" tooltip="boxes" aria-label="boxes">boxes</$button> -->
-		<!--
-        <$button set="!!omnibus-mode" setTo="floo" class="omni-button" selectedClass="omni-button-selected" tooltip="RO tree with captions" aria-label="RO tree with captions">floo</$button>
-		<$button set="!!omnibus-mode" setTo="tree" class="omni-button" selectedClass="omni-button-selected" tooltip="Bubble tree" aria-label="Bubble tree">tree</$button>
-        <$button set="!!omnibus-mode" setTo="min" class="omni-button" selectedClass="omni-button-selected" tooltip="min mode (ro)" aria-label="min mode (ro)">min</$button>
-        <$button set="!!omnibus-mode" setTo="named" class="omni-button" selectedClass="omni-button-selected" tooltip="Edit mode with title" aria-label="Edit mode with title">named</$button>
-       <$button set="!!omnibus-mode" setTo="namedro" class="omni-button" selectedClass="omni-button-selected" tooltip="Read-only mode with title" aria-label="Read-only mode with title">namedro</$button>
-		<$button set="!!omnibus-mode" setTo="toc" class="omni-button" selectedClass="omni-button-selected" tooltip="TOC mode" aria-label="TOC mode">toc</$button>
-		<$button set="!!omnibus-mode" setTo="todo" class="omni-button" selectedClass="omni-button-selected" tooltip="Todo list" aria-label="Todo list"><<unfoldallactions>>{{$:/plugins/can/omni/omnimode-simple.svg}}</$button>-->
-	</div>
 \end
 
 \define recurser(depth:1 maxdepth:50)

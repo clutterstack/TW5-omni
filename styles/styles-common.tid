@@ -5,6 +5,10 @@ title: $:/plugins/can/omni/styles-common
 
 /****** START styles-common ********/
 
+.omni-setlang {
+    width: 14em;
+}
+
 .can-omni-stream dl, dl dt {margin-top:0;}
 
 /* Omnibus export sidebar tab */

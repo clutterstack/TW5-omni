@@ -17,7 +17,6 @@ tags:
 \end
 
 \define compose-omni-toplevel() 
-<<can-omni-toptools>>
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="list">
 <$vars omniqual={{!!created}}>
     <div class="can-omni-stream list" >

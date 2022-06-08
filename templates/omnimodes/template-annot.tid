@@ -1,12 +1,13 @@
 title: $:/plugins/can/omni/template-annot
 
+\define annot-lang() {{{[<parentval>get[annot-lang]]}}}
+
 \define omni-annot-text()
 <$list filter="[<editstatetid>get[editstate]match[edit]]" variable="ignore" 
 emptyMessage=
 '<div class="omni-text-dblclick tc-tiddler-body"  data-creatednum=<<creatednum>> data-currenttid=<<currentTiddler>> >
-
-	<$codeblock code={{{ [<currentTiddler>get[text]] }}} language="javascript"/>
-
+	<$codeblock code={{{ [<currentTiddler>get[text]] }}} language=$(annot-lang)$ />
+/>
 </div>'>
 	<$keyboard tag="div" class="tc-can-keyboard" key="((input-accept-variant))" actions=<<omni-submitedit-actions>> >
 	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-kb-canceledit-actions>>">
@@ -36,7 +37,6 @@ emptyMessage=
 <$vars baseomni=<<currentTiddler>>>
     <$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-ec-startedit-actions>> tag="div">
     <$eventcatcher events="dblclick" selector=".omni-annot-dblclick" actions-dblclick=<<omni-startannot-actions>> tag="div">
-        <<can-omni-toptools>>
         <div class="can-omni-stream annot">
             <$vars parentval=<<currentTiddler>> mode="annot" template="everyannot">
                 <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
@@ -46,11 +46,11 @@ emptyMessage=
                             <!-- <div class="can-omni-ctlrow">
                             <<can-omni-title-link>><<omni-foldbutton>>
                             </div> -->
-                            <div class="omni-text-display" tag="div">
-                                <<omni-annot-text>>
-                            </div>
                             <div class="omni-annot-display" tag="div">
                                 <<omni-annot-annotation>>
+                            </div>
+                            <div class="omni-text-display" tag="div">
+                                <<omni-annot-text>>
                             </div>
                         </div>
                     </$vars>    

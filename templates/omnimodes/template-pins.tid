@@ -58,7 +58,6 @@ title: $:/plugins/can/omni/template-pins
                     <$eventcatcher events="click" selector=".can-omni-menubutton" actions-click=<<omni-toggle-menustate>> tag="div" stopPropagation="always">
                     <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-ec-delete-action>> tag="div" stopPropagation="always">
                         <$eventcatcher events="click" selector=".can-omni-addbutton" actions-click=<<omni-ec-addtiddler-action>> tag="div" stopPropagation="always">
-                            <<can-omni-toptools>>
                             <$piece omnititle=<<baseomni>> class="can-omni-stream pins" >
                                 <$macrocall $name=compose-omni depth=0/> 
                             </$piece>

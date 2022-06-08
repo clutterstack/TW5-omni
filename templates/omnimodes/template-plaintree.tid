@@ -31,7 +31,6 @@ title: $:/plugins/can/omni/template-plaintree
             <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
                 <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-delete-action>> tag="div">
                     <$eventcatcher events="click" selector=".omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
-                            <<can-omni-toptools>>
                         <$macrocall $name=compose-omni depth=0/>        
 </$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher>
 \end

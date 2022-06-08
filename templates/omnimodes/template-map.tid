@@ -60,7 +60,6 @@ title: $:/plugins/can/omni/template-map
                     <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-ec-delete-action>> tag="div">
                         <$eventcatcher events="click" selector=".can-omni-addbutton" 
                         actions-click=<<omni-ec-addtiddler-action>> tag="div">
-                            <<can-omni-toptools>>
                             <div class="can-omni-stream cleanmap" >
                                 <$macrocall $name=compose-omni depth=0/> 
                                 <$linkcurves <<currentTiddler>> />                             

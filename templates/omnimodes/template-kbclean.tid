@@ -31,7 +31,6 @@ title: $:/plugins/can/omni/template-kbclean
                     <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-ec-delete-action>> tag="div">
                         <$eventcatcher events="click" selector=".can-omni-addbutton" 
                         actions-click=<<omni-ec-addtiddler-action>> tag="div">
-                            <<can-omni-toptools>>
                         <$macrocall $name=compose-omni depth=0/>        
 </$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher>
 \end

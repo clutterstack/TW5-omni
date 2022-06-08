@@ -19,20 +19,19 @@ title: $:/plugins/can/omni/styles-annot
     overflow-y: hidden;  
 }
 
-
 .annot .omni-item-container {
     /* grid-column: 2/4; */
     grid-row: auto;
     z-index: 100;
     display: grid;
-    grid-template-areas: "handle text annot margin";
-    grid-template-columns: min-content 45% 45% 1em; /* 1em auto 7fr auto;  */
+    grid-template-areas: "handle annot text margin";
+    grid-template-columns: min-content 48% 48% 1em; /* 1em auto 7fr auto;  */
     grid-template-rows: auto;
     position: relative; 
 }
 
 .annot p:last-of-type {
-    margin: 0;
+   /* margin: 0;*/
 }
 
 .annot .omni-item-container:hover {
@@ -79,14 +78,16 @@ title: $:/plugins/can/omni/styles-annot
     grid-area:text;
     /* max-width: 55em; */
    /* border-radius: 0 5px 5px 0;*/
-    border: none;
+    border-left: 1px solid #efefef;
     background-color: <<colour tiddler-editor-fields-even>>;
     display: flex;
     flex-direction: column;
  }  
 
  .annot .omni-annot-display {
-     grid-area: annot;
+    grid-area: annot;
+    padding-left: 0.5em;
+
  }
 
  .annot .omni-annot-dblclick {
@@ -152,18 +153,20 @@ background: #EEF8FF;
     width: 40px;
 }
 
-.annot pre.hljs {
+.annot pre {
     margin: 0;
     height: 100%;
+    padding-left: 0.5em;
     border: none;
 }
 
-.annot pre code.hljs {
+.annot pre code {
     padding: 0;
     height: 100%;
     overflow: hidden;
     font-size: 1em;
 }
+
 /* ---------------------------------------*/
 /* Vertical item handle                   */
 /* ---------------------------------------*/

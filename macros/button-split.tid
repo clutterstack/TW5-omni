@@ -13,66 +13,12 @@ title: $:/plugins/can/omni/buttons/split
     <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='-[<currentTiddler>]' />
 </$vars>
 <!-- <$action-sendmessage $message="tm-rename-tiddler" from=<<currentTiddler>> to={{{[all[current]addsuffix<parentval>]}}} /> -->
-<!-- <<omni-submitedit-actions>> -->
+<<omni-submitedit-actions>>
 <!-- <$action-sendmessage $message="tm-auto-save-wiki"/> -->
 <<renamesubtids>>
 \end
 
-\define thelistfilter() [<parentval>get[omni-list]enlist-input[]is[tiddler]]
-
-\define renamesubtids()
-<$vars numtids={{{[subfilter<thelistfilter>count[]]}}}> 
-<$macrocall $name=echo label="numtids" value=<<numtids>> />
-<<echo label="testlabel" value="testing" >>
-<!-- AHA! numtids is 0 at this point!! -->
-<!-- get the number of existing subtids -->
-<!-- <$list filter="[subfilter<thelistfilter>first[]]"> -->
-    <!-- <$list filter="[range<numtids>]" variable="num"> -->
-        <!-- <$vars oldname={{{[subfilter<thelistfilter>nth<num>]}}} newname={{{[<parentval>addsuffix[-seg-]addsuffix<num>]}}}> -->
-            <!-- <$action-sendmessage $message="tm-rename-tiddler" from=<<currentTiddler>> to=<<numtids>> /> -->
-        <!-- </$vars> -->
-    <!-- </$list> -->
-</$vars>
-<!-- </$list> -->
-\end
-
-\define slush()
-<$action-sendmessage $message="tm-rename-tiddler" from=<<currentTiddler>> to={{{[all[current]addsuffix[-1]]}}} />
-  <!-- copy selected text to a field on the state tiddler  -->
-    <$action-sendmessage $message="tm-edit-text-operation" $param="save-selection" tiddler=<<annotstatetid>> field="highlighted" />
-    <$action-sendmessage $message="tm-edit-text-operation" $param="replace-selection" text="%split-marker%" />
-    <!--  copy the text before the split, if any, to a field -->
-    <$action-setfield $tiddler=<<annotstatetid>> beforesplit={{{[<editstatetid>get[text]splitbefore[%split-marker%]removesuffix[%split-marker%]]}}} />
-    <!-- copy the text after the split, if any, to another field -->
-    <$action-setfield $tiddler=<<annotstatetid>> aftersplit={{{[<editstatetid>get[text]split[%split-marker%]butfirst[]]}}} />
-    <!-- If there's something after the split marker, that goes into a new tiddler -->
-    <$list filter="[<editstatetid>get[text]splitbefore[%split-marker%]removesuffix[%split-marker%]!is[blank]]" variable="ignore">
-        <$action-createtiddler $basetitle={{{[<currentTiddler>addsuffix[-c]]}}} text={{{[<annotstatetid>get[aftersplit]]}}} >
-            <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore<createTiddler-title>] +[move<createTiddler-title>]' />
-        </$action-createtiddler>
-    </$list>
-    <!--  If beforesplit has something in it, that's what stays in the original tiddler and we need to put the highlighted text into another tiddler -->
-    <!-- <$list filter="[<annotstatetid>has[beforesplit]]" variable="ignore">
-        <$action-createtiddler $basetitle={{{[<currentTiddler>addsuffix[-b]]}}} text={{{[<annotstatetid>get[highlighted]]}}}>
-        <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore<createTiddler-title>] +[move<createTiddler-title>]' />
-        </$action-createtiddler>
-    </$list> -->
-        <!-- Now want the original tiddler to have the first non-empty text (so it stays with any annotation) -->
-        <!-- Need to do this last because the filtered lists are looking at the text field (I think changing fields in editstatetid and -->
-        <!-- filtering on them in the same action may not be allowed) -->
-    <!-- <$action-setfield $tiddler=<<editstatetid>> text={{{[<annotstatetid>get[beforesplit]!is[blank]] ~[<annotstatetid>get[highlighted]]}}} /> -->
-<$action-setfield text={{{[<editstatetid>get[text]split[%split-marker%]first[]]}}}/>
-    <!-- <<omni-toggle-view>> -->
-    <<omni-kb-canceledit-actions>>
-    <$list filter=[is[current]get[text]trim[]is[blank]] variable=ignore>
-        <$action-deletetiddler/>
-    </$list>
-    <!-- keep only the contents from before the split -->
-    <!-- <$action-setfield text={{{[<oldtext>split[%split-marker%]first[]]}}} /> -->
-<!-- </$vars> -->
-\end
-
-<!-- Need to inspect $:/core/ui/EditTemplate/body/editor further to get state tids etc right -->
+<!-- Can inspect $:/core/ui/EditTemplate/body/editor for reference on how editor works -->
 
 <$button class="tc-btn-invisible omni-split-button" actions=<<splitsubtid>>>split</$button>
 

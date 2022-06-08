@@ -42,7 +42,6 @@ tags:
                         <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="floo">
                         <$vars creatednum={{!!created}}>
                             <div class="can-omni-stream floo" >
-                            <<can-omni-toptools>>
                                 <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
                                     <$vars creatednum={{!!created}} >
                                         <$macrocall $name=topfloo />
