@@ -21,14 +21,14 @@ emptyMessage=
 \end
 
 \define omni-annot-annotation()
-<$list filter="[<editstatetid>get[annoteditstate]match[edit]]" variable="ignore" 
+<$list filter="[<annotstatetid>get[annoteditstate]match[edit]]" variable="ignore" 
     emptyMessage=
     '<div class="omni-annot-dblclick tc-tiddler-body"  data-creatednum=<<creatednum>> data-currenttid=<<currentTiddler>> >
 	<$transclude tiddler=<<currentTiddler>> field="annot" mode="block"/>
     </div>'>
 	<$keyboard tag="div" class="tc-can-keyboard" key="((input-accept-variant))" actions=<<omni-submitannot-actions>> >
-	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-kb-canceledit-actions>>">
-		<$edit class="omni-textarea tc-tiddler-body" tiddler=<<editstatetid>> field='annot' placeholder='New annotation text' rows="1" minHeight="0" focus=true></$edit>
+	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-kb-cancelannot-actions>>">
+		<$edit class="omni-textarea tc-tiddler-body" tiddler=<<annotstatetid>> field='annot' placeholder='New annotation text' rows="1" minHeight="0" focus=true></$edit>
 	</$keyboard></$keyboard>
 </$list>
 \end

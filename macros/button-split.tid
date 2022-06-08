@@ -6,17 +6,23 @@ title: $:/plugins/can/omni/buttons/split
 	$param="omnisplit"
 	tagnew="yes"
 />
+<$action-deletetiddler $tiddler=<<editstatetid>>/>
 <$vars first={{{[all[current]addsuffix[-1]]}}} second={{{[all[current]addsuffix[-2]]}}} third={{{[all[current]addsuffix[-3]]}}} >
     <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<first>] +[move<first>]' />
     <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:first<third>] +[move<third>]' />
     <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:first<second>] +[move<second>]' />
-    <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='-[<currentTiddler>]' />
+    <!-- <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='-[<currentTiddler>]' /> -->
 </$vars>
 <!-- <$action-sendmessage $message="tm-rename-tiddler" from=<<currentTiddler>> to={{{[all[current]addsuffix<parentval>]}}} /> -->
-<<omni-submitedit-actions>>
-<!-- <$action-sendmessage $message="tm-auto-save-wiki"/> -->
-<<renamesubtids>>
+<!-- <<omni-submitedit-actions>> -->
 \end
+
+
+<!-- \define omni-submitedit-actions() 
+<$action-setfield text={{$(editstatetid)$}}/><$action-deletetiddler $tiddler=<<editstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/><<omni-enable-nav-shortcuts>>
+\end -->
+
+
 
 <!-- Can inspect $:/core/ui/EditTemplate/body/editor for reference on how editor works -->
 

@@ -1,16 +1,14 @@
 tags: $:/tags/Macro
 title: $:/plugins/can/omni/annot-action-macros
 
-\define omni-toggle-annot-edit() <$action-setfield $tiddler=<<editstatetid>> annoteditstate="edit" $timestamp='no'/>
-\define omni-toggle-annot-view() <$action-setfield $tiddler=<<editstatetid>> annoteditstate="view" $timestamp='no'/>
+\define omni-toggle-annot-edit() <$action-setfield $tiddler=<<annotstatetid>> annoteditstate="edit" $timestamp='no'/>
+\define omni-toggle-annot-view() <$action-setfield $tiddler=<<annotstatetid>> annoteditstate="view" $timestamp='no'/>
 
 \define omni-submitannot-actions() 
-<$action-setfield annot={{$(editstatetid)$!!annot}}/><$action-setfield $tiddler=<<editstatetid>> $field="annoteditstate"/><$action-sendmessage $message='tm-auto-save-wiki'/>
+<$action-setfield annot={{$(annotstatetid)$!!annot}}/><$action-deletetiddler $tiddler=<<annotstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/>
 \end
 
-\define omni-ec-startedit-actions()<<omni-select-node>><$vars creatednum=<<dom-data-creatednum>> ><$tiddler tiddler=<<dom-data-currenttid>> ><$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show" $timestamp='no'/><<omni-toggle-edit>><$action-setfield $tiddler=<<editstatetid>> text={{!!text}} $timestamp='no'/><$action-setfield $tiddler=<<editstatetid>> throttle.refresh=yes/></$tiddler></$vars><<omni-suspend-nav-shortcuts>>
-
-
+<<omni-submitannot-actions>>
 
 \define omni-startannot-actions()
 <<omni-select-node>>
@@ -18,10 +16,15 @@ title: $:/plugins/can/omni/annot-action-macros
     <$tiddler tiddler=<<dom-data-currenttid>> >
         <$action-setfield $tiddler=<<foldstatetiddler>> foldstate="show" $timestamp='no'/>
         <<omni-toggle-annot-edit>>
-        <$action-setfield $tiddler=<<editstatetid>> annot={{!!annot}} $timestamp='no'/>
-        <$action-setfield $tiddler=<<editstatetid>> throttle.refresh='yes'/>
+        <$action-setfield $tiddler=<<annotstatetid>> annot={{!!annot}} $timestamp='no'/>
+        <$action-setfield $tiddler=<<annotstatetid>> throttle.refresh='yes'/>
         <<omni-suspend-nav-shortcuts>>
     </$tiddler>
 </$vars>
 \end
 
+
+\define omni-kb-cancelannot-actions() 
+<$action-deletetiddler $tiddler=<<annotstatetid>>/>
+<<omni-toggle-annot-view>>
+\end
