@@ -167,6 +167,10 @@ background: #EEF8FF;
     font-size: 1em;
 }
 
+.annot pre code.hljs {
+    padding: 0;
+}
+
 /* ---------------------------------------*/
 /* Vertical item handle                   */
 /* ---------------------------------------*/

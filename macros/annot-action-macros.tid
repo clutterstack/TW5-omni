@@ -8,8 +8,6 @@ title: $:/plugins/can/omni/annot-action-macros
 <$action-setfield annot={{$(annotstatetid)$!!annot}}/><$action-deletetiddler $tiddler=<<annotstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/>
 \end
 
-<<omni-submitannot-actions>>
-
 \define omni-startannot-actions()
 <<omni-select-node>>
 <$vars creatednum=<<dom-data-creatednum>> >
