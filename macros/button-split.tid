@@ -1,20 +1,31 @@
 title: $:/plugins/can/omni/buttons/split
 
 \define splitsubtid() 
+<$wikify name=titleroot text=<<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>> >
 <$action-sendmessage
 	$message="tm-edit-text-operation"
 	$param="omnisplit"
-	tagnew="yes"
+    title=<<titleroot>>
+	tagnew="no"
 />
+<$macrocall $name=echo label="current: " value=<<currentTiddler>> />
 <$action-deletetiddler $tiddler=<<editstatetid>>/>
-<$vars first={{{[all[current]addsuffix[-1]]}}} second={{{[all[current]addsuffix[-2]]}}} third={{{[all[current]addsuffix[-3]]}}} >
-    <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<first>] +[move<first>]' />
-    <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:first<third>] +[move<third>]' />
-    <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:first<second>] +[move<second>]' />
+        <$macrocall $name=echo label="oldcurrent before list: " value=<<oldCurrent>> />
+
+    <$list filter='[range[3],[1]]' variable='idx' >
+        <$macrocall $name=echo label="index: " value=<<idx>> />
+        <$vars newtid={{{[<titleroot>addsuffix[-]addsuffix<idx>]}}}>
+        <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<newtid>] +[move<newtid>]' />
+        </$vars>
+    </$list>
+    <!-- <$action-listops $tiddler=<<parentval>> $field='omni-list' $filter='+[{$:/state/can/split}enlist-input[]]' /> -->
+    <!-- <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<first>] +[move<first>]' /> -->
+    <!-- <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:first<third>] +[move<third>]' /> -->
+    <!-- <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:first<second>] +[move<second>]' /> -->
     <!-- <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='-[<currentTiddler>]' /> -->
-</$vars>
 <!-- <$action-sendmessage $message="tm-rename-tiddler" from=<<currentTiddler>> to={{{[all[current]addsuffix<parentval>]}}} /> -->
 <!-- <<omni-submitedit-actions>> -->
+</$wikify>
 \end
 
 

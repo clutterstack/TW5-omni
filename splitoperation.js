@@ -36,10 +36,12 @@ FramedEngine.prototype.createTextOperation = function() {
             beforeSlice = operation.text.substring(0, operation.selStart).trimEnd(),
             highlight = operation.selection,
             afterSlice = operation.text.substring(operation.selEnd).trimStart(),
-            newTidTitleRoot = event.paramObject.title || this.getVariable("currentTiddler"),
             dateStamp = new Date(),
             dateStamp2 = new Date(Date.now() +1),
-            dateStamp3 = new Date(Date.now() +2);
+            dateStamp3 = new Date(Date.now() +2),
+            newTidTitleRoot = event.paramObject.title || $tw.utils.stringifyDate(dateStamp),  // default to a timestamp base title to avoid accreting too many suffixes
+            splitStateTidTitle = "$:/state/can/omni/split",
+            newTidsList = [];
             // currentTitle = this.getVariable("currentTiddler");
         if(editTiddler && editTiddler.fields["draft.of"]) {
             editTiddlerTitle = editTiddler.fields["draft.of"];
@@ -50,11 +52,12 @@ FramedEngine.prototype.createTextOperation = function() {
         // and we don't have to delist the current from the omni-list, since eventually nonexistent tiddler titles get culled when a subtid gets
         // edited, and they don't matter much anyway
         // Would like to delete the orig tiddler, though, since we're replacing it, so next time we run this we don't try to reuse sliced tid titles
-        console.log("currenttiddler: " + this.getVariable("currentTiddler"));
+        // console.log("currenttiddler: " + this.getVariable("currentTiddler"));
         if (highlight.length == 0 && operation.selStart > 0 && operation.selStart < textEnd) { // if selection length is zero and it's in the middle somewhere, we split the tiddler in two.
             operation.cutStart = 0;
             operation.cutEnd = textEnd;
             var firsthalfTitle = this.wiki.generateNewTitle(newTidTitleRoot + "-1");
+            newTidsList.push(firsthalfTitle);
             console.log("datestamp: " + dateStamp);
             this.wiki.addTiddler(new $tw.Tiddler( // first half goes in new tiddler
                 this.wiki.getTiddler(this.getVariable("currentTiddler")),
@@ -68,6 +71,7 @@ FramedEngine.prototype.createTextOperation = function() {
             ));
             this.wiki.deleteTiddler(this.getVariable("currentTiddler"));
             var secondhalfTitle = this.wiki.generateNewTitle(newTidTitleRoot + "-2");
+            newTidsList.push(secondhalfTitle);
             this.wiki.addTiddler(new $tw.Tiddler( // second half goes in new tiddler
                 {
                     created: dateStamp2,
@@ -82,6 +86,7 @@ FramedEngine.prototype.createTextOperation = function() {
             operation.cutEnd = textEnd;
             if (operation.selStart == 0) { // selection is at start YAY THIS WORKS
                 var firsthalfTitle = this.wiki.generateNewTitle(newTidTitleRoot+"-1");
+                newTidsList.push(firsthalfTitle);
                 this.wiki.addTiddler(new $tw.Tiddler( // first half goes in 1st new tiddler
                     this.wiki.getTiddler(this.getVariable("currentTiddler")),
                     {
@@ -94,6 +99,7 @@ FramedEngine.prototype.createTextOperation = function() {
                 ));
                 this.wiki.deleteTiddler(this.getVariable("currentTiddler"));
                 var secondhalfTitle = this.wiki.generateNewTitle(newTidTitleRoot+"-2");
+                newTidsList.push(secondhalfTitle);
                 this.wiki.addTiddler(new $tw.Tiddler( // second half goes in new tiddler
                     {
                         created: dateStamp2,
@@ -105,6 +111,7 @@ FramedEngine.prototype.createTextOperation = function() {
                 ));
             } else if ( operation.selStart > 0 && operation.selEnd < textEnd ) { //selection's in the middle
                 var beforeSliceTitle = this.wiki.generateNewTitle(newTidTitleRoot+"-1");
+                newTidsList.push(beforeSliceTitle);
                 this.wiki.addTiddler(new $tw.Tiddler( // first slice goes into a new tiddler
                     this.wiki.getTiddler(this.getVariable("currentTiddler")),
                     {
@@ -117,6 +124,7 @@ FramedEngine.prototype.createTextOperation = function() {
                 ));            
                 this.wiki.deleteTiddler(this.getVariable("currentTiddler"));
                 var selectionTitle = this.wiki.generateNewTitle(newTidTitleRoot+"-2");
+                newTidsList.push(selectionTitle);
                 this.wiki.addTiddler(new $tw.Tiddler( // selection goes into a new tiddler
                     {
                         created: dateStamp2,
@@ -127,6 +135,7 @@ FramedEngine.prototype.createTextOperation = function() {
                     }
                 ));
                 var afterSliceTitle = this.wiki.generateNewTitle(newTidTitleRoot+"-3");
+                newTidsList.push(afterSliceTitle);
                 this.wiki.addTiddler(new $tw.Tiddler( // final slice goes in new tiddler
                     {
                         created: dateStamp3,
@@ -138,6 +147,7 @@ FramedEngine.prototype.createTextOperation = function() {
                 ));
             } else if ( operation.selEnd == textEnd ) { //selection's at the end
                 var firsthalfTitle = this.wiki.generateNewTitle(newTidTitleRoot+"-1");
+                newTidsList.push(firsthalfTitle);
                 this.wiki.addTiddler(new $tw.Tiddler( // before-selection stuff goes in new tiddler
                     this.wiki.getTiddler(this.getVariable("currentTiddler")),
                     {
@@ -150,6 +160,7 @@ FramedEngine.prototype.createTextOperation = function() {
                 ));
                 this.wiki.deleteTiddler(this.getVariable("currentTiddler"));
                 var secondhalfTitle = this.wiki.generateNewTitle(newTidTitleRoot+"-2");
+                newTidsList.push(secondhalfTitle);
                 this.wiki.addTiddler(new $tw.Tiddler( // selection goes in new tiddler
                     {
                         created: dateStamp2,
@@ -161,6 +172,8 @@ FramedEngine.prototype.createTextOperation = function() {
                 ));
             }
         }
+        $tw.rootWidget.setVariable("lalist", $tw.utils.stringifyList(newTidsList));
+        this.wiki.setText(splitStateTidTitle, "text", "",  $tw.utils.stringifyList(newTidsList));
         // operation.newSelStart = 0; //operation.selStart;
         // operation.newSelEnd = 0; //operation.selStart + operation.replacement.length;
     };

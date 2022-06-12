@@ -38,6 +38,11 @@ title: $:/plugins/can/omni/styles-annot
     background: #eeeeee;
 }
 
+.annot .omni-item-container:hover pre code {
+    background: #f8f8f8;
+}
+
+
 .annot .colour1 .omni-text-display, .annot .colour1 .can-omni-itemhandle, .annot .colour1 .omni-subctl, .annot .omni-swatch.colour1 {background-color: #e8f8ff}
 .annot .colour2 .omni-text-display, .annot .colour2 .can-omni-itemhandle, .annot .colour2 .omni-subctl, .annot .omni-swatch.colour2 {background-color: #efffe8}
 .annot .colour3 .omni-text-display, .annot .colour3 .can-omni-itemhandle, .annot .colour3 .omni-subctl, .annot .omni-swatch.colour3 {background-color: #ffe8f6}
@@ -87,6 +92,7 @@ title: $:/plugins/can/omni/styles-annot
  .annot .omni-annot-display {
     grid-area: annot;
     padding-left: 0.5em;
+    padding-right: 0.5em;
 
  }
 
@@ -162,13 +168,16 @@ background: #EEF8FF;
 
 .annot pre code {
     padding: 0;
+    padding-left: 0.5em;
     height: 100%;
     overflow: hidden;
     font-size: 1em;
+    background: #fafafa;
 }
 
 .annot pre code.hljs {
     padding: 0;
+    padding-left: 0.5em;
 }
 
 /* ---------------------------------------*/
