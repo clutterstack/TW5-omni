@@ -1,0 +1,4 @@
+title: $:/plugins/can/omni/template-output-html-table
+
+<code><pre><$view tiddler="$:/plugins/can/omni/templates/intermediate/annot-table" format="htmlwikified"/>
+</pre></code>
