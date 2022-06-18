@@ -1,5 +1,5 @@
 title: $:/plugins/can/omni/template-output-html-md
 
 <code><pre>
-{{||$:/plugins/can/omni/templates/intermediate/annot-md}}
+{{||$:/plugins/can/omni/templates/intermediate/annot-html-md}}
 </pre></code>

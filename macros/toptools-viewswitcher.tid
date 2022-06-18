@@ -11,8 +11,9 @@ type: text/vnd.tiddlywiki
 		<!-- <$button set="!!omnibus-mode" setTo="edit" class="omni-button" selectedClass="omni-button-selected" tooltip="Deluxe editing" aria-label="Deluxe editing">{{$:/plugins/can/omni/omnimode-edit.svg}}</$button> -->
 		<$button set="!!omnibus-mode" setTo="pins" class="omni-button" selectedClass="omni-button-selected" tooltip="Deluxe editing" aria-label="Deluxe editing">pins</$button>
 		<$button set="!!omnibus-mode" setTo="levels" class="omni-button" selectedClass="omni-button-selected" tooltip="levels mode" aria-label="levels mode">levels</$button>
-        <$button set="!!omnibus-mode" setTo="annot-view" class="omni-button" selectedClass="omni-button-selected" tooltip="annotation view mode" aria-label="annotation view mode">annot-view</$button>
+        <!-- <$button set="!!omnibus-mode" setTo="annot-view" class="omni-button" selectedClass="omni-button-selected" tooltip="annotation view mode" aria-label="annotation view mode">annot-view</$button> -->
         <$button set="!!omnibus-mode" setTo="output-html" class="omni-button" selectedClass="omni-button-selected" tooltip="html output mode" aria-label="html output mode">annot-html</$button>
+        <!-- <$button set="!!omnibus-mode" setTo="output-md" class="omni-button" selectedClass="omni-button-selected" tooltip="md table output mode" aria-label="md table output mode">annot-mddoesn't really work</$button> -->
         <$button set="!!omnibus-mode" setTo="output-html-md" class="omni-button" selectedClass="omni-button-selected" tooltip="html/md output mode" aria-label="html/md output mode">annot-html/md</$button>
         <$button set="!!omnibus-mode" setTo="output-html-table" class="omni-button" selectedClass="omni-button-selected" tooltip="html/table output mode" aria-label="html/table output mode">annot-html-table</$button>
         <!-- <$button set="!!omnibus-mode" setTo="exp" class="omni-button" selectedClass="omni-button-selected" tooltip="Tree with captions" aria-label="Tree with captions">exp</$button> -->
@@ -33,9 +34,9 @@ type: text/vnd.tiddlywiki
 		<$button set="!!omnibus-mode" setTo="tree" class="omni-button" selectedClass="omni-button-selected" tooltip="Bubble tree" aria-label="Bubble tree">tree</$button>
         <$button set="!!omnibus-mode" setTo="min" class="omni-button" selectedClass="omni-button-selected" tooltip="min mode (ro)" aria-label="min mode (ro)">min</$button>
         <$button set="!!omnibus-mode" setTo="named" class="omni-button" selectedClass="omni-button-selected" tooltip="Edit mode with title" aria-label="Edit mode with title">named</$button>
-       <$button set="!!omnibus-mode" setTo="namedro" class="omni-button" selectedClass="omni-button-selected" tooltip="Read-only mode with title" aria-label="Read-only mode with title">namedro</$button>
+       <$button set="!!omnibus-mode" setTo="namedro" class="omni-button" selectedClass="omni-button-selected" tooltip="Read-only mode with title" aria-label="Read-only mode with title">namedro</$button> -->
 		<$button set="!!omnibus-mode" setTo="toc" class="omni-button" selectedClass="omni-button-selected" tooltip="TOC mode" aria-label="TOC mode">toc</$button>
-		<$button set="!!omnibus-mode" setTo="todo" class="omni-button" selectedClass="omni-button-selected" tooltip="Todo list" aria-label="Todo list"><<unfoldallactions>>{{$:/plugins/can/omni/omnimode-simple.svg}}</$button>-->
+		<!-- <$button set="!!omnibus-mode" setTo="todo" class="omni-button" selectedClass="omni-button-selected" tooltip="Todo list" aria-label="Todo list"><<unfoldallactions>>{{$:/plugins/can/omni/omnimode-simple.svg}}</$button>-->
 	</div>
 \end
 
