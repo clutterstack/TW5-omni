@@ -196,7 +196,7 @@ type: text/vnd.tiddlywiki
 
 \define omni-toc-heading-class-filter() omni-toc-heading [<parentval>get[toc-view-tiddler]match<currentTiddler>then[selected]]
 
-\define can-omni-toc-item()
+\define omni-toc-item()
 	<$set name=omni-toc-heading-class filter=<<omni-toc-heading-class-filter>> >
     <$button tag="div" class=<<omni-toc-heading-class>> actions=<<set-toc-view-tiddler>>>{{!!title}}</$button>
 	<$reveal tag="div" class="can-omni-toc-sub can-omni-text" type="nomatch" stateTitle=<<foldstatetiddler>> stateField="foldstate" text="hide" >

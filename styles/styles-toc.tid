@@ -49,7 +49,7 @@ div.omni-toc-heading:hover {
     padding: 0.4rem 1rem 0.4rem 1rem;
 }
 
-.can-omni-toc-sub.can-omni-text {
+.omni-toc-sub.can-omni-text {
     grid-column: 2/5;
 }
 

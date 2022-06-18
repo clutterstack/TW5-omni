@@ -3,11 +3,15 @@ tags: $:/tags/ViewTemplate
 list-after: $:/core/ui/ViewTemplate/body
 
 <$reveal type="nomatch" stateTitle=<<folded-state>> text="hide" tag="div" retain="yes" animate="yes">
-    <$list filter="[all[current]has[omni-list]]" variable="null">
-        <$vars mode={{{[{!!omnibus-mode}!is[blank]else[cleanmap]]}}}>
-        <<can-omni-toptools>>
-        <$vars transclude-modetemplate={{{[[$:/plugins/can/omni/template-]addprefix[{{||]addsuffix<mode>addsuffix[}}]]}}} >
-            <<transclude-modetemplate>>
-        </$vars></$vars>
+    <$list filter="[{$:/publishmode}!match[topicview]] ~[{!!omnibus-mode}match[annot]]" variable="ignore">
+        <$list filter="[all[current]has[omni-list]]" variable="null">
+            <$vars mode={{{[{!!omnibus-mode}!is[blank]else[cleanmap]]}}}>
+                <$list filter="[{$:/publishmode}!match[topicview]]" variable="ignore">
+                    <<can-omni-toptools>>
+                </$list>
+            <$vars transclude-modetemplate={{{[[$:/plugins/can/omni/template-]addprefix[{{||]addsuffix<mode>addsuffix[}}]]}}} >
+                <<transclude-modetemplate>>
+            </$vars></$vars>
+        </$list>
     </$list>
 </$reveal>
