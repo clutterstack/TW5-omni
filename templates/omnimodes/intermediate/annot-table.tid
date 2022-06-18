@@ -3,15 +3,15 @@ title: $:/plugins/can/omni/templates/intermediate/annot-table
 \define thelistfilter() [all[current]get[omni-list]enlist-input[]is[tiddler]]
 
 
-<table>
+<$text text="""<table>"""/>
 <$vars numtids={{{[all[current]get[omni-list]enlist-input[]is[tiddler]count[]]}}}>
-<$list filter="[range<numtids>]" variable=num><$vars thetid={{{[all[current]get[omni-list]enlist-input[]is[tiddler]nth<num>]}}}><tr class={{{annot [[item-]addsuffix<num>]}}}>            
-    <td class="annot-slice"><$view tiddler=<<thetid>> field="annot"/></td>
-    <td class="source-slice">
+<$list filter="[range<numtids>]" variable=num><$vars thetid={{{[all[current]get[omni-list]enlist-input[]is[tiddler]nth<num>]}}}><$text text="""<tr class="annot """/><$text text={{{[[item-]addsuffix<num>]}}}/><$text text=""""> """/>           
+    <$text text="""<td class="annot-slice">"""/><$view tiddler=<<thetid>> field="annot"/><$text text="</td>"/>
+    <$text text="""<td class="source-slice">"""/>
         <$text text="```"/><$text text={{!!annot-lang}}/>
         <$view tiddler=<<thetid>> field="text"/>        
         <$text text="```"/>
-    </td>
-</tr></$vars>
+    <$text text="</td>"/>
+<$text text="""</tr>"""/></$vars>
 </$list></$vars>
-</table>
+<$text text="""</table>"""/>
