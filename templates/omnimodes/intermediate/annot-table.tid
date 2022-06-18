@@ -7,11 +7,11 @@ title: $:/plugins/can/omni/templates/intermediate/annot-table
 <$vars numtids={{{[all[current]get[omni-list]enlist-input[]is[tiddler]count[]]}}}>
 <$list filter="[range<numtids>]" variable=num><$vars thetid={{{[all[current]get[omni-list]enlist-input[]is[tiddler]nth<num>]}}}><tr class={{{annot [[item-]addsuffix<num>]}}}>            
     <td class="annot-slice"><$view tiddler=<<thetid>> field="annot"/></td>
-    <td class="source-slice"><pre>
+    <td class="source-slice">
         <$text text="```"/><$text text={{!!annot-lang}}/>
         <$view tiddler=<<thetid>> field="text"/>        
         <$text text="```"/>
-    </pre></td>
+    </td>
 </tr></$vars>
 </$list></$vars>
 </table>
