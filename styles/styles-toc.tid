@@ -1,56 +1,10 @@
-title: $:/plugins/can/omni/styles-toc.tid
-tags: 
+title: $:/plugins/can/omni/styles-toc
 
 <style>
 /****** START styles-toc ********/
 
-.can-omni-stream {
-    display: flex;
-    flex-direction: column;
-    align-content: start;
-    flex-shrink: 0;
-    max-width:50%; 
-    background-color: #eeeeee; 
-    padding: 1em 0 1em 0.4em;
-    margin-bottom: 1rem;
-    margin-left: 0;
-    border: 1px solid #dddddd;
-    border-right-style: none;
-    } 
-
-.can-omni-stream .can-omni-stream.subtoc {
-    padding-left: 2em; 
-    font-size: 0.8em;
-    }
-
-div.omni-toc-heading {
-    grid-column: 2/5; 
-    font-size: 1.2em;
-    line-height: 1.1;
-    padding: 0.2em 1em 0.2em 0.2em;
-    margin: 0.1em 0;
-    cursor: pointer;
-}
-
-div.omni-toc-heading.selected {
-    background-color: #ffffff;
-}
-
-div.omni-toc-heading:hover {
-        background-color: #dddddd;
-}
-
-.omni-toc-view {
-    width: 100%;
-    flex: 1;
-    border: 1px solid #dddddd;
-    border-left-style: none;
-    margin: 0 0 1rem 0;
-    padding: 0.4rem 1rem 0.4rem 1rem;
-}
-
-.omni-toc-sub.can-omni-text {
-    grid-column: 2/5;
+.toc .omni-item-container {
+    padding-left: 2em;
 }
 
 /****** END styles-toc ********/

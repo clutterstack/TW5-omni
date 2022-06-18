@@ -3,15 +3,7 @@ tags:
 
 \define everytoc(depth)
 <div class={{{[[omni-item-container]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [{!!omni-colour}]}}} data-omnitid=<<currentTiddler>> >
-    <<can-omni-tree-itemhandle>>
-    <$droppable class="omni-text-display" tag="div" actions="""<$list filter="[<actionTiddler>!is[current]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""" >
-    <$list filter="[{$(foldstatetiddler)$!!foldstate}match[hide]then[]]" emptyMessage=<<can-omni-text>> variable="ignore">
-    <<can-omni-teaser>>
-    </$list>
-    </$droppable>
-    <$list filter="[all[current]has[omni-list]]" variable="ignore">
-        <<omni-collapsebutton>>
-    </$list>
+    <$list filter="[all[current]has[omni-list]]" variable="ignore" emptyMessage="""<$button class='tc-btn-invisible'>{{$:/core/images/blank}}</$button>"""><<omni-toc-foldbutton>></$list>&nbsp;<$link><$view field='caption'><$view field='title'/></$view></$link>
     <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>
 </div>
 \end
@@ -27,15 +19,15 @@ tags:
                     <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-ec-delete-action>> tag="div">
                         <$eventcatcher events="click" selector=".can-omni-addbutton" 
                         actions-click=<<omni-ec-addtiddler-action>> tag="div">
-                            <!-- <div class="can-omni-stream toc" > -->
+                            <div class="can-omni-stream toc" >
                                 <$macrocall $name=compose-omni depth=0/>  
-                            <!-- </div> -->
+                            </div>
 </$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$vars>
 \end
 
 \define compose-omni(mode:toc depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="toc" template="everytoc" creatednum={{!!created}}>
-    <div class="can-omni-stream toc" >
+    <!-- <div class="can-omni-stream toc" > -->
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
         <$set name=omnicrumbs filter="""[<omnicrumbs>enlist-input[]] [<parentval>]""">
             <$vars creatednum={{!!created}}>
@@ -43,8 +35,7 @@ tags:
             </$vars>
         </$set>
         </$list>
-    </div>
-    <<can-omni-bottomadd layout:slimui endstate:open>>
+    <!-- </div> -->
 </$vars>
 
 \end

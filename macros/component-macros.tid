@@ -73,6 +73,16 @@ type: text/vnd.tiddlywiki
 </$button>
 \end
 
+
+\define omni-toc-foldbutton()
+<$button class="omni-collapsebutton omni-button" title="Show/hide omnibus tiddlers">
+<$list filter="[<omnistatetiddler>get[text]match[hide]]" emptyMessage="""<$action-setfield $tiddler=<<omnistatetiddler>> $value="hide"/>{{$:/core/images/down-arrow}}""" variable="ignore">
+	<$action-setfield $tiddler=<<omnistatetiddler>> $value="show"/>
+	{{$:/core/images/right-arrow}}
+</$list>
+</$button>
+\end
+
 \define can-omni-itemhandle()
 <$button tag="div" class="can-omni-itemhandle omni-button" tooltip="Click to toggle text edit. Drag to move list entry." aria-label="Click to toggle text edit. Drag to move list entry.">
 <$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>> >
