@@ -1,0 +1,271 @@
+title: $:/can/macros/omnitoc
+tags: $:/tags/Macro
+
+\define omnitoc-body(root,sort:"",itemClassFilter,exclude,path)
+<ol class="tc-toc">
+  <$list filter="""[<__root__>get[omni-list]enlist-input[]is[tiddler]!has[draft.of]$sort$] -[<__root__>] -[enlist<__exclude__>]""">
+    <$vars item=<<currentTiddler>> path={{{ [<__path__>addsuffix[/]addsuffix<__root__>] }}}>
+      <$set name="excluded" filter="""[enlist<__exclude__>] [<__root__>]""">
+        <$set name="toc-item-class" filter=<<__itemClassFilter__>> emptyValue="toc-item-selected" value="toc-item">
+          <li class=<<toc-item-class>>>
+            <$list filter="[all[current]toc-link[no]]" emptyMessage="<$link><$view field='caption'><$view field='title'/></$view></$link>">
+              <<omnitoc-caption>>
+            </$list>
+            <$macrocall $name="omnitoc-body" root=<<item>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> exclude=<<excluded>> path=<<path>>/>
+          </li>
+        </$set>
+      </$set>
+    </$vars>
+  </$list>
+</ol>
+\end
+
+\define omnitoc(root,sort:"",itemClassFilter:"")
+<$macrocall $name="omnitoc-body"  root=<<__root__>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> />
+\end
+
+\define omnitoc-linked-expandable-body(root,sort:"",itemClassFilter,exclude,path)
+<!-- helper function -->
+<$qualify name="toc-state" title={{{ [[$:/state/toc]addsuffix<__path__>addsuffix[-]addsuffix<currentTiddler>] }}}>
+  <$set name="toc-item-class" filter=<<__itemClassFilter__>> emptyValue="toc-item-selected" value="toc-item">
+    <li class=<<toc-item-class>>>
+    <$link>hey
+      <$reveal type="nomatch" stateTitle=<<toc-state>> text="open">
+        <$button setTitle=<<toc-state>> setTo="open" class="tc-btn-invisible tc-popup-keep">
+          {{$:/core/images/right-arrow}}
+        </$button>
+      </$reveal>
+      <$reveal type="match" stateTitle=<<toc-state>> text="open">
+        <$button setTitle=<<toc-state>> setTo="close" class="tc-btn-invisible tc-popup-keep">
+          {{$:/core/images/down-arrow}}
+        </$button>
+      </$reveal>
+      <<omnitoc-caption>>
+    </$link>
+    <$reveal type="match" stateTitle=<<toc-state>> text="open">
+      <$macrocall $name="omnitoc-expandable" root=<<currentTiddler>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> exclude=<<__exclude__>> path=<<__path__>>/>
+    </$reveal>
+    </li>
+  </$set>
+</$qualify>
+\end
+
+\define omnitoc-unlinked-expandable-body(root,sort:"",itemClassFilter,exclude,path)
+<!-- helper function -->
+<$qualify name="toc-state" title={{{ [[$:/state/toc]addsuffix<__path__>addsuffix[-]addsuffix<currentTiddler>] }}}>
+  <$set name="toc-item-class" filter=<<__itemClassFilter__>> emptyValue="toc-item-selected" value="toc-item">
+    <li class=<<toc-item-class>>>
+      <$reveal type="nomatch" stateTitle=<<toc-state>> text="open">
+        <$button setTitle=<<toc-state>> setTo="open" class="tc-btn-invisible tc-popup-keep">
+          {{$:/core/images/right-arrow}}
+          <<omnitoc-caption>>
+        </$button>
+      </$reveal>
+      <$reveal type="match" stateTitle=<<toc-state>> text="open">
+        <$button setTitle=<<toc-state>> setTo="close" class="tc-btn-invisible tc-popup-keep">
+          {{$:/core/images/down-arrow}}
+          <<omnitoc-caption>>
+        </$button>
+      </$reveal>
+      <$reveal type="match" stateTitle=<<toc-state>> text="open">
+        <$macrocall $name="omnitoc-expandable" root=<<currentTiddler>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> exclude=<<__exclude__>> path=<<__path__>>/>
+      </$reveal>
+    </li>
+  </$set>
+</$qualify>
+\end
+
+\define omnitoc-expandable-empty-message()
+<$macrocall $name="omnitoc-linked-expandable-body" root=<<root>> sort=<<sort>> itemClassFilter=<<itemClassFilter>> exclude=<<excluded>> path=<<path>>/>
+\end
+
+\define omnitoc-expandable(root,sort:"",itemClassFilter:"",exclude,path)
+<$vars root=<<__root__>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> path={{{ [<__path__>addsuffix[/]addsuffix<__root__>] }}}>
+  <$set name="excluded" filter="""[enlist<__exclude__>] [<__root__>]""">
+    <ol class="tc-toc toc-expandable">
+      <$list filter="""[<__root__>get[omni-list]enlist-input[]is[tiddler]!has[draft.of]$sort$] -[<__root__>] -[enlist<__exclude__>]""">
+        <$list filter="[all[current]toc-link[no]]" emptyMessage=<<omnitoc-expandable-empty-message>> >
+          <$macrocall $name="omnitoc-unlinked-expandable-body" root=<<__root__>> sort=<<__sort__>> itemClassFilter="""itemClassFilter""" exclude=<<excluded>> path=<<path>> />
+        </$list>
+      </$list>
+    </ol>
+  </$set>
+</$vars>
+\end
+
+\define omnitoc-linked-selective-expandable-body(root,sort:"",itemClassFilter,exclude,path)
+<$qualify name="toc-state" title={{{ [[$:/state/toc]addsuffix<__path__>addsuffix[-]addsuffix<currentTiddler>] }}}>
+  <$set name="toc-item-class" filter=<<__itemClassFilter__>> emptyValue="toc-item-selected" value="toc-item" >
+    <li class=<<toc-item-class>>>
+      <$link>
+          <$list filter="[all[current]list[!!omni-list]$sort$limit[1]]" variable="ignore" emptyMessage="<$button class='tc-btn-invisible'>{{$:/core/images/blank}}</$button>">
+          <$reveal type="nomatch" stateTitle=<<toc-state>> text="open">
+            <$button setTitle=<<toc-state>> setTo="open" class="tc-btn-invisible tc-popup-keep">
+              {{$:/core/images/right-arrow}}
+            </$button>
+          </$reveal>
+          <$reveal type="match" stateTitle=<<toc-state>> text="open">
+            <$button setTitle=<<toc-state>> setTo="close" class="tc-btn-invisible tc-popup-keep">
+              {{$:/core/images/down-arrow}}
+            </$button>
+          </$reveal>
+        </$list>
+        <<omnitoc-caption>>
+      </$link>
+      <$reveal type="match" stateTitle=<<toc-state>> text="open">
+        <$macrocall $name="omnitoc-selective-expandable" root=<<currentTiddler>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> exclude=<<__exclude__>> path=<<__path__>>/>
+      </$reveal>
+    </li>
+  </$set>
+</$qualify>
+\end
+
+\define omnitoc-unlinked-selective-expandable-body(root,sort:"",itemClassFilter,exclude,path)
+<$qualify name="toc-state" title={{{ [[$:/state/toc]addsuffix<__path__>addsuffix[-]addsuffix<currentTiddler>] }}}>
+  <$set name="toc-item-class" filter=<<__itemClassFilter__>> emptyValue="toc-item-selected" value="toc-item">
+    <li class=<<toc-item-class>>>
+      <$list filter="[all[current]list[!!omni-list]$sort$limit[1]]" variable="ignore" emptyMessage="<$button class='tc-btn-invisible'>{{$:/core/images/blank}}</$button> <$view field='caption'><$view field='title'/></$view>">
+        <$reveal type="nomatch" stateTitle=<<toc-state>> text="open">
+          <$button setTitle=<<toc-state>> setTo="open" class="tc-btn-invisible tc-popup-keep">
+            {{$:/core/images/right-arrow}}
+            <<omnitoc-caption>>
+          </$button>
+        </$reveal>
+        <$reveal type="match" stateTitle=<<toc-state>> text="open">
+          <$button setTitle=<<toc-state>> setTo="close" class="tc-btn-invisible tc-popup-keep">
+            {{$:/core/images/down-arrow}}
+            <<omnitoc-caption>>
+          </$button>
+        </$reveal>
+      </$list>
+      <$reveal type="match" stateTitle=<<toc-state>> text="open">
+        <$macrocall $name="omnitoc-selective-expandable" root=<<currentTiddler>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> exclude=<<__exclude__>> path=<<__path__>>/>
+      </$reveal>
+    </li>
+  </$set>
+</$qualify>
+\end
+
+\define omnitoc-selective-expandable-empty-message()
+<$macrocall $name="omnitoc-linked-selective-expandable-body" root=<<root>> sort=<<sort>> itemClassFilter=<<itemClassFilter>> exclude=<<excluded>> path=<<path>>/>
+\end
+
+\define omnitoc-selective-expandable(root,sort:"",itemClassFilter,exclude,path)
+<$vars root=<<__root__>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> path={{{ [<__path__>addsuffix[/]addsuffix<__root__>] }}}>
+  <$set name="excluded" filter="""[enlist<__exclude__>] [<__root__>]""">
+    <ol class="tc-toc toc-selective-expandable">
+      <$list filter="""[<__root__>get[omni-list]enlist-input[]is[tiddler]!has[draft.of]$sort$] -[<__root__>] -[enlist<__exclude__>]""">
+        <$list filter="[all[current]toc-link[no]]" variable="ignore" emptyMessage=<<omnitoc-selective-expandable-empty-message>> >
+          <$macrocall $name="omnitoc-unlinked-selective-expandable-body" root=<<__root__>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> exclude=<<excluded>> path=<<path>>/>
+        </$list>
+      </$list>
+    </ol>
+  </$set>
+</$vars>
+\end
+
+\define omnitoc-linked-selective-expandable-ul-body(root,sort:"",itemClassFilter,exclude,path)
+<$qualify name="toc-state" title={{{ [[$:/state/toc]addsuffix<__path__>addsuffix[-]addsuffix<currentTiddler>] }}}>
+  <$set name="toc-item-class" filter=<<__itemClassFilter__>> emptyValue="toc-item-selected" value="toc-item" >
+    <li class=<<toc-item-class>>>
+      <$link>
+          <$list filter="[all[current]list[!!omni-list]$sort$limit[1]]" variable="ignore" emptyMessage="<$button class='tc-btn-invisible'>{{$:/core/images/blank}}</$button>">hey
+          <$reveal type="nomatch" stateTitle=<<toc-state>> text="open">
+            <$button setTitle=<<toc-state>> setTo="open" class="tc-btn-invisible tc-popup-keep">
+              {{$:/core/images/right-arrow}}
+            </$button>
+          </$reveal>
+          <$reveal type="match" stateTitle=<<toc-state>> text="open">
+            <$button setTitle=<<toc-state>> setTo="close" class="tc-btn-invisible tc-popup-keep">
+              {{$:/core/images/down-arrow}}
+            </$button>
+          </$reveal>
+        </$list>
+        <<omnitoc-caption>>
+      </$link>
+      <$reveal type="match" stateTitle=<<toc-state>> text="open">
+        <$macrocall $name="omnitoc-selective-expandable-ul" root=<<currentTiddler>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> exclude=<<__exclude__>> path=<<__path__>>/>
+      </$reveal>
+    </li>
+  </$set>
+</$qualify>
+\end
+
+\define omnitoc-unlinked-selective-expandable-ul-body(root,sort:"",itemClassFilter,exclude,path)
+<$qualify name="toc-state" title={{{ [[$:/state/toc]addsuffix<__path__>addsuffix[-]addsuffix<currentTiddler>] }}}>
+  <$set name="toc-item-class" filter=<<__itemClassFilter__>> emptyValue="toc-item-selected" value="toc-item">
+    <li class=<<toc-item-class>>>
+      <$list filter="[all[current]list[!!omni-list]$sort$limit[1]]" variable="ignore" emptyMessage="<$button class='tc-btn-invisible'>{{$:/core/images/blank}}</$button> <$view field='caption'><$view field='title'/></$view>">
+        <$reveal type="nomatch" stateTitle=<<toc-state>> text="open">
+          <$button setTitle=<<toc-state>> setTo="open" class="tc-btn-invisible tc-popup-keep">
+            {{$:/core/images/right-arrow}}
+            <<omnitoc-caption>>
+          </$button>
+        </$reveal>
+        <$reveal type="match" stateTitle=<<toc-state>> text="open">
+          <$button setTitle=<<toc-state>> setTo="close" class="tc-btn-invisible tc-popup-keep">
+            {{$:/core/images/down-arrow}}
+            <<omnitoc-caption>>
+          </$button>
+        </$reveal>
+      </$list>
+      <$reveal type="match" stateTitle=<<toc-state>> text="open">
+        <$macrocall $name="omnitoc-selective-expandable-ul" root=<<currentTiddler>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> exclude=<<__exclude__>> path=<<__path__>>/>
+      </$reveal>
+    </li>
+  </$set>
+</$qualify>
+\end
+
+\define omnitoc-selective-expandable-ul-empty-message()
+<$macrocall $name="omnitoc-linked-selective-expandable-ul-body" root=<<root>> sort=<<sort>> itemClassFilter=<<itemClassFilter>> exclude=<<excluded>> path=<<path>>/>
+\end
+
+\define omnitoc-selective-expandable-ul(root,sort:"",itemClassFilter,exclude,path)
+<$vars root=<<__root__>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> path={{{ [<__path__>addsuffix[/]addsuffix<__root__>] }}}>
+  <$set name="excluded" filter="""[enlist<__exclude__>] [<__root__>]""">
+    <ul class="tc-toc toc-selective-expandable">
+      <$list filter="""[<__root__>get[omni-list]enlist-input[]is[tiddler]!has[draft.of]$sort$] -[<__root__>] -[enlist<__exclude__>]""">
+        <$list filter="[all[current]toc-link[no]]" variable="ignore" emptyMessage=<<omnitoc-selective-expandable-empty-message>> >
+          <$macrocall $name="omnitoc-unlinked-selective-expandable-body" root=<<__root__>> sort=<<__sort__>> itemClassFilter=<<__itemClassFilter__>> exclude=<<excluded>> path=<<path>>/>
+        </$list>
+      </$list>
+    </ul>
+  </$set>
+</$vars>
+\end
+
+
+\define omnitoc-tabbed-external-nav(root,sort:"",selectedTiddler:"$:/temp/toc/selectedTiddler",unselectedText,missingText,template:"")
+<$tiddler tiddler={{{ [<__selectedTiddler__>get[text]] }}}>
+  <div class="tc-tabbed-table-of-contents">
+    <$linkcatcher to=<<__selectedTiddler__>>>
+      <div class="tc-table-of-contents">
+        <$macrocall $name="omnitoc-selective-expandable" root=<<__root__>> sort=<<__sort__>> itemClassFilter="[all[current]] -[<__selectedTiddler__>get[text]]"/>
+      </div>
+    </$linkcatcher>
+    <div class="tc-tabbed-table-of-contents-content">
+      <$reveal stateTitle=<<__selectedTiddler__>> type="nomatch" text="">
+        <$transclude mode="block" tiddler=<<__template__>>>
+          <h1><<omnitoc-caption>></h1>
+          <$transclude mode="block">$missingText$</$transclude>
+        </$transclude>
+      </$reveal>
+      <$reveal stateTitle=<<__selectedTiddler__>> type="match" text="">
+        $unselectedText$
+      </$reveal>
+    </div>
+  </div>
+</$tiddler>
+\end
+
+\define omnitoc-tabbed-internal-nav(root,sort:"",selectedTiddler:"$:/temp/toc/selectedTiddler",unselectedText,missingText,template:"")
+<$linkcatcher to=<<__selectedTiddler__>>>
+  <$macrocall $name="omnitoc-tabbed-external-nav" root=<<__root__>> sort=<<__sort__>> selectedTiddler=<<__selectedTiddler__>> unselectedText=<<__unselectedText__>> missingText=<<__missingText__>> template=<<__template__>>/>
+</$linkcatcher>
+\end
+
+
+\define omnitoc-caption() <$view field='caption'><$view field='title'/></$view>
+
+Modded from TW toc macros to use list instead of tags
