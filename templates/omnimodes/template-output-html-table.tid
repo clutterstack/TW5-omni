@@ -3,7 +3,6 @@ title: $:/plugins/can/omni/template-output-html-table
 <!-- <code><pre><$view tiddler="$:/plugins/can/omni/templates/intermediate/annot-table" format="plainwikified"/> -->
 <!-- </pre></code> -->
 
-
 <code><pre>
 {{||$:/plugins/can/omni/templates/intermediate/annot-table}}
 </pre></code>
