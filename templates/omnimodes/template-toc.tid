@@ -3,8 +3,8 @@ tags:
 
 \define everytoc(depth)
 <div class={{{[[omni-item-container]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [{!!omni-colour}]}}} data-omnitid=<<currentTiddler>> >
-    <$list filter="[all[current]has[omni-list]]" variable="ignore" emptyMessage="""<$button class='tc-btn-invisible'>{{$:/core/images/blank}}</$button>"""><<omni-toc-foldbutton>></$list>&nbsp;<$link><$view field='caption'><$view field='title'/></$view></$link>
-    <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=omni-showomni depth=<<__depth__>> />""" variable="ignore"/>
+    <$list filter="[all[current]has[omni-list]then[ok]] :intersection[{!!omnibus-mode}!match[annot]then[ok]]" variable="ignore" emptyMessage="""<$button class='tc-btn-invisible'>{{$:/core/images/blank}}</$button>"""><<omni-toc-foldbutton>></$list>&nbsp;<$link><$view field='caption'><$view field='title'/></$view></$link>
+    <$list filter="[{$(omnistatetiddler)$}!match[hide]then[ok]] :intersection[{!!omnibus-mode}!match[annot]then[ok]]" variable="null"><$macrocall $name=omni-showomni depth=<<__depth__>> /></$list>
 </div>
 \end
 

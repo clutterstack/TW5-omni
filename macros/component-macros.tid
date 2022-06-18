@@ -73,7 +73,6 @@ type: text/vnd.tiddlywiki
 </$button>
 \end
 
-
 \define omni-toc-foldbutton()
 <$button class="omni-collapsebutton omni-button" title="Show/hide omnibus tiddlers">
 <$list filter="[<omnistatetiddler>get[text]match[hide]]" emptyMessage="""<$action-setfield $tiddler=<<omnistatetiddler>> $value="hide"/>{{$:/core/images/down-arrow}}""" variable="ignore">
