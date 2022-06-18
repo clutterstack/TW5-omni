@@ -1,4 +1,5 @@
 title: $:/plugins/can/omni/template-output-html
 
-<code><pre><$view tiddler="$:/plugins/can/omni/templates/intermediate/annot-html" format="htmlwikified"/>
+<code><pre>
+{{||$:/plugins/can/omni/templates/intermediate/annot-html}}
 </pre></code>
