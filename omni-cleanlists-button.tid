@@ -1,0 +1,12 @@
+title: $:/plugins/can/omnitools/macros/cleanlists
+tags: $:/tags/Macro
+
+\define omni-cleanlists-actions()
+<$list filter='[all[tiddlers+shadows]has[omni-list]]'>
+<$action-listops $filter='[all[current]list[!!omni-list]is[tiddler]]'/>
+</$list>
+\end
+
+\define omni-cleanlists-button()
+<$button actions="<<omni-cleanlists-actions>>">Remove nonexistent tiddlers from omnibuses</$button>
+\end
