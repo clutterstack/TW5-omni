@@ -13,7 +13,7 @@ type: text/vnd.tiddlywiki
 		<$button set="!!omnibus-mode" setTo="levels" class="omni-button" selectedClass="omni-button-selected" tooltip="levels mode" aria-label="levels mode">levels</$button>
         <!-- <$button set="!!omnibus-mode" setTo="annot-view" class="omni-button" selectedClass="omni-button-selected" tooltip="annotation view mode" aria-label="annotation view mode">annot-view</$button> -->
         <$button set="!!omnibus-mode" setTo="output-html" class="omni-button" selectedClass="omni-button-selected" tooltip="html output mode" aria-label="html output mode">annot-html</$button>
-        <!-- <$button set="!!omnibus-mode" setTo="output-md" class="omni-button" selectedClass="omni-button-selected" tooltip="md table output mode" aria-label="md table output mode">annot-mddoesn't really work</$button> -->
+        <$button set="!!omnibus-mode" setTo="output-md" class="omni-button" selectedClass="omni-button-selected" tooltip="md table output mode" aria-label="md table output mode">md table</$button>
         <$button set="!!omnibus-mode" setTo="output-html-md" class="omni-button" selectedClass="omni-button-selected" tooltip="html/md output mode" aria-label="html/md output mode">annot-html/md</$button>
         <$button set="!!omnibus-mode" setTo="output-html-table" class="omni-button" selectedClass="omni-button-selected" tooltip="html/table output mode" aria-label="html/table output mode">annot-html-table</$button>
         <!-- <$button set="!!omnibus-mode" setTo="exp" class="omni-button" selectedClass="omni-button-selected" tooltip="Tree with captions" aria-label="Tree with captions">exp</$button> -->
