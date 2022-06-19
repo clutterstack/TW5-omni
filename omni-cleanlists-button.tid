@@ -1,4 +1,4 @@
-title: $:/plugins/can/omnitools/macros/cleanlists
+title: $:/plugins/can/omni/macros/cleanlists
 tags: $:/tags/Macro
 
 \define omni-cleanlists-actions()
