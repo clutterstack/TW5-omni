@@ -331,7 +331,18 @@ background: #EEF8FF;
 /* media-dependent */
 /* --------------- */
 
+@media (max-width: 800px) {
 
+.annot .omni-item-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.source-slice {
+    border-radius: 0.5em;
+}
+
+}
 
 
 /****** END styles-annot ********/

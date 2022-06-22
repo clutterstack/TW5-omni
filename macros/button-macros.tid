@@ -46,10 +46,6 @@ tags: $:/tags/Macro
 {{$:/core/images/close-button}}</div></$eventcatcher>
 \end
 
-\define can-omni-toggleadd-old()
-<$list filter="[<openstatetid>get[viewadd]match[open]]" emptyMessage=<<omni-addbutton>> variable="ignore"><<omni-closeaddbutton>></$list>
-\end
-
 \define can-omni-link()
 <$draggable tiddler=<<currentTiddler>> startactions=<<omni-start-tiddler-drag>>><div class="omni-button can-omni-link" data-currenttid=<<currentTiddler>> role="button" title="Open tiddler $(currentTiddler)$ in story" aria-label="Open tiddler $(currentTiddler)$ in story">{{$:/plugins/can/omni/fish-water.svg}}</div></$draggable>
 \end
