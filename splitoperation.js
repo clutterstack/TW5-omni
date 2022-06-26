@@ -39,7 +39,7 @@ FramedEngine.prototype.createTextOperation = function() {
             dateStamp = new Date(),
             dateStamp2 = new Date(Date.now() +1),
             dateStamp3 = new Date(Date.now() +2),
-            newTidTitleRoot = event.paramObject.title || $tw.utils.stringifyDate(dateStamp),  // default to a timestamp base title to avoid accreting too many suffixes
+            newTidTitleRoot = event.paramObject.title || $tw.utils.stringifyDate(dateStamp2),  // default to a timestamp base title to avoid accreting too many suffixes
             splitStateTidTitle = "$:/state/can/omni/split",
             newTidsList = [];
             // currentTitle = this.getVariable("currentTiddler");
@@ -81,6 +81,17 @@ FramedEngine.prototype.createTextOperation = function() {
                     tags: event.paramObject.tagnew === "yes" ?  [editTiddlerTitle] : []
                 }
             ));
+            // <$action-setfield $tiddler=<<editstatetid>> editstate="edit" $timestamp='no'/>
+            // Want to put the last subtid into edit mode. That means putting "edit" into its editstatetid
+            // which is \define omniqual() $(creatednum)$-$(baseomni)$
+            // \define editstatetid() $:/state/can/omni/editstate/$(omniqual)$
+            // the base omni is in a variable this.getVariable("baseomni")
+            const editstatetid = "$:/state/can/omni/editstate/"+$tw.utils.stringifyDate(dateStamp2)+"-"+this.getVariable("baseomni");
+            this.wiki.setText(editstatetid,"editstate","","edit");
+            this.wiki.setText(editstatetid,"text","",afterSlice);
+            this.wiki.setText(editstatetid,"throttle.refresh","","yes");
+
+            // $tw.rootWidget.invokeActionString(this.getVariable("omni-kb-startedit-actions",undefined,undefined,{}))
         } else if ( highlight.length > 0 && highlight.length < operation.text.length) { // if we have a selection and it's not the whole text
             operation.cutStart = 0;
             operation.cutEnd = textEnd;
@@ -109,6 +120,10 @@ FramedEngine.prototype.createTextOperation = function() {
                         tags: event.paramObject.tagnew === "yes" ?  [editTiddlerTitle] : []
                     }
                 ));
+                const editstatetid = "$:/state/can/omni/editstate/"+$tw.utils.stringifyDate(dateStamp2)+"-"+this.getVariable("baseomni");
+                this.wiki.setText(editstatetid,"editstate","","edit");
+                this.wiki.setText(editstatetid,"text","",afterSlice);
+                this.wiki.setText(editstatetid,"throttle.refresh","","yes");        
             } else if ( operation.selStart > 0 && operation.selEnd < textEnd ) { //selection's in the middle
                 var beforeSliceTitle = this.wiki.generateNewTitle(newTidTitleRoot+"-1");
                 newTidsList.push(beforeSliceTitle);
@@ -145,6 +160,10 @@ FramedEngine.prototype.createTextOperation = function() {
                         tags: event.paramObject.tagnew === "yes" ?  [editTiddlerTitle] : []
                     }
                 ));
+                const editstatetid = "$:/state/can/omni/editstate/"+$tw.utils.stringifyDate(dateStamp3)+"-"+this.getVariable("baseomni");
+                this.wiki.setText(editstatetid,"editstate","","edit");
+                this.wiki.setText(editstatetid,"text","",afterSlice);
+                this.wiki.setText(editstatetid,"throttle.refresh","","yes");    
             } else if ( operation.selEnd == textEnd ) { //selection's at the end
                 var firsthalfTitle = this.wiki.generateNewTitle(newTidTitleRoot+"-1");
                 newTidsList.push(firsthalfTitle);
@@ -170,6 +189,11 @@ FramedEngine.prototype.createTextOperation = function() {
                         tags: event.paramObject.tagnew === "yes" ?  [editTiddlerTitle] : []
                     }
                 ));
+                const editstatetid = "$:/state/can/omni/editstate/"+$tw.utils.stringifyDate(dateStamp2)+"-"+this.getVariable("baseomni");
+                this.wiki.setText(editstatetid,"editstate","","edit");
+                this.wiki.setText(editstatetid,"text","",highlight);
+                this.wiki.setText(editstatetid,"throttle.refresh","","yes");
+
             }
         }
         $tw.rootWidget.setVariable("lalist", $tw.utils.stringifyList(newTidsList));
