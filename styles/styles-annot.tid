@@ -168,7 +168,7 @@ background: #EEF8FF;
 
 .annot pre code {
     padding: 0;
-    padding-left: 0.5em;
+    /* padding-left: 0.5em; */
     height: 100%;
     overflow: hidden;
     font-size: 1em;
