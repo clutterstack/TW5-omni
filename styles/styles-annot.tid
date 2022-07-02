@@ -24,8 +24,8 @@ title: $:/plugins/can/omni/styles-annot
     grid-row: auto;
     z-index: 100;
     display: grid;
-    grid-template-areas: "handle annot text margin";
-    grid-template-columns: min-content 48% 48% 1em; /* 1em auto 7fr auto;  */
+    grid-template-areas: "annot text margin";
+    grid-template-columns: 50% 50% min-content; /* 1em auto 7fr auto;  */
     grid-template-rows: auto;
     position: relative; 
 }
@@ -34,18 +34,13 @@ title: $:/plugins/can/omni/styles-annot
    /* margin: 0;*/
 }
 
-.annot .omni-item-container:hover {
-    background: #eeeeee;
+/*.annot .omni-item-container:hover {
+    background: #e9eff3;
+}*/
+
+.annot .omni-item-container:hover pre code{
+    background: #d8e5ed;
 }
-
-.annot .omni-item-container:hover pre code {
-    background: #f8f8f8;
-}
-
-
-.annot .colour1 .omni-text-display, .annot .colour1 .can-omni-itemhandle, .annot .colour1 .omni-subctl, .annot .omni-swatch.colour1 {background-color: #e8f8ff}
-.annot .colour2 .omni-text-display, .annot .colour2 .can-omni-itemhandle, .annot .colour2 .omni-subctl, .annot .omni-swatch.colour2 {background-color: #efffe8}
-.annot .colour3 .omni-text-display, .annot .colour3 .can-omni-itemhandle, .annot .colour3 .omni-subctl, .annot .omni-swatch.colour3 {background-color: #ffe8f6}
 
 .annot .omni-collapsebutton, .annot .omni-add-child {
     grid-area: margin;
@@ -81,13 +76,46 @@ title: $:/plugins/can/omni/styles-annot
 
 .annot .omni-text-display {
     grid-area:text;
-    /* max-width: 55em; */
-   /* border-radius: 0 5px 5px 0;*/
+    border-right: 1px solid #efefef;
     border-left: 1px solid #efefef;
-    background-color: <<colour tiddler-editor-fields-even>>;
+    /*background-color: <<colour tiddler-editor-fields-even>>;*/
     display: flex;
     flex-direction: column;
+    margin: 0;
  }  
+
+.annot .omni-edit-wrapper {
+    /*display: grid;
+    grid-template-areas: "editor button";
+    grid-template-columns: 1fr min-content; /* 1em auto 7fr auto;
+    margin-right: -2em;*/
+}
+
+.annot .tc-editor-toolbar {
+    grid-area: button;
+    margin: 0;
+}
+
+.annot .tc-editor-toolbar button {
+    border: none;
+    font-size: 0.6rem;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.annot .tc-editor-toolbar {
+    /*height: 0;
+    margin: 0;*/
+}
+
+.annot .omni-split-button {
+    /*position: fixed;*/
+    left: 5px;
+    top: 20%;
+    width: 3em;
+}
+
 
  .annot .omni-annot-display {
     grid-area: annot;
@@ -132,8 +160,6 @@ background: #EEF8FF;
 }
 
 .annot .omni-textarea.tc-tiddler-body {
-    /*min-height:1.4em; */
-    /*padding-right: 1em;*/
     padding: 0;
     margin-top: 0;
     width: 100%;
@@ -146,17 +172,6 @@ background: #EEF8FF;
 
 .annot .CodeMirror-lines {
     padding: 0;
-}
-.annot .tc-editor-toolbar {
-    height: 0;
-    margin: 0;
-}
-
-.annot .omni-split-button {
-    position: fixed;
-    left: 5px;
-    top: 20%;
-    width: 40px;
 }
 
 .annot pre {
@@ -172,56 +187,12 @@ background: #EEF8FF;
     height: 100%;
     overflow: hidden;
     font-size: 1em;
-    background: #fafafa;
+    background: #f1f1e9;
 }
 
 .annot pre code.hljs {
-    padding: 0;
-    padding-left: 0.5em;
+    padding: 0 0.5em;
 }
-
-/* ---------------------------------------*/
-/* Vertical item handle                   */
-/* ---------------------------------------*/
-
-.annot .can-omni-itemhandle {
-    /*position: relative;*/
-    border-radius: 5px 0 0 5px; 
-    width: 1.2em; 
-    height: 100%; 
-    grid-area: handle; 
-    grid-row: span 1;
-    /* background-color: <<colour tiddler-editor-fields-even>>;
-    margin:0;*/
-    display: flex;
-    flex-direction: column;
-    }
-
-.annot .omni-item-container.currentNode > .can-omni-itemhandle {
-    background-color: #10099;
-}
-
-.annot .can-omni-edithandle {
-    height:100%;
-    width:100%;
-}
-
-.annot .omni-button.can-omni-itemhandle:hover, .annot .can-omni-title:hover {
-    background-color: <<colour muted-foreground>>;
-}
-
-.annot .can-omni-itemhandle .can-omni-link {height: 1em;}
-
-.annot .can-omni-itemhandle .can-omni-link svg {fill: <<colour foreground>>;}
-.annot .can-omni-itemhandle .can-omni-link:hover svg {fill: <<colour background>>;}
-
-.annot .can-omni-itemhandle-inner {
-    border-radius: 5px 0 0 5px; 
-    /* box-sizing: border-box; */
-    height: 100%; 
-    width: 100%;
-    margin:0;
-    }
 
 
 .annot .can-omni-ctlrow {
@@ -337,6 +308,15 @@ background: #EEF8FF;
     display: flex;
     flex-direction: column;
 }
+
+ .annot .omni-annot-display {
+    margin: 1.5em 0 0 0;
+}
+
+
+/* .annot .omni-item-container:hover {
+    background: transparent;
+} */
 
 .source-slice {
     border-radius: 0.5em;

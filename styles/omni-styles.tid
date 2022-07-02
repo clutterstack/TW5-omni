@@ -11,3 +11,24 @@ tags: $:/tags/Stylesheet
     <$transclude tiddler=<<stylesheettitle>> mode="block"/>
     </$vars>
 </$list>
+
+.can-tiddler-peripheral:hover {
+    background-color: #eeeeee;
+}
+
+.can-tiddler-peripheral.tc-dragover {border-radius: 5px;background-color: #0ff;}
+
+.can-tiddler-peripheral {
+    display: flex;
+    font-size: 1.5rem;
+    padding: 0.2em;
+    margin: 0.2rem 0;;
+    background-color: <<colour-background>>;
+    border-radius: 0.5rem;
+}
+
+.can-tiddler-peripheral button {
+    width: 100%;
+    text-align: left;
+    line-height: 0;
+}

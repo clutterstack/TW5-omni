@@ -12,9 +12,11 @@ emptyMessage=
 	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-kb-canceledit-actions>>">
 	<$keyboard tag="div" class="tc-can-keyboard" key="alt-up" actions="<<omni-move-earlier-actions>>">
 	<$keyboard tag="div" class="tc-can-keyboard" key="alt-down" actions="<<omni-move-later-actions>>">
+    <div class="omni-edit-wrapper">
 		<$edit class="omni-textarea tc-tiddler-body" tiddler=<<editstatetid>> field='text' placeholder='New tiddler text' rows="1" minHeight="0" focus=true >
             {{||$:/plugins/can/omni/buttons/split}}
         </$edit>
+    </div>
 	</$keyboard></$keyboard></$keyboard></$keyboard>
 </$list>
 \end
@@ -41,7 +43,7 @@ emptyMessage=
                 <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
                     <$vars creatednum={{!!created}}>
                         <div class={{{[[omni-item-container]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [{!!omni-colour}]}}} data-omnitid=<<currentTiddler>> >
-                            <<can-omni-tree-itemhandle>>
+                            <!-- <<can-omni-tree-itemhandle>> -->
                             <!-- <div class="can-omni-ctlrow">
                             <<can-omni-title-link>><<omni-foldbutton>>
                             </div> -->

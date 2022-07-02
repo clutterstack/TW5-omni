@@ -1,0 +1,35 @@
+title: $:/plugins/can/omni/ui/Template-newbelow
+
+\define omni-story-addafter() 
+<!-- Action to insert a new tiddler in edit mode in the Storylist after the current tiddler -->
+<$vars newTitle={{{[<unusedTitle>]}}}>
+<$action-sendmessage $message="tm-new-tiddler" title=<<newTitle>> />
+<!-- <$action-listops $tiddler="$:/StoryList" $subfilter="+[insertbefore<newTitle>,<storyTiddler>] +[move<newTitle>]"/> -->
+</$vars>
+\end
+
+\define omni-story-drop() 
+<!-- An analogue of <<omni-move-drop>> -->
+    <$action-listops $tiddler="$:/StoryList" $subfilter="+[insertbefore<actionTiddler>,<storyTiddler>] +[move<actionTiddler>]"/>
+\end
+
+\define omni-story-addbutton() <$button class="omni-button" actions=<<omni-story-addafter>> >{{$:/core/images/new-button}}</$button>
+
+
+\define story-peripheral()
+<$droppable class="can-tiddler-peripheral tc-tiddler-controls" tag="div" actions="""<$list filter="[<actionTiddler>]" variable=ignore><<omni-story-drop>><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""">
+    <<omni-story-addbutton>>
+</$droppable>
+\end
+
+
+<<story-peripheral>>
+
+<!-- This component should appear to be between tiddlers, but be associated with the tiddler above...it? Can add one more new tiddler button at the top and set the wiki prefs to open new tiddlers at top...or could flip that.  -->
+
+<!-- Next to do: get it in the layout outside the tc-tiddler-frame. Everything tagged $:/tags/ViewTemplate is inside that, as per $:/core/ui/ViewTemplate -->
+
+<!-- Cascade we want is $:/core/ui/PageTemplate/story.tid -> <$transclude tiddler={{{ [<currentTiddler>] :cascade[all[shadows+tiddlers]tag[$:/tags/StoryTiddlerTemplateFilter]!is[draft]get[text]] :and[!is[blank]else{$:/config/ui/ViewTemplate}] }}} /> -> $:/config/StoryTiddlerTemplateFilters/default -> [{$:/config/ui/ViewTemplate}]
+-->
+
+<!-- How do I inject something into a cascade? change $:/config/ui/ViewTemplate? Need to replace or edit $:/core/ui/ViewTemplate. Let's make a new one, put the story peripheral into it, and change the config to use it. That way it's a config change, not an overridden shadow. Although--since $:/config/ui/ViewTemplate is a hidden setting, replacing it IS overriding a shadow. Oh well. That's what I'm doing for now.-->

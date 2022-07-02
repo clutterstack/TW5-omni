@@ -2,5 +2,5 @@ title: $:/plugins/can/omni/setlang.tid
 tags: $:/tags/Macro
 
 \define omni-setlang() 
-<span class="omni-setlang">Lang: <$edit field=annot-lang/></span>
+<span class="omni-setlang">Lang: <$edit-text field=annot-lang/></span>
 \end

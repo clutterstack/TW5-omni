@@ -1,0 +1,32 @@
+title: button-split-copy
+
+\define create-highlighted-tiddler()
+<$wikify name=newtid text=<<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>> >
+<!-- copy selected text to a new tiddler  -->
+<$action-sendmessage $message="tm-edit-text-operation" $param="save-selection" tiddler=<<newtid>> field=text />
+</$wikify>
+\end
+
+\define create-remainder-tiddler()
+<$wikify name=newtid text=<<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>> >
+<!-- copy selected text to a new tiddler  -->
+<$action-createtiddler $basetitle=<<newtid>> text={{{[all[current]get[]split[%split-marker%]last[]]}}} />
+</$wikify>
+\end
+
+\define splitsubtid()
+<!-- copy selected text to a new tiddler  -->
+<<create-highlighted-tiddler>>
+<!-- replace it with a marker -->
+<$action-sendmessage $message="tm-edit-text-operation" $param="replace-selection" text="%split-marker%" />
+<!-- insert the new tiddler in the omni-list, after the original subtid -->
+<$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<newtid>] +[move<newtid>]'/>
+<!-- get the contents from after the split -->
+<<create-remainder-tiddler>>
+<!-- get the contents from before the split -->
+<$action-setfield $tiddler=<<currentTiddler>> text={{{[all[current]get[]split[%split-marker%]first[]]}} />
+\end
+
+<$button actions=<<splitsubtid>>>split</$button>
+
+hey

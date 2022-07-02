@@ -8,36 +8,23 @@ title: $:/plugins/can/omni/buttons/split
     title=<<titleroot>>
 	tagnew="no"
 />
-<$macrocall $name=echo label="current: " value=<<currentTiddler>> />
+<!-- <$macrocall $name=echo label="current: " value=<<currentTiddler>> /> -->
 <$action-deletetiddler $tiddler=<<editstatetid>>/>
-        <$macrocall $name=echo label="oldcurrent before list: " value=<<oldCurrent>> />
+        <!-- <$macrocall $name=echo label="oldcurrent before list: " value=<<oldCurrent>> /> -->
 
     <$list filter='[range[3],[1]]' variable='idx' >
-        <$macrocall $name=echo label="index: " value=<<idx>> />
+        <!-- <$macrocall $name=echo label="index: " value=<<idx>> /> -->
         <$vars newtid={{{[<titleroot>addsuffix[-]addsuffix<idx>]}}}>
         <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<newtid>] +[move<newtid>]' />
         </$vars>
     </$list>
-    <!-- <$action-listops $tiddler=<<parentval>> $field='omni-list' $filter='+[{$:/state/can/split}enlist-input[]]' /> -->
-    <!-- <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentTiddler<first>] +[move<first>]' /> -->
-    <!-- <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:first<third>] +[move<third>]' /> -->
-    <!-- <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:first<second>] +[move<second>]' /> -->
-    <!-- <$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='-[<currentTiddler>]' /> -->
-<!-- <$action-sendmessage $message="tm-rename-tiddler" from=<<currentTiddler>> to={{{[all[current]addsuffix<parentval>]}}} /> -->
-<!-- <<omni-submitedit-actions>> -->
 </$wikify>
 \end
 
 
-<!-- \define omni-submitedit-actions() 
-<$action-setfield text={{$(editstatetid)$}}/><$action-deletetiddler $tiddler=<<editstatetid>>/><$action-sendmessage $message='tm-auto-save-wiki'/><<omni-enable-nav-shortcuts>>
-\end -->
-
-
-
 <!-- Can inspect $:/core/ui/EditTemplate/body/editor for reference on how editor works -->
 
-<$button class="tc-btn-invisible omni-split-button" actions=<<splitsubtid>>>split</$button>
+<$button class="tc-btn-invisible omni-split-button" actions=<<splitsubtid>>>8<--</$button>
 
 <!--  (parent is <<parentval>>; current is <<currentTiddler>>; editstate is <<editstatetid>>) -->
 

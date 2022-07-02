@@ -1,7 +1,7 @@
 title: $:/plugins/can/omni/styles-annot-view
 
 <style>
-/*==== Styles for list mode ====*/
+/*==== Styles for annot-view mode ====*/
 
 .annot {
     display: grid;
@@ -43,5 +43,5 @@ title: $:/plugins/can/omni/styles-annot-view
 
 
 }
-/****** END styles-list ********/
+/****** END styles-annot-view ********/
 </style>

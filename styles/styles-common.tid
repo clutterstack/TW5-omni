@@ -6,7 +6,11 @@ title: $:/plugins/can/omni/styles-common
 /****** START styles-common ********/
 
 .omni-setlang {
-    width: 14em;
+ /*   width: 14em; */
+}
+
+.omni-setlang input {
+    width: 8em;
 }
 
 .can-omni-stream dl, dl dt {margin-top:0;}
