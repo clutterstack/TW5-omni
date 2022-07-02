@@ -17,6 +17,8 @@ title: $:/plugins/can/omni/styles-annot
     font-size: 16px;
     overflow-x: hidden;
     overflow-y: hidden;  
+    background-color: #f7f7ed;
+    border-radius: 5px;
 }
 
 .annot .omni-item-container {
@@ -38,7 +40,7 @@ title: $:/plugins/can/omni/styles-annot
     background: #e9eff3;
 }*/
 
-.annot .omni-item-container:hover pre code{
+.annot .omni-item-container:hover pre {
     background: #d8e5ed;
 }
 
@@ -105,8 +107,6 @@ title: $:/plugins/can/omni/styles-annot
 }
 
 .annot .tc-editor-toolbar {
-    /*height: 0;
-    margin: 0;*/
 }
 
 .annot .omni-split-button {
@@ -179,6 +179,7 @@ background: #EEF8FF;
     height: 100%;
     padding-left: 0.5em;
     border: none;
+    background:#e8e8dc; /* #f1f1e9;*/
 }
 
 .annot pre code {
@@ -187,7 +188,7 @@ background: #EEF8FF;
     height: 100%;
     overflow: hidden;
     font-size: 1em;
-    background: #f1f1e9;
+    background: transparent;
 }
 
 .annot pre code.hljs {
