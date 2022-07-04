@@ -41,7 +41,9 @@ FramedEngine.prototype.createTextOperation = function() {
             dateStamp3 = new Date(Date.now() +2),
             newTidTitleRoot = event.paramObject.title || $tw.utils.stringifyDate(dateStamp2),  // default to a timestamp base title to avoid accreting too many suffixes
             splitStateTidTitle = "$:/state/can/omni/split",
-            newTidsList = [];
+            newTidsList = [],
+            currentTid = this.wiki.getTiddler(this.getVariable("currentTiddler")),
+            annotString = currentTid.getFieldString("annot");
             // currentTitle = this.getVariable("currentTiddler");
         if(editTiddler && editTiddler.fields["draft.of"]) {
             editTiddlerTitle = editTiddler.fields["draft.of"];
@@ -62,6 +64,7 @@ FramedEngine.prototype.createTextOperation = function() {
             this.wiki.addTiddler(new $tw.Tiddler( // first half goes in new tiddler
                 this.wiki.getTiddler(this.getVariable("currentTiddler")),
                 {
+                    annot: annotString,
                     created: dateStamp,
                     modified: dateStamp,
                     title: firsthalfTitle,
@@ -100,7 +103,8 @@ FramedEngine.prototype.createTextOperation = function() {
                 newTidsList.push(firsthalfTitle);
                 this.wiki.addTiddler(new $tw.Tiddler( // first half goes in 1st new tiddler
                     this.wiki.getTiddler(this.getVariable("currentTiddler")),
-                    {
+                    {                    
+                        annot: annotString,
                         created: dateStamp,
                         modified: dateStamp,
                         title: firsthalfTitle,
@@ -130,6 +134,7 @@ FramedEngine.prototype.createTextOperation = function() {
                 this.wiki.addTiddler(new $tw.Tiddler( // first slice goes into a new tiddler
                     this.wiki.getTiddler(this.getVariable("currentTiddler")),
                     {
+                        annot: annotString,
                         created: dateStamp,
                         modified: dateStamp,
                         title: beforeSliceTitle,
@@ -170,6 +175,7 @@ FramedEngine.prototype.createTextOperation = function() {
                 this.wiki.addTiddler(new $tw.Tiddler( // before-selection stuff goes in new tiddler
                     this.wiki.getTiddler(this.getVariable("currentTiddler")),
                     {
+                        annot: annotString,
                         created: dateStamp,
                         modified: dateStamp,
                         title: firsthalfTitle,
