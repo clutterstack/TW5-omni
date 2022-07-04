@@ -1,0 +1,5 @@
+title: $:/plugins/can/omni/buttons/suspendshortcuts
+tags: $:/tags/PageControls
+
+<!-- Won't need this when the shortcuts work right! Ha! -->
+<$button actions=<<omni-suspend-nav-shortcuts>>>Esc</$button>

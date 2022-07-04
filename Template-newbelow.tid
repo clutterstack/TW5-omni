@@ -5,8 +5,9 @@ title: $:/plugins/can/omni/ui/Template-newbelow
 <!-- Action to insert a new tiddler in edit mode in the Storylist after the current tiddler -->
 <$action-createtiddler $basetitle="New Tiddler">
 <$action-listops $tiddler="$:/StoryList" $subfilter="+[insertbefore<createTiddler-title>,<currentTiddler>] +[move<createTiddler-title>]"/>
-<$action-setfield $tiddler=<<createTiddler-title>> draft.of=<<createTiddler-title>> draft.title=<<createTiddler-title>> />
+<!-- <$action-setfield $tiddler=<<createTiddler-title>> draft.of=<<createTiddler-title>> draft.title=<<createTiddler-title>> /> -->
 </$action-createtiddler>
+<$action-sendmessage $message='tm-auto-save-wiki'/>
 \end
 
 \define omni-story-drop() 

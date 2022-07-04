@@ -5,7 +5,7 @@ list-after: $:/core/ui/ViewTemplate/body
 <$reveal type="nomatch" stateTitle=<<folded-state>> text="hide" tag="div" retain="yes" animate="yes">
     <$list filter="[{$:/publishmode}!match[topicview]] ~[{!!omnibus-mode}match[annot]] ~[{!!omnibus-mode}match[toc]]" variable="ignore">
         <$list filter="[all[current]has[omni-list]]" variable="null">
-            <$vars mode={{{[{!!omnibus-mode}!is[blank]else[cleanmap]]}}}>
+            <$vars mode={{{[{!!omnibus-mode}!is[blank]else[toc]]}}}>
                 <$list filter="[{$:/publishmode}!match[topicview]]" variable="ignore">
                     <<can-omni-toptools>>
                 </$list>

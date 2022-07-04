@@ -2,6 +2,6 @@ title: $:/plugins/can/omni/ViewTemplate
 
 \whitespace trim
 {{||$:/core/ui/ViewTemplate}}
-<<story-peripheral>>
+<$list filter="""[{$:/publishmode}!match[topicview]]""" variable="ignore"><<story-peripheral>></$list>
 
 <!-- Copy of $:/core/ui/ViewTemplate with interstitial tiddler-adding component  -->
