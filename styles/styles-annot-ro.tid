@@ -1,5 +1,4 @@
 creator: chris
 title: $:/plugins/can/omni/styles-annot-ro
 
-
 <$transclude tiddler="$:/plugins/can/omni/styles-annot" mode="block"/>

@@ -21,10 +21,6 @@ title: $:/plugins/can/omni/template-annot-ro
                 <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
                     <$vars creatednum={{!!created}}>
                         <div class={{{[[omni-item-container]] [{!!omni-colour}]}}} data-omnitid=<<currentTiddler>> >
-                            <!-- <<can-omni-tree-itemhandle>> -->
-                            <!-- <div class="can-omni-ctlrow">
-                            <<can-omni-title-link>><<omni-foldbutton>>
-                            </div> -->
                             <div class="omni-annot-display" tag="div">
                                 <<omni-annot-ro-annotation>>
                             </div>
