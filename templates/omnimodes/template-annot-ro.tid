@@ -1,0 +1,42 @@
+title: $:/plugins/can/omni/template-annot-ro
+
+\define annot-lang() {{{[<parentval>get[annot-lang]]}}}
+
+\define omni-annot-ro-text()
+<div class="omni-text-dblclick tc-tiddler-body"  data-creatednum=<<creatednum>> data-currenttid=<<currentTiddler>> >
+	<$codeblock code={{{ [<currentTiddler>get[text]] }}} language=$(annot-lang)$ />
+</div>
+\end
+
+\define omni-annot-ro-annotation()
+<div class="omni-annot-ro-dblclick tc-tiddler-body"  data-creatednum=<<creatednum>> data-currenttid=<<currentTiddler>> >
+	<$transclude tiddler=<<currentTiddler>> field="annot" mode="block"/>
+    </div>
+\end
+
+\define compose-omni() 
+<$vars baseomni=<<currentTiddler>>>
+        <div class="can-omni-stream annot">
+            <$vars parentval=<<currentTiddler>> mode="annot" template="everyannot">
+                <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
+                    <$vars creatednum={{!!created}}>
+                        <div class={{{[[omni-item-container]] [{!!omni-colour}]}}} data-omnitid=<<currentTiddler>> >
+                            <!-- <<can-omni-tree-itemhandle>> -->
+                            <!-- <div class="can-omni-ctlrow">
+                            <<can-omni-title-link>><<omni-foldbutton>>
+                            </div> -->
+                            <div class="omni-annot-display" tag="div">
+                                <<omni-annot-ro-annotation>>
+                            </div>
+                            <div class="omni-text-display" tag="div">
+                                <<omni-annot-ro-text>>
+                            </div>
+                        </div>
+                    </$vars>    
+                </$list>
+            </$vars>                         
+        </div>
+</$vars>
+\end
+
+<<compose-omni>>
