@@ -1,4 +1,0 @@
-title: $:/plugins/can/omni/EditTemplate
-
-{{||$:/core/ui/EditTemplate}}
-{{||$:/plugins/can/omni/ui/Template-newbelow}}

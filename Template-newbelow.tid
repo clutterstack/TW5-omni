@@ -1,4 +1,4 @@
-tags: $:/tags/Macro
+tags: not$:/tags/Macro
 title: $:/plugins/can/omni/ui/Template-newbelow
 
 \define omni-story-addafter() 
