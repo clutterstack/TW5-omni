@@ -23,14 +23,15 @@ title: $:/plugins/can/omni/template-exp
         <$eventcatcher events="click" selector=".omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
             <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
                 <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-delete-action>> tag="div">
-                    <$eventcatcher events="click" selector=".omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
+                    <$eventcatcher events="click" selector=".can-omni-addbutton" 
+                        actions-click=<<omni-ec-addtiddler-action>> tag="div">
                         <$macrocall $name=compose-omni depth=0/>        
 </$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher>
 \end
 
 \define compose-omni(mode:exp depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="exp">
-<$vars omniqual={{!!created}}>
+<!-- <$vars omniqual={{!!created}}> -->
     <div class="can-omni-stream exp" >
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
             <$vars creatednum={{!!created}} >
@@ -40,7 +41,7 @@ title: $:/plugins/can/omni/template-exp
     </div>
     <<can-omni-bottomadd>>
 </$vars>
-</$vars>
+<!-- </$vars> -->
 \end
 
 <<compose-omni-toplevel>>

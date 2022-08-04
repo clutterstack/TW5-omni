@@ -153,7 +153,7 @@ type: text/vnd.tiddlywiki
 	<$keyboard tag="div" class="tc-can-keyboard" key="cmd-enter" actions="<<omni-submitfieldedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="ctrl-enter" actions="<<omni-submitfieldedit-actions>>" >
 	<$keyboard tag="div" class="tc-can-keyboard" key="escape" actions="<<omni-cancelfieldedit-actions>>">
-        <$edit-text class="omni-textarea" field="newfieldvalue" rows="1" minHeight="0" focus=true/>
+       <<creatednum>> o <<omniqual>> o <<currentTiddler>><$edit-text class="omni-textarea" field="newfieldvalue" rows="1" minHeight="0" focus=true/>
 	</$keyboard></$keyboard></$keyboard>
 </div>
 </$list>

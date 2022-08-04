@@ -12,14 +12,15 @@ tags:
         <$eventcatcher events="click" selector=".omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
             <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
                 <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-delete-action>> tag="div">
-                    <$eventcatcher events="click" selector=".omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
+                    <$eventcatcher events="click" selector=".can-omni-addbutton" 
+                        actions-click=<<omni-ec-addtiddler-action>> tag="div">
                         <$macrocall $name=compose-omni depth=0/>        
 </$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher>
 \end
 
 \define compose-omni(mode:min depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="min">
-<$vars omniqual={{!!created}}>
+<!-- <$vars omniqual={{!!created}}> -->
     <div class="can-omni-stream min" >
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
             <$vars creatednum={{!!created}} >
@@ -28,7 +29,7 @@ tags:
         </$list>
     </div>
 </$vars>
-</$vars>
+<!-- </$vars> -->
 \end
 
 <<compose-omni-toplevel>>

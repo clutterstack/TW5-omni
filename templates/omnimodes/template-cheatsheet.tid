@@ -20,7 +20,7 @@ title: $:/plugins/can/omni/template-cheatsheet
 \define everycheatsheet(depth)
 <$vars rowspan={{{[{!!cheatsheet-rowspan}!is[blank]else[2]]}}} colspan={{{[{!!cheatsheet-colspan}!is[blank]else[2]]}}}>
 <div class=omni-cheatsheet-section-container style=<<grid-span-style>>>
-    <<can-omni-peripheral>>
+    <<can-omni-peripheral layout:kbnavadd endstate:open>>
     <div class="omni-cheatsheet-section">
         <$vars editFieldName="caption">
             <div class="omni-subctl">
@@ -48,7 +48,8 @@ title: $:/plugins/can/omni/template-cheatsheet
         <$eventcatcher events="click" selector=".omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
             <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
                 <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-delete-action>> tag="div">
-                    <$eventcatcher events="click" selector=".omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
+                    <$eventcatcher events="click" selector=".can-omni-addbutton" 
+                        actions-click=<<omni-ec-addtiddler-action>> tag="div">
                         <$macrocall $name=compose-omni/>        
 </$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher>
 \end
@@ -71,7 +72,7 @@ title: $:/plugins/can/omni/template-cheatsheet
 \end
 
 <$vars omnitid={{!!title}}>
-<$vars omniqual={{!!created}}>
+<!-- <$vars omniqual={{!!created}}> -->
 <$tiddler tiddler={{{[<cheatsheetstatetid>get[text]else{!!title}]}}}>
 <!-- cheatsheetstatetid: <<cheatsheetstatetid>> <br>
 currentTiddler: <<currentTiddler>> <br>
@@ -79,4 +80,4 @@ omnitid: <<omnitid>> <br> -->
 <<compose-omni-toplevel>>
 </$tiddler>
 </$vars>
-</$vars>
+<!-- </$vars> -->

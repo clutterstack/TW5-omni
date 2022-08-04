@@ -37,7 +37,7 @@ title: $:/plugins/can/omni/template-kbclean
 
 \define compose-omni(mode:kbclean depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="kbclean" template="everykbclean">
-<$vars omniqual={{!!created}}>
+<!-- <$vars omniqual={{!!created}}> -->
     <div class="can-omni-stream kbclean" >
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
             <$vars creatednum={{!!created}} >
@@ -47,7 +47,7 @@ title: $:/plugins/can/omni/template-kbclean
     </div>
     <<can-omni-bottomadd layout:slimui endstate:open>>
 </$vars>
-</$vars>
+<!-- </$vars> -->
 \end
 
 <<compose-omni-toplevel>>

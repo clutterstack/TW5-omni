@@ -18,9 +18,10 @@ tags:
 
 \define compose-omni-toplevel() 
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="list">
-<$vars omniqual={{!!created}}>
+<$vars creatednum={{!!created}}>
     <div class="can-omni-stream list" >
-        <$eventcatcher events="click" selector=".omni-button.can-omni-toggleadd" actions-click=<<omni-toggleadd-action>> tag="div">
+        <$eventcatcher events="click" selector=".can-omni-addbutton" 
+                        actions-click=<<omni-ec-addtiddler-action>> tag="div">
             <<can-omni-topadd>>
         </$eventcatcher>
         <$list filter="[all[current]list[!!omni-list]]">
@@ -34,7 +35,7 @@ tags:
 
 \define compose-omni(mode:list depth)
 <$vars grandparentval=<<parentval>> parentval=<<currentTiddler>> mode="list">
-<$vars omniqual={{!!created}}>
+<!-- <$vars omniqual={{!!created}}> -->
     <div class="can-omni-stream list" >
         <$list filter="[all[current]list[!!omni-list]]">
             <!--<$vars creatednum={{!!created}} >-->
@@ -43,7 +44,7 @@ tags:
         </$list>
     </div>
 </$vars>
-</$vars>
+<!-- </$vars> -->
 \end
 
 <<compose-omni-toplevel>>
