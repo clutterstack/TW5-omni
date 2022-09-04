@@ -131,7 +131,8 @@ width: 100%;
 }
 
 .cheatsheet .omni-textarea {
-    background-color: <<colour tiddler-editor-fields-even>>
+    background-color: <<colour tiddler-editor-fields-even>>;
+    width: 100%;
 }
 
 .omni-button.omni-closerlook-button {
