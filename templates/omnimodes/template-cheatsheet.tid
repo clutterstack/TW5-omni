@@ -71,13 +71,8 @@ title: $:/plugins/can/omni/template-cheatsheet
 </$vars>
 \end
 
-<$vars omnitid={{!!title}}>
-<!-- <$vars omniqual={{!!created}}> -->
-<$tiddler tiddler={{{[<cheatsheetstatetid>get[text]else{!!title}]}}}>
-<!-- cheatsheetstatetid: <<cheatsheetstatetid>> <br>
-currentTiddler: <<currentTiddler>> <br>
-omnitid: <<omnitid>> <br> -->
+<!-- <$vars omnitid={{!!title}}> -->
+<!-- <$tiddler tiddler={{{[<cheatsheetstatetid>get[text]else{!!title}]}}}> -->
 <<compose-omni-toplevel>>
-</$tiddler>
-</$vars>
+<!-- </$tiddler> -->
 <!-- </$vars> -->
