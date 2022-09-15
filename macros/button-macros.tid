@@ -57,7 +57,7 @@ tags: $:/tags/Macro
 \end
 
 \define omni-closerlook()
-<div class="omni-button omni-closerlook-button" data-title=<<currentTiddler>> tooltip="Closer look" aria-label="Closer look">{{$:/plugins/can/omni/microscope-simple.svg}}</div>
+<div class="omni-button omni-closerlook-button" data-title=<<currentTiddler>> data-parentval=<<parentval>> tooltip="Closer look" aria-label="Closer look">{{$:/plugins/can/omni/microscope-simple.svg}}</div>
 \end
 
 \define can-omni-title()

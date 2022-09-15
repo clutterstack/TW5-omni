@@ -43,6 +43,7 @@ title: $:/plugins/can/omni/template-cheatsheet
 
 
 \define compose-omni-toplevel()
+<$vars baseomni=<<currentTiddler>>>
 <$eventcatcher events="dblclick" selector=".omni-text-dblclick" actions-dblclick=<<omni-ec-startedit-actions>> tag="div">
     <$eventcatcher events="click" selector=".can-omni-link" actions-click=<<omni-navigate-action>> tag="div">
         <$eventcatcher events="click" selector=".omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
@@ -52,6 +53,7 @@ title: $:/plugins/can/omni/template-cheatsheet
                         actions-click=<<omni-ec-addtiddler-action>> tag="div">
                         <$macrocall $name=compose-omni/>        
 </$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher>
+</$vars>
 \end
 
 \define compose-omni(mode:cheatsheet depth)
@@ -59,6 +61,8 @@ title: $:/plugins/can/omni/template-cheatsheet
     <$eventcatcher tag=div events="click" selector=".omni-closerlook-button" actions-click=<<omni-nav-leveldown>> class="can-omni-stream cheatsheet" >
         <$macrocall $name="omni-breadcrumbs" statetid=<<cheatsheetstatetid>> />
         <!-- <<cheatsheet-title>> -->
+        <$tiddler tiddler={{{[<cheatsheetstatetid>get[text]] ~[<currentTiddler>]}}}>
+        <!-- in tiddler widget, currenttiddler = <<currentTiddler>> -->
         <$list filter="[all[current]list[!!omni-list]is[tiddler]]">
             <$vars creatednum={{!!created}} >
                 <$macrocall $name=everycheatsheet depth=<<__depth__>> />
@@ -67,6 +71,7 @@ title: $:/plugins/can/omni/template-cheatsheet
         <div class="omni-cheatsheet-section-container">
             <<can-omni-bottomadd>>
         </div>
+        </$tiddler>
     </$eventcatcher>
 </$vars>
 \end

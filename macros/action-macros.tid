@@ -32,7 +32,7 @@ type: text/vnd.tiddlywiki
 <$list filter="[all[tiddlers+shadows]has[omni-shortcut]]"><$action-listops $tags="$:/tags/KeyboardShortcut"/></$list>
 \end
 
-\define omni-nav-leveldown() <$action-setfield $tiddler=<<cheatsheetstatetid>> text=<<dom-data-title>> /><$action-listops $tiddler=<<cheatsheetstatetid>> $field=breadcrumbs $subfilter='[<parentval>]'/>
+\define omni-nav-leveldown() <$action-setfield $tiddler=<<cheatsheetstatetid>> text=<<dom-data-title>> /><$action-listops $tiddler=<<cheatsheetstatetid>> $field=breadcrumbs $filter='[<baseomni>] [<cheatsheetstatetid>get[breadcrumbs]enlist-input[]] [<dom-data-title>]'/>
 
 \define omni-delist-action() <$action-listops $tiddler=<<dom-data-parentval>> $field='omni-list' $subfilter='-[<dom-data-currenttid>]'/><$action-listops $tiddler=<<dom-data-currenttid>> $field='omniparent' $subfilter='-[<dom-data-parentval>]' /><$action-sendmessage $message='tm-auto-save-wiki'/>
 

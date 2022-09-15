@@ -107,8 +107,8 @@ type: text/vnd.tiddlywiki
 \end
 
 \define omni-breadcrumbs(statetid)
-<$linkcatcher actions="""<$action-setfield $tiddler=<<cheatsheetstatetid>> text=<<navigateTo>> /><$action-listops $tiddler=<<cheatsheetstatetid>> $field=breadcrumbs $subfilter='-[allafter:include<navigateTo>]'/>""">
-<div class="omni-breadcrumbs $(mode)$"><$list filter="[<__statetid__>get[breadcrumbs]!is[blank]enlist-input[]]"><$link/> -> </$list><<currentTiddler>></div>
+<$linkcatcher actions="""<$action-setfield $tiddler=<<__statetid__>> text=<<navigateTo>> /><$action-listops $tiddler=<<__statetid__>> $field=breadcrumbs $subfilter='-[allafter<navigateTo>]'/>""">
+<div class="omni-breadcrumbs $(mode)$"><$list filter="[<__statetid__>get[breadcrumbs]!is[blank]enlist-input[]butlast[]]"><$link/>-></$list><$text text={{{[<__statetid__>get[breadcrumbs]!is[blank]enlist-input[]last[]]}}}/> </div>
 </$linkcatcher>
 \end
 

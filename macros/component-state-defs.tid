@@ -13,7 +13,7 @@ type: text/vnd.tiddlywiki
 
 \define editfieldstatetid() $:/state/can/omni/edit-$(editFieldName)$/$(omniqual)$
 
-\define cheatsheetstatetid() $:/state/can/omni/cheatsheet/$(omniqual)$
+\define cheatsheetstatetid() $:/state/can/omni/cheatsheet/$(baseomni)$
 
 \define foldstatetiddler() $:/state/can/omni/fold/$(omniqual)$
 
