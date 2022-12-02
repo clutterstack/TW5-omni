@@ -4,7 +4,8 @@ title: $:/plugins/can/omni/template-pins
 <$set name=containerclass filter="""[[omni-item-container]] [[omni-absolute]] [[$posclass$]enlist-input[]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [{!!omni-colour}] [[$depth$]addprefix[depth-]]""">
     <div class=<<containerclass>> data-omnitid=<<currentTiddler>> data-depth=$depth$  style="top: 30px; left: 80px;">
         <<can-omni-peripheral layout:pinsadd endstate:open>> 
-        <!-- {{{[[$(baseomni)$-sidecar]getindex[20220804231541734]]}}} -->
+        <<currentTiddler>>
+        {{{[[$(baseomni)$-sidecar]getindex["$(currentTiddler)$"]removeprefix["]removesuffix[",]]}}}
         <<can-omni-tree-itemhandle>>
         <$droppable class="omni-text-display" tag="div" actions="""<$list filter="[<actionTiddler>!is[current]]" variable=ignore><<omni-deselect-node>><<omni-move-drop>><$action-listops $field='omni-list' $subfilter='[<actionTiddler>]'/><$action-listops $field='tags' $subfilter='omnibus'/><$action-listops $tiddler=<<actionTiddler>> $field='omniparent' $subfilter='[<currentTiddler>]' /><$action-sendmessage $message='tm-auto-save-wiki'/></$list>""" >
         <div class="can-omni-ctlrow">
@@ -25,10 +26,6 @@ title: $:/plugins/can/omni/template-pins
                 <<omni-collapsebutton>>
         </$list>
     </div>
-<$list filter="""[all[current]has[omni-list]]""" variable="null">
-        <$list filter="[{$(omnistatetiddler)$}match[hide]then[]]" emptyMessage="""<$macrocall $name=pins-showomni depth=<<__depth__>> />""" variable="ignore"/>
-    </$list>
-
 </$set>
 \end
 
