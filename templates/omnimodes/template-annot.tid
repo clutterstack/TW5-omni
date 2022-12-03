@@ -47,15 +47,25 @@ emptyMessage=
                             <!-- <div class="can-omni-ctlrow">
                             <<can-omni-title-link>><<omni-foldbutton>>
                             </div> -->
+                            <<can-omni-peripheral layout:kbnavadd endstate:open>>
+
                             <div class="omni-annot-display" tag="div">
                                 <<omni-annot-annotation>>
                             </div>
                             <div class="omni-text-display" tag="div">
                                 <<omni-annot-text>>
                             </div>
+                            <div class="omni-subctl">
+                                <<omni-foldbutton>>
+                                <<can-omni-link>>
+                                <<can-omni-delist>>
+                                <<can-omni-delete>>
+                                {{||Drop refsource title here}}
+                            </div>
                         </div>
                     </$vars>    
                 </$list>
+                <<can-omni-bottomadd layout:slimui endstate:open>>
             </$vars>                         
         </div>
     </$eventcatcher></$eventcatcher>

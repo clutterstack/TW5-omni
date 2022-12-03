@@ -32,17 +32,12 @@ title: $:/plugins/can/omni/styles-annot
     position: relative; 
 }
 
+
 .annot p:last-of-type {
    /* margin: 0;*/
 }
 
-/*.annot .omni-item-container:hover {
-    background: #e9eff3;
-}*/
 
-.annot .omni-item-container:hover pre {
-    background: #d8e5ed;
-}
 
 .annot .omni-collapsebutton, .annot .omni-add-child {
     grid-area: margin;
@@ -86,6 +81,14 @@ title: $:/plugins/can/omni/styles-annot
     margin: 0;
  }  
 
+/*.annot .omni-item-container:hover {
+    background: #e9eff3;
+}*/
+
+.annot .omni-test-display:hover .tc-tiddler-body {
+    background: #d8e5ed;
+}
+
 .annot .omni-edit-wrapper {
     /*display: grid;
     grid-template-areas: "editor button";
@@ -121,6 +124,7 @@ title: $:/plugins/can/omni/styles-annot
     grid-area: annot;
     padding-left: 0.5em;
     padding-right: 0.5em;
+    border-top: 1px solid #ddbbbb;
 
  }
 
@@ -178,8 +182,8 @@ background: #EEF8FF;
     margin: 0;
     height: 100%;
     padding-left: 0.5em;
+    background: transparent;
     border: none;
-    background:#e8e8dc; /* #f1f1e9;*/
 }
 
 .annot pre code {
