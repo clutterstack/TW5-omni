@@ -60,7 +60,7 @@ type: text/vnd.tiddlywiki
 
 \define omni-colours()
 <div class="omni-colour-switch">
-<$button class="colour1 omni-swatch" actions=<<add-item-class "colour1">>></$button><$button class="colour2 omni-swatch" actions=<<add-item-class "colour2">>></$button><$button class="colour3 omni-swatch" actions=<<add-item-class "colour3">>></$button><$button class="omni-swatch" actions=<<add-item-class "">>></$button>
+<$button class="colour1 omni-swatch" actions='<<add-item-class "colour1">><<omni-toggle-menustate>>'></$button><$button class="colour2 omni-swatch" actions='<<add-item-class "colour2">><<omni-toggle-menustate>>'></$button><$button class="colour3 omni-swatch" actions='<<add-item-class "colour3">><<omni-toggle-menustate>>'></$button><$button class="omni-swatch" actions='<<add-item-class "">><<omni-toggle-menustate>>'></$button>
 </div>
 \end
 
