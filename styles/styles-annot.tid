@@ -206,7 +206,7 @@ background: #EEF8FF;
 }
 
 .annot .omni-subctl {
-    grid-area: menu;
+    grid-area: margin;
     display:flex;
     flex-direction: column;
     background-color: <<colour tiddler-editor-fields-even>>;

@@ -22,6 +22,10 @@ title: $:/plugins/can/omni/styles-kbnav
     position: relative;
 }
 
+.kbnav .colour1 .omni-text-display, .kbnav .colour1 .can-omni-itemhandle, .kbnav .colour1 .omni-subctl, .kbnav .omni-swatch.colour1 {background-color: #e8f8ff}
+.kbnav .colour2 .omni-text-display, .kbnav .colour2 .can-omni-itemhandle, .kbnav .colour2 .omni-subctl, .kbnav .omni-swatch.colour2 {background-color: #efffe8}
+.kbnav .colour3 .omni-text-display, .kbnav .colour3 .can-omni-itemhandle, .kbnav .colour3 .omni-subctl, .kbnav .omni-swatch.colour3 {background-color: #ffe8f6}
+
 .kbnav .omni-collapsebutton {
     grid-column: 2/3; 
     align-self: start; 
@@ -66,13 +70,48 @@ title: $:/plugins/can/omni/styles-kbnav
     flex-direction: row;
  }  
 
+ .kbnav .omni-button {
+    color: <<colour foreground>>;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.kbnav .omni-button svg, .kbnav .can-omni-foldbutton svg, .kbnav .can-omni-menubutton svg { 
+    fill:<<colour foreground>>;
+    width: 0.6em;
+    height: 0.6em;}
+
 .kbnav .omni-subctl {
     grid-column: 5/6;
     display:flex;
-    flex-direction: row;
-    gap: 0.2em;
+    flex-direction: column;
+    background-color: <<colour tiddler-editor-fields-even>>;
+    border-radius: 0 5px 5px 0;
+    gap: 0.8em;
+    padding-top: 0.1em;
+    padding-right: 0.1em;
 }
 
+.kbnav .omni-subctl .omni-button svg, .kbnav .can-omni-ctlrow .omni-button svg {
+    fill: <<colour muted-foreground>>;
+}
+.kbnav .can-omni-foldbutton, .kbnav .can-omni-menubutton {
+    /*font-size: 1.2em; */
+}
+
+.kbnav .omni-colour-switch {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+.kbnav .omni-swatch {
+    width: 0.6em;
+    height: 0.6em;
+    border-radius: 0.5em;
+    align-self: flex-end;
+}
 .kbnav .omni-item-container::before {
     position: absolute;
             left: 0;

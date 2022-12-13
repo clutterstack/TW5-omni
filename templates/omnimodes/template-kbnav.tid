@@ -1,7 +1,7 @@
 title: $:/plugins/can/omni/template-kbnav
 
 \define everykbnav(depth)
-<$set name=testclass filter="[[omni-item-container]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]]" >
+<$set name=testclass filter="[[omni-item-container]] [[$depth$]match[0]then[toplevel]] [{$:/state/can/omni/omniCurrentNode}match<currentTiddler>then[currentNode]] [{!!omni-colour}]" >
     <div class=<<testclass>> data-omnitid=<<currentTiddler>> >
         <$list filter="[[$depth$]!match[0]]">
             <div class="omni-branch-line"></div>
@@ -13,12 +13,11 @@ title: $:/plugins/can/omni/template-kbnav
         <<can-omni-teaser>>
         </$list>
         </$droppable>
-        <div class="omni-subctl">
-            <<omni-foldbutton>>
-            <<can-omni-link>>
-            <<can-omni-delist>>
-            <<can-omni-delete>>
-            {{||Drop refsource title here}}
+        <div class="omni-subctl" tabindex="0">
+            <<omni-menubutton>>
+            <$list filter="[{$(menustatetiddler)$!!menustate}match[show]]"  variable="ignore">
+                <<can-omni-delist>><<can-omni-delete>><<omni-colours>>{{$:/plugins/can/omni/buttons/split}}{{||Drop refsource title here}}
+            </$list>
         </div>
         <$list filter="[all[current]has[omni-list]]" variable="ignore">
             <<omni-collapsebutton>>
@@ -37,12 +36,13 @@ title: $:/plugins/can/omni/template-kbnav
             <$eventcatcher events="click" selector=".omni-button.can-omni-delist" actions-click=<<omni-delist-action>> tag="div">
                 <$eventcatcher events="click" selector=".can-omni-foldbutton" actions-click=<<omni-toggle-foldstate>> tag="div">
                     <$eventcatcher events="click" selector=".omni-button.can-omni-delete" actions-click=<<omni-ec-delete-action>> tag="div">
-                        <$eventcatcher events="click" selector=".can-omni-addbutton" 
+                        <$eventcatcher events="click" selector=".can-omni-menubutton" actions-click=<<omni-toggle-menustate>> tag="div">
+                            <$eventcatcher events="click" selector=".can-omni-addbutton" 
                         actions-click=<<omni-ec-addtiddler-action>> tag="div">
                             <!-- <div class="can-omni-stream kbnav" > -->
                                 <$macrocall $name=compose-omni depth=0/>  
                             <!-- </div> -->
-</$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$vars>
+</$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$eventcatcher></$vars>
 \end
 
 \define compose-omni(mode:kbnav depth)
