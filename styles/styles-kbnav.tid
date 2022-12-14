@@ -17,7 +17,7 @@ title: $:/plugins/can/omni/styles-kbnav
     /* grid-template-areas: "branch peri peri peri"
                        ". handle text menu"
                        "fish container container container";*/
-    grid-template-columns: max-content 1em min-content minmax(10em, 55em) auto; /* 1em auto 7fr auto;  */
+    grid-template-columns: max-content 1em min-content minmax(10em, 55em) 1.6em auto; /* 1em auto 7fr auto;  */
     grid-template-rows: auto;
     position: relative;
 }
@@ -94,7 +94,7 @@ title: $:/plugins/can/omni/styles-kbnav
     padding-right: 0.1em;*/
 }
 
-.kbnav .omni-subctl .omni-button svg, .kbnav .can-omni-ctlrow .omni-button svg {
+.kbnav .omni-subctl .omni-button svg, .kbnav .can-omni-ctlrow .omni-button svg, .kbnav .omni-refsourceadd svg {
     fill: <<colour muted-foreground>>;
 }
 
@@ -111,6 +111,13 @@ title: $:/plugins/can/omni/styles-kbnav
     border-radius: 0.5em;
     /*align-self: flex-end;*/
 }
+
+
+.kbnav .omni-refsourceadd {
+    grid-column: 6/7;
+    width: 1.6em;
+}
+
 .kbnav .omni-item-container::before {
     position: absolute;
             left: 0;

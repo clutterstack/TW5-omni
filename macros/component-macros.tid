@@ -112,8 +112,8 @@ type: text/vnd.tiddlywiki
 </$linkcatcher>
 \end
 
-\define omni-sourcetag()
-	<$droppable tag="div" class="omni-sourcetag tc-tiddler-controls" actions="<$action-setfield refsource=<<actionTiddler>> /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+\define omni-refsourceadd()
+	<$droppable tag="div" class="omni-refsourceadd tc-tiddler-controls" actions="<$action-setfield refsource=<<actionTiddler>> /><$action-sendmessage $message='tm-auto-save-wiki'/>">
 	<$list filter="[all[current]has[refsource]]" emptyMessage="""{{$:/plugins/can/omni/fish-splash.svg}}""">
 		<$link class="can-refsource" to={{!!refsource}}>{{$:/plugins/can/omni/fish-splash.svg}}</$link>
 	</$list>

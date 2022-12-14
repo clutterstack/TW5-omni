@@ -16,11 +16,11 @@ title: $:/plugins/can/omni/template-kbnav
         <div class="omni-subctl" tabindex="0">
             <<omni-foldbutton>><<omni-menubutton>>
             <$list filter="[{$(menustatetiddler)$!!menustate}match[show]]"  variable="ignore">
-                <<can-omni-link>><<can-omni-delist>><<can-omni-delete>><<omni-colours>>{{||Drop refsource title here}}
+                <<can-omni-link>><<can-omni-delist>><<can-omni-delete>><<omni-colours>>
                 <!-- {{$:/plugins/can/omni/buttons/split}} -->
             </$list>
-            <<omni-sourcetag>>
         </div>
+        <<omni-refsourceadd>>
         <$list filter="[all[current]has[omni-list]]" variable="ignore">
             <<omni-collapsebutton>>
         </$list>
