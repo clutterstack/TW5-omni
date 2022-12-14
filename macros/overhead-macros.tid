@@ -5,7 +5,8 @@ type: text/vnd.tiddlywiki
 \whitespace trim
 
 \define can-omni-toptools()
-    <div class="can-omni-toptools">        
+    <div class="can-omni-toptools"> 
+         {{||$:/plugins/can/omni/button-addrefsrc}}      
         <$list filter="[<mode>match[annot]]" variable="null"><<omni-setlang>></$list>
         <$list filter="[<mode>!match[tree]!match[todo]!match[list]!match[cheatsheet]!match[cheetsheetro]!match[annot]!match[output-html-md]]" variable="null"><<can-omni-foldall>></$list><span style="width: 14em;"></span>
         <$list filter="[<mode>!match[cheatsheet]!match[cheatsheetro]!match[annot]!match[output-html-md]]" variable="null"><<can-omni-exploder>></$list>

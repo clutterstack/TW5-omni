@@ -112,6 +112,14 @@ type: text/vnd.tiddlywiki
 </$linkcatcher>
 \end
 
+\define omni-sourcetag()
+	<$droppable tag="div" class="omni-sourcetag tc-tiddler-controls" actions="<$action-setfield refsource=<<actionTiddler>> /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+	<$list filter="[all[current]has[refsource]]" emptyMessage="""{{$:/plugins/can/omni/fish-splash.svg}}""">
+		<$link class="can-refsource" to={{!!refsource}}>{{$:/plugins/can/omni/fish-splash.svg}}</$link>
+	</$list>
+	</$droppable>
+\end
+
 \define can-omni-titleheading()
 <$reveal type="nomatch" stateTitle=<<edittitlestatetid>> stateField=editstate text="edit" tag="div" class="omni-title-heading view" title="Double-click to edit title." aria-label="Double-click to edit title.">
         <$omnidblclick actions="<<omni-starttitleedit-actions>>"/>

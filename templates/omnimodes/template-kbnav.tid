@@ -19,6 +19,7 @@ title: $:/plugins/can/omni/template-kbnav
                 <<can-omni-link>><<can-omni-delist>><<can-omni-delete>><<omni-colours>>{{||Drop refsource title here}}
                 <!-- {{$:/plugins/can/omni/buttons/split}} -->
             </$list>
+            <<omni-sourcetag>>
         </div>
         <$list filter="[all[current]has[omni-list]]" variable="ignore">
             <<omni-collapsebutton>>

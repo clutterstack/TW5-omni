@@ -71,7 +71,7 @@ type: text/vnd.tiddlywiki
 <$wikify name=newtitle text=<<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>> >
 <$vars pairtid=<<dom-data-pairtid>> dom-data-currenttid=<<newtitle>>>
 <$action-createtiddler $basetitle=<<newtitle>> $savetitle=!!savetitle created=<<newtitle>>  />
-<$list filter="[<dom-data-parentval>tag[refsource]]" variable="ignore"><$action-setfield $tiddler=<<newtitle>> refsource=<<dom-data-parentval>>/></$list>
+<$action-setfield $tiddler=<<newtitle>> refsource=<<dom-data-parentval>>/>
 <$macrocall $name=<<dom-data-position>>/>
 <$action-sendmessage $message='tm-auto-save-wiki'/>
 <$vars creatednum=<<newtitle>>>

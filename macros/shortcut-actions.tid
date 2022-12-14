@@ -8,7 +8,7 @@ type: text/vnd.tiddlywiki
 <$wikify name=creatednum text=<<now [UTC]YYYY0MM0DD0hh0mm0ss0XXX>> >
 	<$vars parentval={{$:/state/can/omni/omniCurrentNode!!omniparent}} currentNode={{$:/state/can/omni/omniCurrentNode}} baseomni={{{[[$:/state/can/omni/omniCurrentNode]get[breadcrumbs]enlist-input[]first[]]}}}>
 		<$action-createtiddler $basetitle=<<creatednum>> created=<<creatednum>>  />
-		<$list filter="[<parentval>tag[refsource]]" variable="ignore"><$action-setfield $tiddler=<<creatednum>> refsource=<<parentval>>/></$list>
+		<$action-setfield $tiddler=<<creatednum>> refsource=<<parentval>>/>
 		<$action-listops $tiddler=<<parentval>> $field='omni-list' $subfilter='+[insertbefore:currentNode<creatednum>] +[move<creatednum>]'/>
 		<!-- <$action-sendmessage $message='tm-auto-save-wiki'/> -->
 		<$action-setfield $tiddler="$:/state/can/omni/omniCurrentNode" text=<<creatednum>> />

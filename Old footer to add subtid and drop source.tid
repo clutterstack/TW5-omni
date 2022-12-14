@@ -4,13 +4,13 @@ tags: $:/tags/NotViewTemplate
 title: $:/plugins/can/omni/makeomnibutton
 type: text/vnd.tiddlywiki
 
-\define can-sourcetag()
-	<$droppable tag="div" class="can-sourcetag tc-tiddler-controls" actions="<$action-setfield refsource=<<actionTiddler>> /><$action-sendmessage $message='tm-auto-save-wiki'/>">
+\define omni-sourcetag()
+	<$droppable tag="div" class="omni-sourcetag tc-tiddler-controls" actions="<$action-setfield refsource=<<actionTiddler>> /><$action-sendmessage $message='tm-auto-save-wiki'/>">
 	
 		{{Add refsource.svg}}
 	</$droppable>
 \end
 
-<<can-sourcetag>>
+<<omni-sourcetag>>
 
 <<makeomnibutton>>

@@ -1,4 +1,4 @@
-title: $:/plugins/can/omni/addrefsrc.tid
+title: $:/plugins/can/omni/button-addrefsrc
 tags: not$:/tags/ViewToolbar
 
 \define addrefsrc() 
@@ -9,4 +9,5 @@ tags: not$:/tags/ViewToolbar
 </$vars>
 \end
 
-<$button actions=<<addrefsrc>>>stamp source on subtiddlers</$button>
+<$button actions=<<addrefsrc>>>{{$:/plugins/can/omni/fish-splash.svg}}</$button>
+
