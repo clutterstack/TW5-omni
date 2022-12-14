@@ -22,9 +22,9 @@ title: $:/plugins/can/omni/styles-kbnav
     position: relative;
 }
 
-.kbnav .colour1 .omni-text-display, .kbnav .colour1 .can-omni-itemhandle, .kbnav .colour1 .omni-subctl, .kbnav .omni-swatch.colour1 {background-color: #e8f8ff}
-.kbnav .colour2 .omni-text-display, .kbnav .colour2 .can-omni-itemhandle, .kbnav .colour2 .omni-subctl, .kbnav .omni-swatch.colour2 {background-color: #efffe8}
-.kbnav .colour3 .omni-text-display, .kbnav .colour3 .can-omni-itemhandle, .kbnav .colour3 .omni-subctl, .kbnav .omni-swatch.colour3 {background-color: #ffe8f6}
+.kbnav .colour1 .omni-text-display, .kbnav .colour1 .can-omni-itemhandle, .kbnav .omni-swatch.colour1 {background-color: #e8f8ff}
+.kbnav .colour2 .omni-text-display, .kbnav .colour2 .can-omni-itemhandle, .kbnav .omni-swatch.colour2 {background-color: #efffe8}
+.kbnav .colour3 .omni-text-display, .kbnav .colour3 .can-omni-itemhandle, .kbnav .omni-swatch.colour3 {background-color: #ffe8f6}
 
 .kbnav .omni-collapsebutton {
     grid-column: 2/3; 
@@ -71,13 +71,14 @@ title: $:/plugins/can/omni/styles-kbnav
  }  
 
  .kbnav .omni-button {
-    color: <<colour foreground>>;
+   /* color: <<colour foreground>>;*/
     display: flex;
-    justify-content: flex-end;
+    gap: 0.3em;
+   /* justify-content: flex-end;*/
 }
 
-.kbnav .omni-button svg, .kbnav .can-omni-foldbutton svg, .kbnav .can-omni-menubutton svg { 
-    fill:<<colour foreground>>;
+.kbnav .omni-button svg { 
+   /* fill:<<colour foreground>>;*/
     width: 0.6em;
     height: 0.6em;}
 
@@ -85,32 +86,30 @@ title: $:/plugins/can/omni/styles-kbnav
     grid-column: 5/6;
     display:flex;
     flex-direction: column;
-    background-color: <<colour tiddler-editor-fields-even>>;
-    border-radius: 0 5px 5px 0;
-    gap: 0.8em;
-    padding-top: 0.1em;
-    padding-right: 0.1em;
+    width: 1.6em;
+    /*background-color: <<colour tiddler-editor-fields-even>>;*/
+   /* border-radius: 0 5px 5px 0; */
+    gap: 0.2em;
+    /*padding-top: 0.1em;
+    padding-right: 0.1em;*/
 }
 
 .kbnav .omni-subctl .omni-button svg, .kbnav .can-omni-ctlrow .omni-button svg {
     fill: <<colour muted-foreground>>;
-}
-.kbnav .can-omni-foldbutton, .kbnav .can-omni-menubutton {
-    /*font-size: 1.2em; */
 }
 
 .kbnav .omni-colour-switch {
     display: flex;
     flex-direction: column;
     gap: 0.2em;
-    margin-bottom: 0.2em;
+    /*margin-bottom: 0.2em;*/
 }
 
 .kbnav .omni-swatch {
     width: 0.6em;
     height: 0.6em;
     border-radius: 0.5em;
-    align-self: flex-end;
+    /*align-self: flex-end;*/
 }
 .kbnav .omni-item-container::before {
     position: absolute;
@@ -221,12 +220,6 @@ background: #EEF8FF;
     width: 100%;
     margin:0;
     }
-
-
-
-.kbnav .can-omni-foldbutton {
-    font-size: 1.5em;
-}
 
 .kbnav .can-omni-peripheral.inert {
     height: 10pt;

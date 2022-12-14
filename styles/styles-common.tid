@@ -150,7 +150,12 @@ a.can-omni-title { color: #cccccc; align-self: flex-end;}
 
 .can-small-text-button .tc-menubar-dropdown-arrow {padding-left: 0.4em;}
 
-.omni-button svg, .can-omni-foldbutton svg, .can-omni-menubutton {width: 1em; height: 1em; flex: 0 0 auto; fill:<<colour tab-background>>;}
+.omni-button svg, .can-omni-foldbutton svg {
+    width: 1em; 
+    height: 1em; 
+    flex: 0 0 auto; 
+    fill:<<colour tab-background>>;
+} 
 
 .omni-button.omni-button-selected {color: #66c;} 
 .omni-button.omni-button-selected svg { fill: #66c; }

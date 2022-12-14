@@ -14,9 +14,9 @@ title: $:/plugins/can/omni/template-kbnav
         </$list>
         </$droppable>
         <div class="omni-subctl" tabindex="0">
-            <<omni-menubutton>>
+            <<omni-foldbutton>><<omni-menubutton>>
             <$list filter="[{$(menustatetiddler)$!!menustate}match[show]]"  variable="ignore">
-                <<can-omni-delist>><<can-omni-delete>><<omni-colours>>{{||Drop refsource title here}}
+                <<can-omni-link>><<can-omni-delist>><<can-omni-delete>><<omni-colours>>{{||Drop refsource title here}}
                 <!-- {{$:/plugins/can/omni/buttons/split}} -->
             </$list>
         </div>
